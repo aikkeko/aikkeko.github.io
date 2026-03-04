@@ -1,0 +1,35 @@
+{
+  "name": "世界尽头的百货公司",
+  "short_name": "百货公司",
+  "description": "一位拥有 30 万字作品的小说家的文学博客 - 长文本阅读体验优化",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#37c6c0",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "/images/bitbug_favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/images/apple-touch-icon-next.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "categories": ["books", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "/images/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
+}
