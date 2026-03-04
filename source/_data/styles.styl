@@ -1,0 +1,96 @@
+body {
+ 	background:url(/images/background.png);
+ 	background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position:50% 50%;
+	background-size: cover; 
+}
+
+ h2, h3, h4, h5, h6 {
+  border-bottom: 2px solid #8c8c8c;
+  padding: 0 5% 2px 0;
+}
+
+//修改页脚文字
+.footer {
+  color: $fontColor;
+  font-size: 10px;
+  +mobile() {
+    font-size: 6px;
+  }
+  .busuanzi-value {
+    font-weight: bold;
+  }
+}
+
+// ============================================
+// 中文长文本阅读体验优化
+// 针对 30 万字小说级内容的排版优化
+// ============================================
+
+// 正文字体回退栈与排版优化
+.post-body {
+  // 中文字体回退栈
+  font-family: 
+    "PingFang SC",
+    "Microsoft YaHei", 
+    "Noto Sans CJK SC",
+    "WenQuanYi Micro Hei",
+    "Hiragino Sans GB",
+    sans-serif;
+  
+  // 行高优化：黄金比例 1.75
+  line-height: 1.75;
+  
+  // 段落间距：避免视觉拥挤
+  p {
+    margin-bottom: 1.5em;
+    text-align: justify;
+    text-justify: inter-ideograph;  // 中文两端对齐优化
+  }
+  
+  // 标题样式优化
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    line-height: 1.4;
+  }
+  
+  // 长文本章节锚点样式
+  h2 {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.5em;
+    margin-top: 2.5em;
+  }
+  
+  // 引用块中文排版
+  blockquote {
+    border-left: 3px solid #999;
+    padding-left: 1em;
+    margin: 1.5em 0;
+    color: #666;
+    font-style: normal;  // 中文不适合斜体
+  }
+  
+  // 代码块优化
+  pre, code {
+    font-family: "SF Mono", "Fira Code", Consolas, Monaco, monospace;
+    font-size: 0.9em;
+  }
+  
+  // 图片懒加载占位
+  img {
+    max-width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease;
+  }
+  
+  // 滚动条优化（长文本阅读）
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+// 阅读进度条样式微调
+.reading-progress-bar {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}

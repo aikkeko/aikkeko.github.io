@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>离线模式 - 世界尽头的百货公司</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+    .offline-container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      max-width: 500px;
+      margin: 20px;
+    }
+    .icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+    p {
+      color: #777;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-size: 0.9rem;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+    .cached-articles {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+      text-align: left;
+    }
+    .cached-articles h2 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+    .cached-list {
+      list-style: none;
+    }
+    .cached-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .cached-list a {
+      color: #667eea;
+      text-decoration: none;
+    }
+    .cached-list a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="offline-container">
+    <div class="icon">📡</div>
+    <h1>您已离线</h1>
+    <p>
+      当前网络连接不可用，但您仍可阅读已缓存的文章。<br>
+      世界尽头的百货公司支持离线阅读，让您的阅读体验不受网络限制。
+    </p>
+    <div class="actions">
+      <button class="btn" onclick="location.reload()">刷新页面</button>
+      <a href="/" class="btn">返回首页</a>
+    </div>
+    <div class="cached-articles" id="cachedArticles">
+      <h2>📚 已缓存的文章</h2>
+      <ul class="cached-list" id="cachedList">
+        <li>正在加载已缓存内容...</li>
+      </ul>
+    </div>
+  </div>
+  
+  <script>
+    // 获取已缓存的文章列表
+    if ('caches' in window) {
+      caches.open('blog-v1-pages').then(cache => {
+        cache.keys().then(requests => {
+          const list = document.getElementById('cachedList');
+          const articles = requests
+            .filter(req => req.url.includes('/archives/') || req.url.endsWith('.html'))
+            .slice(0, 10);
+          
+          if (articles.length > 0) {
+            list.innerHTML = articles.map(req => {
+              const url = new URL(req.url);
+              const path = url.pathname;
+              const title = decodeURIComponent(path.split('/').pop().replace('.html', ''));
+              return `<li><a href="${path}">${title}</a></li>`;
+            }).join('');
+          } else {
+            list.innerHTML = '<li>暂无缓存内容</li>';
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>

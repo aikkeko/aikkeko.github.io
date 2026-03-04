@@ -1,0 +1,45 @@
+---
+title: With_Love_From_Answerless
+
+date: 2021-12-10
+
+
+image: https://s1.ax1x.com/2020/04/06/GygOB9.jpg
+description: 这是值得纪念的第一篇文字
+
+---
+欢迎来到[世界尽头的百货公司](https://aikkeko.github.io)! 
+
+## Quick Start
+
+### Create a new post
+
+``` bash
+$ hexo new "My New Post"
+```
+
+More info: [Writing](https://hexo.io/docs/writing.html)
+
+### Run server
+
+``` bash
+$ hexo server
+```
+
+More info: [Server](https://hexo.io/docs/server.html)
+
+### Generate static files
+
+``` bash
+$ hexo generate
+```
+
+More info: [Generating](https://hexo.io/docs/generating.html)
+
+### Deploy to remote sites
+
+``` bash
+$ hexo deploy
+```
+
+More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
