@@ -36,5 +36,8 @@
     "hexo-theme-landscape": "^0.0.3",
     "hexo-wordcount": "^6.0.1",
     "mammoth": "^1.11.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
   }
 }
