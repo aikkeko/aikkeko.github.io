@@ -1,36 +1,438 @@
+// ============================================
+// NexT 主题美化配置 - Z.A.T.O 后末日风格
+// 基于 Z.A.T.O_02_ca04.png 废墟美学设计
+// 
+// Version: 2026.03.30-29
+// Last Updated: 2026-03-30
+// ============================================
+
+// 版本信息（用于调试）
+:root {
+  --theme-version: "2026.03.30-29";
+  --theme-name: "Z.A.T.O Apocalypse";
+}
+
+// ============================================
+// 1. 全局背景与视觉层次 - Z.A.T.O 废墟背景
+// ============================================
 body {
- 	background:url(/images/background.png);
- 	background-repeat: no-repeat;
-    background-attachment:fixed;
-    background-position:50% 50%;
-	background-size: cover; 
-}
-
- h2, h3, h4, h5, h6 {
-  border-bottom: 2px solid #8c8c8c;
-  padding: 0 5% 2px 0;
-}
-
-//修改页脚文字
-.footer {
-  color: $fontColor;
-  font-size: 10px;
-  +mobile() {
-    font-size: 6px;
-  }
-  .busuanzi-value {
+  // Z.A.T.O_02_ca04.png 背景图片
+  background: url('/images/Z.A.T.O_02_ca04.png') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  
+  // 版本号水印（调试用，显示在页面左上角）
+  &::before {
+    content: "v2026.03.30-29";
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 99999 !important;
+    font-size: 14px;
     font-weight: bold;
+    color: #b4a078;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    pointer-events: none;
+    border: 1px solid rgba(180, 160, 120, 0.5);
+  }
+  
+  // 字体优化
+  font-family: 
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  color: #333;
+}
+
+// ============================================
+// 1.5 主内容区透明化 - 显示背景图片
+// ============================================
+.main {
+  background: transparent !important;
+}
+
+.main-inner {
+  background: transparent !important;
+  min-height: calc(100vh - 150px);
+}
+
+// 内容包装器透明
+.content-wrap {
+  background: transparent !important;
+  margin-left: -20px;
+}
+
+// 页面内容区透明
+.content {
+  background: transparent !important;
+}
+
+// 全局布局 - 确保 footer 在底部
+// 使用 min-height 方法确保 footer 在短内容页面也能在底部
+.main {
+  min-height: calc(100vh - 200px);
+  background: transparent !important;
+}
+
+// 页脚固定在底部
+.footer {
+  margin-top: auto;
+  position: relative;
+}
+
+// ============================================
+// 1.6 关于页面和文章页面 - 废土风格适配
+// ============================================
+// 关于页面背景
+.page {
+  .post-block {
+    background: rgba(35, 38, 45, 0.85) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(180, 160, 120, 0.15);
+  }
+  
+  .post-body {
+    color: #c8c8cc;
+    
+    p {
+      color: #c8c8cc;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      color: #e0dcd4;
+    }
+    
+    a {
+      color: #d4c4a8;
+      border-bottom: 1px solid rgba(180, 160, 120, 0.4);
+      
+      &:hover {
+        color: #e4d4b8;
+        border-bottom-color: #b4a078;
+      }
+    }
+  }
+}
+
+// 文章页面背景
+.post {
+  .post-block {
+    background: rgba(35, 38, 45, 0.85) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(180, 160, 120, 0.15);
+  }
+  
+  .post-body {
+    color: #c8c8cc;
+    
+    p {
+      color: #c8c8cc;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      color: #e0dcd4;
+    }
+    
+    li {
+      color: #c8c8cc;
+    }
+  }
+}
+
+// 归档、分类、标签页面 - 废土风格
+.archive,
+.category,
+.tag {
+  .post-block {
+    background: rgba(35, 38, 45, 0.85) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(180, 160, 120, 0.15);
+  }
+  
+  .collection-title {
+    color: #e0dcd4;
+    
+    h1, h2 {
+      color: #e0dcd4;
+    }
+  }
+  
+  .archive-year {
+    color: #b4a078;
+    
+    &::before {
+      background: rgba(180, 160, 120, 0.5);
+    }
+  }
+  
+  .archive-post-title {
+    color: #c8c8cc;
+    
+    a {
+      color: #c8c8cc;
+      border-bottom: none;
+      
+      &:hover {
+        color: #d4c4a8;
+      }
+    }
+  }
+  
+  .archive-post-date {
+    color: #8a8a90;
+  }
+  
+  .post-meta {
+    color: #8a8a90;
+  }
+}
+
+// 页脚透明（显示背景图片）
+.footer {
+  background: transparent !important;
+}
+
+.footer-inner {
+  background: transparent !important;
+}
+
+// 页脚文字颜色适配
+.footer {
+  color: #c8c8cc;
+  
+  a {
+    color: #d4c4a8;
+    border-bottom: none;
+    
+    &:hover {
+      color: #e4d4b8;
+    }
   }
 }
 
 // ============================================
-// 中文长文本阅读体验优化
-// 针对 30 万字小说级内容的排版优化
+// 1.7 全局站点标题 - 垂直排列，每行不换行
 // ============================================
+.site-brand-container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  white-space: normal !important;
+  
+  .site-title {
+    white-space: nowrap !important;
+    display: block !important;
+    margin-bottom: 4px;
+  }
+  
+  .site-subtitle {
+    white-space: nowrap !important;
+    display: block !important;
+  }
+}
 
-// 正文字体回退栈与排版优化
+// ============================================
+// 2. 头部导航 - 深灰半透明
+// ============================================
+.header-inner {
+  background: rgba(30, 33, 40, 0.85) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(180, 160, 120, 0.2);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+// ============================================
+// 3. 侧边栏站点信息 - 废墟质感
+// ============================================
+.sidebar {
+  margin-left: 20px;
+}
+
+.sidebar-inner {
+  background: rgba(35, 38, 45, 0.75) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 8px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  padding: 24px !important;
+  margin-top: 12px;
+  border: 1px solid rgba(180, 160, 120, 0.15);
+}
+
+// 站点作者区域
+.site-author {
+  padding: 20px 0 15px 0;
+  background: linear-gradient(135deg, rgba(180, 160, 120, 0.1) 0%, rgba(140, 120, 90, 0.05) 100%);
+  border-radius: 6px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(180, 160, 120, 0.2);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #b4a078, #8c7a5a);
+    opacity: 0.8;
+  }
+}
+
+// 头像样式 - 锈迹边框效果
+.site-author-image {
+  border: 2px solid rgba(180, 160, 120, 0.6);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(180, 160, 120, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(30, 33, 40, 0.8);
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 
+      0 6px 20px rgba(0, 0, 0, 0.5),
+      0 0 0 2px rgba(180, 160, 120, 0.5);
+  }
+}
+
+// 站点标题 - 暖金色
+.site-author-name {
+  font-weight: 600;
+  font-size: 1.15em;
+  letter-spacing: 1px;
+  color: #d4c4a8;
+  margin-top: 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  
+  &::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, #b4a078, #8c7a5a);
+    margin: 8px auto 0;
+  }
+}
+
+// 站点副标题 - 暗灰
+.site-description {
+  font-size: 0.8em;
+  color: #8a8a8f;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+// ============================================
+// 4. 菜单样式 - 废墟暗金
+// ============================================
+.menu {
+  .menu-item {
+    a {
+      color: #a0a0a8;
+      font-weight: 400;
+      transition: all 0.3s ease;
+      position: relative;
+      
+      &:hover {
+        color: #d4c4a8;
+        background: rgba(180, 160, 120, 0.1);
+      }
+    }
+    
+    &.menu-item-active a {
+      color: #d4c4a8;
+      background: rgba(180, 160, 120, 0.15);
+      border-left: 3px solid #b4a078;
+      
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+// ============================================
+// 5. 文章卡片 - 暗色废墟纸张
+// ============================================
+.post-block {
+  background: rgba(40, 43, 50, 0.7);
+  border-radius: 4px;
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  padding: 40px 50px !important;
+  margin-bottom: 40px !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(180, 160, 120, 0.1);
+  
+  &:hover {
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border-color: rgba(180, 160, 120, 0.2);
+  }
+}
+
+// 文章标题 - 暖白
+.post-title {
+  font-size: 1.8em;
+  font-weight: 600;
+  color: #e8e4dc;
+  margin-bottom: 16px;
+  line-height: 1.4;
+  
+  a {
+    color: inherit;
+    border-bottom: none;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: #d4c4a8;
+    }
+  }
+}
+
+// 文章元信息 - 暗灰
+.post-meta {
+  color: #7a7a80;
+  font-size: 0.85em;
+  margin-bottom: 20px;
+  
+  .post-meta-item {
+    margin-right: 12px;
+  }
+  
+  a {
+    color: #8c8c92;
+    border-bottom: 1px dotted rgba(180, 160, 120, 0.4);
+    
+    &:hover {
+      color: #d4c4a8;
+      border-bottom-color: #b4a078;
+    }
+  }
+}
+
+// ============================================
+// 6. 文章内容排版 - 暗色适配
+// ============================================
 .post-body {
-  // 中文字体回退栈
   font-family: 
     "PingFang SC",
     "Microsoft YaHei", 
@@ -39,58 +441,908 @@ body {
     "Hiragino Sans GB",
     sans-serif;
   
-  // 行高优化：黄金比例 1.75
-  line-height: 1.75;
+  line-height: 1.8;
+  color: #c4c4c8;
   
-  // 段落间距：避免视觉拥挤
   p {
-    margin-bottom: 1.5em;
+    margin-bottom: 1.6em;
     text-align: justify;
-    text-justify: inter-ideograph;  // 中文两端对齐优化
+    text-justify: inter-ideograph;
   }
   
-  // 标题样式优化
   h1, h2, h3, h4, h5, h6 {
-    margin-top: 2em;
+    margin-top: 2.2em;
     margin-bottom: 1em;
-    line-height: 1.4;
+    line-height: 1.3;
+    color: #e0dcd4;
+    font-weight: 600;
   }
   
-  // 长文本章节锚点样式
   h2 {
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 0.5em;
+    border-bottom: 1px solid rgba(180, 160, 120, 0.3);
+    padding-bottom: 0.6em;
     margin-top: 2.5em;
+    font-size: 1.5em;
+    
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background: linear-gradient(180deg, #b4a078, #8c7a5a);
+      margin-right: 12px;
+      vertical-align: middle;
+    }
   }
   
-  // 引用块中文排版
+  h3 {
+    font-size: 1.25em;
+    color: #d4d0c8;
+  }
+  
+  // 引用块 - 废墟风格
   blockquote {
-    border-left: 3px solid #999;
-    padding-left: 1em;
-    margin: 1.5em 0;
-    color: #666;
-    font-style: normal;  // 中文不适合斜体
+    border-left: 3px solid #b4a078;
+    background: rgba(180, 160, 120, 0.08);
+    padding: 1em 1.5em;
+    margin: 1.8em 0;
+    color: #a8a8a0;
+    font-style: italic;
+    border-radius: 0 4px 4px 0;
+    
+    p:last-child {
+      margin-bottom: 0;
+    }
   }
   
-  // 代码块优化
-  pre, code {
+  // 代码块 - 暗色
+  pre {
+    background: rgba(25, 28, 35, 0.8);
+    border-radius: 4px;
+    padding: 1.2em;
+    margin: 1.5em 0;
+    border: 1px solid rgba(180, 160, 120, 0.15);
+    overflow-x: auto;
+  }
+  
+  code {
     font-family: "SF Mono", "Fira Code", Consolas, Monaco, monospace;
     font-size: 0.9em;
+    background: rgba(180, 160, 120, 0.15);
+    color: #d4c4a8;
+    padding: 2px 6px;
+    border-radius: 3px;
   }
   
-  // 图片懒加载占位
+  pre code {
+    background: transparent;
+    color: #c0c0c8;
+    padding: 0;
+  }
+  
+  // 图片
   img {
     max-width: 100%;
     height: auto;
-    transition: opacity 0.3s ease;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 1.5em 0;
+    border: 1px solid rgba(180, 160, 120, 0.1);
+    
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
   }
   
-  // 滚动条优化（长文本阅读）
-  scrollbar-width: thin;
-  scrollbar-color: #ccc transparent;
+  // 链接 - 暗金
+  a {
+    color: #d4c4a8;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      border-bottom-color: #b4a078;
+    }
+  }
+  
+  // 列表
+  ul, ol {
+    padding-left: 1.8em;
+    margin-bottom: 1.5em;
+    
+    li {
+      margin-bottom: 0.4em;
+    }
+  }
+  
+  ul li {
+    list-style-type: none;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: -1.2em;
+      top: 0.6em;
+      width: 5px;
+      height: 5px;
+      background: #8c7a5a;
+      border-radius: 50%;
+    }
+  }
 }
 
-// 阅读进度条样式微调
+// ============================================
+// 7. 标签和分类 - 暗金风格
+// ============================================
+.post-tags {
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: 1px solid rgba(180, 160, 120, 0.2);
+  
+  a {
+    display: inline-block;
+    background: rgba(180, 160, 120, 0.15);
+    color: #c4b498;
+    padding: 4px 12px;
+    border-radius: 3px;
+    font-size: 0.85em;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border-bottom: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(180, 160, 120, 0.2);
+    
+    &:hover {
+      background: rgba(180, 160, 120, 0.25);
+      color: #e4d4b8;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    
+    &::before {
+      content: '#';
+      margin-right: 2px;
+      opacity: 0.6;
+    }
+  }
+}
+
+// ============================================
+// 8. 分页样式
+// ============================================
+.pagination {
+  margin: 3em 0;
+  text-align: center;
+  
+  .page-number {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border-radius: 4px;
+    background: rgba(40, 43, 50, 0.7);
+    color: #8a8a90;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(180, 160, 120, 0.1);
+    
+    &:hover,
+    &.current {
+      background: rgba(180, 160, 120, 0.2);
+      color: #d4c4a8;
+      border-color: rgba(180, 160, 120, 0.3);
+    }
+  }
+  
+  .prev,
+  .next {
+    padding: 8px 16px;
+    border-radius: 4px;
+    background: rgba(40, 43, 50, 0.7);
+    color: #8a8a90;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(180, 160, 120, 0.1);
+    
+    &:hover {
+      background: rgba(180, 160, 120, 0.2);
+      color: #d4c4a8;
+      border-color: rgba(180, 160, 120, 0.3);
+    }
+  }
+}
+
+// ============================================
+// 9. 页脚 - 废墟透明风格
+// ============================================
+.footer {
+  background: transparent !important;
+  margin-top: 60px;
+  padding: 30px 0;
+  color: #c8c8cc;
+  font-size: 0.85em;
+  border-top: 1px solid rgba(180, 160, 120, 0.15);
+  
+  a {
+    color: #d4c4a8;
+    border-bottom: none;
+    
+    &:hover {
+      color: #e4d4b8;
+    }
+  }
+  
+  .busuanzi-value {
+    font-weight: 600;
+    color: #b4a078;
+  }
+}
+
+// ============================================
+// 10. 返回顶部按钮 - 锈迹金
+// ============================================
+.back-to-top {
+  background: rgba(180, 160, 120, 0.8);
+  color: #1e2128;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: #d4c4a8;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  }
+}
+
+// ============================================
+// 11. 阅读进度条 - 暗金
+// ============================================
 .reading-progress-bar {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(90deg, #b4a078, #8c7a5a);
+  height: 2px;
+  box-shadow: 0 1px 4px rgba(180, 160, 120, 0.4);
+}
+
+// ============================================
+// 12. 社交链接
+// ============================================
+.links-of-author {
+  a {
+    font-size: 1.1em;
+    color: #7a7a80;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: #d4c4a8;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// ============================================
+// 13. 站点统计
+// ============================================
+.site-state-item {
+  a {
+    color: #8a8a90;
+    
+    &:hover {
+      color: #d4c4a8;
+    }
+  }
+  
+  .site-state-item-count {
+    color: #d4c4a8;
+    font-weight: 600;
+  }
+  
+  .site-state-item-name {
+    color: #6a6a70;
+  }
+}
+
+// ============================================
+// 14. 目录样式 - 暗色
+// ============================================
+.post-toc {
+  background: rgba(35, 38, 45, 0.6);
+  border-radius: 4px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(180, 160, 120, 0.1);
+  
+  .nav-item {
+    &.active > .nav-link {
+      color: #d4c4a8;
+      font-weight: 600;
+      
+      &::before {
+        content: '▸';
+        position: absolute;
+        left: -12px;
+        color: #b4a078;
+      }
+    }
+    
+    .nav-link {
+      position: relative;
+      transition: all 0.2s ease;
+      color: #8a8a90;
+      
+      &:hover {
+        color: #d4c4a8;
+        transform: translateX(4px);
+      }
+    }
+  }
+}
+
+// ============================================
+// 15. 滚动条 - 暗金
+// ============================================
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(30, 33, 40, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(180, 160, 120, 0.4);
+  border-radius: 4px;
+  
+  &:hover {
+    background: rgba(180, 160, 120, 0.6);
+  }
+}
+
+// ============================================
+// 16. 选中文字样式
+// ============================================
+::selection {
+  background: rgba(180, 160, 120, 0.3);
+  color: #e8e4dc;
+}
+
+::-moz-selection {
+  background: rgba(180, 160, 120, 0.3);
+  color: #e8e4dc;
+}
+
+// ============================================
+// 17. 移动端适配
+// ============================================
+@media (max-width: 767px) {
+  .post-block {
+    padding: 24px !important;
+    margin-bottom: 24px !important;
+    border-radius: 4px;
+  }
+  
+  .sidebar-inner {
+    margin-top: 0;
+    border-radius: 0;
+    background: rgba(30, 33, 40, 0.95) !important;
+  }
+  
+  .post-title {
+    font-size: 1.4em;
+  }
+  
+  .header-inner {
+    background: rgba(25, 28, 35, 0.95) !important;
+  }
+}
+
+// ============================================
+// 19. 文章卡片悬停效果
+// ============================================
+.post-block {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(180, 160, 120, 0.03) 0%,
+      transparent 50%,
+      rgba(140, 122, 90, 0.02) 100%
+    );
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// ============================================
+// 20. 分隔线装饰
+// ============================================
+.post-body {
+  hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(180, 160, 120, 0.4),
+      transparent
+    );
+    margin: 3em 0;
+    position: relative;
+    
+    &::before {
+      content: '❧';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(40, 43, 50, 0.9);
+      padding: 0 20px;
+      color: rgba(180, 160, 120, 0.6);
+      font-size: 1.2em;
+    }
+  }
+}
+
+// ============================================
+// 21. 搜索框 - 暗色
+// ============================================
+.search-popup {
+  background: rgba(35, 38, 45, 0.95) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(180, 160, 120, 0.2);
+  
+  .search-input {
+    border-radius: 4px;
+    border: 1px solid rgba(180, 160, 120, 0.3);
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+    background: rgba(30, 33, 40, 0.8);
+    color: #d4d4d8;
+    
+    &:focus {
+      border-color: #b4a078;
+      box-shadow: 0 0 0 3px rgba(180, 160, 120, 0.2);
+      outline: none;
+    }
+  }
+}
+
+// ============================================
+// 22. 评论区域
+// ============================================
+.comments {
+  margin-top: 3em;
+  padding-top: 2em;
+  border-top: 1px solid rgba(180, 160, 120, 0.15);
+}
+
+// ============================================
+// 23. 首页沉浸式全屏 Hero - 增强版（无遮罩顶部导航）
+// ============================================
+.index {
+  // 内容区域样式
+  .content-wrap {
+    padding: 0;
+    background: transparent !important;
+  }
+  
+  .content {
+    padding: 0;
+  }
+  
+  // 显示顶部导航并透明化
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: transparent !important;
+    border-bottom: none;
+    box-shadow: none;
+    
+    .header-inner {
+      background: transparent !important;
+      backdrop-filter: none;
+      border-bottom: none;
+      box-shadow: none;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 40px;
+    }
+    
+    // 站点标题和副标题
+    .site-brand-container {
+      white-space: nowrap;
+      
+      .site-title {
+        font-size: 1.4em;
+        font-weight: 600;
+        color: #e8e4dc;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        white-space: nowrap;
+        display: inline-block;
+      }
+      
+      .site-subtitle {
+        font-size: 0.85em;
+        color: rgba(255, 255, 255, 0.7);
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+        white-space: nowrap;
+        display: inline-block;
+      }
+    }
+    
+    // 导航菜单
+    .menu {
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 8px 20px;
+      
+      .menu-item {
+        margin: 0 8px;
+        
+        a {
+          color: rgba(255, 255, 255, 0.9);
+          padding: 8px 16px;
+          border-radius: 20px;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            background: rgba(180, 160, 120, 0.3);
+            color: #d4c4a8;
+          }
+        }
+        
+        &.menu-item-active a {
+          background: rgba(180, 160, 120, 0.4);
+          color: #d4c4a8;
+        }
+      }
+    }
+    
+    // 搜索按钮
+    .site-nav-toggle,
+    .toggle {
+      color: rgba(255, 255, 255, 0.9);
+      
+      &:hover {
+        color: #d4c4a8;
+      }
+    }
+  }
+  
+  // 主内容区域样式
+  .content-wrap {
+    padding: 0;
+    background: transparent !important;
+  }
+  
+  // Hero 区域全屏
+  .hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    background: no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  // 暗色遮罩
+  .hero-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(25, 28, 35, 0.3) 0%,
+      rgba(25, 28, 35, 0.5) 50%,
+      rgba(25, 28, 35, 0.7) 100%
+    );
+    z-index: 1;
+  }
+  
+  // 内容区域
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    padding: 80px 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  // 标题区域
+  .hero-text {
+    margin-bottom: 60px;
+  }
+  
+  // 主标题 - 大字震撼效果
+  .site-title-main {
+    font-size: 4.5em;
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    letter-spacing: 4px;
+    color: #e8e4dc;
+    text-shadow: 
+      0 2px 10px rgba(0, 0, 0, 0.8),
+      0 4px 30px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out;
+    
+    @media (max-width: 768px) {
+      font-size: 2.8em;
+      letter-spacing: 2px;
+    }
+  }
+  
+  // 副标题
+  .site-subtitle-main {
+    font-size: 1.5em;
+    font-weight: 300;
+    margin: 0;
+    color: #b4a078;
+    letter-spacing: 3px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1s ease-out 0.3s both;
+    min-height: 1.5em;
+    
+    @media (max-width: 768px) {
+      font-size: 1.1em;
+      letter-spacing: 1px;
+    }
+    
+    // 打字光标效果
+    &::after {
+      content: '|';
+      animation: blink 1s infinite;
+      margin-left: 2px;
+    }
+  }
+  
+  // 向下滚动指示器
+  .scroll-down {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    animation: fadeInUp 1s ease-out 0.6s both;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: #d4c4a8;
+      
+      .scroll-down-icon {
+        transform: translateY(5px);
+      }
+      
+      .scroll-down-line {
+        background: #d4c4a8;
+      }
+    }
+    
+    // 图标容器
+    .scroll-down-icon {
+      width: 50px;
+      height: 50px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+      animation: float 2s ease-in-out infinite;
+      
+      &:hover {
+        border-color: #d4c4a8;
+        background: rgba(180, 160, 120, 0.1);
+      }
+    }
+    
+    // 线条
+    .scroll-down-line {
+      width: 1px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+// 动画定义
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+// ============================================
+// 24. 文章列表区域 - 首页下方
+// ============================================
+.posts-section {
+  background: transparent;
+  padding: 60px 0;
+  
+  .posts-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+
+// 文章卡片在首页的样式
+.index .post-card {
+  display: flex;
+  background: rgba(35, 38, 45, 0.8);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(180, 160, 120, 0.1);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    border-color: rgba(180, 160, 120, 0.2);
+  }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+  
+  // 文章图片
+  .post-card-image {
+    flex: 0 0 280px;
+    overflow: hidden;
+    
+    @media (max-width: 768px) {
+      flex: none;
+      height: 200px;
+    }
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+  
+  // 文章内容
+  .post-card-content {
+    flex: 1;
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    @media (max-width: 768px) {
+      padding: 20px;
+    }
+  }
+  
+  .post-card-title {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+    
+    a {
+      color: #e8e4dc;
+      border-bottom: none;
+      transition: color 0.3s ease;
+      
+      &:hover {
+        color: #d4c4a8;
+      }
+    }
+  }
+  
+  .post-card-excerpt {
+    color: #9a9a9f;
+    font-size: 0.95em;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  
+  .post-card-meta {
+    font-size: 0.85em;
+    color: #7a7a80;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    
+    .post-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      
+      i {
+        color: rgba(180, 160, 120, 0.6);
+        font-size: 0.9em;
+      }
+      
+      a {
+        color: #8a8a90;
+        border-bottom: none;
+        
+        &:hover {
+          color: #d4c4a8;
+        }
+      }
+    }
+  }
 }

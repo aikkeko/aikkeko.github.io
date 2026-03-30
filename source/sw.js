@@ -182,12 +182,13 @@ async function staleWhileRevalidateStrategy(request, cacheName, maxAge) {
 async function fetchAndCache(request, cacheName) {
   try {
     const response = await fetch(request);
-    if (response.ok) {
+    if (response && response.ok) {
       const cache = await caches.open(cacheName);
       cache.put(request, response);
     }
   } catch (error) {
-    console.error('[ServiceWorker] 后台更新失败:', error);
+    // 静默处理网络错误，避免控制台报错
+    console.log('[ServiceWorker] 后台更新跳过:', request.url);
   }
 }
 
