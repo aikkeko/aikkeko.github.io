@@ -33,23 +33,18 @@ class R2Uploader {
   }
 
   /**
-   * 生成唯一文件名
+   * 生成唯一文件名（基于内容 MD5，实现真正的增量上传）
    * @param {Buffer} buffer - 文件内容
    * @param {string} originalName - 原始文件名
    * @returns {string} 唯一文件名
    */
   generateUniqueName(buffer, originalName) {
-    const hash = crypto.createHash('md5').update(buffer).digest('hex').slice(0, 8);
-    const ext = path.extname(originalName) || '.png';
-    const base = path.basename(originalName, ext);
-    const timestamp = Date.now();
+    const hash = crypto.createHash('md5').update(buffer).digest('hex');
+    const ext = path.extname(originalName).toLowerCase() || '.png';
     
-    // 格式: blog/2024/03/filename_hash_timestamp.ext
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    
-    return `${config.uploadPrefix}/${year}/${month}/${base}_${hash}_${timestamp}${ext}`;
+    // 格式: blog/hash[0:2]/hash[2:4]/fullhash.ext
+    // 使用 MD5 前几位作为目录结构，避免单目录文件过多
+    return `${config.uploadPrefix}/${hash.slice(0, 2)}/${hash.slice(2, 4)}/${hash}${ext}`;
   }
 
   /**
@@ -105,7 +100,7 @@ class R2Uploader {
     // 检查文件是否已存在（基于 MD5）
     const exists = await this.fileExists(key);
     if (exists) {
-      console.log(`📝 文件已存在，跳过上传: ${key}`);
+      console.log(`📝 文件已存在，跳过上传: ${originalName}`);
       return {
         key,
         url: this.getPublicUrl(key)
