@@ -110,13 +110,6 @@
 
   
   <url>
-    <loc>https://aikkeko.github.io/tags/%E6%B8%B8%E6%88%8F/</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://aikkeko.github.io/tags/%E6%95%A3%E6%96%87/</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -125,6 +118,13 @@
   
   <url>
     <loc>https://aikkeko.github.io/tags/%E6%96%B0%E5%8A%A0%E5%9D%A1/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/tags/%E6%B8%B8%E6%88%8F/</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -168,14 +168,14 @@
 
   
   <url>
-    <loc>https://aikkeko.github.io/categories/%E6%B8%B8%E6%88%8F/</loc>
+    <loc>https://aikkeko.github.io/categories/%E6%95%A3%E6%96%87/</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://aikkeko.github.io/categories/%E6%95%A3%E6%96%87/</loc>
+    <loc>https://aikkeko.github.io/categories/%E6%B8%B8%E6%88%8F/</loc>
     <lastmod>2026-07-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
