@@ -9,7 +9,7 @@
  * 针对 30 万字小说级内容的离线阅读优化
  */
 
-const CACHE_VERSION = 'blog-v1';
+const CACHE_VERSION = 'blog-v3';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGES_CACHE = `${CACHE_VERSION}-pages`;
 const IMAGES_CACHE = `${CACHE_VERSION}-images`;
@@ -17,6 +17,8 @@ const IMAGES_CACHE = `${CACHE_VERSION}-images`;
 // 预缓存的关键资源
 const PRECACHE_URLS = [
   '/',
+  '/offline.html',
+  '/manifest.json',
   '/css/main.css',
   '/js/next-boot.js',
   '/js/utils.js',
@@ -24,7 +26,9 @@ const PRECACHE_URLS = [
   '/lib/font-awesome/css/all.min.css',
   '/lib/velocity/velocity.min.js',
   '/lib/velocity/velocity.ui.min.js',
-  '/lib/anime.min.js'
+  '/lib/anime.min.js',
+  '/images/Z.A.T.O_02_ca04.jpg',
+  '/images/bitbug_favicon.ico'
 ];
 
 // 安装：预缓存关键资源
@@ -50,7 +54,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames
-          .filter((name) => name.startsWith('blog-') && name !== CACHE_VERSION)
+          .filter((name) => name.startsWith('blog-') && !name.startsWith(`${CACHE_VERSION}-`))
           .map((name) => {
             console.log('[ServiceWorker] 删除旧缓存:', name);
             return caches.delete(name);
@@ -220,8 +224,8 @@ self.addEventListener('push', (event) => {
   event.waitUntil(
     self.registration.showNotification(data.title, {
       body: data.body,
-      icon: '/images/icon.png',
-      badge: '/images/badge.png'
+      icon: '/images/bitbug_favicon.ico',
+      badge: '/images/bitbug_favicon.ico'
     })
   );
 });
