@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <author>
+    <name>AikeKo</name>
+  </author>
+  <generator uri="https://hexo.io/">Hexo</generator>
+  <icon>https://aikkeko.github.io/icon.png</icon>
+  <id>https://aikkeko.github.io/</id>
+  <link href="https://aikkeko.github.io/" rel="alternate"/>
+  <link href="https://aikkeko.github.io/atom.xml" rel="self"/>
+  <rights>All rights reserved 2026, AikeKo</rights>
+  <subtitle>
+    <![CDATA[theme of the WATER & BISCUIT]]>
+  </subtitle>
+  <title>世界尽头的百货公司</title>
+  <updated>2026-06-07T14:42:47.449Z</updated>
+  <entry>
+    <author>
+      <name>AikeKo</name>
+    </author>
+    <category term="散文" scheme="https://aikkeko.github.io/categories/%E6%95%A3%E6%96%87/"/>
+    <category term="散文" scheme="https://aikkeko.github.io/tags/%E6%95%A3%E6%96%87/"/>
+    <category term="新加坡" scheme="https://aikkeko.github.io/tags/%E6%96%B0%E5%8A%A0%E5%9D%A1/"/>
+    <id>https://aikkeko.github.io/2026-06-07-%E6%96%B0%E5%8A%A0%E5%9D%A1%E7%9A%84%E5%A4%A9%E7%A9%BA.html</id>
+    <link href="https://aikkeko.github.io/2026-06-07-%E6%96%B0%E5%8A%A0%E5%9D%A1%E7%9A%84%E5%A4%A9%E7%A9%BA.html"/>
+    <published>2026-06-07T06:41:32.762Z</published>
+    <summary>新加坡的天空  1.天空的高度  出于某种微妙的感受，一直以来我都觉得新加坡的天空很低，仿佛触手可及，要将人吸引上去。当然，我不可能凭借目测就得到天空与我的准确距离，但我仍然想要诉说这样一种直观：无论处在城市何处，天空都是那么轻而易举地近乎覆盖了“天花板”的一切领域，静静的蓝色仿佛能将人温柔地裹挟住，让人不禁驻足欣赏云彩的印迹。我曾试图和友人探讨过为何会有“天空是如此低矮”的这种感受，可无论是运用...</summary>
+    <title>新加坡的天空</title>
+    <updated>2026-06-07T14:42:47.449Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>AikeKo</name>
+    </author>
+    <category term="游戏" scheme="https://aikkeko.github.io/categories/%E6%B8%B8%E6%88%8F/"/>
+    <category term="游戏" scheme="https://aikkeko.github.io/tags/%E6%B8%B8%E6%88%8F/"/>
+    <id>https://aikkeko.github.io/2026-03-03-%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9B%9E%E5%88%B0Vorkuta.html</id>
+    <link href="https://aikkeko.github.io/2026-03-03-%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9B%9E%E5%88%B0Vorkuta.html"/>
+    <published>2026-03-03T08:03:27.116Z</published>
+    <summary>你可以回到Vorkuta-5，但那里已经没有人了 | 一个理解《Z.A.T.O》的视角  本文为【蠢材呓事】电台S3E08中所提到的一些观点的整理与补充，关于最近高人气独立游戏《Z.A.T.O. // I Love the World and Everything In It》，以及关于理解它的一个视角——比起阐述或者论证一个主题，这个视角也许更侧重于情绪的表达，所以我一定无法给出你想要的东西。...</summary>
+    <title>你可以回到Vorkuta</title>
+    <updated>2026-03-03T16:03:55.962Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>AikeKo</name>
+    </author>
+    <id>https://aikkeko.github.io/hello-world.html</id>
+    <link href="https://aikkeko.github.io/hello-world.html"/>
+    <link href="https://s1.ax1x.com/2020/04/06/GygOB9.jpg" rel="enclosure"/>
+    <published>2021-12-09T16:00:00.000Z</published>
+    <summary>这是值得纪念的第一篇文字</summary>
+    <title>With_Love_From_Answerless</title>
+    <updated>2021-12-11T16:28:50.549Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>AikeKo</name>
+    </author>
+    <category term="动画" scheme="https://aikkeko.github.io/categories/%E5%8A%A8%E7%94%BB/"/>
+    <category term="动画" scheme="https://aikkeko.github.io/tags/%E5%8A%A8%E7%94%BB/"/>
+    <category term="EVA" scheme="https://aikkeko.github.io/tags/EVA/"/>
+    <category term="卡夫卡" scheme="https://aikkeko.github.io/tags/%E5%8D%A1%E5%A4%AB%E5%8D%A1/"/>
+    <id>https://aikkeko.github.io/eva.html</id>
+    <link href="https://aikkeko.github.io/eva.html"/>
+    <published>2019-07-05T16:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p><a href="https://img.sm/image/E6xeM"><img data-src="https://sm1.im5i.com/2021/12/12/E6xeM.png" alt="E6xeM.png"></a></p>
+<center>关于EVA，还有卡夫卡</center>]]>
+    </summary>
+    <title>没能“真心为你”的我们</title>
+    <updated>2021-12-12T09:20:56.170Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>AikeKo</name>
+    </author>
+    <category term="游戏" scheme="https://aikkeko.github.io/categories/%E6%B8%B8%E6%88%8F/"/>
+    <category term="galgame" scheme="https://aikkeko.github.io/tags/galgame/"/>
+    <category term="narcissu" scheme="https://aikkeko.github.io/tags/narcissu/"/>
+    <id>https://aikkeko.github.io/narcissu.html</id>
+    <link href="https://aikkeko.github.io/narcissu.html"/>
+    <published>2019-03-18T16:00:00.000Z</published>
+    <summary>
+      <![CDATA[<p><a href="https://img.sm/image/E6tVb"><img data-src="https://sm1.im5i.com/2021/12/12/E6tVb.png" alt="E6tVb.png"></a></p>
+<center>“I close my eyes in order to cry...”</center>]]>
+    </summary>
+    <title>如果还有明天……</title>
+    <updated>2021-12-12T09:21:29.579Z</updated>
+  </entry>
+</feed>

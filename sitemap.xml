@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://aikkeko.github.io/manifest.json</loc>
+    
+    <lastmod>2026-07-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/2026-06-07-%E6%96%B0%E5%8A%A0%E5%9D%A1%E7%9A%84%E5%A4%A9%E7%A9%BA.html</loc>
+    
+    <lastmod>2026-06-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/2026-03-03-%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9B%9E%E5%88%B0Vorkuta.html</loc>
+    
+    <lastmod>2026-03-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/offline.html</loc>
+    
+    <lastmod>2026-03-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/narcissu.html</loc>
+    
+    <lastmod>2021-12-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/eva.html</loc>
+    
+    <lastmod>2021-12-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/about/index.html</loc>
+    
+    <lastmod>2021-12-12</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/hello-world.html</loc>
+    
+    <lastmod>2021-12-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/categories/index.html</loc>
+    
+    <lastmod>2021-12-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/resources/index.html</loc>
+    
+    <lastmod>2021-12-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/tags/index.html</loc>
+    
+    <lastmod>2021-12-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  <url>
+    <loc>https://aikkeko.github.io/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://aikkeko.github.io/tags/%E6%B8%B8%E6%88%8F/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/tags/%E6%95%A3%E6%96%87/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/tags/%E6%96%B0%E5%8A%A0%E5%9D%A1/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/tags/%E5%8A%A8%E7%94%BB/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/tags/EVA/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/tags/%E5%8D%A1%E5%A4%AB%E5%8D%A1/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/tags/galgame/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/tags/narcissu/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>https://aikkeko.github.io/categories/%E6%B8%B8%E6%88%8F/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/categories/%E6%95%A3%E6%96%87/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://aikkeko.github.io/categories/%E5%8A%A8%E7%94%BB/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+</urlset>
