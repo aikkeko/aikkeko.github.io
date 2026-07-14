@@ -12,6 +12,16 @@
   {### ARCHIVE BLOCK ###}
   {#####################}
   <div class="post-block">
+    <section class="archive-hero" aria-label="Archive overview">
+      <div class="archive-hero-kicker">Chronological Index</div>
+      <h1 class="archive-hero-title">{{ __('title.archive') }}</h1>
+      <p class="archive-hero-desc">All dispatches are arranged by the time they entered the archive.</p>
+      <div class="archive-hero-stats">
+        <span><strong>{{ site.posts.length }}</strong> posts</span>
+        <span><strong>{{ site.tags.length }}</strong> tags</span>
+        <span><strong>{{ moment(site.posts.first().date).format('YYYY') if site.posts.length else moment().format('YYYY') }}</strong> latest</span>
+      </div>
+    </section>
     <div class="posts-collapse">
       <div class="collection-title">
         {%- set posts_length = site.posts.length %}

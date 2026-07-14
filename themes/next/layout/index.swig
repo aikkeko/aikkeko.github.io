@@ -8,12 +8,18 @@
 {# Hero Section - Full screen immersive landing page #}
 <div class="hero-section" style="background-image: url('{{ theme.index_hero_image or '/images/background.png' }}');">
   <div class="hero-mask"></div>
+  <div class="hero-terminal" aria-hidden="true">
+    <span>DEPT. STORE ARCHIVE</span>
+    <span>NO. 30-000</span>
+  </div>
   <div class="hero-content">
     <div class="hero-text">
+      <div class="hero-kicker">Literary Archive / Z.A.T.O</div>
       <h1 class="site-title-main">{{ title }}</h1>
       {%- if subtitle %}
       <p class="site-subtitle-main" id="hero-typed" data-text="{{ subtitle }}"></p>
       {%- endif %}
+      <div class="hero-rule" aria-hidden="true"></div>
     </div>
     <a href="#posts-section" class="scroll-down" aria-label="向下滚动">
       <div class="scroll-down-icon">
