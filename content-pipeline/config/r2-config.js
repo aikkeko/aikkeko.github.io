@@ -27,7 +27,7 @@ const config = {
   bucketName: process.env.R2_BUCKET_NAME || 'aikkeko',
   
   // 公开访问 URL（用于替换图片链接）
-  // 示例：https://78aeb471b834893423e4e0a7a5499914.r2.cloudflarestorage.com/aikkeko
+  // 示例：https://<account_id>.r2.cloudflarestorage.com/<bucket>
   publicUrl: process.env.R2_PUBLIC_URL || '',
   
   // 上传路径前缀

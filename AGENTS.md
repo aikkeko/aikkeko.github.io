@@ -119,7 +119,7 @@
 - **PWA**: manifest.json, 主题色 #37c6c0
 
 ### 已启用功能 (2024-03-03 更新)
-- **Automated Content Pipeline**: scripts/content-pipeline/
+- **Automated Content Pipeline**: content-pipeline/
   - 监听 example/ 文件夹下的新文档
   - 图片自动提取并上传至 Cloudflare R2
   - Word (.docx) 转 Markdown，带智能 Frontmatter
@@ -298,7 +298,7 @@ git push origin main
 
 ### 📊 当前版本状态
 
-- **版本号**：2026.03.30-30
+- **版本号**：2026.07.14-02
 - **主题**：NexT Gemini + Z.A.T.O 废土风格
 - **布局**：双栏（左侧边栏 + 右侧内容）
 - **背景**：Z.A.T.O_02_ca04.jpg (361KB)
@@ -308,10 +308,14 @@ git push origin main
 
 ### ⚠️ 注意事项
 
-1. **背景图片**：如需更换，建议使用 JPEG 格式，控制在 500KB 以内
+1. **背景图片**：如需更换，建议使用 JPEG 格式，控制在 500KB 以内。当前使用 `Z.A.T.O_02_ca04.jpg`（注意是 `.jpg` 不是 `.png`）
 2. **版本号**：每次修改后必须更新 `source/_data/styles.styl` 三处版本号
 3. **敏感信息**：`.env` 文件永不提交，使用 `.env.example` 作为模板
 4. **子模块**：修改 `themes/next` 后需要单独提交子模块，再提交主仓库引用
+5. **Service Worker 缓存**：重大更新后需递增 `sw.js` 中的 `CACHE_VERSION`（当前为 `blog-v3`）
+6. **Pipeline 路径**：`skip_render` 已修正为 `content-pipeline/**`（非 `scripts/`）
+7. **minify**：当前设为 `false`，待后续优化开启
+8. **Bookmark 冲突**：`long-text-loader.js` 已加检测，仅在主题 bookmark 未启用时激活增强书签
 
 ### 🔧 常用调试命令
 
@@ -329,3 +333,47 @@ git log --oneline -5
 # 强制重新生成
 npx hexo clean && npx hexo generate
 ```
+
+---
+
+## 2026-06-07 维护更新记录 (v2026.06.07-01)
+
+### 🐛 修复的问题
+
+#### 1. Hero 图片路径错误（高优先级）
+- **问题**：`themes/next/_config.yml` 中 `index_hero_image` 引用 `.png`，但实际文件已压缩为 `.jpg`
+- **修复**：`Z.A.T.O_02_ca04.png` → `Z.A.T.O_02_ca04.jpg`
+
+#### 2. skip_render 路径错误（高优先级）
+- **问题**：`_config.yml` 中 `skip_render` 写的是 `scripts/content-pipeline/**`，实际路径为 `content-pipeline/`
+- **修复**：改为 `content-pipeline/**`
+
+#### 3. PWA manifest 缺失资源引用（高优先级）
+- **问题**：`manifest.json` 引用了不存在的 `screenshot-wide.png`、`icon.png`、`badge.png`
+- **修复**：移除 `screenshots` 字段，push notification 图标改用已有的 `bitbug_favicon.ico`
+
+#### 4. Service Worker 缓存版本过旧（低优先级）
+- **修复**：`CACHE_VERSION` 从 `blog-v1` 更新为 `blog-v2`
+
+#### 5. minify 配置矛盾（中优先级）
+- **问题**：主题 `_config.yml` 中 `minify: true`，与 AGENTS.md 记录的 `false` 矛盾
+- **修复**：统一为 `minify: false`（待后续优化开启）
+
+#### 6. Bookmark 功能冗余冲突（中优先级）
+- **问题**：主题 bookmark 与 `long-text-loader.js` 的增强 bookmark 可能重复保存阅读位置
+- **修复**：`long-text-loader.js` 增加检测逻辑，仅在主题 bookmark 未启用时激活增强书签
+
+#### 7. r2-config.js 信息泄露（低优先级）
+- **问题**：注释中包含真实 Cloudflare Account ID
+- **修复**：替换为 `<account_id>` 占位符
+
+### 🧹 清理
+
+- **删除 10 个 `.bak` 文件**：旧版配置和内容备份全部清理
+- **移除未使用 npm 依赖**：`hexo-douban`、`hexo-theme-landscape`
+- **删除空目录**：`source/about/index-1/`
+
+### 📦 版本号更新
+
+- `source/_data/styles.styl` 三处版本号从 `2026.03.30-30` 更新为 `2026.06.07-01`
+- `AGENTS.md` 版本号同步更新

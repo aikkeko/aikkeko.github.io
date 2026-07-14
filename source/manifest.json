@@ -4,8 +4,8 @@
   "description": "一位拥有 30 万字作品的小说家的文学博客 - 长文本阅读体验优化",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#37c6c0",
+  "background_color": "#1e2128",
+  "theme_color": "#1e2128",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "zh-CN",
@@ -24,12 +24,5 @@
   "related_applications": [],
   "prefer_related_applications": false,
   "categories": ["books", "lifestyle"],
-  "screenshots": [
-    {
-      "src": "/images/screenshot-wide.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
-    }
-  ]
+  "screenshots": []
 }

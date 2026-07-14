@@ -1,354 +1,132 @@
 /**
- * Long Text Chunk Loader - 长文本分片加载优化
- * 针对 30 万字小说级内容的性能优化方案
- * 
- * 核心功能：
- * 1. 检测长文本（>3000字）
- * 2. Intersection Observer 按需渲染
- * 3. 阅读位置持久化增强
- * 4. 章节锚点预加载
+ * Long Text Optimizer - 长文本渐进渲染与阅读位置增强
+ * 使用原生 content-visibility 保留完整 DOM，避免分片回填造成布局跳动。
  */
 
 (function() {
   'use strict';
-  
-  // 配置
+
   const CONFIG = {
-    LONG_TEXT_THRESHOLD: 3000,    // 长文本阈值：3000字
-    CHUNK_SIZE: 2000,             // 每个分片约 2000 字
-    PRELOAD_OFFSET: 2,            // 预加载前后 2 个分片
-    ENABLE_CHUNKING: true         // 是否启用分片
+    LONG_TEXT_THRESHOLD: 3000,
+    CHUNK_SIZE: 2200
   };
 
-  // 长文本管理器
   class LongTextManager {
     constructor() {
       this.postBody = document.querySelector('.post-body');
-      this.chunks = [];
-      this.currentChunk = 0;
-      this.observer = null;
-      this.isLongText = false;
-      this.originalContent = null;
-      
-      this.init();
-    }
-
-    init() {
       if (!this.postBody) return;
-      
-      // 检测是否为长文本
-      const textLength = this.postBody.innerText.length;
-      this.isLongText = textLength > CONFIG.LONG_TEXT_THRESHOLD;
-      
-      if (this.isLongText && CONFIG.ENABLE_CHUNKING) {
-        this.setupChunking();
+
+      const textLength = this.postBody.innerText.trim().length;
+      if (textLength > CONFIG.LONG_TEXT_THRESHOLD) {
+        this.postBody.classList.add('long-text-optimized');
+        this.createRenderChunks();
       }
-      
-      // 增强阅读位置持久化
-      this.enhanceBookmark();
+
+      if (!this.isThemeBookmarkEnabled()) {
+        this.enhanceBookmark();
+      }
     }
 
-    setupChunking() {
-      // 保存原始内容
-      this.originalContent = this.postBody.innerHTML;
-      
-      // 按章节分割内容
-      const sections = this.splitBySections();
-      
-      if (sections.length <= 3) {
-        // 章节数较少，不需要分片
-        return;
-      }
-      
-      // 创建分片容器
-      this.chunks = this.createChunks(sections);
-      
-      // 渲染初始分片
-      this.renderInitialChunks();
-      
-      // 设置 Intersection Observer
-      this.setupIntersectionObserver();
-      
-      // 添加分片加载提示
-      this.addLoadingIndicator();
-      
-      console.log(`[LongTextManager] 长文本检测：${this.postBody.innerText.length} 字，已分片为 ${this.chunks.length} 个区块`);
+    isThemeBookmarkEnabled() {
+      return Boolean(window.CONFIG && window.CONFIG.bookmark && window.CONFIG.bookmark.enable);
     }
 
-    splitBySections() {
-      // 按 h2 标签分割章节
-      const sections = [];
-      let currentHTML = '';
-      let lastElement = null;
-      
+    createRenderChunks() {
       const children = Array.from(this.postBody.children);
-      
-      children.forEach((child, index) => {
-        if (child.tagName === 'H2' && currentHTML && index > 0) {
-          sections.push({
-            html: currentHTML,
-            id: lastElement ? lastElement.id : `section-${sections.length}`,
-            title: lastElement ? lastElement.innerText : ''
-          });
-          currentHTML = '';
+      if (children.length < 2) return;
+
+      const fragment = document.createDocumentFragment();
+      let chunk = this.createChunk(0);
+      let chunkSize = 0;
+      let chunkIndex = 0;
+
+      children.forEach((child) => {
+        const childSize = (child.innerText || child.textContent || '').length;
+        const startsChapter = child.tagName === 'H2' && chunk.childElementCount > 0;
+        const reachedLimit = chunkSize >= CONFIG.CHUNK_SIZE && chunk.childElementCount > 0;
+
+        if (startsChapter || reachedLimit) {
+          fragment.appendChild(chunk);
+          chunkIndex += 1;
+          chunk = this.createChunk(chunkIndex);
+          chunkSize = 0;
         }
-        
-        currentHTML += child.outerHTML;
-        
-        if (child.tagName === 'H2') {
-          lastElement = child;
-        }
+
+        chunk.appendChild(child);
+        chunkSize += childSize;
       });
-      
-      // 添加最后一个章节
-      if (currentHTML) {
-        sections.push({
-          html: currentHTML,
-          id: lastElement ? lastElement.id : `section-${sections.length}`,
-          title: lastElement ? lastElement.innerText : ''
-        });
+
+      if (chunk.childElementCount > 0) {
+        fragment.appendChild(chunk);
       }
-      
-      return sections;
+
+      this.postBody.appendChild(fragment);
+      this.postBody.dataset.renderChunks = String(chunkIndex + 1);
     }
 
-    createChunks(sections) {
-      const chunks = [];
-      let currentChunk = [];
-      let currentSize = 0;
-      
-      sections.forEach((section, index) => {
-        const sectionSize = section.html.length;
-        
-        if (currentSize + sectionSize > CONFIG.CHUNK_SIZE && currentChunk.length > 0) {
-          chunks.push({
-            sections: [...currentChunk],
-            index: chunks.length,
-            loaded: chunks.length === 0  // 第一个分片默认加载
-          });
-          currentChunk = [section];
-          currentSize = sectionSize;
-        } else {
-          currentChunk.push(section);
-          currentSize += sectionSize;
-        }
-      });
-      
-      // 添加最后一个分片
-      if (currentChunk.length > 0) {
-        chunks.push({
-          sections: [...currentChunk],
-          index: chunks.length,
-          loaded: chunks.length === 0
-        });
-      }
-      
-      return chunks;
-    }
-
-    renderInitialChunks() {
-      // 清空内容
-      this.postBody.innerHTML = '';
-      
-      // 创建分片容器
-      this.chunks.forEach((chunk, index) => {
-        const chunkDiv = document.createElement('div');
-        chunkDiv.className = `text-chunk chunk-${index}`;
-        chunkDiv.dataset.chunkIndex = index;
-        
-        if (chunk.loaded) {
-          chunkDiv.innerHTML = chunk.sections.map(s => s.html).join('');
-          chunkDiv.classList.add('loaded');
-        } else {
-          chunkDiv.innerHTML = `
-            <div class="chunk-placeholder" style="
-              min-height: 400px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              color: #999;
-              font-size: 14px;
-              background: linear-gradient(to bottom, #fafafa, #f5f5f5);
-              border-radius: 4px;
-              margin: 20px 0;
-            ">
-              <span>章节加载中...</span>
-            </div>
-          `;
-        }
-        
-        this.postBody.appendChild(chunkDiv);
-        chunk.element = chunkDiv;
-      });
-    }
-
-    setupIntersectionObserver() {
-      const options = {
-        root: null,
-        rootMargin: '1000px 0px',  // 提前 1000px 开始加载
-        threshold: 0.1
-      };
-
-      this.observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const chunkIndex = parseInt(entry.target.dataset.chunkIndex);
-            this.loadChunk(chunkIndex);
-            
-            // 预加载相邻分片
-            this.preloadAdjacentChunks(chunkIndex);
-          }
-        });
-      }, options);
-
-      // 观察所有未加载的分片
-      this.chunks.forEach(chunk => {
-        if (!chunk.loaded && chunk.element) {
-          this.observer.observe(chunk.element);
-        }
-      });
-    }
-
-    loadChunk(index) {
-      const chunk = this.chunks[index];
-      if (!chunk || chunk.loaded) return;
-      
-      // 使用 requestAnimationFrame 避免阻塞
-      requestAnimationFrame(() => {
-        const content = chunk.sections.map(s => s.html).join('');
-        chunk.element.innerHTML = content;
-        chunk.element.classList.add('loaded');
-        chunk.element.classList.remove('loading');
-        chunk.loaded = true;
-        
-        // 重新初始化 NexT 组件
-        if (typeof NexT !== 'undefined' && NexT.boot && NexT.boot.refresh) {
-          NexT.boot.refresh();
-        }
-        
-        console.log(`[LongTextManager] 分片 ${index + 1}/${this.chunks.length} 已加载`);
-      });
-    }
-
-    preloadAdjacentChunks(currentIndex) {
-      for (let i = 1; i <= CONFIG.PRELOAD_OFFSET; i++) {
-        if (currentIndex + i < this.chunks.length) {
-          setTimeout(() => {
-            this.loadChunk(currentIndex + i);
-          }, i * 100);
-        }
-        if (currentIndex - i >= 0) {
-          setTimeout(() => {
-            this.loadChunk(currentIndex - i);
-          }, i * 100);
-        }
-      }
-    }
-
-    addLoadingIndicator() {
-      // 添加分片加载进度指示器
-      const progressDiv = document.createElement('div');
-      progressDiv.className = 'chunk-progress';
-      progressDiv.innerHTML = `
-        <div style="
-          position: fixed;
-          bottom: 80px;
-          right: 20px;
-          background: rgba(255,255,255,0.95);
-          padding: 10px 15px;
-          border-radius: 20px;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-          font-size: 12px;
-          color: #666;
-          z-index: 1000;
-          opacity: 0;
-          transition: opacity 0.3s;
-        ">
-          <span class="loaded-chunks">1</span> / <span class="total-chunks">${this.chunks.length}</span> 章节已加载
-        </div>
-      `;
-      document.body.appendChild(progressDiv);
-      
-      // 显示进度
-      setTimeout(() => {
-        progressDiv.firstElementChild.style.opacity = '1';
-      }, 1000);
-      
-      // 更新进度
-      this.updateProgress = () => {
-        const loaded = this.chunks.filter(c => c.loaded).length;
-        progressDiv.querySelector('.loaded-chunks').textContent = loaded;
-        
-        if (loaded === this.chunks.length) {
-          setTimeout(() => {
-            progressDiv.firstElementChild.style.opacity = '0';
-          }, 2000);
-        }
-      };
+    createChunk(index) {
+      const section = document.createElement('section');
+      section.className = 'long-text-chunk';
+      section.id = `reading-section-${index + 1}`;
+      section.dataset.chunkIndex = String(index);
+      section.setAttribute('aria-label', `阅读分段 ${index + 1}`);
+      return section;
     }
 
     enhanceBookmark() {
-      // 增强书签功能：更精确的位置保存
+      const storageKey = `hexo-bookmark-data:${window.location.pathname}`;
+      let saveTimer = null;
+
       const savePosition = () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        
-        // 获取当前章节
+        const headings = Array.from(document.querySelectorAll('.post-body h2[id]'));
         let currentSection = '';
-        const headings = document.querySelectorAll('.post-body h2');
-        headings.forEach(heading => {
-          const rect = heading.getBoundingClientRect();
-          if (rect.top <= 100) {
-            currentSection = heading.id || '';
+
+        headings.forEach((heading) => {
+          // 避免 Hexo 5 静态资源处理链误解析小于等于运算符。
+          if (heading.getBoundingClientRect().top < 121) {
+            currentSection = heading.id;
           }
         });
-        
-        const bookmarkData = {
-          url: window.location.pathname,
-          scrollTop: scrollTop,
-          scrollPercent: scrollPercent.toFixed(2),
+
+        localStorage.setItem(storageKey, JSON.stringify({
+          scrollTop,
+          scrollPercent: docHeight > 0 ? scrollTop / docHeight : 0,
           section: currentSection,
           timestamp: Date.now()
-        };
-        
-        localStorage.setItem('hexo-bookmark-data', JSON.stringify(bookmarkData));
+        }));
       };
 
-      // 使用防抖优化保存频率
-      let saveTimer;
       window.addEventListener('scroll', () => {
-        clearTimeout(saveTimer);
-        saveTimer = setTimeout(savePosition, 500);
+        window.clearTimeout(saveTimer);
+        saveTimer = window.setTimeout(savePosition, 500);
       }, { passive: true });
 
-      // 页面加载时恢复位置
       window.addEventListener('load', () => {
         try {
-          const data = localStorage.getItem('hexo-bookmark-data');
-          if (data) {
-            const bookmark = JSON.parse(data);
-            if (bookmark.url === window.location.pathname && bookmark.section) {
-              // 优先跳转到章节
-              const section = document.getElementById(bookmark.section);
-              if (section) {
-                setTimeout(() => {
-                  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 500);
-              }
+          const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+          if (!saved) return;
+
+          const section = saved.section && document.getElementById(saved.section);
+          window.setTimeout(() => {
+            if (section) {
+              section.scrollIntoView({ block: 'start' });
+            } else if (Number.isFinite(saved.scrollTop)) {
+              window.scrollTo(0, saved.scrollTop);
             }
-          }
-        } catch (e) {
-          console.error('[LongTextManager] 恢复阅读位置失败:', e);
+          }, 150);
+        } catch (error) {
+          console.warn('[LongTextManager] 阅读位置恢复失败:', error);
         }
-      });
+      }, { once: true });
     }
   }
 
-  // 初始化
+  const init = () => new LongTextManager();
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => new LongTextManager());
+    document.addEventListener('DOMContentLoaded', init, { once: true });
   } else {
-    new LongTextManager();
+    init();
   }
 })();

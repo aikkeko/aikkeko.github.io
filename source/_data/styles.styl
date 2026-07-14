@@ -2,14 +2,38 @@
 // NexT 主题美化配置 - Z.A.T.O 后末日风格
 // 基于 Z.A.T.O_02_ca04.png 废墟美学设计
 // 
-// Version: 2026.03.30-30
-// Last Updated: 2026-03-30
+// Version: 2026.07.14-02
+// Last Updated: 2026-07-14
 // ============================================
 
 // 版本信息（用于调试）
 :root {
-  --theme-version: "2026.03.30-30";
+  --theme-version: "2026.07.14-02";
   --theme-name: "Z.A.T.O Apocalypse";
+  // ===== 全面覆盖 NexT 默认白色系 CSS 变量 =====
+  // 背景色
+  --content-bg-color: rgba(35, 38, 45, 0.85);
+  --body-bg-color: #1e2128;
+  --card-bg-color: rgba(40, 43, 50, 0.7);
+  --table-row-odd-bg-color: rgba(35, 38, 45, 0.5);
+  --table-row-hover-bg-color: rgba(50, 53, 60, 0.5);
+  --menu-item-bg-color: rgba(180, 160, 120, 0.1);
+  // 文字色
+  --text-color: #c8c8cc;
+  --blockquote-color: #a0a0a0;
+  // 链接色
+  --link-color: #d4c4a8;
+  --link-hover-color: #e4d4b8;
+  // 品牌色
+  --brand-color: #e8e4dc;
+  --brand-hover-color: #d4c4a8;
+  // 按钮
+  --btn-default-bg: rgba(40, 43, 50, 0.8);
+  --btn-default-color: #c8c8cc;
+  --btn-default-border-color: rgba(180, 160, 120, 0.3);
+  --btn-default-hover-bg: rgba(180, 160, 120, 0.2);
+  --btn-default-hover-color: #e8e4dc;
+  --btn-default-hover-border-color: rgba(180, 160, 120, 0.5);
 }
 
 // ============================================
@@ -18,12 +42,13 @@
 body {
   // Z.A.T.O_02_ca04.png 背景图片
   background: url('/images/Z.A.T.O_02_ca04.jpg') no-repeat center center fixed;
+  background-color: #1e2128;
   background-size: cover;
   min-height: 100vh;
   
   // 版本号水印（调试用，显示在页面左上角）
   &::before {
-    content: "v2026.03.30-30";
+    content: "v2026.07.14-02";
     position: fixed;
     top: 10px;
     left: 10px;
@@ -66,7 +91,6 @@ body {
 // 内容包装器透明
 .content-wrap {
   background: transparent !important;
-  margin-left: -20px;
 }
 
 // 页面内容区透明
@@ -250,13 +274,18 @@ body {
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(180, 160, 120, 0.2);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  // 解除 Pisces scheme 的 overflow: hidden，否则搜索弹窗被裁切
+  overflow: visible !important;
 }
 
 // ============================================
 // 3. 侧边栏站点信息 - 废墟质感
 // ============================================
 .sidebar {
-  margin-left: 20px;
+  background: transparent !important;
+  box-shadow: none !important;
+  // Pisces/Gemini 布局中 margin-top: 100% 等于 sidebar 宽度，
+  // 用于把 sidebar 内容推到 header 下方，保留此值
 }
 
 .sidebar-inner {
@@ -523,11 +552,14 @@ body {
   // 图片
   img {
     max-width: 100%;
+    max-height: 75vh;
+    width: auto;
     height: auto;
     border-radius: 4px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 1.5em 0;
+    margin: 1.5em auto;
+    display: block;
     border: 1px solid rgba(180, 160, 120, 0.1);
     
     &:hover {
@@ -747,8 +779,37 @@ body {
 }
 
 // ============================================
-// 14. 目录样式 - 暗色
+// 3.5 侧边栏导航标签 - 废土暗金
 // ============================================
+.sidebar-nav {
+  border-bottom: 1px solid rgba(180, 160, 120, 0.2);
+  
+  li {
+    color: #8a8a90;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: #d4c4a8;
+    }
+  }
+  
+  .sidebar-nav-active {
+    color: #d4c4a8;
+    border-bottom-color: transparent;
+    border-left-color: #b4a078;
+    
+    &:hover {
+      color: #e4d4b8;
+    }
+  }
+}
+
+// 侧边栏 TOC 标签页标题
+.sidebar-nav-toc,
+.sidebar-nav-overview {
+  color: #8a8a90;
+}
+
 .post-toc {
   background: rgba(35, 38, 45, 0.6);
   border-radius: 4px;
@@ -780,6 +841,280 @@ body {
       }
     }
   }
+}
+
+// TOC 激活状态覆盖主题默认橙色 #fc6423
+.post-toc .nav .active > a {
+  color: #d4c4a8;
+  border-bottom-color: #b4a078;
+}
+
+.post-toc .nav .active-current > a {
+  color: #d4c4a8;
+}
+
+.post-toc .nav .active-current > a:hover {
+  color: #e4d4b8;
+}
+
+// 站点概览面板
+.site-overview-wrap {
+  color: #c8c8cc;
+}
+
+// 站点概览面板内的分隔线
+.site-state-item:not(:first-child) {
+  border-left-color: rgba(180, 160, 120, 0.2);
+}
+
+// ============================================
+// 14.5 主题硬编码颜色覆盖
+//    NexT 主题大量硬编码 #555/#999/#ccc/#eee/#fff/#fc6423
+//    这里集中覆盖在暗色背景上不可见的残余样式
+// ============================================
+
+// --- 表格 ---
+table {
+  th {
+    background: rgba(35, 38, 45, 0.6);
+    color: #d4c4a8;
+    border-bottom: 1px solid rgba(180, 160, 120, 0.3);
+  }
+  td {
+    border-bottom: 1px solid rgba(180, 160, 120, 0.15);
+  }
+  tr:hover td {
+    background: rgba(50, 53, 60, 0.5);
+  }
+}
+
+// --- 引用块 ---
+blockquote {
+  color: #a0a0a0;
+  border-left: 3px solid #b4a078;
+  background: rgba(180, 160, 120, 0.08);
+}
+
+// --- 代码块高亮行 ---
+.highlight .gutter {
+  background: rgba(25, 28, 35, 0.8);
+}
+
+.highlight .code pre {
+  background: rgba(25, 28, 35, 0.8);
+}
+
+// --- 按钮 ---
+.btn {
+  background: rgba(40, 43, 50, 0.8);
+  color: #c8c8cc;
+  border-color: rgba(180, 160, 120, 0.3);
+  
+  &:hover {
+    background: rgba(180, 160, 120, 0.2);
+    color: #e8e4dc;
+    border-color: rgba(180, 160, 120, 0.5);
+  }
+}
+
+// --- 分隔线 ---
+hr {
+  border-color: rgba(180, 160, 120, 0.2);
+}
+
+// --- 文章标签页（post-body 内 code/highlight 残余）---
+.post-body {
+  // 表格行奇偶色覆盖
+  table tr:nth-child(2n) {
+    background: rgba(35, 38, 45, 0.3);
+  }
+}
+
+// --- 归档页年份标题下划线 ---
+.collection-title h1,
+.collection-title h2 {
+  border-bottom-color: rgba(180, 160, 120, 0.3) !important;
+}
+
+// --- 搜索结果高亮 ---
+.search-popup .search-keyword {
+  color: #e8a664 !important;
+  background: rgba(232, 166, 100, 0.15) !important;
+  border-bottom-color: transparent !important;
+  border-radius: 2px;
+  padding: 0 3px;
+}
+
+.search-result .search-keyword {
+  color: #e8a664;
+  background: rgba(232, 166, 100, 0.15);
+  border-bottom: none !important;
+  border-radius: 2px;
+  padding: 0 3px;
+}
+
+// --- 页面导航（上一篇/下一篇）---
+.post-nav-item {
+  a {
+    color: #8a8a90;
+    border-bottom: none;
+    
+    &:hover {
+      color: #d4c4a8;
+    }
+  }
+}
+
+.post-nav-next a,
+.post-nav-prev a {
+  color: #8a8a90;
+  
+  &:hover {
+    color: #d4c4a8;
+  }
+}
+
+// --- 标签云页面 ---
+.tag-cloud a {
+  color: #8a8a90;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: #d4c4a8;
+  }
+}
+
+.tag-cloud-tags a {
+  color: rgba(180, 160, 120, 0.6);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: #d4c4a8;
+    text-shadow: 0 0 8px rgba(180, 160, 120, 0.3);
+  }
+}
+
+// --- 分类页面 ---
+.category-all-page .category-list {
+  color: #c8c8cc;
+  
+  a {
+    color: #d4c4a8;
+    
+    &:hover {
+      color: #e4d4b8;
+    }
+  }
+}
+
+// --- 通用链接色覆盖（残余 #555 链接）---
+a {
+  color: var(--link-color);
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+// --- 主题残余硬编码白色/浅色覆盖 ---
+
+// 移动端菜单切换线（默认白色→暗金色）
+.toggle .toggle-line {
+  background: #b4a078;
+}
+
+.site-nav-toggle .toggle .toggle-line,
+.site-nav-right .toggle .toggle-line {
+  background: #b4a078;
+}
+
+// 行内代码背景（#eee → 暗色）
+code {
+  background: rgba(180, 160, 120, 0.15);
+  color: #d4c4a8;
+}
+
+// kbd 键盘按键样式
+kbd {
+  background: rgba(35, 38, 45, 0.8);
+  background-image: linear-gradient(rgba(50, 53, 60, 0.9), rgba(30, 33, 40, 0.9), rgba(50, 53, 60, 0.9));
+  color: #c8c8cc;
+  border: 1px solid rgba(180, 160, 120, 0.3);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+}
+
+// 代码块标题行
+.highlight figcaption {
+  background: rgba(25, 28, 35, 0.9);
+  color: #8a8a90;
+  border-bottom: 1px solid rgba(180, 160, 120, 0.15);
+}
+
+// 代码块行号区
+.highlight .gutter {
+  background: rgba(25, 28, 35, 0.6);
+  border-right: 1px solid rgba(180, 160, 120, 0.15);
+}
+
+.highlight .gutter pre {
+  color: #6a6a70;
+}
+
+// 标签（label）暗色覆盖
+.post-body .label {
+  border-radius: 3px;
+  padding: 2px 6px;
+  color: #c8c8cc;
+  
+  &.label-default { background: rgba(80, 83, 90, 0.6); }
+  &.label-primary { background: rgba(140, 120, 170, 0.3); }
+  &.label-info { background: rgba(100, 140, 170, 0.3); }
+  &.label-success { background: rgba(100, 150, 120, 0.3); }
+  &.label-warning { background: rgba(180, 160, 120, 0.3); }
+  &.label-danger { background: rgba(170, 80, 80, 0.3); }
+}
+
+// 进度隐藏横线默认 #eee
+.post-body h1, .post-body h2 {
+  border-bottom-color: rgba(180, 160, 120, 0.3) !important;
+}
+
+.post-body h3 {
+  border-bottom-color: rgba(180, 160, 120, 0.15) !important;
+}
+
+// 菜单项 badge 背景
+.menu .badge {
+  background: rgba(180, 160, 120, 0.6);
+  color: #1e2128;
+}
+
+// 侧边栏按钮（#fc6423 橙色 → 金色）
+.sidebar-button a {
+  color: #b4a078 !important;
+  border-color: rgba(180, 160, 120, 0.3) !important;
+  
+  &:hover {
+    color: #e4d4b8 !important;
+    background: rgba(180, 160, 120, 0.15) !important;
+    border-color: rgba(180, 160, 120, 0.5) !important;
+  }
+}
+
+// Tab 标签（#fc6423 橙色 → 金色）
+.tabs ul.nav-tabs li.tab.active {
+  border-top-color: #b4a078 !important;
+  border-left-color: #b4a078 !important;
+}
+
+// Sub-menu 活跃状态（#fc6423 → 金色）
+.sub-menu .menu-item-active a {
+  color: #d4c4a8 !important;
+  border-bottom-color: #b4a078 !important;
+}
+
+.sub-menu .menu-item a:hover {
+  color: #d4c4a8 !important;
 }
 
 // ============================================
@@ -821,6 +1156,17 @@ body {
 // 17. 移动端适配
 // ============================================
 @media (max-width: 767px) {
+  body {
+    background-attachment: scroll;
+    background-position: center top;
+    background-size: auto 100vh;
+
+    // 调试版本号在窄屏会遮挡导航和正文，仅桌面端保留。
+    &::before {
+      display: none;
+    }
+  }
+
   .post-block {
     padding: 24px !important;
     margin-bottom: 24px !important;
@@ -839,6 +1185,14 @@ body {
   
   .header-inner {
     background: rgba(25, 28, 35, 0.95) !important;
+  }
+
+  .sidebar-inner,
+  .post-block,
+  .page .post-block,
+  .post .post-block {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 }
 
@@ -917,12 +1271,31 @@ body {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(180, 160, 120, 0.2);
   
+  // 搜索头部（默认 #eee 白底）
+  .search-header {
+    background: rgba(30, 33, 40, 0.95) !important;
+    border-bottom: 1px solid rgba(180, 160, 120, 0.2);
+    border-radius: 8px 8px 0 0;
+  }
+  
+  // 搜索图标和关闭按钮（默认 #999/#222）
+  .search-icon,
+  .popup-btn-close {
+    color: #8a8a90 !important;
+    
+    &:hover .fa,
+    &:hover {
+      color: #d4c4a8 !important;
+    }
+  }
+  
+  // 搜索输入框
   .search-input {
     border-radius: 4px;
     border: 1px solid rgba(180, 160, 120, 0.3);
     padding: 12px 16px;
     transition: all 0.3s ease;
-    background: rgba(30, 33, 40, 0.8);
+    background: rgba(30, 33, 40, 0.8) !important;
     color: #d4d4d8;
     
     &:focus {
@@ -930,6 +1303,37 @@ body {
       box-shadow: 0 0 0 3px rgba(180, 160, 120, 0.2);
       outline: none;
     }
+  }
+  
+  // 搜索结果列表
+  ul.search-result-list {
+    list-style: none;
+  }
+  
+  // 搜索结果条目分隔线（默认 #ccc 虚线）
+  p.search-result {
+    border-bottom-color: rgba(180, 160, 120, 0.15) !important;
+    padding: 10px 0;
+  }
+  
+  // 搜索结果标题（默认继承色）
+  a.search-result-title {
+    color: #d4c4a8 !important;
+    font-weight: 600;
+    
+    &:hover {
+      color: #e4d4b8 !important;
+    }
+  }
+  
+  // 搜索结果正文
+  .search-result-content {
+    color: #8a8a90;
+  }
+  
+  // 无结果文案（默认 #ccc）
+  #no-result {
+    color: #6a6a70 !important;
   }
 }
 
@@ -1049,8 +1453,8 @@ body {
   .hero-section {
     position: relative;
     width: 100%;
-    height: 100vh;
-    min-height: 600px;
+    height: 88vh;
+    min-height: 560px;
     background: no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
@@ -1058,6 +1462,12 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+
+    @media (max-width: 768px) {
+      height: 76svh;
+      min-height: 520px;
+      background-attachment: scroll;
+    }
   }
 
   // 暗色遮罩
@@ -1097,7 +1507,7 @@ body {
   
   // 主标题 - 大字震撼效果
   .site-title-main {
-    font-size: 4.5em;
+    font-size: clamp(3rem, 5vw, 4.5rem);
     font-weight: 700;
     margin: 0 0 20px 0;
     letter-spacing: 4px;
@@ -1108,8 +1518,10 @@ body {
     animation: fadeInUp 1s ease-out;
     
     @media (max-width: 768px) {
-      font-size: 2.8em;
-      letter-spacing: 2px;
+      max-width: 8em;
+      font-size: clamp(2.15rem, 11vw, 2.75rem);
+      line-height: 1.18;
+      letter-spacing: 1px;
     }
   }
   
@@ -1125,8 +1537,9 @@ body {
     min-height: 1.5em;
     
     @media (max-width: 768px) {
-      font-size: 1.1em;
-      letter-spacing: 1px;
+      max-width: 22em;
+      font-size: 0.95em;
+      letter-spacing: 0.5px;
     }
     
     // 打字光标效果
@@ -1190,6 +1603,24 @@ body {
       background: rgba(255, 255, 255, 0.3);
       transition: all 0.3s ease;
     }
+  }
+}
+
+// 长文本使用浏览器原生渐进绘制，完整 DOM 始终保留给搜索、TOC 与书签。
+.long-text-chunk {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+// 尊重系统的低动效设置，文学阅读时避免持续闪烁和漂浮。
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
@@ -1262,6 +1693,8 @@ body {
   .post-card-image {
     flex: 0 0 280px;
     overflow: hidden;
+    background: #1e2128 url('/images/Z.A.T.O_02_ca04.jpg') no-repeat center center;
+    background-size: cover;
     
     @media (max-width: 768px) {
       flex: none;
