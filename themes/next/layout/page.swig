@@ -26,8 +26,8 @@
       {%- if page.type === 'about' %}
         <section class="about-hero page-identity-hero" aria-label="About this site">
           <div class="page-hero-kicker">Keeper Profile / Z.A.T.O</div>
-          <h1 class="page-hero-title">关于这间百货公司</h1>
-          <p class="page-hero-desc">这里收纳小说、游戏、动画、日常与那些暂时无法归类的废墟回声。</p>
+          <h1 class="page-hero-title">About the Archive</h1>
+          <p class="page-hero-desc">Notes on games, fiction, anime, stray days, and ruined echoes.</p>
           <div class="page-hero-stats">
             <span><strong>{{ site.posts.length }}</strong> dispatches</span>
             <span><strong>{{ site.tags.length }}</strong> tags</span>
@@ -36,13 +36,34 @@
         </section>
       {%- elif page.type === 'tags' %}
         <section class="tag-index-hero page-identity-hero" aria-label="Tag index">
-          <div class="page-hero-kicker">Tag Index / Dept. Store Directory</div>
-          <h1 class="page-hero-title">标签索引</h1>
-          <p class="page-hero-desc">把散落的文章按气味、主题和情绪重新编号。选择一个标签，就像打开一只仍有余温的抽屉。</p>
+          <div class="page-hero-kicker">Tag Index / Quick Filter</div>
+          <h1 class="page-hero-title">Tag Index</h1>
+          <p class="page-hero-desc">Find records by theme, mood, or residue.</p>
           <div class="page-hero-stats">
             <span><strong>{{ site.tags.length }}</strong> tags</span>
             <span><strong>{{ site.posts.length }}</strong> entries</span>
             <span><strong>NO.</strong> 30-000</span>
+          </div>
+        </section>
+      {%- elif page.type === 'categories' %}
+        <section class="category-index-hero page-identity-hero" aria-label="Category index">
+          <div class="page-hero-kicker">Category Index / Archive Route</div>
+          <h1 class="page-hero-title">Category Index</h1>
+          <p class="page-hero-desc">Broad routes through the archive.</p>
+          <div class="page-hero-stats">
+            <span><strong>{{ site.categories.length }}</strong> categories</span>
+            <span><strong>{{ site.tags.length }}</strong> tags</span>
+            <span><strong>ARCHIVE</strong> map</span>
+          </div>
+        </section>
+      {%- elif page.type === 'resources' %}
+        <section class="resource-hero page-identity-hero" aria-label="Resource index">
+          <div class="page-hero-kicker">Resource Index / Back Archive</div>
+          <h1 class="page-hero-title">Resource Index</h1>
+          <p class="page-hero-desc">Useful links, lists, and tools.</p>
+          <div class="page-hero-stats">
+            <span><strong>Z.A.T.O</strong> index</span>
+            <span><strong>OPEN</strong> soon</span>
           </div>
         </section>
       {%- else %}
@@ -55,7 +76,7 @@
         {%- if page.type === 'tags' %}
           <div class="tag-cloud tag-index-panel">
             <div class="tag-cloud-title">
-              {{ _p('counter.tag_cloud', site.tags.length) }}
+              {{ site.tags.length }} TAGS IN FILE
             </div>
             <div class="tag-cloud-tags">
               {{ tagcloud({
@@ -71,22 +92,27 @@
         {% elif page.type === 'about' %}
           <div class="about-content-panel">
             <div class="about-profile-card" aria-hidden="true">
-              <span class="about-profile-label">STOREKEEPER</span>
+              <span class="about-profile-label">CUSTODIAN</span>
               <strong>Aikeko</strong>
-              <em>世界尽头的百货公司</em>
+              <em>Archive at World's End</em>
             </div>
             <div class="about-prose">
               {{ page.content }}
             </div>
           </div>
         {% elif page.type === 'categories' %}
-          <div class="category-all-page">
+          <div class="category-all-page category-index-panel">
             <div class="category-all-title">
-              {{ _p('counter.categories', site.categories.length) }}
+              {{ site.categories.length }} CATEGORIES IN FILE
             </div>
             <div class="category-all">
               {{ list_categories() }}
             </div>
+          </div>
+        {% elif page.type === 'resources' %}
+          <div class="resource-panel">
+            <span class="resource-panel-kicker">ARCHIVE NOTE</span>
+            <p>Reserved for links, reading paths, and external records.</p>
           </div>
         {% elif page.type === 'schedule' %}
           <div class="event-list">

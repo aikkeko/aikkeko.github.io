@@ -15,14 +15,16 @@
 {%- if theme.favicon.safari_pinned_tab %}
   <link rel="mask-icon" href="{{ url_for(theme.favicon.safari_pinned_tab) }}" color="{{ theme.android_chrome_color }}">
 {%- endif %}
-{# Web App Manifest for PWA - 必须在其他图标之后 #}
+
+{# Web App Manifest for PWA #}
 <link rel="manifest" href="{{ url_for('/manifest.json') }}">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="百货公司">
-<meta name="application-name" content="世界尽头的百货公司">
+<meta name="apple-mobile-web-app-title" content="档案馆">
+<meta name="application-name" content="世界尽头的档案馆">
 <meta name="msapplication-TileColor" content="#1e2128">
 <meta name="msapplication-tap-highlight" content="no">
+
 {%- if theme.favicon.ms_browserconfig %}
   <meta name="msapplication-config" content="{{ url_for(theme.favicon.ms_browserconfig) }}">
 {%- endif %}
@@ -65,19 +67,47 @@
 
 {{ next_config() }}
 
-{# Long Text Optimizer - 长文本分片加载优化 #}
+{# Long Text Optimizer #}
 <script src="{{ url_for('/js/long-text-loader.js') }}" async></script>
 
-{# Service Worker Registration #}
+{# Service Worker Registration: disabled and cleaned on local preview #}
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
+    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(location.hostname) !== -1;
+
+    if (isLocalPreview) {
+      navigator.serviceWorker.getRegistrations()
+        .then(function(registrations) {
+          return Promise.all(registrations.map(function(registration) {
+            return registration.unregister();
+          }));
+        })
+        .then(function() {
+          if (!window.caches) return [];
+          return caches.keys().then(function(keys) {
+            return Promise.all(keys.filter(function(key) {
+              return key.indexOf('blog-') === 0;
+            }).map(function(key) {
+              return caches.delete(key);
+            }));
+          });
+        })
+        .then(function() {
+          console.log('[ServiceWorker] Local preview cleanup complete.');
+        })
+        .catch(function(error) {
+          console.log('[ServiceWorker] Local preview cleanup failed:', error);
+        });
+      return;
+    }
+
     navigator.serviceWorker.register('/sw.js')
       .then(function(registration) {
-        console.log('[ServiceWorker] 注册成功:', registration.scope);
+        console.log('[ServiceWorker] Registered:', registration.scope);
       })
       .catch(function(error) {
-        console.log('[ServiceWorker] 注册失败:', error);
+        console.log('[ServiceWorker] Registration failed:', error);
       });
   });
 }

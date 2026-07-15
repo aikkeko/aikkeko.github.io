@@ -1,6 +1,12 @@
 /**
- * Word 文档转 Markdown 转换器
- * 支持提取图片、生成 Frontmatter
+ * Word to Markdown converter.
+ *
+ * Project rules:
+ * - The first meaningful title/line in the doc becomes the blog title.
+ * - That title is removed from the Markdown body.
+ * - The first image in the doc becomes header_image / cover only.
+ * - That cover image is removed from the Markdown body.
+ * - Remaining local/doc images are uploaded through the configured transformer.
  */
 
 const mammoth = require('mammoth');
@@ -10,50 +16,39 @@ const path = require('path');
 class WordToMarkdownConverter {
   constructor(options = {}) {
     this.options = {
-      // 默认作者
       defaultAuthor: options.defaultAuthor || 'AikeKo',
-      // 默认分类
       defaultCategory: options.defaultCategory || '随笔',
-      // 图片转换函数
       imageTransformer: options.imageTransformer || null
     };
   }
 
-  /**
-   * 从文件名提取标题
-   * @param {string} filename - 文件名
-   * @returns {string} 标题
-   */
   extractTitleFromFilename(filename) {
     const basename = path.basename(filename, path.extname(filename));
-    // 移除常见的日期前缀 (如 2024-01-01-title)
-    return basename.replace(/^\d{4}[-_]\d{2}[-_]\d{2}[-_]/, '').replace(/[-_]/g, ' ');
+    return basename
+      .replace(/^\d{8}_/, '')
+      .replace(/^\d{4}[-_]\d{2}[-_]\d{2}[-_]/, '')
+      .replace(/[-_]/g, ' ')
+      .trim();
   }
 
-  /**
-   * 从文档内容推断分类和标签
-   * @param {string} content - 文档内容
-   * @returns {Object} { category, tags }
-   */
   inferCategoryAndTags(content) {
     const lowerContent = content.toLowerCase();
-    
-    // 关键词映射
     const keywords = {
-      '游戏': ['游戏', 'galgame', 'rpg', '评测', '攻略', 'nintendo', 'playstation'],
-      '动画': ['动画', 'anime', 'eva', 'manga', '番剧', '宫崎骏'],
-      '文学': ['小说', '文学', '书评', '读后感', '卡夫卡', '村上春树'],
+      '游戏': ['游戏', 'galgame', 'rpg', 'vorkuta', 'z.a.t.o', 'narcissu', '攻略', '评测', 'nintendo', 'playstation'],
+      '动画': ['动画', 'anime', 'eva', 'evangelion', 'manga', '番剧', '宫崎骏'],
+      '文学': ['小说', '文学', '书评', '读后感', '卡夫卡', '村上春树', 'carnival'],
       '技术': ['代码', '编程', 'javascript', 'python', 'hexo', '教程'],
-      '生活': ['日常', '随笔', '旅行', '美食', '摄影']
+      '生活': ['日常', '随笔', '旅行', '新加坡', '摄影']
     };
 
     let matchedCategory = this.options.defaultCategory;
     let matchedTags = [];
 
     for (const [category, words] of Object.entries(keywords)) {
-      if (words.some(word => lowerContent.includes(word))) {
+      const matches = words.filter(word => lowerContent.includes(word.toLowerCase()));
+      if (matches.length > 0) {
         matchedCategory = category;
-        matchedTags = words.filter(word => lowerContent.includes(word)).slice(0, 3);
+        matchedTags = matches.slice(0, 3);
         break;
       }
     }
@@ -61,24 +56,11 @@ class WordToMarkdownConverter {
     return { category: matchedCategory, tags: matchedTags };
   }
 
-  /**
-   * 转换 Word 文档为 Markdown
-   * @param {Buffer} buffer - Word 文档 Buffer
-   * @param {string} filename - 原始文件名
-   * @param {Object} options - 选项
-   * @param {string} options.articleId - 文章标识（用于图片缓存）
-   * @param {ImageCacheManager} options.cacheManager - 缓存管理器
-   * @returns {Promise<{markdown: string, images: Array, metadata: Object}>}
-   */
   async convert(buffer, filename, options = {}) {
     console.log(`📝 正在转换: ${filename}`);
-    
-    const { articleId, cacheManager } = options;
-    
-    // 提取标题
-    const title = this.extractTitleFromFilename(filename);
-    
-    // 使用 mammoth 内置的图片处理，生成 base64 图片
+
+    const { articleId, cacheManager, sourceDate } = options;
+
     const mammothOptions = {
       convertImage: mammoth.images.imgElement((image) => {
         return image.read().then((imageBuffer) => {
@@ -91,99 +73,58 @@ class WordToMarkdownConverter {
       })
     };
 
-    // 转换为 HTML
     let result;
     try {
       result = await mammoth.convertToHtml({ buffer }, mammothOptions);
       console.log(`  ✓ HTML 转换成功，原始长度: ${result.value.length} 字符`);
     } catch (error) {
       console.error('❌ HTML 转换失败:', error.message);
-      // 降级到纯文本转换
       result = await mammoth.extractRawText({ buffer });
       result.value = `<p>${result.value.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>')}</p>`;
     }
-    let html = result.value;
-    
-    // 提取图片
-    const images = [];
-    const $ = cheerio.load(html);
-    
-    $('img').each((index, element) => {
-      const $img = $(element);
-      const src = $img.attr('src');
-      const alt = $img.attr('alt') || '';
-      
-      // 检查是否是 base64 图片
-      if (src && src.startsWith('data:')) {
-        const match = src.match(/^data:image\/\w+;base64,(.+)$/);
-        if (match) {
-          const imageBuffer = Buffer.from(match[1], 'base64');
-          const ext = src.match(/data:image\/(\w+);/)?.[1] || 'png';
-          const imageName = `image_${index + 1}.${ext}`;
-          
-          images.push({
-            buffer: imageBuffer,
-            name: imageName,
-            alt: alt,
-            originalSrc: src
-          });
-        }
-      }
-    });
 
-    // 如果有图片转换器，转换图片链接
+    let html = result.value;
+    const $ = cheerio.load(html);
+    const images = this.extractEmbeddedImages($);
+
     if (this.options.imageTransformer && images.length > 0) {
       console.log(`🖼️ 发现 ${images.length} 张图片，开始上传...`);
-      
-      // 传入缓存选项
+
       const uploadOptions = {};
       if (cacheManager && articleId) {
         uploadOptions.cacheManager = cacheManager;
         uploadOptions.articleId = articleId;
       }
-      
+
       const uploadResults = await this.options.imageTransformer(images, uploadOptions);
-      
-      // 替换 HTML 中的图片链接
-      $('img').each((index, element) => {
-        const $img = $(element);
-        const src = $img.attr('src');
-        
-        if (src && src.startsWith('data:')) {
-          const result = uploadResults[index];
-          if (result && result.url) {
-            $img.attr('src', result.url);
-            const status = result.isNew ? '🆕' : '📋';
-            console.log(`  ${status} 替换图片 ${index + 1}: ${result.url}`);
-          }
-        }
-      });
-      
+      this.replaceEmbeddedImageSources($, uploadResults);
       html = $.html();
     }
 
-    // 转换 HTML 为 Markdown
-    const markdown = this.htmlToMarkdown(html, $);
-    
-    // 推断分类和标签
+    const coverImage = this.extractCoverImage($);
+    const title = this.extractTitleFromDocument($, filename);
+    this.normalizeQuoteBlocks($);
+    this.removeLeadingEmptyBlocks($);
+    html = $.html();
+
+    const markdown = this.htmlToMarkdown(html);
     const { category, tags } = this.inferCategoryAndTags(markdown);
-    
-    // 生成 Frontmatter
+
     const metadata = {
       title,
-      date: new Date().toISOString(),
+      date: sourceDate ? `${sourceDate} 00:00:00` : new Date().toISOString(),
       author: this.options.defaultAuthor,
       categories: [category],
-      tags: tags,
-      description: this.generateDescription(markdown)
+      tags,
+      description: this.generateDescription(markdown),
+      header_image: coverImage
     };
 
-    // 组装最终 Markdown
     const frontmatter = this.generateFrontmatter(metadata);
     const finalMarkdown = `${frontmatter}\n\n${markdown}`;
 
     console.log(`✅ 转换完成: ${title}`);
-    
+
     return {
       markdown: finalMarkdown,
       images,
@@ -191,122 +132,284 @@ class WordToMarkdownConverter {
     };
   }
 
-  /**
-   * HTML 转 Markdown
-   * @param {string} html - HTML 内容
-   * @param {Object} $ - Cheerio 实例
-   * @returns {string} Markdown
-   */
-  htmlToMarkdown(html, $) {
-    // 简单的 HTML 到 Markdown 转换
+  extractEmbeddedImages($) {
+    const images = [];
+
+    $('img').each((index, element) => {
+      const $img = $(element);
+      const src = $img.attr('src');
+      const alt = $img.attr('alt') || '';
+
+      if (!src || !src.startsWith('data:')) {
+        return;
+      }
+
+      const match = src.match(/^data:image\/\w+;base64,(.+)$/);
+      if (!match) {
+        return;
+      }
+
+      const imageBuffer = Buffer.from(match[1], 'base64');
+      const ext = src.match(/data:image\/(\w+);/)?.[1] || 'png';
+
+      images.push({
+        buffer: imageBuffer,
+        name: `image_${index + 1}.${ext}`,
+        alt,
+        originalSrc: src
+      });
+    });
+
+    return images;
+  }
+
+  replaceEmbeddedImageSources($, uploadResults) {
+    $('img').each((index, element) => {
+      const $img = $(element);
+      const src = $img.attr('src');
+
+      if (!src || !src.startsWith('data:')) {
+        return;
+      }
+
+      const result = uploadResults[index];
+      if (result && result.url) {
+        $img.attr('src', result.url);
+        const status = result.isNew ? '🆕' : '📋';
+        console.log(`  ${status} 替换图片 ${index + 1}: ${result.url}`);
+      }
+    });
+  }
+
+  extractCoverImage($) {
+    const $firstImage = $('img').first();
+    if (!$firstImage.length) {
+      return '';
+    }
+
+    const coverImage = $firstImage.attr('src') || '';
+    const $parent = $firstImage.parent();
+
+    if ($parent.length && this.normalizeText($parent.text()) === '' && $parent.children().length === 1) {
+      $parent.remove();
+    } else {
+      $firstImage.remove();
+    }
+
+    return coverImage;
+  }
+
+  extractTitleFromDocument($, filename) {
+    const fallback = this.extractTitleFromFilename(filename);
+    const candidates = $('body').length ? $('body').find('h1,h2,h3,p') : $('h1,h2,h3,p');
+
+    for (const element of candidates.toArray()) {
+      const $element = $(element);
+      const text = this.normalizeText($element.text());
+
+      if (!text || $element.find('img').length && text.length < 2) {
+        continue;
+      }
+
+      if (/^h[1-3]$/i.test(element.tagName || element.name)) {
+        $element.remove();
+        return this.cleanTitle(text) || fallback;
+      }
+
+      const title = this.deriveTitleFromParagraph(text);
+      if (title) {
+        const remainder = text.slice(title.length).trim().replace(/^[:：|｜\-—–\s]+/, '');
+        if (remainder.length > 20) {
+          $element.text(remainder);
+        } else {
+          $element.remove();
+        }
+        return this.cleanTitle(title) || fallback;
+      }
+    }
+
+    return fallback;
+  }
+
+  deriveTitleFromParagraph(text) {
+    const normalized = this.cleanTitle(text);
+    if (!normalized) {
+      return '';
+    }
+
+    if (normalized.length <= 96) {
+      return normalized;
+    }
+
+    const sentence = normalized.match(/^(.{4,96}?[。！？!?])(?:\s|$)/);
+    return sentence ? sentence[1].trim() : '';
+  }
+
+  normalizeQuoteBlocks($) {
+    $('p').each((_, element) => {
+      const $p = $(element);
+
+      if ($p.find('img').length) {
+        return;
+      }
+
+      const text = this.normalizeText($p.text());
+      if (!text || text.length > 220) {
+        return;
+      }
+
+      const hasOnlyInlineEmphasis = $p.children().length > 0 && $p.children().toArray().every(child => {
+        const name = (child.tagName || child.name || '').toLowerCase();
+        return ['em', 'i', 'strong', 'b', 'span', 'br'].includes(name);
+      });
+      const looksQuoted = /^[“"「『《〈‘'—–-]/.test(text) || /[”"」』》〉’']$/.test(text) || /^——/.test(text);
+
+      if (looksQuoted || hasOnlyInlineEmphasis && /[“”"「」『』《》]/.test(text)) {
+        $p.replaceWith(`<blockquote><p>${$p.html() || text}</p></blockquote>`);
+      }
+    });
+  }
+
+  removeLeadingEmptyBlocks($) {
+    let changed = true;
+    while (changed) {
+      changed = false;
+      const $first = ($('body').children().first().length ? $('body').children().first() : $.root().children().first());
+      if ($first.length && this.normalizeText($first.text()) === '' && $first.find('img').length === 0) {
+        $first.remove();
+        changed = true;
+      }
+    }
+  }
+
+  htmlToMarkdown(html) {
     let markdown = html;
-    
-    // 标题
-    markdown = markdown.replace(/<h1[^>]*>(.*?)<\/h1>/gi, '# $1\n\n');
-    markdown = markdown.replace(/<h2[^>]*>(.*?)<\/h2>/gi, '## $1\n\n');
-    markdown = markdown.replace(/<h3[^>]*>(.*?)<\/h3>/gi, '### $1\n\n');
-    markdown = markdown.replace(/<h4[^>]*>(.*?)<\/h4>/gi, '#### $1\n\n');
-    
-    // 段落
-    markdown = markdown.replace(/<p[^>]*>(.*?)<\/p>/gi, '$1\n\n');
-    
-    // 粗体和斜体
-    markdown = markdown.replace(/<strong[^>]*>(.*?)<\/strong>/gi, '**$1**');
-    markdown = markdown.replace(/<b[^>]*>(.*?)<\/b>/gi, '**$1**');
-    markdown = markdown.replace(/<em[^>]*>(.*?)<\/em>/gi, '*$1*');
-    markdown = markdown.replace(/<i[^>]*>(.*?)<\/i>/gi, '*$1*');
-    
-    // 链接
-    markdown = markdown.replace(/<a[^>]*href="([^"]*)"[^>]*>(.*?)<\/a>/gi, '[$2]($1)');
-    
-    // 图片（保留已转换的 URL）
-    markdown = markdown.replace(/<img[^>]*src="([^"]*)"[^>]*alt="([^"]*)"[^>]*\/?>/gi, 
-      (match, src, alt) => `![${alt}](${src})`);
+
+    markdown = markdown.replace(/<img[^>]*src="([^"]*)"[^>]*alt="([^"]*)"[^>]*\/?>/gi, (match, src, alt) => `![${alt}](${src})`);
     markdown = markdown.replace(/<img[^>]*src="([^"]*)"[^>]*\/?>/gi, '![]($1)');
-    
-    // 代码块
-    markdown = markdown.replace(/<pre[^>]*><code[^>]*>([\s\S]*?)<\/code><\/pre>/gi, 
-      '\n```\n$1\n```\n');
-    markdown = markdown.replace(/<code[^>]*>(.*?)<\/code>/gi, '`$1`');
-    
-    // 列表
+
+    markdown = markdown.replace(/<h1[^>]*>([\s\S]*?)<\/h1>/gi, '# $1\n\n');
+    markdown = markdown.replace(/<h2[^>]*>([\s\S]*?)<\/h2>/gi, '## $1\n\n');
+    markdown = markdown.replace(/<h3[^>]*>([\s\S]*?)<\/h3>/gi, '### $1\n\n');
+    markdown = markdown.replace(/<h4[^>]*>([\s\S]*?)<\/h4>/gi, '#### $1\n\n');
+
+    markdown = markdown.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, (match, content) => {
+      const quoteText = this.decodeHtml(this.stripHtml(
+        content
+          .replace(/<br\s*\/?>/gi, '\n')
+          .replace(/<\/p>\s*<p[^>]*>/gi, '\n')
+          .replace(/<\/?p[^>]*>/gi, '')
+      )).trim();
+
+      if (!quoteText) {
+        return '';
+      }
+
+      return quoteText.split(/\n+/).map(line => `> ${line.trim()}`).join('\n') + '\n\n';
+    });
+
+    markdown = markdown.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, '$1\n\n');
+    markdown = markdown.replace(/<br\s*\/?>/gi, '\n');
+
+    markdown = markdown.replace(/<strong[^>]*>([\s\S]*?)<\/strong>/gi, '**$1**');
+    markdown = markdown.replace(/<b[^>]*>([\s\S]*?)<\/b>/gi, '**$1**');
+    markdown = markdown.replace(/<em[^>]*>([\s\S]*?)<\/em>/gi, '*$1*');
+    markdown = markdown.replace(/<i[^>]*>([\s\S]*?)<\/i>/gi, '*$1*');
+
+    markdown = markdown.replace(/<a[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi, '[$2]($1)');
+
+    markdown = markdown.replace(/<pre[^>]*><code[^>]*>([\s\S]*?)<\/code><\/pre>/gi, '\n```\n$1\n```\n');
+    markdown = markdown.replace(/<code[^>]*>([\s\S]*?)<\/code>/gi, '`$1`');
+
     markdown = markdown.replace(/<ul[^>]*>([\s\S]*?)<\/ul>/gi, (match, content) => {
-      return content.replace(/<li[^>]*>(.*?)<\/li>/gi, '- $1\n');
+      return content.replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, '- $1\n');
     });
     markdown = markdown.replace(/<ol[^>]*>([\s\S]*?)<\/ol>/gi, (match, content) => {
       let index = 1;
-      return content.replace(/<li[^>]*>(.*?)<\/li>/gi, () => `${index++}. $1\n`);
+      return content.replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, (_, item) => `${index++}. ${item}\n`);
     });
-    
-    // 引用
-    markdown = markdown.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, 
-      (match, content) => content.split('\n').map(line => `> ${line}`).join('\n') + '\n\n');
-    
-    // 水平线
+
     markdown = markdown.replace(/<hr\s*\/?>/gi, '\n---\n\n');
-    
-    // 移除所有剩余 HTML 标签
-    markdown = markdown.replace(/<[^>]+>/g, '');
-    
-    // 解码 HTML 实体
-    markdown = markdown.replace(/&lt;/g, '<')
-                       .replace(/&gt;/g, '>')
-                       .replace(/&amp;/g, '&')
-                       .replace(/&quot;/g, '"')
-                       .replace(/&#39;/g, "'")
-                       .replace(/&nbsp;/g, ' ');
-    
-    // 清理多余空白
+    markdown = this.stripHtml(markdown);
+    markdown = this.decodeHtml(markdown);
+    markdown = markdown.replace(/[ \t]+\n/g, '\n');
     markdown = markdown.replace(/\n{3,}/g, '\n\n');
-    markdown = markdown.trim();
-    
-    return markdown;
+
+    return markdown.trim();
   }
 
-  /**
-   * 生成 Frontmatter
-   * @param {Object} metadata - 元数据
-   * @returns {string} YAML Frontmatter
-   */
   generateFrontmatter(metadata) {
     const yaml = [];
     yaml.push('---');
-    yaml.push(`title: ${metadata.title}`);
+    yaml.push(`title: ${this.toYamlString(metadata.title)}`);
     yaml.push(`date: ${metadata.date}`);
-    yaml.push(`author: ${metadata.author}`);
-    yaml.push(`categories:`);
-    metadata.categories.forEach(cat => yaml.push(`  - ${cat}`));
-    yaml.push(`tags:`);
-    metadata.tags.forEach(tag => yaml.push(`  - ${tag}`));
-    if (metadata.description) {
-      yaml.push(`description: ${metadata.description}`);
+    yaml.push(`author: ${this.toYamlString(metadata.author)}`);
+
+    if (metadata.header_image) {
+      yaml.push(`header_image: ${this.toYamlString(metadata.header_image)}`);
     }
+
+    yaml.push('categories:');
+    metadata.categories.forEach(cat => yaml.push(`  - ${this.toYamlString(cat)}`));
+    yaml.push('tags:');
+    metadata.tags.forEach(tag => yaml.push(`  - ${this.toYamlString(tag)}`));
+
+    if (metadata.description) {
+      yaml.push(`description: ${this.toYamlString(metadata.description)}`);
+    }
+
     yaml.push('---');
-    
     return yaml.join('\n');
   }
 
-  /**
-   * 生成文章描述（前200字符）
-   * @param {string} markdown - Markdown 内容
-   * @returns {string} 描述
-   */
+  toYamlString(value) {
+    return JSON.stringify(String(value || ''));
+  }
+
   generateDescription(markdown) {
-    // 移除 Markdown 语法
     const plainText = markdown
-      .replace(/#+ /g, '')
+      .replace(/^#+\s+/gm, '')
+      .replace(/^>\s+/gm, '')
       .replace(/\*\*/g, '')
       .replace(/\*/g, '')
       .replace(/`/g, '')
       .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
       .replace(/!\[([^\]]*)\]\([^)]+\)/g, '')
-      .replace(/\n/g, ' ')
+      .replace(/\s+/g, ' ')
       .trim();
-    
-    if (plainText.length <= 200) {
+
+    if (plainText.length <= 180) {
       return plainText;
     }
-    return plainText.substring(0, 200).trim() + '...';
+
+    return plainText.substring(0, 180).trim() + '...';
+  }
+
+  cleanTitle(value) {
+    return this.normalizeText(value)
+      .replace(/^#+\s*/, '')
+      .trim();
+  }
+
+  normalizeText(value) {
+    return this.decodeHtml(String(value || ''))
+      .replace(/\u00a0/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  stripHtml(value) {
+    return String(value || '').replace(/<[^>]+>/g, '');
+  }
+
+  decodeHtml(value) {
+    return String(value || '')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&amp;/g, '&')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&nbsp;/g, ' ');
   }
 }
 

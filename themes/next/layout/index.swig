@@ -6,15 +6,15 @@
 
 {% block content %}
 {# Hero Section - Full screen immersive landing page #}
-<div class="hero-section" style="background-image: url('{{ theme.index_hero_image or '/images/background.png' }}');">
+<div class="hero-section">
   <div class="hero-mask"></div>
   <div class="hero-terminal" aria-hidden="true">
-    <span>DEPT. STORE ARCHIVE</span>
+    <span>Z.A.T.O ARCHIVE</span>
     <span>NO. 30-000</span>
   </div>
   <div class="hero-catalogue-labels" aria-hidden="true">
     <span class="hero-label hero-label-lost">LOST PROPERTY OFFICE</span>
-    <span class="hero-label hero-label-shelf">SHELF 07 / RETURNED DREAMS</span>
+    <span class="hero-label hero-label-record">RECORD 07 / RETURNED DREAMS</span>
     <span class="hero-label hero-label-aisle">AISLE OF QUIET WEATHER</span>
     <span class="hero-label hero-label-water">WATER RATION / BISCUIT TIN</span>
     <span class="hero-label hero-label-defect">DEFECTIVE MEMORIES</span>
@@ -69,9 +69,10 @@
           <a href="{{ url_for(post.path) }}" itemprop="url">{{ post.title or __('post.untitled') }}</a>
         </h2>
         
-        {%- if post.excerpt %}
+        {%- set card_description = post.description or post.excerpt %}
+        {%- if card_description %}
         <div class="post-card-excerpt" itemprop="description">
-          {{ post.excerpt | replace(r/<[^>]+>/g, '') | truncate(150, '...') }}
+          {{ card_description | replace(r/<[^>]+>/g, '') | truncate(280, '...') }}
         </div>
         {%- endif %}
         

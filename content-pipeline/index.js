@@ -103,6 +103,11 @@ class ContentPipeline {
   async processDocument(filePath) {
     const ext = path.extname(filePath).toLowerCase();
     const filename = path.basename(filePath);
+
+    if (!this.isPublishableFilename(filename)) {
+      console.log(`\n⏭️  跳过非发布文档: ${filename}`);
+      return;
+    }
     
     console.log(`\n📄 开始处理: ${filename}`);
     console.log('─'.repeat(50));
@@ -158,13 +163,15 @@ class ContentPipeline {
   async processWordDocument(filePath) {
     const buffer = await fs.readFile(filePath);
     const filename = path.basename(filePath);
+    const filenameMeta = this.extractFilenameMetadata(filename);
     
     // 生成文章标识（基于文件名）
     const articleId = this.generateArticleId(filename);
     
     return await this.wordConverter.convert(buffer, filename, {
       articleId,
-      cacheManager: this.imageCache
+      cacheManager: this.imageCache,
+      sourceDate: filenameMeta?.date
     });
   }
 
@@ -206,12 +213,54 @@ class ContentPipeline {
   generateOutputFilename(originalFilename) {
     const ext = path.extname(originalFilename);
     const basename = path.basename(originalFilename, ext);
+    const filenameMeta = this.extractFilenameMetadata(originalFilename);
+
+    if (filenameMeta) {
+      return `${filenameMeta.date}-${filenameMeta.slug}.md`;
+    }
     
     // 添加日期前缀 (YYYY-MM-DD-title.md)
     const date = new Date();
     const dateStr = date.toISOString().split('T')[0];
     
     return `${dateStr}-${basename}.md`;
+  }
+
+  /**
+   * 仅发布形如 YYYYMMDD_标题.docx / .md 的文档。
+   * @param {string} filename - 文件名
+   * @returns {boolean}
+   */
+  isPublishableFilename(filename) {
+    return /^\d{8}_.+\.(docx|md)$/i.test(filename);
+  }
+
+  /**
+   * 从 YYYYMMDD_标题.ext 中提取发布日期和标题。
+   * @param {string} filename - 文件名
+   * @returns {{ date: string, title: string, slug: string } | null}
+   */
+  extractFilenameMetadata(filename) {
+    const ext = path.extname(filename);
+    const basename = path.basename(filename, ext);
+    const match = basename.match(/^(\d{4})(\d{2})(\d{2})_(.+)$/);
+
+    if (!match) {
+      return null;
+    }
+
+    const [, year, month, day, rawTitle] = match;
+    const title = rawTitle.trim();
+    const slug = title
+      .replace(/[\\/:*?"<>|]/g, '')
+      .replace(/\s+/g, '-')
+      .trim();
+
+    return {
+      date: `${year}-${month}-${day}`,
+      title,
+      slug
+    };
   }
 
   /**
@@ -251,7 +300,7 @@ class ContentPipeline {
       const files = await fs.readdir(this.options.watchPath);
       const supportedFiles = files.filter(file => {
         const ext = path.extname(file).toLowerCase();
-        return ['.docx', '.md'].includes(ext);
+        return ['.docx', '.md'].includes(ext) && this.isPublishableFilename(file);
       });
       
       if (supportedFiles.length === 0) {
