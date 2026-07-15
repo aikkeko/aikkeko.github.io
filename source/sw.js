@@ -9,7 +9,7 @@
  * 针对 30 万字小说级内容的离线阅读优化
  */
 
-const CACHE_VERSION = 'blog-v10';
+const CACHE_VERSION = 'blog-v18';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGES_CACHE = `${CACHE_VERSION}-pages`;
 const IMAGES_CACHE = `${CACHE_VERSION}-images`;
