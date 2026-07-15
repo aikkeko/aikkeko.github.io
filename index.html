@@ -105,6 +105,14 @@ if ('serviceWorker' in navigator) {
 
 <body itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
+    <div class="zato-background-quotes" aria-hidden="true">
+      <span class="zato-quote zato-quote-left">ALL STORIES ARE LOST PROPERTY</span>
+      <span class="zato-quote zato-quote-right">THE LAST DEPARTMENT STORE REMAINS OPEN</span>
+      <span class="zato-quote zato-quote-top">PLEASE RETURN BORROWED DREAMS</span>
+      <span class="zato-quote zato-quote-mid">MEMORY IS A SHELF WITHOUT A MAP</span>
+      <span class="zato-quote zato-quote-bottom">NO REFUNDS AFTER THE END OF THE WORLD</span>
+      <span class="zato-quote zato-quote-code">WATER &amp; BISCUIT / AISLE 30</span>
+    </div>
     <div class="headband"></div>
 
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -218,18 +226,28 @@ if ('serviceWorker' in navigator) {
     <span>DEPT. STORE ARCHIVE</span>
     <span>NO. 30-000</span>
   </div>
+  <div class="hero-catalogue-labels" aria-hidden="true">
+    <span class="hero-label hero-label-lost">LOST PROPERTY OFFICE</span>
+    <span class="hero-label hero-label-shelf">SHELF 07 / RETURNED DREAMS</span>
+    <span class="hero-label hero-label-aisle">AISLE OF QUIET WEATHER</span>
+    <span class="hero-label hero-label-water">WATER RATION / BISCUIT TIN</span>
+    <span class="hero-label hero-label-defect">DEFECTIVE MEMORIES</span>
+    <span class="hero-label hero-label-after">AFTER CLOSING HOURS</span>
+    <span class="hero-label hero-label-map">NO MAP FOR THIS AISLE</span>
+    <span class="hero-label hero-label-remember">ITEMS MAY REMEMBER YOU</span>
+    <span class="hero-label hero-label-fragile">FRAGILE / KEEP DRY</span>
+    <span class="hero-label hero-label-static">OPEN UNTIL STATIC ENDS</span>
+  </div>
   <div class="hero-content">
     <div class="hero-text">
       <div class="hero-kicker">Literary Archive / Z.A.T.O</div>
       <h1 class="site-title-main">世界尽头的百货公司</h1>
-      <p class="site-subtitle-main" id="hero-typed" data-text="theme of the WATER & BISCUIT"></p>
-      <div class="hero-rule" aria-hidden="true"></div>
+      <p class="site-subtitle-main hero-subtitle-reveal">theme of the WATER & BISCUIT</p>
     </div>
     <a href="#posts-section" class="scroll-down" aria-label="向下滚动">
       <div class="scroll-down-icon">
         <i class="fa fa-chevron-down"></i>
       </div>
-      <div class="scroll-down-line"></div>
     </a>
   </div>
 </div>
@@ -436,30 +454,6 @@ if ('serviceWorker' in navigator) {
   
 
 </div>
-
-<script>
-// Simple typing effect for hero subtitle
-(function() {
-  var typedElement = document.getElementById('hero-typed');
-  if (!typedElement) return;
-  
-  var text = typedElement.getAttribute('data-text');
-  if (!text) return;
-  
-  var index = 0;
-  typedElement.textContent = '';
-  
-  function typeWriter() {
-    if (index < text.length) {
-      typedElement.textContent += text.charAt(index);
-      index++;
-      setTimeout(typeWriter, 100);
-    }
-  }
-  
-  setTimeout(typeWriter, 500);
-})();
-</script>
 
 
           </div>
