@@ -12,20 +12,30 @@
     <span>DEPT. STORE ARCHIVE</span>
     <span>NO. 30-000</span>
   </div>
+  <div class="hero-catalogue-labels" aria-hidden="true">
+    <span class="hero-label hero-label-lost">LOST PROPERTY OFFICE</span>
+    <span class="hero-label hero-label-shelf">SHELF 07 / RETURNED DREAMS</span>
+    <span class="hero-label hero-label-aisle">AISLE OF QUIET WEATHER</span>
+    <span class="hero-label hero-label-water">WATER RATION / BISCUIT TIN</span>
+    <span class="hero-label hero-label-defect">DEFECTIVE MEMORIES</span>
+    <span class="hero-label hero-label-after">AFTER CLOSING HOURS</span>
+    <span class="hero-label hero-label-map">NO MAP FOR THIS AISLE</span>
+    <span class="hero-label hero-label-remember">ITEMS MAY REMEMBER YOU</span>
+    <span class="hero-label hero-label-fragile">FRAGILE / KEEP DRY</span>
+    <span class="hero-label hero-label-static">OPEN UNTIL STATIC ENDS</span>
+  </div>
   <div class="hero-content">
     <div class="hero-text">
       <div class="hero-kicker">Literary Archive / Z.A.T.O</div>
       <h1 class="site-title-main">{{ title }}</h1>
       {%- if subtitle %}
-      <p class="site-subtitle-main" id="hero-typed" data-text="{{ subtitle }}"></p>
+      <p class="site-subtitle-main hero-subtitle-reveal">{{ subtitle }}</p>
       {%- endif %}
-      <div class="hero-rule" aria-hidden="true"></div>
     </div>
     <a href="#posts-section" class="scroll-down" aria-label="向下滚动">
       <div class="scroll-down-icon">
         <i class="fa fa-chevron-down"></i>
       </div>
-      <div class="scroll-down-line"></div>
     </a>
   </div>
 </div>
@@ -108,30 +118,6 @@
 
   {% include '_partials/pagination.swig' %}
 </div>
-
-<script>
-// Simple typing effect for hero subtitle
-(function() {
-  var typedElement = document.getElementById('hero-typed');
-  if (!typedElement) return;
-  
-  var text = typedElement.getAttribute('data-text');
-  if (!text) return;
-  
-  var index = 0;
-  typedElement.textContent = '';
-  
-  function typeWriter() {
-    if (index < text.length) {
-      typedElement.textContent += text.charAt(index);
-      index++;
-      setTimeout(typeWriter, 100);
-    }
-  }
-  
-  setTimeout(typeWriter, 500);
-})();
-</script>
 
 {% endblock %}
 
