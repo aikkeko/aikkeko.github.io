@@ -146,7 +146,7 @@
 
 ### 🎨 主题风格升级：Z.A.T.O 废土美学
 
-**设计理念**：基于 Z.A.T.O_02_ca04.png 废墟美学，打造后末日百货公司氛围
+**设计理念**：基于 Z.A.T.O_02_ca04.png 废墟美学，打造后末日档案馆氛围
 
 **核心特征**：
 - **背景**：Z.A.T.O 废墟场景，暗调处理
@@ -216,7 +216,7 @@
 ### 🐛 修复的样式问题
 
 #### 1. 标题换行问题
-**问题**："世界的尽头百货公司" 和 "theme of the WATER & BISCUIT" 挤在一行或换行不当
+**问题**："世界尽头的档案馆" 和 "theme of the WATER & BISCUIT" 挤在一行或换行不当
 
 **解决**：
 ```stylus
@@ -298,7 +298,7 @@ git push origin main
 
 ### 📊 当前版本状态
 
-- **版本号**：2026.07.15-14
+- **版本号**：2026.07.16-01
 - **主题**：NexT Gemini + Z.A.T.O 废土风格
 - **布局**：双栏（左侧边栏 + 右侧内容）
 - **背景**：Z.A.T.O_02_ca04.jpg (361KB)
@@ -312,7 +312,7 @@ git push origin main
 2. **版本号**：每次修改后必须更新 `source/_data/styles.styl` 三处版本号
 3. **敏感信息**：`.env` 文件永不提交，使用 `.env.example` 作为模板
 4. **子模块**：修改 `themes/next` 后需要单独提交子模块，再提交主仓库引用
-5. **Service Worker 缓存**：重大更新后需递增 `sw.js` 中的 `CACHE_VERSION`（当前为 `blog-v18`）
+5. **Service Worker 缓存**：重大更新后需递增 `sw.js` 中的 `CACHE_VERSION`（当前为 `blog-v38`）
 6. **Pipeline 路径**：`skip_render` 已修正为 `content-pipeline/**`（非 `scripts/`）
 7. **minify**：当前设为 `false`，待后续优化开启
 8. **Bookmark 冲突**：`long-text-loader.js` 已加检测，仅在主题 bookmark 未启用时激活增强书签

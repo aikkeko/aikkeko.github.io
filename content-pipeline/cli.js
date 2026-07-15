@@ -47,7 +47,7 @@ if (isHelp) {
 
 const pipeline = new ContentPipeline({
   watchPath: './example',
-  outputPath: './content',
+  outputPath: './source/_posts',
   author: 'AikeKo'
 });
 

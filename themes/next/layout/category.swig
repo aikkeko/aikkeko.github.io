@@ -2,7 +2,7 @@
 {% import '_macro/post-collapse.swig' as post_template with context %}
 {% import '_macro/sidebar.swig' as sidebar_template with context %}
 
-{% block title %}{{ __('title.category') }}: {{ page.category }} | {{ title }}{% endblock %}
+{% block title %}Category: {{ page.category }} | {{ title }}{% endblock %}
 
 {% block class %}category{% endblock %}
 
@@ -12,11 +12,21 @@
   {### CATEGORY BLOCK ###}
   {######################}
   <div class="post-block">
+    <section class="category-detail-hero page-identity-hero" aria-label="Categorized posts">
+      <div class="page-hero-kicker">Category Record / Archive Index</div>
+      <h1 class="page-hero-title">{{ page.category }}</h1>
+      <p class="page-hero-desc">Records filed under one broad route.</p>
+      <div class="page-hero-stats">
+        <span><strong>{{ page.posts.length }}</strong> entries</span>
+        <span><strong>category</strong> record</span>
+      </div>
+    </section>
+
     <div class="posts-collapse">
       <div class="collection-title">
         <h2 class="collection-header">
           {{- page.category }}
-          <small>{{ __('title.category') }}</small>
+          <small>category</small>
         </h2>
       </div>
 

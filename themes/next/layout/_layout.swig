@@ -9,13 +9,13 @@
   {{ partial('_scripts/noscript.swig', {}, {cache: theme.cache.enable}) }}
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
+<body class="{% if is_post() %}post-detail{% endif %}" itemscope itemtype="http://schema.org/WebPage">
   <div class="container{%- if theme.motion.enable %} use-motion{%- endif %}">
     <div class="zato-background-quotes" aria-hidden="true">
       <span class="zato-quote zato-quote-left">ALL STORIES ARE LOST PROPERTY</span>
-      <span class="zato-quote zato-quote-right">THE LAST DEPARTMENT STORE REMAINS OPEN</span>
+      <span class="zato-quote zato-quote-right">THE LAST ARCHIVE REMAINS OPEN</span>
       <span class="zato-quote zato-quote-top">PLEASE RETURN BORROWED DREAMS</span>
-      <span class="zato-quote zato-quote-mid">MEMORY IS A SHELF WITHOUT A MAP</span>
+      <span class="zato-quote zato-quote-mid">MEMORY IS AN INDEX WITHOUT A MAP</span>
       <span class="zato-quote zato-quote-bottom">NO REFUNDS AFTER THE END OF THE WORLD</span>
       <span class="zato-quote zato-quote-code">WATER &amp; BISCUIT / AISLE 30</span>
     </div>

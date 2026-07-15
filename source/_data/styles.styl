@@ -2,13 +2,13 @@
 // NexT 主题美化配置 - Z.A.T.O 后末日风格
 // 基于 Z.A.T.O_02_ca04.png 废墟美学设计
 // 
-// Version: 2026.07.15-14
-// Last Updated: 2026-07-15
+// Version: 2026.07.16-01
+// Last Updated: 2026-07-16
 // ============================================
 
 // 版本信息（用于调试）
 :root {
-  --theme-version: "2026.07.15-14";
+  --theme-version: "2026.07.16-01";
   --theme-name: "Z.A.T.O Apocalypse";
   // ===== 全面覆盖 NexT 默认白色系 CSS 变量 =====
   // 背景色
@@ -48,16 +48,16 @@ body {
   
   // 版本号水印（调试用，显示在页面左上角）
   &::before {
-    content: "v2026.07.15-14";
+    content: "v2026.07.16-01";
     position: fixed;
-    top: 10px;
-    left: 10px;
+    top: 8px;
+    left: 8px;
     z-index: 99999 !important;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     color: #b4a078;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.58);
+    padding: 3px 7px;
     border-radius: 4px;
     font-family: monospace;
     pointer-events: none;
@@ -2199,7 +2199,7 @@ body {
     }
 
     &::before {
-      content: 'inventory of lost stories';
+      content: 'index of lost stories';
       left: unquote('max(36px, 5vw)');
     }
 
@@ -2299,7 +2299,7 @@ body {
   isolation: isolate;
 
   &::before {
-    content: 'ARTICLE RECORD';
+    content: 'ARCHIVE RECORD';
     position: absolute;
     top: 22px;
     left: 28px;
@@ -2327,15 +2327,58 @@ body {
 .post-banner-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 10px;
+  align-items: center;
+  width: fit-content;
+  max-width: min(760px, 100%);
+  gap: 0;
+  margin-top: 18px;
+  padding: 7px;
+  border: 1px solid rgba(212, 196, 168, 0.18);
+  background:
+    linear-gradient(90deg, rgba(11, 13, 18, 0.62), rgba(24, 27, 34, 0.36)),
+    repeating-linear-gradient(90deg, transparent 0, transparent 11px, rgba(255, 255, 255, 0.025) 11px, rgba(255, 255, 255, 0.025) 12px);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.26),
+    0 0 0 1px rgba(255, 255, 255, 0.035) inset;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
   span {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 30px;
     margin-right: 0;
-    padding: 4px 8px;
-    border: 1px solid rgba(212, 196, 168, 0.16);
-    background: rgba(18, 20, 26, 0.28);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    padding: 6px 11px;
+    border: 0;
+    border-right: 1px solid rgba(212, 196, 168, 0.13);
+    background: transparent;
+    color: rgba(239, 235, 226, 0.86);
+    font-family:
+      "Courier New",
+      Consolas,
+      "PingFang SC",
+      "Microsoft YaHei",
+      monospace;
+    font-size: 0.86em;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    i {
+      display: inline-grid;
+      place-items: center;
+      width: 18px;
+      height: 18px;
+      color: rgba(106, 160, 154, 0.92);
+      font-size: 0.9em;
+      text-shadow: 0 0 12px rgba(106, 160, 154, 0.18);
+    }
   }
 }
 
@@ -2445,6 +2488,26 @@ body {
 
   .post-banner::after {
     inset: 9px;
+  }
+
+  .post-banner-meta {
+    width: 100%;
+    max-width: 100%;
+    gap: 6px;
+    padding: 8px;
+    background: rgba(11, 13, 18, 0.58);
+
+    span {
+      flex: 1 1 calc(50% - 6px);
+      justify-content: flex-start;
+      border: 1px solid rgba(212, 196, 168, 0.12);
+      background: rgba(18, 20, 26, 0.22);
+      font-size: 0.78em;
+
+      &:last-child {
+        border-right: 1px solid rgba(212, 196, 168, 0.12);
+      }
+    }
   }
 
   .posts-expand.post .post-body {
@@ -2893,7 +2956,7 @@ body {
 }
 
 .tag-detail-hero::before {
-  content: 'Z.A.T.O / FILTERED SHELF';
+  content: 'Z.A.T.O / FILTERED RECORD';
 }
 
 .page-hero-kicker {
@@ -3292,7 +3355,7 @@ body {
 }
 
 // ============================================
-// 30. Z.A.T.O background maxims - faded store signage
+// 30. Z.A.T.O background maxims - faded archive signage
 // ============================================
 .zato-background-quotes {
   position: fixed;
@@ -3730,7 +3793,7 @@ body {
 }
 
 // ============================================
-// 33. Homepage catalogue labels - faded shelf marks
+// 33. Homepage catalogue labels - faded archive marks
 // ============================================
 .index {
   .hero-section {
@@ -3808,7 +3871,7 @@ body {
     opacity: 0.36;
   }
 
-  .hero-label-shelf {
+  .hero-label-record {
     left: 39.5%;
     top: 14.2%;
     color: rgba(232, 228, 220, 0.24);
@@ -3893,7 +3956,7 @@ body {
       letter-spacing: 0.13em;
     }
 
-    .hero-label-shelf {
+    .hero-label-record {
       display: none;
     }
 
@@ -3901,5 +3964,1417 @@ body {
     .hero-label-remember {
       opacity: 0.28;
     }
+  }
+}
+
+// ============================================
+// 34. Homepage hero de-layering - use one background only
+// ============================================
+.index {
+  .hero-section {
+    background: transparent !important;
+    background-image: none !important;
+    background-color: transparent !important;
+    background-attachment: scroll !important;
+    box-shadow: none !important;
+  }
+
+  .hero-mask {
+    background:
+      radial-gradient(ellipse at 58% 42%, rgba(12, 14, 18, 0) 0%, rgba(12, 14, 18, 0.08) 46%, rgba(12, 14, 18, 0.34) 100%),
+      linear-gradient(180deg, rgba(10, 12, 16, 0.02) 0%, rgba(10, 12, 16, 0.16) 60%, rgba(10, 12, 16, 0.52) 100%) !important;
+  }
+
+  .hero-section::before {
+    opacity: 0.28;
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px) !important;
+    background-size: 96px 96px !important;
+  }
+
+  .hero-section::after {
+    background:
+      linear-gradient(90deg, rgba(212, 196, 168, 0.42) 0 48px, transparent 48px calc(100% - 48px), rgba(212, 196, 168, 0.42) calc(100% - 48px)) top / 100% 1px no-repeat,
+      linear-gradient(90deg, rgba(212, 196, 168, 0.42) 0 48px, transparent 48px calc(100% - 48px), rgba(212, 196, 168, 0.42) calc(100% - 48px)) bottom / 100% 1px no-repeat,
+      linear-gradient(180deg, rgba(212, 196, 168, 0.42) 0 48px, transparent 48px calc(100% - 48px), rgba(212, 196, 168, 0.42) calc(100% - 48px)) left / 1px 100% no-repeat,
+      linear-gradient(180deg, rgba(212, 196, 168, 0.42) 0 48px, transparent 48px calc(100% - 48px), rgba(212, 196, 168, 0.42) calc(100% - 48px)) right / 1px 100% no-repeat !important;
+    border-color: rgba(212, 196, 168, 0.16) !important;
+    box-shadow: none !important;
+  }
+}
+
+// 36. Homepage hero final de-mask - one pane, not two
+.index {
+  .hero-mask {
+    left: unquote('max(24px, 4vw)');
+    right: unquote('max(24px, 4vw)');
+    top: unquote('max(86px, 11vh)');
+    bottom: 64px;
+    background:
+      radial-gradient(ellipse at 58% 42%, rgba(12, 14, 18, 0) 0%, rgba(12, 14, 18, 0.06) 46%, rgba(12, 14, 18, 0.28) 100%),
+      linear-gradient(180deg, rgba(10, 12, 16, 0.02) 0%, rgba(10, 12, 16, 0.14) 60%, rgba(10, 12, 16, 0.46) 100%) !important;
+  }
+
+  .hero-section::before {
+    inset: unquote('max(86px, 11vh) max(24px, 4vw) 64px max(24px, 4vw)');
+  }
+
+  .hero-content {
+    height: 100%;
+  }
+
+  .hero-text::before {
+    background:
+      radial-gradient(ellipse at center, rgba(8, 10, 14, 0.22), rgba(8, 10, 14, 0) 66%) !important;
+    filter: blur(8px);
+  }
+}
+
+// ============================================
+// 37. Section pages typography unification
+// ============================================
+.page-identity-hero,
+.archive-hero {
+  font-family:
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+.page-hero-title,
+.archive-hero-title {
+  font-family:
+    "Noto Serif SC",
+    "Source Han Serif SC",
+    "Songti SC",
+    "SimSun",
+    serif !important;
+  font-size: clamp(2.3rem, 3.1vw, 2.47rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.14;
+  letter-spacing: 0.01em !important;
+}
+
+.page-hero-kicker,
+.archive-hero-kicker,
+.page-identity-hero::before,
+.archive-hero::before {
+  font-family:
+    "Courier New",
+    Consolas,
+    "PingFang SC",
+    "Microsoft YaHei",
+    monospace;
+  font-size: 0.756rem !important;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+}
+
+.page-hero-desc,
+.archive-hero-desc {
+  font-family:
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-size: 1.05rem !important;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.page-hero-stats span,
+.archive-hero-stats span {
+  font-family:
+    "Courier New",
+    Consolas,
+    "PingFang SC",
+    "Microsoft YaHei",
+    monospace;
+  font-size: 0.84rem !important;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.page-hero-stats strong,
+.archive-hero-stats strong {
+  font-family:
+    "Courier New",
+    Consolas,
+    monospace;
+}
+
+@media (max-width: 768px) {
+  .page-hero-title,
+  .archive-hero-title {
+    font-size: 1.86rem !important;
+  }
+}
+
+// ============================================
+// 35. Whole-site polish pass - readable first, then atmosphere
+// ============================================
+@keyframes zatoPageReveal {
+  from {
+    opacity: 0.001;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+// NexT motion can leave normal pages at opacity: 0 when the animation
+// pipeline is interrupted. Content must never disappear, so provide a
+// defensive visible state and let our lighter reveal handle the polish.
+.container.use-motion {
+  .post-block,
+  .post-header,
+  .post-body,
+  .collection-header,
+  .pagination,
+  .comments {
+    opacity: 1 !important;
+  }
+}
+
+.page .post-block,
+.archive .post-block,
+.tag .post-block,
+.category .post-block,
+.post .post-block {
+  animation: zatoPageReveal 0.46s ease both;
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page .post-block,
+  .archive .post-block,
+  .tag .post-block,
+  .category .post-block,
+  .post .post-block {
+    animation: none;
+  }
+}
+
+.category-index-hero::before {
+  content: 'Z.A.T.O / CATEGORY DIRECTORY';
+}
+
+.category-detail-hero::before {
+  content: 'Z.A.T.O / CATEGORY RECORD';
+}
+
+.resource-hero::before {
+  content: 'Z.A.T.O / RESOURCE INDEX';
+}
+
+.category-index-panel,
+.resource-panel {
+  position: relative;
+  padding: 26px 24px 30px;
+  border: 1px solid rgba(212, 196, 168, 0.16);
+  background:
+    linear-gradient(145deg, rgba(28, 31, 38, 0.54), rgba(15, 17, 22, 0.3)),
+    radial-gradient(circle at 12% 0%, rgba(106, 160, 154, 0.08), transparent 32%);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.18);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(212, 196, 168, 0.065);
+    pointer-events: none;
+  }
+}
+
+.category-index-panel {
+  .category-all-title {
+    margin-bottom: 20px;
+    color: rgba(232, 228, 220, 0.76);
+    font-size: 0.88em;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .category-all {
+    ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    li {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid rgba(212, 196, 168, 0.16);
+      background:
+        linear-gradient(135deg, rgba(212, 196, 168, 0.09), rgba(18, 20, 26, 0.28));
+      color: rgba(232, 228, 220, 0.82) !important;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease,
+        color 0.22s ease;
+
+      &::before {
+        content: 'INDEX';
+        margin-right: 9px;
+        color: rgba(106, 160, 154, 0.82);
+        font-size: 0.68em;
+        letter-spacing: 0.16em;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        border-color: rgba(212, 196, 168, 0.36);
+        background:
+          linear-gradient(135deg, rgba(212, 196, 168, 0.18), rgba(106, 160, 154, 0.1));
+        color: #fff8ea !important;
+      }
+    }
+  }
+}
+
+.resource-panel {
+  color: rgba(232, 228, 220, 0.76);
+  line-height: 1.82;
+
+  .resource-panel-kicker {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: rgba(106, 160, 154, 0.92);
+    font-size: 0.72em;
+    letter-spacing: 0.18em;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.category {
+  .category-detail-hero {
+    margin-bottom: 30px;
+  }
+
+  .collection-title {
+    display: none;
+  }
+
+  .posts-collapse {
+    margin-left: 0;
+    padding-left: 58px;
+
+    &::before {
+      left: 24px;
+      background:
+        linear-gradient(180deg, transparent, rgba(212, 196, 168, 0.58) 12%, rgba(106, 160, 154, 0.3) 58%, transparent);
+    }
+  }
+
+  .posts-collapse .post-header {
+    display: grid;
+    grid-template-columns: 74px minmax(0, 1fr);
+    align-items: center;
+    gap: 18px;
+    margin: 13px 0;
+    padding: 13px 16px;
+    border: 1px solid rgba(212, 196, 168, 0.1);
+    border-bottom: 1px solid rgba(212, 196, 168, 0.1);
+    background:
+      linear-gradient(135deg, rgba(49, 51, 57, 0.5), rgba(24, 27, 34, 0.36));
+    transition:
+      transform 0.24s ease,
+      border-color 0.24s ease,
+      background 0.24s ease;
+
+    &::before {
+      left: -38px;
+      width: 10px;
+      height: 10px;
+      margin-left: 0;
+      border-color: rgba(212, 196, 168, 0.54);
+      background: #1e2128;
+    }
+
+    &:hover {
+      transform: translateX(7px);
+      border-color: rgba(212, 196, 168, 0.28);
+      background:
+        linear-gradient(135deg, rgba(65, 67, 73, 0.62), rgba(26, 29, 36, 0.46));
+    }
+  }
+
+  .posts-collapse .post-meta {
+    display: block;
+    margin: 0;
+
+    time {
+      display: inline-flex;
+      justify-content: center;
+      min-width: 58px;
+      padding: 5px 8px;
+      border: 1px solid rgba(212, 196, 168, 0.2);
+      background: rgba(16, 18, 22, 0.34);
+      color: #d4c4a8;
+      letter-spacing: 0.06em;
+    }
+  }
+
+  .posts-collapse .post-title {
+    font-size: 1.04em;
+
+    a,
+    span.exturl {
+      color: #e8e4dc;
+      background-image: linear-gradient(90deg, rgba(212, 196, 168, 0.55), rgba(106, 160, 154, 0.38));
+      background-position: 0 100%;
+      background-repeat: no-repeat;
+      background-size: 0 1px;
+      transition:
+        color 0.2s ease,
+        background-size 0.24s ease;
+
+      &:hover {
+        color: #fff8ea;
+        background-size: 100% 1px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .category-index-panel,
+  .resource-panel {
+    padding: 22px 18px 24px;
+  }
+
+  .category-index-panel .category-all ul {
+    grid-template-columns: 1fr;
+  }
+
+  .category {
+    .posts-collapse {
+      padding-left: 38px;
+    }
+
+    .collection-title::before,
+    .posts-collapse .post-header::before {
+      left: -28px;
+    }
+
+    .posts-collapse .post-header {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      padding: 14px 16px;
+    }
+  }
+}
+
+// ============================================
+// 39. Article reading chrome - archive navigation & excerpts
+// ============================================
+
+body.post-detail {
+  .header-inner,
+  .sidebar-inner {
+    border-radius: 4px !important;
+    border: 1px solid rgba(212, 196, 168, 0.13) !important;
+    background:
+      linear-gradient(180deg, rgba(23, 26, 33, 0.72), rgba(12, 14, 19, 0.56)) !important;
+    box-shadow:
+      0 18px 46px rgba(0, 0, 0, 0.32),
+      0 0 0 1px rgba(255, 255, 255, 0.025) inset !important;
+    backdrop-filter: blur(11px);
+    -webkit-backdrop-filter: blur(11px);
+  }
+
+  .header-inner {
+    overflow: hidden;
+    padding-bottom: 14px;
+
+    &::before {
+      content: 'ARCHIVE INDEX';
+      display: block;
+      padding: 14px 18px 0;
+      color: rgba(106, 160, 154, 0.8);
+      font-family:
+        "Courier New",
+        Consolas,
+        "PingFang SC",
+        "Microsoft YaHei",
+        monospace;
+      font-size: 0.64em;
+      letter-spacing: 0.2em;
+    }
+  }
+
+  .site-brand-container {
+    padding: 6px 20px 16px !important;
+    border-bottom: 1px solid rgba(212, 196, 168, 0.12);
+    background:
+      linear-gradient(135deg, rgba(212, 196, 168, 0.055), rgba(106, 160, 154, 0.035)) !important;
+  }
+
+  .site-meta {
+    margin-top: 8px;
+  }
+
+  .site-title {
+    color: #fff8ea !important;
+    font-size: 1.28em !important;
+    letter-spacing: 0.015em !important;
+    text-shadow:
+      0 2px 12px rgba(0, 0, 0, 0.78),
+      0 0 16px rgba(212, 196, 168, 0.18) !important;
+  }
+
+  .site-subtitle {
+    margin-top: 11px !important;
+    color: rgba(232, 228, 220, 0.76) !important;
+    font-size: 0.82em !important;
+    letter-spacing: 0.035em !important;
+  }
+
+  .site-nav {
+    margin-top: 0;
+    background: transparent !important;
+  }
+
+  .menu {
+    padding: 10px 10px 0;
+    background: transparent !important;
+
+    .menu-item {
+      margin: 0 0 5px;
+
+      a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-height: 38px;
+        padding: 9px 14px !important;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        color: rgba(232, 228, 220, 0.72) !important;
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.008));
+        letter-spacing: 0.03em;
+        transition:
+          color 0.22s ease,
+          border-color 0.22s ease,
+          background 0.22s ease,
+          transform 0.22s ease;
+
+        i {
+          width: 18px;
+          margin-right: 8px;
+          color: rgba(212, 196, 168, 0.68);
+          text-align: center;
+        }
+
+        &:hover {
+          transform: translateX(3px);
+          border-color: rgba(212, 196, 168, 0.2);
+          background:
+            linear-gradient(90deg, rgba(212, 196, 168, 0.12), rgba(106, 160, 154, 0.055));
+          color: #fff8ea !important;
+        }
+      }
+
+      &.menu-item-active a {
+        border-color: rgba(212, 196, 168, 0.24);
+        background:
+          linear-gradient(90deg, rgba(212, 196, 168, 0.18), rgba(106, 160, 154, 0.06));
+        color: #fff8ea !important;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: -1px;
+          top: 8px;
+          bottom: 8px;
+          width: 2px;
+          background: linear-gradient(180deg, #d4c4a8, rgba(106, 160, 154, 0.7));
+        }
+      }
+    }
+  }
+
+  .sidebar-inner {
+    padding: 16px 14px 18px !important;
+
+    &::before {
+      content: 'READING MAP';
+      display: block;
+      margin: 0 0 14px;
+      padding: 0 0 10px;
+      border-bottom: 1px solid rgba(212, 196, 168, 0.12);
+      color: rgba(106, 160, 154, 0.78);
+      font-family:
+        "Courier New",
+        Consolas,
+        "PingFang SC",
+        "Microsoft YaHei",
+        monospace;
+      font-size: 0.62em;
+      letter-spacing: 0.2em;
+    }
+
+    &::after {
+      inset: 8px !important;
+      border-color: rgba(212, 196, 168, 0.055) !important;
+    }
+  }
+
+  .sidebar-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin: 0 0 12px !important;
+    border-bottom: 0;
+
+    li {
+      margin: 0 !important;
+      padding: 8px 6px !important;
+      border: 1px solid rgba(212, 196, 168, 0.1);
+      background: rgba(14, 16, 22, 0.28);
+      color: rgba(232, 228, 220, 0.58);
+      text-align: center;
+      font-size: 0.78em;
+      letter-spacing: 0.04em;
+    }
+
+    .sidebar-nav-active {
+      border-left-color: rgba(212, 196, 168, 0.1);
+      border-bottom-color: rgba(212, 196, 168, 0.1);
+      background:
+        linear-gradient(135deg, rgba(212, 196, 168, 0.16), rgba(106, 160, 154, 0.05));
+      color: #e8e4dc;
+    }
+  }
+
+  .post-toc {
+    margin-top: 0;
+    padding: 14px 12px !important;
+    border: 1px solid rgba(212, 196, 168, 0.1) !important;
+    border-radius: 3px;
+    background:
+      linear-gradient(180deg, rgba(14, 16, 22, 0.48), rgba(26, 29, 36, 0.28)) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025);
+  }
+
+  .post-toc .nav {
+    max-height: 56vh;
+    padding-right: 4px;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(212, 196, 168, 0.28) rgba(255, 255, 255, 0.04);
+  }
+
+  .post-toc .nav-item {
+    margin: 0 !important;
+  }
+
+  .post-toc .nav-item a {
+    display: block;
+    margin: 0 !important;
+    padding: 6px 8px 6px 12px !important;
+    border-bottom: 1px solid rgba(212, 196, 168, 0.075) !important;
+    color: rgba(232, 228, 220, 0.62) !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1.25;
+    transition:
+      color 0.2s ease,
+      background 0.2s ease,
+      padding-left 0.2s ease;
+  }
+
+  .post-toc .nav-item a:hover,
+  .post-toc .nav .active > a,
+  .post-toc .nav .active-current > a {
+    padding-left: 16px !important;
+    background: linear-gradient(90deg, rgba(212, 196, 168, 0.13), transparent);
+    color: #d4c4a8 !important;
+  }
+
+  .post-toc .nav-child {
+    padding-left: 8px !important;
+    border-left: 1px solid rgba(212, 196, 168, 0.07);
+  }
+
+  .post-toc .nav-child a {
+    color: rgba(232, 228, 220, 0.5) !important;
+    font-size: 0.92em;
+  }
+}
+
+.posts-expand.post .post-body {
+  blockquote,
+  .blockquote-center {
+    position: relative;
+    overflow: hidden;
+    max-width: unquote('min(680px, 100%)');
+    margin: 2em auto;
+    padding: 24px 30px 24px 58px !important;
+    border: 1px solid rgba(212, 196, 168, 0.16) !important;
+    border-left: 0 !important;
+    border-radius: 3px;
+    background:
+      linear-gradient(135deg, rgba(30, 33, 40, 0.82), rgba(12, 14, 19, 0.72)) !important;
+    box-shadow:
+      0 16px 38px rgba(0, 0, 0, 0.25),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+    color: rgba(232, 228, 220, 0.78) !important;
+    font-style: normal !important;
+    text-align: left;
+
+    &::before {
+      content: '“';
+      position: absolute;
+      left: 20px;
+      top: 12px;
+      width: auto;
+      height: auto;
+      background: none;
+      color: rgba(212, 196, 168, 0.58);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 3.1em;
+      line-height: 1;
+    }
+
+    &::after {
+      content: 'EXCERPT';
+      position: absolute;
+      right: 16px;
+      top: 12px;
+      color: rgba(106, 160, 154, 0.48);
+      font-family:
+        "Courier New",
+        Consolas,
+        "PingFang SC",
+        "Microsoft YaHei",
+        monospace;
+      font-size: 0.58em;
+      letter-spacing: 0.22em;
+    }
+
+    p,
+    div {
+      margin: 0 !important;
+      color: inherit !important;
+      text-align: left !important;
+    }
+
+    p + p,
+    div + div {
+      margin-top: 0.9em !important;
+    }
+
+    .fa {
+      display: none !important;
+    }
+  }
+
+  figure.highlight.plaintext {
+    position: relative;
+    overflow: hidden;
+    width: fit-content;
+    max-width: unquote('min(720px, 100%)');
+    margin: 1.9em auto;
+    padding: 22px 30px 22px 58px;
+    border: 1px solid rgba(212, 196, 168, 0.16);
+    border-radius: 3px;
+    background:
+      linear-gradient(135deg, rgba(30, 33, 40, 0.86), rgba(11, 13, 18, 0.76)) !important;
+    box-shadow:
+      0 18px 42px rgba(0, 0, 0, 0.28),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+
+    &::before {
+      content: 'QUOTE';
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      writing-mode: vertical-rl;
+      color: rgba(212, 196, 168, 0.58);
+      font-family:
+        "Courier New",
+        Consolas,
+        "PingFang SC",
+        "Microsoft YaHei",
+        monospace;
+      font-size: 0.58em;
+      letter-spacing: 0.2em;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 44px;
+      top: 18px;
+      bottom: 18px;
+      width: 1px;
+      background:
+        linear-gradient(180deg, transparent, rgba(212, 196, 168, 0.36), transparent);
+    }
+
+    table,
+    tbody,
+    tr,
+    td,
+    pre {
+      display: block;
+      width: auto !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: 0 !important;
+      background: transparent !important;
+    }
+
+    .code,
+    .code pre {
+      background: transparent !important;
+    }
+
+    .line {
+      display: block;
+      color: rgba(232, 228, 220, 0.78);
+      font-family:
+        "Noto Serif SC",
+        "Source Han Serif SC",
+        "Songti SC",
+        "SimSun",
+        serif;
+      font-size: 1.03em;
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.34);
+      white-space: pre-wrap;
+    }
+
+    .line + .line {
+      margin-top: 0.15em;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  body.post-detail {
+    .header-inner,
+    .sidebar-inner {
+      border-radius: 0 !important;
+    }
+
+    .site-brand-container {
+      padding: 10px 16px 14px !important;
+    }
+  }
+
+  .posts-expand.post .post-body {
+    blockquote,
+    .blockquote-center,
+    figure.highlight.plaintext {
+      width: auto;
+      max-width: 100%;
+      margin: 1.6em 0;
+      padding: 20px 20px 20px 48px !important;
+    }
+
+    figure.highlight.plaintext::before {
+      left: 15px;
+    }
+
+    figure.highlight.plaintext::after {
+      left: 38px;
+    }
+  }
+}
+
+// ============================================
+// 40. Unified archive rail - global left navigation shell
+// ============================================
+
+.header-inner,
+.sidebar-inner {
+  border-radius: 4px !important;
+  border: 1px solid rgba(212, 196, 168, 0.13) !important;
+  background:
+    linear-gradient(180deg, rgba(22, 25, 32, 0.74), rgba(12, 14, 19, 0.58)) !important;
+  box-shadow:
+    0 18px 46px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.025) inset !important;
+  backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(11px);
+}
+
+.header-inner {
+  overflow: hidden !important;
+  padding: 0 0 14px !important;
+
+  &::before {
+    content: 'ARCHIVE INDEX';
+    display: block;
+    padding: 14px 18px 0;
+    color: rgba(106, 160, 154, 0.82);
+    font-family:
+      "Courier New",
+      Consolas,
+      "PingFang SC",
+      "Microsoft YaHei",
+      monospace;
+    font-size: 0.64em;
+    letter-spacing: 0.2em;
+  }
+}
+
+.site-brand-container {
+  width: 100%;
+  padding: 16px 18px 18px !important;
+  border-bottom: 1px solid rgba(212, 196, 168, 0.12);
+  background:
+    linear-gradient(135deg, rgba(212, 196, 168, 0.055), rgba(106, 160, 154, 0.035)) !important;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.site-meta {
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.3 !important;
+}
+
+.site-meta .brand {
+  display: block;
+  max-width: 100%;
+  border-bottom: 0 !important;
+}
+
+.site-brand-container {
+  .logo-line-before,
+  .logo-line-after {
+    display: none !important;
+  }
+
+  .site-title {
+    max-width: 100%;
+    margin: 0 !important;
+    color: #fff8ea !important;
+    font-size: 1.18em !important;
+    font-weight: 650 !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.01em !important;
+    white-space: normal !important;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    text-shadow:
+      0 2px 12px rgba(0, 0, 0, 0.78),
+      0 0 16px rgba(212, 196, 168, 0.18) !important;
+  }
+
+  .site-subtitle {
+    max-width: 100%;
+    margin: 12px 0 0 !important;
+    color: rgba(232, 228, 220, 0.72) !important;
+    font-size: 0.76em !important;
+    line-height: 1.5 !important;
+    letter-spacing: 0.025em !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.74) !important;
+  }
+}
+
+.site-nav {
+  margin-top: 0 !important;
+  background: transparent !important;
+}
+
+.menu {
+  padding: 11px 10px 0 !important;
+  background: transparent !important;
+
+  .menu-item {
+    margin: 0 0 5px !important;
+
+    a {
+      position: relative;
+      display: flex !important;
+      align-items: center;
+      min-height: 38px;
+      padding: 9px 14px !important;
+      border: 1px solid transparent;
+      border-radius: 2px;
+      color: rgba(232, 228, 220, 0.72) !important;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.008));
+      letter-spacing: 0.03em;
+      transition:
+        color 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease,
+        transform 0.22s ease;
+
+      i {
+        width: 18px;
+        margin-right: 8px;
+        color: rgba(212, 196, 168, 0.68);
+        text-align: center;
+      }
+
+      &:hover {
+        transform: translateX(3px);
+        border-color: rgba(212, 196, 168, 0.2);
+        background:
+          linear-gradient(90deg, rgba(212, 196, 168, 0.12), rgba(106, 160, 154, 0.055));
+        color: #fff8ea !important;
+      }
+    }
+
+    &.menu-item-active a {
+      border-color: rgba(212, 196, 168, 0.24);
+      background:
+        linear-gradient(90deg, rgba(212, 196, 168, 0.18), rgba(106, 160, 154, 0.06)) !important;
+      color: #fff8ea !important;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: -1px;
+        top: 8px;
+        bottom: 8px;
+        width: 2px;
+        background: linear-gradient(180deg, #d4c4a8, rgba(106, 160, 154, 0.7));
+      }
+    }
+  }
+}
+
+.sidebar-inner {
+  padding: 16px 14px 18px !important;
+
+  &::before {
+    content: 'ARCHIVE NOTES';
+    display: block;
+    margin: 0 0 14px;
+    padding: 0 0 10px;
+    border-bottom: 1px solid rgba(212, 196, 168, 0.12);
+    color: rgba(106, 160, 154, 0.76);
+    font-family:
+      "Courier New",
+      Consolas,
+      "PingFang SC",
+      "Microsoft YaHei",
+      monospace;
+    font-size: 0.62em;
+    letter-spacing: 0.2em;
+    text-align: center;
+  }
+
+  &::after {
+    inset: 8px !important;
+    border-color: rgba(212, 196, 168, 0.055) !important;
+  }
+}
+
+body.post-detail .sidebar-inner::before {
+  content: 'READING MAP';
+}
+
+.sidebar-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin: 0 0 12px !important;
+  border-bottom: 0 !important;
+
+  li {
+    margin: 0 !important;
+    padding: 8px 6px !important;
+    border: 1px solid rgba(212, 196, 168, 0.1);
+    background: rgba(14, 16, 22, 0.28);
+    color: rgba(232, 228, 220, 0.58);
+    text-align: center;
+    font-size: 0.78em;
+    letter-spacing: 0.04em;
+  }
+
+  .sidebar-nav-active {
+    border-left-color: rgba(212, 196, 168, 0.1) !important;
+    border-bottom-color: rgba(212, 196, 168, 0.1) !important;
+    background:
+      linear-gradient(135deg, rgba(212, 196, 168, 0.16), rgba(106, 160, 154, 0.05));
+    color: #e8e4dc !important;
+  }
+}
+
+.site-overview-wrap {
+  padding-top: 2px;
+}
+
+.site-overview {
+  color: rgba(232, 228, 220, 0.68);
+}
+
+@media (max-width: 768px) {
+  .header-inner,
+  .sidebar-inner {
+    border-radius: 0 !important;
+  }
+
+  .site-brand-container {
+    padding: 12px 16px 14px !important;
+  }
+}
+
+// 41. Compact archive rail spacing - remove oversized NexT menu rhythm
+.header-inner {
+  padding-bottom: 10px !important;
+
+  &::before {
+    padding: 12px 18px 0;
+    line-height: 1.2;
+  }
+}
+
+.site-brand-container {
+  min-height: 0 !important;
+  padding: 14px 18px 15px !important;
+  line-height: 1.3 !important;
+}
+
+.site-brand-container {
+  .site-title {
+    font-size: 1.12em !important;
+    line-height: 1.24 !important;
+  }
+
+  .site-subtitle {
+    margin-top: 9px !important;
+    font-size: 0.72em !important;
+    line-height: 1.38 !important;
+  }
+}
+
+.menu {
+  margin: 10px 0 0 !important;
+  padding: 0 10px !important;
+  line-height: 1.2 !important;
+
+  .menu-item {
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 0 4px !important;
+    line-height: 1.2 !important;
+
+    a {
+      height: 40px !important;
+      min-height: 0 !important;
+      padding: 0 14px !important;
+      box-sizing: border-box;
+      font-size: 0.9em !important;
+      line-height: 1.2 !important;
+    }
+  }
+}
+
+.site-nav {
+  line-height: 1.2 !important;
+}
+
+@media (max-width: 768px) {
+  .menu .menu-item a {
+    height: 38px !important;
+  }
+}
+
+// 42. TOC respects authored heading numbers
+.post-toc .nav-number {
+  display: none !important;
+}
+
+.post-toc .nav-text {
+  white-space: inherit;
+}
+
+// 43. Pipeline article polish - cover cards, excerpts, and quotes
+.index .post-card {
+  display: grid !important;
+  grid-template-columns: minmax(320px, 42%) minmax(0, 1fr);
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.index .post-card:nth-child(even) {
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 42%);
+}
+
+.index .post-card:nth-child(even) .post-card-image {
+  grid-column: 2;
+  grid-row: 1;
+  order: initial !important;
+}
+
+.index .post-card:nth-child(even) .post-card-content {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.index .post-card-image {
+  width: 100%;
+  min-height: 270px;
+  height: 100%;
+  aspect-ratio: 16 / 10;
+  flex: none !important;
+}
+
+.index .post-card:first-child .post-card-image {
+  min-height: 420px;
+  aspect-ratio: auto;
+}
+
+.index .post-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.index .post-card-excerpt {
+  display: -webkit-box;
+  min-height: 4.8em;
+  overflow: hidden;
+  color: rgba(232, 228, 220, 0.68) !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.index .post-card:first-child .post-card-excerpt {
+  -webkit-line-clamp: 4;
+}
+
+.posts-expand.post .post-body {
+  blockquote,
+  .blockquote-center {
+    width: fit-content;
+    min-width: unquote('min(420px, 100%)');
+    max-width: unquote('min(720px, 100%)');
+    padding: 26px 34px 24px 62px !important;
+    border: 1px solid rgba(212, 196, 168, 0.18) !important;
+    border-left: 3px solid rgba(212, 196, 168, 0.72) !important;
+    background:
+      linear-gradient(135deg, rgba(24, 27, 34, 0.9), rgba(12, 14, 19, 0.82)) !important;
+    color: rgba(232, 228, 220, 0.82) !important;
+    font-style: normal !important;
+    text-align: left !important;
+
+    &::before {
+      content: '“' !important;
+      left: 20px !important;
+      top: 11px !important;
+      color: rgba(212, 196, 168, 0.6) !important;
+      font-family: Georgia, "Times New Roman", serif !important;
+      font-size: 3.2em !important;
+      line-height: 1 !important;
+    }
+
+    &::after {
+      content: 'ARCHIVE QUOTE' !important;
+      color: rgba(106, 160, 154, 0.52) !important;
+    }
+
+    p {
+      margin: 0 !important;
+      text-align: left !important;
+      line-height: 1.82 !important;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .index .post-card,
+  .index .post-card:first-child,
+  .index .post-card:nth-child(even) {
+    display: flex !important;
+    grid-template-columns: none;
+  }
+
+  .index .post-card:nth-child(even) .post-card-image,
+  .index .post-card:nth-child(even) .post-card-content {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .index .post-card-image,
+  .index .post-card:first-child .post-card-image {
+    min-height: 220px;
+    aspect-ratio: 16 / 9;
+  }
+
+  .posts-expand.post .post-body blockquote,
+  .posts-expand.post .post-body .blockquote-center {
+    width: auto;
+    min-width: 0;
+    padding: 22px 22px 20px 50px !important;
+  }
+}
+
+// 44. Homepage cover ratio guard - keep every archive card cinematic
+.index .post-card .post-card-image,
+.index .post-card:first-child .post-card-image {
+  align-self: center !important;
+  min-height: 0 !important;
+  height: 270px !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+.index .post-card:first-child .post-card-image {
+  height: 300px !important;
+}
+
+.index .post-card .post-card-image img,
+.index .post-card:first-child .post-card-image img {
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+
+@media (max-width: 768px) {
+  .index .post-card .post-card-image,
+  .index .post-card:first-child .post-card-image {
+    height: 220px !important;
+  }
+}
+
+// 45. Reading layout refinement - quieter rail, airier titles, complete excerpts
+.header-inner::before {
+  content: none !important;
+  display: none !important;
+  padding: 0 !important;
+}
+
+.header-inner .site-brand-container,
+body.post-detail .header-inner .site-brand-container,
+body.page .header-inner .site-brand-container,
+body.archive .header-inner .site-brand-container,
+body.category .header-inner .site-brand-container,
+body.tag .header-inner .site-brand-container {
+  padding-top: 42px !important;
+}
+
+.post-banner-content {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 46px clamp(30px, 5vw, 72px) 44px !important;
+}
+
+.post-banner-text {
+  width: 100% !important;
+  max-width: min(1040px, 94%) !important;
+  margin: 0 auto !important;
+}
+
+.post-banner-title {
+  max-width: min(980px, 100%) !important;
+  margin: 0 0 24px !important;
+  font-size: clamp(2rem, 3.15vw, 3.15rem) !important;
+  line-height: 1.16 !important;
+  letter-spacing: -0.045em !important;
+  text-wrap: balance;
+}
+
+.post-banner-meta {
+  margin-top: 0 !important;
+}
+
+.index .post-card-content {
+  justify-content: center !important;
+  gap: 15px !important;
+  min-width: 0;
+}
+
+.index .post-card-title {
+  margin-bottom: 0 !important;
+  font-size: clamp(1.2rem, 1.65vw, 1.55rem) !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.index .post-card:first-child .post-card-title {
+  font-size: clamp(1.45rem, 2.1vw, 1.95rem) !important;
+  line-height: 1.24 !important;
+}
+
+.index .post-card-excerpt,
+.index .post-card:first-child .post-card-excerpt {
+  display: block !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  margin: 0 !important;
+  color: rgba(232, 228, 220, 0.72) !important;
+  -webkit-line-clamp: unset !important;
+  -webkit-box-orient: initial !important;
+}
+
+.index .post-card-meta {
+  margin-top: 2px !important;
+}
+
+@media (max-width: 768px) {
+  .post-banner-content {
+    padding: 34px 24px 32px !important;
+  }
+
+  .post-banner-text {
+    max-width: 100% !important;
+  }
+
+  .post-banner-title {
+    font-size: clamp(1.65rem, 8vw, 2.25rem) !important;
+  }
+
+  .index .post-card-title,
+  .index .post-card:first-child .post-card-title {
+    font-size: 1.35rem !important;
+  }
+
+  .header-inner .site-brand-container,
+  body.post-detail .header-inner .site-brand-container,
+  body.page .header-inner .site-brand-container,
+  body.archive .header-inner .site-brand-container,
+  body.category .header-inner .site-brand-container,
+  body.tag .header-inner .site-brand-container {
+    padding-top: 36px !important;
   }
 }
