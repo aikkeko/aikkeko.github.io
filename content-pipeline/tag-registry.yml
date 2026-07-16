@@ -1,0 +1,37 @@
+# Persistent article taxonomy
+#
+# The key is the DOC/DOCX filename without its extension. For example:
+#   example/20260128_你可以回到Vorkuta，但那已经没有人了.docx
+# becomes:
+#   20260128_你可以回到Vorkuta，但那已经没有人了
+#
+# Re-importing an edited document keeps this category and these tags. When a
+# new source file is added, copy one entry and change only the key/category/tags.
+articles:
+  20170828_世界是我们最初和最后的爱:
+    category: 游戏
+    tags: [游戏, galgame]
+  20181104_你离别的日子，定能将我改变:
+    category: 游戏
+    tags: [galgame]
+  20181218_在没有神的世界中追寻:
+    category: 动画
+    tags: [动画]
+  20190129_没有惩罚，世界也没有被爱:
+    category: 游戏
+    tags: [游戏]
+  20190223_朝向最后的舞台:
+    category: 游戏
+    tags: [游戏]
+  20190327_如果还有明天……:
+    category: 游戏
+    tags: [narcissu]
+  20190804_没能“真心为你”的我们:
+    category: 动画
+    tags: [动画, eva]
+  20210514_新加坡的天空:
+    category: 游戏
+    tags: [游戏]
+  20260128_你可以回到Vorkuta，但那已经没有人了:
+    category: 游戏
+    tags: [游戏, vorkuta, z.a.t.o]
