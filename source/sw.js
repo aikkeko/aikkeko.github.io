@@ -11,7 +11,7 @@
  * - Delete old blog caches and unregister itself to avoid stale offline pages.
  */
 
-const CACHE_VERSION = 'blog-v47';
+const CACHE_VERSION = 'blog-v48';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGES_CACHE = `${CACHE_VERSION}-pages`;
 const IMAGES_CACHE = `${CACHE_VERSION}-images`;
