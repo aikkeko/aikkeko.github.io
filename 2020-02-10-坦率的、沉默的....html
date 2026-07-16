@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#1e2128">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bitbug_favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bitbug_favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#1e2128">
+
+
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="档案馆">
+<meta name="application-name" content="世界尽头的档案馆">
+<meta name="msapplication-TileColor" content="#1e2128">
+<meta name="msapplication-tap-highlight" content="no">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="preload" as="image" href="/images/Z.A.T.O_02_ca04.jpg" fetchpriority="high">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aikkeko.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+
+<script src="/js/long-text-loader.js" async></script>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(location.hostname) !== -1;
+
+    if (isLocalPreview) {
+      navigator.serviceWorker.getRegistrations()
+        .then(function(registrations) {
+          return Promise.all(registrations.map(function(registration) {
+            return registration.unregister();
+          }));
+        })
+        .then(function() {
+          if (!window.caches) return [];
+          return caches.keys().then(function(keys) {
+            return Promise.all(keys.filter(function(key) {
+              return key.indexOf('blog-') === 0;
+            }).map(function(key) {
+              return caches.delete(key);
+            }));
+          });
+        })
+        .then(function() {
+          console.log('[ServiceWorker] Local preview cleanup complete.');
+        })
+        .catch(function(error) {
+          console.log('[ServiceWorker] Local preview cleanup failed:', error);
+        });
+      return;
+    }
+
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(registration) {
+        console.log('[ServiceWorker] Registered:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('[ServiceWorker] Registration failed:', error);
+      });
+  });
+}
+</script>
+
+  <meta name="description" content="《我想开了，我甚至提前原谅了渡航》——如果现在坐在电脑前码字的是我，在巨大的轮回感与压迫感面前，我想我早就尿漫GAGAGA文库了，我会哭着说把前十三卷稿费给我就好了，我会回家对着妹子摇尾乞怜，我要回家然后征战舰娘不告诉别人我曾经是个轻厉三连冠写手。我本人一直以来都是个心理上的懦夫，我不敢去想不敢去面对，不敢去读喂屎的小说。去年到年底我才重新开始读轻小说，我甚...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="坦率的、沉默的...|关于《春物14》，或者更多">
+<meta property="og:url" content="https://aikkeko.github.io/2020-02-10-%E5%9D%A6%E7%8E%87%E7%9A%84%E3%80%81%E6%B2%89%E9%BB%98%E7%9A%84....html">
+<meta property="og:site_name" content="世界尽头的档案馆">
+<meta property="og:description" content="《我想开了，我甚至提前原谅了渡航》——如果现在坐在电脑前码字的是我，在巨大的轮回感与压迫感面前，我想我早就尿漫GAGAGA文库了，我会哭着说把前十三卷稿费给我就好了，我会回家对着妹子摇尾乞怜，我要回家然后征战舰娘不告诉别人我曾经是个轻厉三连冠写手。我本人一直以来都是个心理上的懦夫，我不敢去想不敢去面对，不敢去读喂屎的小说。去年到年底我才重新开始读轻小说，我甚...">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-16T16:27:17.146Z">
+<meta property="article:author" content="AikeKo">
+<meta property="article:tag" content="动画">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://aikkeko.github.io/2020-02-10-%E5%9D%A6%E7%8E%87%E7%9A%84%E3%80%81%E6%B2%89%E9%BB%98%E7%9A%84....html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>坦率的、沉默的...|关于《春物14》，或者更多 | 世界尽头的档案馆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="世界尽头的档案馆" type="application/atom+xml">
+</head>
+
+<body class="post-detail" itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="zato-background-quotes" aria-hidden="true">
+      <span class="zato-quote zato-quote-left">ALL STORIES ARE LOST PROPERTY</span>
+      <span class="zato-quote zato-quote-right">THE LAST ARCHIVE REMAINS OPEN</span>
+      <span class="zato-quote zato-quote-top">PLEASE RETURN BORROWED DREAMS</span>
+      <span class="zato-quote zato-quote-mid">MEMORY IS AN INDEX WITHOUT A MAP</span>
+      <span class="zato-quote zato-quote-bottom">NO REFUNDS AFTER THE END OF THE WORLD</span>
+      <span class="zato-quote zato-quote-code">WATER &amp; BISCUIT / AISLE 30</span>
+    </div>
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">世界尽头的档案馆</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">theme of the WATER & BISCUIT</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+  
+
+  
+  <div class="post-banner" style="background-image: url('https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/a1/6e/a16ebf79331fbadb27e0d44facaff0cd.jpeg'), url('/images/Z.A.T.O_02_ca04.jpg');">
+    <div class="post-banner-mask"></div>
+    <div class="post-banner-content">
+      <div class="post-banner-text">
+        <h1 class="post-banner-title" itemprop="name headline">坦率的、沉默的...|关于《春物14》，或者更多</h1>
+        
+        <div class="post-banner-meta">
+          <span class="post-banner-author">
+            <i class="fa fa-user"></i> AikeKo
+          </span>
+          
+          <span class="post-banner-date">
+            <i class="fa fa-calendar"></i> Feb 10, 2020
+          </span>
+          <span class="post-banner-category">
+            <i class="fa fa-folder"></i>
+              动画
+          </span>
+          <span class="post-banner-words">
+            <i class="fa fa-file-word"></i> 7.3k words
+          </span>
+          <span class="post-banner-reading-time">
+            <i class="fa fa-clock"></i> 24 min read
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aikkeko.github.io/2020-02-10-%E5%9D%A6%E7%8E%87%E7%9A%84%E3%80%81%E6%B2%89%E9%BB%98%E7%9A%84....html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AikeKo">
+      <meta itemprop="description" content="你找到祈祷的意义了吗？">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="世界尽头的档案馆">
+    </span>
+
+    
+      <div class="post-hero">
+          <img class="post-hero-image" src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/a1/6e/a16ebf79331fbadb27e0d44facaff0cd.jpeg" alt="坦率的、沉默的...|关于《春物14》，或者更多" itemprop="image">
+      </div>
+      <header class="post-header with-hero banner-hidden">
+        
+        <h1 class="post-title" itemprop="name headline" style="display: none;">坦率的、沉默的...|关于《春物14》，或者更多</h1>
+
+        <div class="post-meta banner-meta-only">
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+          
+            <div class="post-description">《我想开了，我甚至提前原谅了渡航》——如果现在坐在电脑前码字的是我，在巨大的轮回感与压迫感面前，我想我早就尿漫GAGAGA文库了，我会哭着说把前十三卷稿费给我就好了，我会回家对着妹子摇尾乞怜，我要回家然后征战舰娘不告诉别人我曾经是个轻厉三连冠写手。我本人一直以来都是个心理上的懦夫，我不敢去想不敢去面对，不敢去读喂屎的小说。去年到年底我才重新开始读轻小说，我甚...</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><em><strong>《我想开了，我甚至提前原谅了渡航》</strong></em><em>——如果现在坐在电脑前码字的是我，在巨大的轮回感与压迫感面前，我想我早就尿漫GAGAGA文库了，我会哭着说把前十三卷稿费给我就好了，我会回家对着妹子摇尾乞怜，我要回家然后征战舰娘不告诉别人我曾经是个轻厉三连冠写手。我本人一直以来都是个心理上的懦夫，我不敢去想不敢去面对，不敢去读喂屎的小说。去年到年底我才重新开始读轻小说，我甚至不知道一色彩羽是谁。啊，这一切都像上刑一样痛苦！但我又想，我是否太过于把自己的胜负心与荣誉心寄托于小说的成功与失败了，我总想着让春物来替我去赢替我去风光无限。哎，我不该这样的，我应该更多的去关注自己怎么处理好自己的青春与朋友的关系，要把自己去变得更强。春物14扑街后，我想我也就不再会去关注轻小说圈风风雨雨了吧，不向以往对着轻小说作家风流韵事如数家珍。我不能控制轻小说作家们想的是无上荣誉还是不背锅还是稿费背后的为所欲为还是体面的封笔开推特养老，但我会寄好我的每一个刀片，我要读就自己读。我要写就自己写。我会试着去接受喂屎的小说，因为那是残酷青春的缩影。啊，我想起来了，我应该去好好写一次小说，每次写到第二卷就不停暗示自己是傻逼，我想我应该去写一次真正的小说，现在就动笔……</em></p>
+<blockquote>
+<p>By Aikeko<br>写在《春物14》发售的前一天<br>该梗偷自白底NGA(划掉）</p>
+</blockquote>
+<p>记得去年也是二月份这个时候左右，我写了春物13的简评。当时抱着的心态是4月份就能看到14了，但万万没想到又是整整隔了一年我才有幸能看到最终卷的汉化：确实是光阴似箭，经历了整整一年我似乎又忘记了前面那卷讲的是啥，但还好春物13确实也没讲啥所以丝毫不影响本卷的阅读（×）总而言之再次跪着感谢能够让我在中文正版发售前提前我看到本书的汉化人员，真的非常、非常感谢！</p>
+<p>其实读完这最后一卷之后心中还是有些感慨的，趁我还没将我内心的那些想法淡忘之前，将我关于本卷还有本系列的一些想说的话记录下来吧，于是乎就没啥逻辑地在这写点东西，大家看了其中有些暴言也就笑一笑就好了（这就是春学家吗？真是有狗好笑的呢.jpg）</p>
+<p><strong>注意：本文含有《我的青春恋爱物语果然有问题》第十四卷以及系列作品的剧透，请谨慎观看。</strong></p>
+<h2 id="·真物与党争"><a href="#·真物与党争" class="headerlink" title="·真物与党争"></a>·真物与党争</h2><p>现在的春物已然不如当初那般耀眼——虽然我自诩为“春学家”，但还是不得不承认这个收尾其实是没达到许多之前将其奉为“神作”的粉丝的期望的，至少我个人从某个时间段就一直执着地确信第六卷是春物的巅峰，所以看完了最终卷也没怎么被渡航打脸。我在去年讲第十三卷的时候就提出了“剩下的坑实在是太多了”这个问题，就算嘴上说着“渡航怎么写最终卷管我pis”这种大言不惭的话，实际上心底还是有默默担心它到底会怎么发挥，然后慷慨激昂地玩了本文开头的那个梗（所以这真的是“有点”、“默默”？nsnmn）</p>
+<p>就算渡航这次用快二十万字来构建春物最终卷，但实际上还是令人沮丧地没解决我早在之前就最为关心的一点：就算大老师和雪之下/由比滨在一起了，他们三人到底该如何相处？好吧，渡航甚至直接把这个问题抛给我们当做结局，并且告诉你还有短篇集哦<del>那些没有填上的坑其实是还有后续哦</del>（语音）你气不气？这点做得确实挺漂亮的，不得不服这波操作属实让我没有半点怨言接受了这个看上去还蛮“开放”的结尾而在这像条狗一样等后续故事，真是做得太漂亮了嗷！</p>
+<p>好吧按照惯例diss了渡航这么多，还是该言归正传地评价下本卷了。虽说不是完美的收尾，但这个结局其实已经足够足够好了。在读者苦等最后三卷的几年中，随着时间的推移很多之前铭记在心的情节、细节以及氛围都被渐渐冲淡，对这个故事的感觉越来越模糊之后，春物留给我们正常读者的也只剩下两个显著的符号：<strong>真物</strong>与<strong>党争</strong>。</p>
+<p>首先是真物——其实感觉也是受了朋友间交流的影响，之前我一直把“真物”当做春物到最后最应该讨论的核心命题，毕竟这个名词实在是太过于深入人心，无论是小说动画还是各种MAD都在强调着它的存在，无论是现实还是网络中遇到的每一个春学家朋友几乎都能把它以各种方面调侃一遍，而且每个人说的都有那么些田中的味道，令我忍不住感慨世界上所有死宅属实都是田中隐藏信徒啊！（？）</p>
+<p>但后来再看了相关的文章评论，加上回顾了前面的一些片段，确实这个概念早在之前几卷提出时就被赋予了相应的解释，而整个最终卷的情节发展几乎也满足了“真物”这个概念的诠释：比企谷、雪之下和团子三人（或是其他更多的人）愿意彻底了解彼此的心意——这就是我上面为什么说渡航的收尾某种意义上来说很漂亮，因为只要他们的关系达到了这一步，这个给读者以“核心感”的话题就算是彻底终结了，他们达到了所谓的“真物”的关系，或者换句话说——他们现在根本不需要“真物”就能够达成和解，在漫无止境的追寻过后终于抵达尽头（在这里甚至不用探究是否成功），所以故事也能很自然地流入终结，让这种不确定性永远地停滞；至于用何种方法、何种手段去了解彼此，去化解那些可能出现悲伤的日子，还有剩下的还没详尽深入的人物关系，关于叶山、阳乃等人的更细一步的发掘，这都只不过是无聊的附属品罢了——作为老春学家，甚至都不用渡航去写我们都很容易想象出在之后的短篇集会有些什么样的故事，不是吗？</p>
+<p>其次是党争——这是大多数人会比较关心的点，也是任何一部设计到一男多女的主角组的ACG作品中普遍会出现的现象。虽说股市在春物连载的中后期的波动表面看上去还是挺大的，甚至有一色股这种黑马股半路横空杀出，人气甚至差点一穿二拿下比赛（为某知名MAD[划掉]杂谈up主鸣不平）；不过春物在党争这方面在我这种非股民眼里还是没啥悬念的，我从未陷入有些人所谓的纠结——因为我很清楚地知晓最后要不是雪之下赢，要不就是三人关系含糊不清的收尾，不会有其他的可能性。虽然我并不是雪乃党（其实我是sksk党辣！×），而且有点事后马后炮的意味在里面，但这种感觉稍微看了些偏党争为主的ACG作品的人应该都会有的，其他人表面上的大优势其实都是在为正宫宣誓主权铺路罢了，所以我还真的挺佩服那些真心压团子和一色的勇士，感谢你们让春物股市的生态始终充满活力……！</p>
+<p>然后回归到本卷中的党争因素：前半卷几乎都是团子各种输出拉满，什么唱K、吃饭、回家、做蛋糕青春期男女间的暧昧互动要啥有啥，三浦还搁那不基德地推波助澜立flag，仿佛一副团子已经赢了的错觉——说实话，我当时看前大半本两人这种关系的时候满脑子都在重复播放霉鳖在老干爹纪录片里说那句“在破第二路路上的时候，V社的员工已经准备在拍我们夺冠了”的画面，然后果然后半段就看雪之下冠军火“猫”超神秀就完事了，事实证明辉耀龙心BKB小“狗”果然不配夺冠嗷，而我在写下这行文字的时候么么鳖甚至刚被下放CDEC，真是有狗好笑的呢~（基德基德）渡航也说过他在写第一卷的时候就想好了结局，那么单看第一卷其实早就知道结局是啥了，可以说雪之下最终的胜利一点也不意外，只是没想到本卷里团子能输出那么多篇幅，和后面比企谷主动告白雪之下对比起来真是让妈妈心疼啊，不禁想让人微博超级话题#由比滨颜值# #由比滨学霸# #团宝天道酬勤#一波，但仔细想想还是太不基德了所以还是索性放弃吧（×），好在最后团子也能微笑着面对这一切并在三路被破超级兵压境的情况下也能发起死亡冲锋，或者说她可能其实早就在脑海中千百次提前预想了这样的场景了，这样温柔、勇敢的少女在被“击溃”后依然能不顾一切地面对着这样的青春，还有那种不再离开的幸福感，这一幸福状态颇为令人奇怪的同时也让人感到十分美好，尤其是在一切都即将尘埃落定的最后时刻，重新聚首的众人向着新的未来前进，所以这也算是对团子党一点小小的慰藉吧？（是个锤子啊×）</p>
+<p>总而言之，当将真物与党争这两个最核心的问题解决后，最终卷其实也就可以顺理成章的结束了，和我期望中的其实也差不多，算是令我比较满意吧——毕竟咱还是没有把预期设置的那么高，虽然厚颜无耻地以“春学家”自居但内心对渡航有几斤几两还是有那么些分寸的。我在对十三卷的吐槽中说道“让我们期待春物能在最后完成华丽的谢幕吧”，这个可以说在十二、十三两卷的加持下这个结局确实还算华丽，把积攒已久的所有感情肆意宣泄了出来，完成了一个质量上乘的BMG的故事，标题里的“青春”与“恋爱”分别对应着“真物”与“党争”的收束，至于那些没能解决的问题与遗憾，也告诉你让你期待短篇集后续，所以我也不能再多说些什么了，只能说继续心怀期待并等待吧！（鸽子biss嗷）</p>
+<h2 id="·坦率与沉默"><a href="#·坦率与沉默" class="headerlink" title="·坦率与沉默"></a>·坦率与沉默</h2><p>我偶尔会思考一个问题：如果春物里的人物能表现得稍微坦率点，后半段的故事走向是不是就完全不一样了？在很多时候，无论是比企谷、雪乃或者由比滨中的任何一人，能在某个时间节点能用“最清楚”的语言表达出自己内心“最真实”、“最首要”的诉求，也许这个故事都不会拖到第十四卷——当然，结局大概率是火速走向BE，所以大家还是继续打哈哈争做峡谷第一谜语人为好。但也因为比企谷最后的行动与坦率，才能彻底完成了对雪之下的拯救，如果只是一味地选择沉默，结局也大概率自然而然地滑入团子结局。</p>
+<p>当将雪之下和由比滨这两个角色放在一起对比，后者给人的印象肯定是更加坦率的一方，而前者在大多数时候则选择沉默以待（不止是本作，其他所有类似二元对立的偏党争作品都有这个倾向），这里的沉默与坦率当然并非字面意义上是否“无言”的差别，打个比方就是全春物最沉默的男人叶山隼人（×）。但实际上呢？由比滨的坦率其实是特别不彻底的，她并非一直打直球的笨蛋，因为那种一直以来的读空气的习惯让她会在很多时候“假装”很坦率地回避了自身的言语，在最为重要的时候选择了谎言，选择了沉默。尤其是在后期的几卷中，和比企谷的各种不经意间的闲聊中，显得极端地克制。在十二卷的结尾，这个致命性的问题被无限放大了：</p>
+<blockquote>
+<p>「……是吗。不过有你在的话，感觉一定会有办法。」<br>她用力点了点头，给予我肯定。晶莹剔透的水珠，随著她的动作滑落。我瞬间屏住气息。她大概因为我惊讶到当场愣住，也注意到自己眼角的水珠，赶紧用手指拭去。<br>「咦？啊，一放下心，眼泪就流出来了。吓我一跳……」</p>
+</blockquote>
+<p>紧接着最后结尾一段则是由比滨第一视角的心理描写，将她此刻的话语轻而易举地推翻了。明明是最为真挚的泪水，却被赋予了撕心裂肺般谎言般的含义，连稍微解释的机会都被错过，只留下内心底无声的控诉。所以说有些时候我真的很想冲到渡航脸上给他几个耳光，如果团子在当时能坦诚地解释自己泪水的含义的话，事情或许真的会不太一样，可惜渡航并不让她说话，我们也只能无言地面对这般冷峻的沉默：但比企谷好歹也是大老师，即便不需要由比滨任何话语的解释想必他也能和我们一样轻易读出由比滨虚伪的话语中所隐含的沉默，这也是他作为男主的某种原罪，因为他虽然一直放不下心两人，虽然一直很被动，但他明白不能在这种时候舍弃其中任何一人，如果有诉求被推到他的脸上他当然会不顾一切地去解决，但此刻他也只能以沉默顺应着延宕的无言，故事得以在现实中长时间的悬置。</p>
+<p>可对于雪之下的沉默，意味却完全不同。很多时候她虽然没有说些什么，但她一直“美丽、诚实、不欺骗”，她微微的皱眉，眼神的变化，以及那么些细小的遮掩动作，无时无刻不再诉说着那个孤高而真实的自我：明明应该是沉默最多的人，却意外地成为了最坦率的家伙，这种决定性的自由转变印刻在春物整整一年的时间线中。在最终卷里比企谷向雪之下告白前，两人经历了一段漫长的、漫长的沉默，这段场景确实有那么些第五卷两人最后上楼梯时的味道，相互配合的步调与把控好的距离，一瞬间尴尬的视线交错，夕阳倾斜的阳光静静地落在两人的身旁……但重要的是，得力于之前无限悬置的时间，这时候的沉默比任何坦率都显得更有力量。</p>
+<p>这里有个细节非常值得玩味：在第五卷的结尾两人保持着前后的位置上完楼梯后到了该分别的时候，“<strong>仅仅一瞬，雪之下停下了脚步</strong>”，而比企谷“<strong>即便如此，我依然无法停下脚步</strong>”；而在十四卷的这里，比企谷放弃了一次又一次分别的机会，在雪之下的身边<strong>停下了脚步</strong>——跨越了现实中整整七年的时光，少年终于抓住了少女的手，这段也是我在整个第十四卷中最为喜欢的场景了。或许是出自某种读者的直觉，或者说是同为写手的默契，我有预感渡航一定会在最终卷里呼应第一卷一开始比企谷的作文，以及第五卷经典上楼梯的场景，以至于我在第十三卷的吐槽的最后写下了这么一段话：</p>
+<blockquote>
+<p>在十三卷的末尾，侍奉部教室的门被永远地阖上，被宣告再也不会开启——而一切的一切，仿佛回到第五卷结尾，回到那个暑气腾腾的夏天的终结，回到那个宛若永恒静止的瞬间：攀登上那长长的阶梯，少年少女心怀彼此的孤独、心意与谎言，欲言又止，而后朝着最后的舞台相向而行，再也没有回头。</p>
+</blockquote>
+<p>没想到我的两个预感到最后竟然都成真了，尤其是他们这一次停下了脚步面对彼此，少年终于向少女伸出了手——虽说少了点意外，但某种意义上来说也更加令我开心和喜爱春物了——嗯，我确实感觉很幸福，真的。此刻他们两人无疑是坦率的，毕竟是那么羞耻的话语，真的只有在二刺猿中我才能原谅它的存在啊，而雪之下更是比比企谷还要放飞自我地先说出“<strong>我喜欢你</strong>”这种直球告白，让我忍不住像比企谷一样坦率地笑着看完这段并在床上打滚。因为这确实太有趣了，不是吗？别扭了整整一年的两人终于对自己的心意坦诚无比（虽然依然很别扭），作为看恋爱轻小说的读者我们每个人都在等这一刻吧？只能说太好了……！太好了！即便我并不是雪乃党，我都发自真心地想要为他们两人庆贺，对于这样性格的两人来说，敞开心扉相互信任，在明知可以对方可以自己站起来的情况依然能坦率地向对方伸出手，我想没有什么比这更好的结局了。</p>
+<p>要说在整个春物中最为坦率的人，可能只能是静或者是小町——至少在面对比企谷时，她们两人近乎永远是坦诚相待的。小町作为家人自不必说，八幡唯一指定灵魂伴侣，懂得都懂；静也是全程为比企谷一行人操碎了心，她作为春物最开始出现的女人，自然而然地成为了整部作品的导火索与连接的纽带，与阳乃那种时而模糊时而绕弯子还略点嘲讽的指点不同，她的话语每次总是会命中问题的最核心。因为她们的坦率，整部作品在沉重的后半段中还是偶尔会有轻盈的光束照入。</p>
+<p>那么，比企谷八幡呢？</p>
+<p>比企谷在整个故事的前期近乎永远是保持着沉默的姿态来应对一切，他能够坦率说出自己看法的人物也只有作为读者的我们；作为这种不对称性的结果，故事中的其他角色总是不能从闪烁的言辞中读懂他的言行。但在五、六两卷中，在那长长的沉默与回避的铺垫下，比企谷不再沉默地爆发了，似乎从中间那个时间节点开始作为拐点，他开始说出越来越多关于自己的话。事到如今，我还是觉得春物这两卷写的是真的好，充满一种被克制的热情与浪漫（因为被抑制，反而更深入人心）。这种激情转化为某种成长，确实能帮助比企谷解决不少问题，但少部分时候也会造成恶劣的后果——所以如何在坦率与沉默之间找到一个平衡，成为了纠缠比企谷的问题——是的，这已不再是真心与否的问题，而是在什么时候说出口的问题，毕竟你能说由比滨的眼泪是假的吗？他们的犹豫与迷茫其实真的是渡航强加的吗？在看了本卷之后，我终于放下了之前一切关于“如果”的想象，因为这次从他们的告白中，我感受到了比企谷与雪之下终于在一次次措手不及的坦率与沉默的交融中理解了彼此，知晓了在一方伸出手的时候，另一方也可以回报同样珍贵的东西。</p>
+<p>是的，本卷的告白场景真的让我找到了之前我偏爱的春物的感觉，无论是在篇幅上还是在现实时光中长长的时间的加持，配合上本身就娓娓道来的文字叙述，都让这个告白异常令人感动。或许看到后面，我都是靠着前面那种轻轻松松的轻小说基调以及积攒已久的爆发作为情怀在支撑；但倒不如说作为春学家的我，一直、一直都在默默等待着那一幕的发生，只不过等了太久太久，我都渐渐忘了我曾经有过的这份期待……时间有些时候真是个令人讨厌的东西，能够让人忘记当初那么纯真美好的情愫；幸好跨越了这么多年，我终于还是想起来了，我甚至第一次为自己贴上“春学家”这种标签的恶劣行为感到有那么丝骄傲（所以你还说你不是雪乃党？×）</p>
+<p>嗯，太好了，真的是太好了……</p>
+<h2 id="·道别的方法，我不愿知晓"><a href="#·道别的方法，我不愿知晓" class="headerlink" title="·道别的方法，我不愿知晓"></a>·道别的方法，我不愿知晓</h2><p>在第十四卷中，比企谷似乎一直在有意无意强调“结束”这个概念，里面的人物也不约而同地认为高中二年级的结束是某种超出时间意义上的终结，仿佛他们也同我们一样感受到了春物即将在这卷落下帷幕，所以本卷近乎全篇处在一种“末日将至”的氛围中（明明只是高三前辈的毕业仪式，明明只是要更换个班级这种“小事”），他们拼命地、不顾一切地存在在那，似乎想要同始终观望着这个世界的我们道别……</p>
+<p>虽然渡航说有后续，但是其实我们都知道，大多数人们口中所谓的那个“春物”的时间在十四卷的末尾就永远的停滞了：毕竟主线尘埃落定，股市也不会再开，剩下的小坑未填也无伤大雅，春物在人们眼中将会以一部完结作品的姿态被重新欣赏、评价，曾经所有的我们惦记于心的未知性与不确定性也都随着故事的落幕而自然而然地消解。</p>
+<p>是啊，我到现在都不太有实感——春物竟然真的完结了。</p>
+<p>这个时候是不是也应该顺理成章地说一句“<strong>我的青春结束了</strong>”呢？但其实这样没啥意义，咱也不知道青春到底青春啥时候才会结束，如果仅仅因为一部作品的完结而宣告结束，那渡航确实是我唯一亲爹啊（×）不过春物完结后又会怎么样呢？可能今年的第三季动画还能掀起一波热度，但讨论它的人终究还是会越来越少吧，茶余饭后和傻屌网友群内吹逼少了个话题，我也再也不能装世界第一渡航懂哥搁那朋友间呼风唤雨了……大概对我的影响仅此而已吧？</p>
+<p>可我还是要坦诚地说自己很不舍的。也许是那种终结的气息不经意间感染了我，也许是我从来没有正经追过什么连载的东西——回首望去，从我第一次听说春物的动画都已经过了快七年了，而我第一次阅读小说开始当春学家也已经是五年前的事；然后我再仔细一想，我似乎真的没有为其他连载的作品付出过这么长时间与精力（《哆啦A梦》论外）。可能是我这个人比较懒，基本只盯着完结的作品去补，不想浪费自己的时间去筛选掉那些到最后崩盘、烂尾，甚至永远不会完结的作品，但春物就是有这么一种魅力，对他的阅读、讨论、分析、吹逼（←最主要）近乎贯穿了我的整个大学生涯，虽然渡航一边当峡谷谜语人一边当鸽子，但是这些我还是都坚持下来了，可能是我在内心底坚信春物是值得我去期待的那类作品。即便大多数情况下这种期待都会以失望告终，所幸春物没有，渡航成功回避了惨剧的发生，他所怀有的野心，他想传递的那种信念，他对于自己青春的某种痛彻心扉的执念，对我来说其实是有届到的：我甚至原谅了渡航之前所有令我不满的地方——我当然不能奢望现实中我们行为交往能够像春物里的故事那般极具浪漫地发展，我也不指望我们的青春都能如故事中那般最后闪耀着群青色，可仅仅只将视线拉回到我自己，有什么比坦率地承认“<strong>我喜欢这部作品</strong>”更为重要的呢？</p>
+<p>所以，现在的我们应该要笑着才对吧？在这里真的要恭喜所有的春物读者了，只因在跨越了近九年、长达两百多万字的坚守中，我们终于抵达了这个并不绝望的尽头，一个华丽的落幕，这真的不值得我们发自真心去恭贺它的结束吗？感谢带来这个故事的渡航，也要感谢所有对春物喜欢过、讨厌过、爱过、恨过的大家，感谢那些愿意付出时间精力写长文分析“真物”的人，感谢那些在经历过期待后对渡航彻底失望的人，感慨在读完整个系列后惋惜长叹默默分享自己想法的人，私以为与人的交流才无可救药地构成了“春物”这个名词决定性的一环，才让春物对我来说如此重要——对此，我深信不疑。</p>
+<p>或许正是因为喜欢，所以才不知该如何道别：可能会有些悲伤的吧，但更多的还是释然，因为终于能轻轻地放下某样东西了，虽然以此刻为界限我永远失去了它，就算是随之而来的悲伤也是那种特别甜蜜的、令人陶醉的伤感之情，是可能再也遇不到与它相似作品的遗憾之情，即便如此这也都是我喜爱着这部作品的证明——最终卷，乃至春物整个系列，现在它留给我的，也只是这样一份美好的感情。</p>
+<p>我此刻将这份感情记录下与大家分享，也是一种告别的仪式；虽然不知大家能否届到，可我还是不得不去这样做，就算只能够博大家一笑，我的目的就达到了。</p>
+<p>毕竟……<strong>现在处在世界中心沉默的我，还能够笑得出来吗？</strong></p>
+<p><strong>By AikeKo</strong></p>
+<p><strong>2020.2.10</strong></p>
+<blockquote>
+<p>“Goodbye is not an easy word to say.”</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8A%A8%E7%94%BB/" rel="tag"># 动画</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019-08-21-%E6%AD%A3%E5%9B%A0%E6%98%AF%E8%B0%8E%E8%A8%80%EF%BC%8C%E4%B8%80%E5%88%87%E6%89%8D%E6%9B%B4%E5%8A%A0%E6%B8%A9%E6%9F%94.html" rel="prev" title="正因是谎言，一切才更加温柔 | 三秋缒《君の话》扫雷+简评">
+      <i class="fa fa-chevron-left"></i> 正因是谎言，一切才更加温柔 | 三秋缒《君の话》扫雷+简评
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020-04-10-%E9%9D%92%E6%98%A5%E3%80%81%E6%AD%BB%E4%BA%A1%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%97%B6%E9%97%B4%E7%9A%84%E9%87%8D%E9%87%8F.html" rel="next" title="青春、死亡，以及时间的重量 |《Cross Game》、安达充，还有我的ACG">
+      青春、死亡，以及时间的重量 |《Cross Game》、安达充，还有我的ACG <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%C2%B7%E7%9C%9F%E7%89%A9%E4%B8%8E%E5%85%9A%E4%BA%89"><span class="nav-text">·真物与党争</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%C2%B7%E5%9D%A6%E7%8E%87%E4%B8%8E%E6%B2%89%E9%BB%98"><span class="nav-text">·坦率与沉默</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%C2%B7%E9%81%93%E5%88%AB%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E6%88%91%E4%B8%8D%E6%84%BF%E7%9F%A5%E6%99%93"><span class="nav-text">·道别的方法，我不愿知晓</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AikeKo"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">AikeKo</p>
+  <div class="site-description" itemprop="description">你找到祈祷的意义了吗？</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/aikkeko" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;aikkeko" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AikeKo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

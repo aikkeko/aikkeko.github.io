@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#1e2128">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bitbug_favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bitbug_favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#1e2128">
+
+
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="档案馆">
+<meta name="application-name" content="世界尽头的档案馆">
+<meta name="msapplication-TileColor" content="#1e2128">
+<meta name="msapplication-tap-highlight" content="no">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="preload" as="image" href="/images/Z.A.T.O_02_ca04.jpg" fetchpriority="high">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aikkeko.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+
+<script src="/js/long-text-loader.js" async></script>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(location.hostname) !== -1;
+
+    if (isLocalPreview) {
+      navigator.serviceWorker.getRegistrations()
+        .then(function(registrations) {
+          return Promise.all(registrations.map(function(registration) {
+            return registration.unregister();
+          }));
+        })
+        .then(function() {
+          if (!window.caches) return [];
+          return caches.keys().then(function(keys) {
+            return Promise.all(keys.filter(function(key) {
+              return key.indexOf('blog-') === 0;
+            }).map(function(key) {
+              return caches.delete(key);
+            }));
+          });
+        })
+        .then(function() {
+          console.log('[ServiceWorker] Local preview cleanup complete.');
+        })
+        .catch(function(error) {
+          console.log('[ServiceWorker] Local preview cleanup failed:', error);
+        });
+      return;
+    }
+
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(registration) {
+        console.log('[ServiceWorker] Registered:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('[ServiceWorker] Registration failed:', error);
+      });
+  });
+}
+</script>
+
+  <meta name="description" content="“你知道你为什么而悲伤吗？它并不是在几年前才逝去的，人们无法确切地说出它是何时出现、何时离开的，但它存在过，存在着，存在于你的心里。它是一再寻觅的一个更好的时刻、一个更美的世界。” ——狄奥提玛致许佩里翁 【一】三秋缒的极限……？ 关于三秋缒，有这样一个梗大家肯定都听过：“两部作品路转粉，三部作品粉转黑”（可能和网传的略有出入），大概意思就是他的作品叙事套路...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正因是谎言，一切才更加温柔 | 三秋缒《君の话》扫雷+简评">
+<meta property="og:url" content="https://aikkeko.github.io/2019-08-21-%E6%AD%A3%E5%9B%A0%E6%98%AF%E8%B0%8E%E8%A8%80%EF%BC%8C%E4%B8%80%E5%88%87%E6%89%8D%E6%9B%B4%E5%8A%A0%E6%B8%A9%E6%9F%94.html">
+<meta property="og:site_name" content="世界尽头的档案馆">
+<meta property="og:description" content="“你知道你为什么而悲伤吗？它并不是在几年前才逝去的，人们无法确切地说出它是何时出现、何时离开的，但它存在过，存在着，存在于你的心里。它是一再寻觅的一个更好的时刻、一个更美的世界。” ——狄奥提玛致许佩里翁 【一】三秋缒的极限……？ 关于三秋缒，有这样一个梗大家肯定都听过：“两部作品路转粉，三部作品粉转黑”（可能和网传的略有出入），大概意思就是他的作品叙事套路...">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/d1/be/d1be35065f250f1f315452be9e920dd4.png">
+<meta property="og:image" content="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/7b/c3/7bc393093818b26345d15efdbe18680e.png">
+<meta property="article:published_time" content="2019-08-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-16T16:27:17.112Z">
+<meta property="article:author" content="AikeKo">
+<meta property="article:tag" content="动画">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/d1/be/d1be35065f250f1f315452be9e920dd4.png">
+
+<link rel="canonical" href="https://aikkeko.github.io/2019-08-21-%E6%AD%A3%E5%9B%A0%E6%98%AF%E8%B0%8E%E8%A8%80%EF%BC%8C%E4%B8%80%E5%88%87%E6%89%8D%E6%9B%B4%E5%8A%A0%E6%B8%A9%E6%9F%94.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>正因是谎言，一切才更加温柔 | 三秋缒《君の话》扫雷+简评 | 世界尽头的档案馆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="世界尽头的档案馆" type="application/atom+xml">
+</head>
+
+<body class="post-detail" itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="zato-background-quotes" aria-hidden="true">
+      <span class="zato-quote zato-quote-left">ALL STORIES ARE LOST PROPERTY</span>
+      <span class="zato-quote zato-quote-right">THE LAST ARCHIVE REMAINS OPEN</span>
+      <span class="zato-quote zato-quote-top">PLEASE RETURN BORROWED DREAMS</span>
+      <span class="zato-quote zato-quote-mid">MEMORY IS AN INDEX WITHOUT A MAP</span>
+      <span class="zato-quote zato-quote-bottom">NO REFUNDS AFTER THE END OF THE WORLD</span>
+      <span class="zato-quote zato-quote-code">WATER &amp; BISCUIT / AISLE 30</span>
+    </div>
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">世界尽头的档案馆</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">theme of the WATER & BISCUIT</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+  
+
+  
+  <div class="post-banner" style="background-image: url('https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/1b/46/1b46274f9dbfc49ed04c595a476bc38d.jpeg'), url('/images/Z.A.T.O_02_ca04.jpg');">
+    <div class="post-banner-mask"></div>
+    <div class="post-banner-content">
+      <div class="post-banner-text">
+        <h1 class="post-banner-title" itemprop="name headline">正因是谎言，一切才更加温柔 | 三秋缒《君の话》扫雷+简评</h1>
+        
+        <div class="post-banner-meta">
+          <span class="post-banner-author">
+            <i class="fa fa-user"></i> AikeKo
+          </span>
+          
+          <span class="post-banner-date">
+            <i class="fa fa-calendar"></i> Aug 21, 2019
+          </span>
+          <span class="post-banner-category">
+            <i class="fa fa-folder"></i>
+              动画
+          </span>
+          <span class="post-banner-words">
+            <i class="fa fa-file-word"></i> 9.1k words
+          </span>
+          <span class="post-banner-reading-time">
+            <i class="fa fa-clock"></i> 30 min read
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aikkeko.github.io/2019-08-21-%E6%AD%A3%E5%9B%A0%E6%98%AF%E8%B0%8E%E8%A8%80%EF%BC%8C%E4%B8%80%E5%88%87%E6%89%8D%E6%9B%B4%E5%8A%A0%E6%B8%A9%E6%9F%94.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AikeKo">
+      <meta itemprop="description" content="你找到祈祷的意义了吗？">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="世界尽头的档案馆">
+    </span>
+
+    
+      <div class="post-hero">
+          <img class="post-hero-image" src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/1b/46/1b46274f9dbfc49ed04c595a476bc38d.jpeg" alt="正因是谎言，一切才更加温柔 | 三秋缒《君の话》扫雷+简评" itemprop="image">
+      </div>
+      <header class="post-header with-hero banner-hidden">
+        
+        <h1 class="post-title" itemprop="name headline" style="display: none;">正因是谎言，一切才更加温柔 | 三秋缒《君の话》扫雷+简评</h1>
+
+        <div class="post-meta banner-meta-only">
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+          
+            <div class="post-description">“你知道你为什么而悲伤吗？它并不是在几年前才逝去的，人们无法确切地说出它是何时出现、何时离开的，但它存在过，存在着，存在于你的心里。它是一再寻觅的一个更好的时刻、一个更美的世界。” ——狄奥提玛致许佩里翁 【一】三秋缒的极限……？ 关于三秋缒，有这样一个梗大家肯定都听过：“两部作品路转粉，三部作品粉转黑”（可能和网传的略有出入），大概意思就是他的作品叙事套路...</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>“你知道你为什么而悲伤吗？它并不是在几年前才逝去的，人们无法确切地说出它是何时出现、何时离开的，但它存在过，存在着，存在于你的心里。它是一再寻觅的一个更好的时刻、一个更美的世界。”<br>——狄奥提玛致许佩里翁</p>
+</blockquote>
+<h2 id="【一】三秋缒的极限……？"><a href="#【一】三秋缒的极限……？" class="headerlink" title="【一】三秋缒的极限……？"></a>【一】三秋缒的极限……？</h2><p>关于三秋缒，有这样一个梗大家肯定都听过：“<strong>两部作品路转粉，三部作品粉转黑</strong>”（可能和网传的略有出入），大概意思就是他的作品叙事套路、营造的氛围基本非常相似，初看一本可能会被他的故事给惊艳到，但随着阅读册数的增加，那些弥散相同气息的感动的重复再上映似乎也显得不那么震撼人心，给人留下的印象也终究是像“青春”、“苦涩”、“幸福”之类的简单名词的破碎集合。虽然不是所有人都像这个梗描述得如此“花心”，但很不幸个人可能就是这个例子的典型产物之一。我是从《三日间的幸福》入坑三秋缒的，而在这之前已经久仰他的大名，而这本书的内容也足够回应我的期待，很是激动以为捡到宝的我于是乎连续拜读他其后的几本……嗯，结果我想大家都能猜到，我就不再多赘述了。</p>
+<p>好的~那么与无数介绍三秋缒的文章一样用这个快烂掉的梗开头之后，我想表达的只是——在某段时间自己对三秋缒这个作者其实是有些抗拒的，“讨厌某个作者”对我来说可是件非常稀罕的事情，毕竟能让我看的越多越产生的不满越多的作者基本屈指可数（其中就包含我们最亲爱的渡航嚯嚯嚯，但之前已经在另一篇文章中解释了啥是我自己发明的船心词汇“春物12-PTSD”于是就不再拉出来鞭尸了嗷←所以这仅仅只是掘墓而已哦可惜了可惜了）。其实这种失望感情的产生也不能完全怪三秋缒本人，此种现象有一种陈词滥调的解释叫“写作风格”嘛，我们也不能要求所有作者都能全能地写出各种题材作品；况且仅仅限于三秋缒自己擅长的领域，他的发挥一直非常稳定，从bangumi的评分也能看出追他作品的读者对他的风格也是非常买账的（就我好友列表里收藏每部作品的几乎都是同一批人），出于商业的考虑如果能稳定产出一系列此等佳作与良作也未尝不可理解。但是同样我也感到有些惋惜，毕竟在此等资本利益的眩晕中，一个原本非常有潜力的作者就一直局限在自己最初所创造的可能性中，这么多年过去了他仍旧无法突破，以为驾驭着一种主题便可以奔向任何一种好的故事；对我来说，最好的三秋缒就停留在了《三日间》的结尾，停留在这了这个他永远只能止步于此的极限之处……</p>
+<p>正当三秋缒逐渐从我的视线中淡出后，去年他的一部作品忽然横空出世，在我的群友间掀起一小波狂潮，全世界最好的管理员对本部作品强烈推荐，赞不绝口，什么“集大成”、“历史最佳”、“感人肺腑”等词语更是在各路菊苣们评论中层出不穷，让我对其内容究竟有多么屌深感好奇，但只可惜本人弱智到完全不会日语，所以一直没能拜读这篇新作；而在近期，经过大佬们的不懈努力，《君の话》（汉化暂译名《你的故事》）的汉化他终于Lei了！就算这个月我属实忙的一批，也火速花一晚上读完本作，心中百感交集，难以平复……举个不恰当的比方就好比自己支持了好几年的LFY（dota2战队）（DOTA2战队）终于Ti夺冠了一样（此处无任何恶意zz隐喻，基德基德），总的来说本作虽然不至于到张口闭口“宇宙第一神作”的地步，但我觉得三秋缒终于在他的故事套路上做出了突破，也基本上回应了我的期待，所以特此写下这篇文字将其推荐给大家，也算是分享一下个人读完之后的感受吧。</p>
+<h2 id="【二】It’s-just-a-tale-of-memories"><a href="#【二】It’s-just-a-tale-of-memories" class="headerlink" title="【二】It’s just a tale of memories."></a>【二】It’s just a tale of memories.</h2><p>和三秋缒以往的作品一样，本作也一如既往地引入了非现实的设定——“义忆”，意思就是人造的记忆；但正如“义肢”有时也被称为“假肢”，人被植入的“义忆”也是虚假的记忆，而在故事里的世界中人们可以通过服用纳米药物而消除自己想要消除的回忆，或者取而代之其他适合自己崭新美好的记忆……讲到这我的脑海里已经上演了无数部关于记忆的经典作品了，老实说这次比起之前作品中的设定可能显得比较烂俗，在创新方面甚至在开倒车，不过好在频繁出现的非现实设定从来都不是三秋缒的卖点，它们的顶多只能给读者留下“有趣”的印象，反而是寄托在这些设定之上的故事，尤其是随之衍生出的情感才是三秋缒故事的重中之重：设想一下《三日间》中关于男主寿命价格的逆转，这便是三秋缒作品中设定为故事服务的最典型的例子。</p>
+<p>然后我们回到故事本身，男主角千寻由于父母沉溺于义忆，而自己却被禁止使用义忆从而很不幸地成长为了一个冷漠而有些别扭的家伙。（和三秋缒大部分作品一样，千寻的设定也已经脱离了高中生这个轻小说中最常见的主人公年龄设置）。说是出于对逝去青春的惋惜也好，因为对自身的厌恶也罢，千寻决定消除六岁到十五岁这段对他来说毫无意义，满是灰色的回忆。可是事与愿违，不知怎么的相关机构似乎将原本消除记忆的药物“lethe”错送成了创造虚假的美好回忆的“Greengreen”——总而言之在各种阴差阳错的推动下，千寻的记忆里出现了一位名为“灯花”的青梅竹马：她就像所有在记忆中虚构的青梅竹马那样美丽、温柔，不顾一切地存在在千寻的记忆中，宛若她有真正存在的可能性。当然这本该算不上什么大事：多出来的记忆，那令千寻无比厌恶的谎言，只要再用“lethe”一齐删掉就完事了。就算记忆可能因此会空出一大截，但这对千寻来说依然是某种虚无的幸福。</p>
+<p>是的，故事本应到这就可以结束的——可无论是眼前清醒的现实、还是伪装成不可估量的未来，或者原本被舍弃的灰暗过去，都随着夏日祭上的那个熟悉而缥缈身影的出现而被击得粉碎——那个只会出现回忆中的青梅竹马灯花，就这样理所当然地与他共处于这个世界中，而名为《君の话》的故事在烟花爆裂的炫目光芒的照耀下，在这夏日傍晚仿佛永恒静止的时空中，才真正意义上地开始了。</p>
+<p>为什么灯花会在现实中出现？是记忆出错了还是因为什么其他的原因？而千寻又会怎样面对突然出现在眼前的“青梅竹马”呢？这些走近科学式问题的解答也全部写在了书中，就等各位去看嗷，而在这前半的扫雷部分我就不剧透了呢，就先稍微在不谈细节的情况下说说个人感受吧。</p>
+<p>先聊聊关于灯花这个设定嘛……我寻思着这不就是传说中究极无敌最强的“天降系青梅竹马”吗233？这天降系青梅竹马怎么输嘛！？（×）不过经常看三秋缒作品的读者也应该知道在她的作品里一般只有个对男主稍微有点暧昧关系但并深入的无情感纠葛的女二，所以基本上不存在任何白学情节，请放心阅读！（但大部分作品还是让人感到胃疼到不行啊……）本作总的读下来其实还是非常有三秋缒以往的那种味道的，可以说他之前作品的各种环节也都被保留：与男主没什么感情进展但会提供帮助的女二、忽然能让男主大彻大悟的男性友人，当然还有所谓的三秋缒式故事模式，他在本作中仍然写的是我们非常熟悉的“不幸福的家伙待在地洞里挣扎”的故事，可以说从他的处女作《重启人生》开始这都是三秋缒一贯的写作方针。</p>
+<p>那就有人要问我了：“WDNMD这和他之前的作品又有什么屌区别呢？”嗯嗯，这个问题问得非常精辟，就由爷来作答好了。首先爷纯路人，在央视的推荐下看了三秋缒，发现他的作品虽然平均水准很高，但有个普遍的问题是结尾都感觉不太好，只有《三日间》的结尾给我留下了很棒的印象，后面的爷忘了（×）……但这一次，至少是这一次，我觉得这次的收尾精彩到能和前者相媲美，而且某种意义上来说是更进了一步，突破了原先他为自己设置的极限——具体内容出于不剧透原则我在这也不能在这多说，总之就一句话：还没看的如果你在我的介绍后感兴趣的话就赶快去看啊！！！不管宁是三秋缒的粉还是黑还是像爷一样的纯路人，也不管宁是否读过他之前的作品，反正就当被爷骗了也行嗷，也就不到看一部动画的时间，属实买不了吃亏买不了上当，宁要是觉得不太彳亍回来再和我互动都成呢~</p>
+<p>无剧透扫雷部分结束，接下来一转攻势。</p>
+<h2 id="【三】世界写满温柔的谎言"><a href="#【三】世界写满温柔的谎言" class="headerlink" title="【三】世界写满温柔的谎言"></a>【三】世界写满温柔的谎言</h2><p>在走流程开吹之前，我觉得光让我吹好像也没啥意思，所以这次就不走常规流程让俺先来假惺惺地（划掉）唱唱反调，谈谈我个人认为本作存在的一些问题吧~（？）</p>
+<p>严格来说，我从未将三秋缒的书当做悬疑故事来看。比起贴上各式各样的标签，我更愿意简单地称其为“恋爱故事”，因为在他的作品中，基本上都是由男女主角的互动来推进剧情，本作也绝不例外。当然，这期间他也可能会设置一些悬念来吊起读者阅读的兴趣，单从本作中来讲最大的悬念便是“为什么记忆中的青梅竹马灯花会出现在自己身边？”——其实只要读者有那么些SF或者悬疑小说的阅历，再往前推进一步也不难想到现实中的灯花肯定与“义忆”的制造者相关（可能推不到制造者本人这一步，但这其间的相关性还是很容易被猜到的），但很神奇的一点在于：在阅读本作前半部分的时候，我们近乎忽略了这种可能性；这或许也是三秋缒厉害的地方了，在前半部分那一如既往的“青春伤痛文学“的氛围渲染下，我们很容易被男主千寻的叙述牵着鼻子跑：事后可以证明千寻找初中的同学或者回老家的考察都是没什么意义的无用功，但通过将这种种可能性一一排除后千寻却愈发为灯花的存在而感到发狂，起先他只是将灯花当做欺诈师，而后随着灯花的某种“本性”逐渐暴露，千寻也逐渐接受了她的的存在，两个人在某次大爆发的矛盾后终于达到了暂时的和解后，灯花忽然不见了。</p>
+<p>在悬疑故事里，随着女主角的神秘消失，一般紧接着的剧情应该是新一轮的高潮才对，而在本作中却恰恰相反——故事的时间在灯花离场的这一刻起凝滞了，而借助千寻友人江森先生之口突然抛出了之前读者应该理所当然想到的设定“灯花是‘义忆’的设计师”来作为真相揭露未免也太过于突兀（这里既没有什么逻辑的推演，也没有什么庄严的仪式，仅仅是江森随口一句“我在电视\报纸上见过她”就轻描淡写地交代了灯花的身份），接踵而来的则是之前从未提到的名为“新型AD”病症的设定作为灯花做出行动的动机。对于某些读者来说在故事的中后期忽然引进新设定的写法可谓大忌，甚至连专门推展剧情的物件“麦高芬”都不如，除了给人一种很随意的违和感外并没有什么带来更多有趣或震惊的感觉。</p>
+<p>当然三秋缒本人肯定也清楚我上述的问题，可他一直以来做的并不是直面或改善这个问题，反而在如此这般微崩的故事框架下试着用另一种方式让故事依然能变得好看，这也是他最擅长的：场景的氛围的渲染、流畅的情感的铺垫以及水到渠成的表达宣泄。事实上，本作中旬从女主角灯花的视角再度开始从她小时候一直讲到长大成人的写法本身是非常“危险”的，很容易让读者产生拖沓或者“这剧情我好像已经读过了”的感觉（我个人也觉得从这开始的B面的确节奏确实不太好），可如果没有这些从零开始从黑暗中看向前方的孤独人生描绘，没有无数次地对自己的放弃与拯救，没有那仿佛飞蛾扑火般毫无意义的关于“他”的想象，也就没有后面灯花自述那令人喘不过气的一长段“刚出生的我也是一岁的我也是……直到十八岁的我也是……”带给读者的强烈震撼，也没有那在跨越不了命运的绝望中不断祈求他人得到幸福的的感动，也无法体味到经历了这数不清的错过与悲伤之后的她与千寻相遇时是怎样一种宛若命运般浪漫的boy meets girl——没错，对于三秋缒来说这一切就像是个无可回避的悖论：在情感的方面做到了极致，就免不了需要逻辑理性的牺牲；所以对于我来说这些都不是什么大问题，因为本作高潮以及精彩程度足以让我觉得前面的阅读时光都是值得的，它最终想要表达的多种主题也让我不禁觉得能读到本书真是太好了！</p>
+<p>等等……怎么写着写着又吹起来了呢？那好索性直接强行切入主题来说我觉得问题比较显著的点吧，看俺强势插入（？）嗷——</p>
+<p>首先就是男女主感情线的问题。我觉得这次大概的确是三秋缒的失手了，毕竟这原本应该是他最如鱼得水的方面之一，可在本作中反而不幸地成为了短板：显而易见，千寻和灯花在本作中正面互动的篇幅实在是太少了，其中千寻对灯花感情的转变属实不那么令人信服。在前半部分中，千寻对灯花的态度一直是不冷不热，甚至到中期态度更加恶劣到可能令读者感到反感的地步，而灯花的始终坚守换来的也只是男主的恶语相加。虽说有种写法叫做“欲扬先抑”，但这种“抑”也是要有个限度的压抑，而本作中跨越大半本千寻的“冷”的态度就明显有超出读者容忍限度的嫌疑，以至于直到灯花视角的“扬”的逐渐改观也不足以支撑起男女主间亲密关系的建成，所以这段的表现显得较为空洞和生硬，观感并不太好。也不知是因为篇幅、设定框架还是什么其他限制的缘故导致了三秋缒这次的失手，但我寻思着如果能用更多的文字描绘一下两人关系逐渐转暖后的互动，而不仅仅是用千寻日记上的三言两语带过就更好了（当然，留白也有留白独特意味深长的韵味在里面，看个人喜好吧）。</p>
+<p>再其次是我个人觉得读着印象不太好的场景：灯花掉包“lethe”而后千寻造就意识到了这次掉包所以又反掉包回来的逆转——其实这一幕前面的写作手法还是公认非常赞的，彼此间心灵距离为零的两人紧紧相拥、一而再再而三确认记忆是否留存的轻声话语……然后，当千寻风轻云淡地笑着说出真相时，我当时满脑子都是某部闭嘴级日剧中的经典场景：</p>
+<p><img data-src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/d1/be/d1be35065f250f1f315452be9e920dd4.png">↑嗯，大概就是这么一种感觉吧（甚至也TMD是在医院里嗷2333），不过首先表明立场——新垣结衣真的不是我老婆啊！我寻思着要是我老婆的话再怎么也得是木村文乃或者山口智子或者2000年以前的广末凉子吧？（来人，给爷桃恰）——咳咳，总而言之明明前一秒钟还是感人肺腑的青春恋爱小说，下一秒钟忽然一转攻势便乘了（我最爱的×）青春悬疑Mystery，这简直令人猝不及防嗷，让前面在我心目中自己酝酿好的良好氛围瞬间碎成了渣。当然这次逆转也不是说完全没有铺垫，前面也的确有在千寻视角下对于那包“lethe”的刻意细节描写，但我就是觉得这里转变的很突兀，也可能对男主来说有更好的解决方法（比方说根本不用冒险去喝这包“lethe”），但为了这种逆转的节目效果嘛……蒜了蒜了，也没什么不好的，仅仅是莫名奇妙地戳中了我的笑点而已——然后，等了太久、太久的男女主角的接吻……而再接下来，仿佛理所当然地，千寻也永远失去了灯花，这在所谓的“轻文学”里似乎也见怪不怪了，对于这在女主必死的模式在这因为篇幅限制就先不讨论了，但从某种意义上来说，随着本作女主角的死亡，“你的故事”才从另一层意义上真正地开始了：这不是关于英雄的故事，这是写满了温柔谎言的故事。</p>
+<h2 id="【四】英雄变奏曲"><a href="#【四】英雄变奏曲" class="headerlink" title="【四】英雄变奏曲"></a>【四】英雄变奏曲</h2><blockquote>
+<p>浅浅萤光<br>消逝暮夜<br>倏尔此生<br>无果恋心</p>
+</blockquote>
+<p>这是一曲英雄的恋歌——但时至今日，“英雄”这个词究竟代表着什么，或许已经没有人知道了——至少和那不太遥远的以往相比，在无可避免的词义弱化下，“英雄”似乎已经随意到变成了任何一个人都可以成为的“东西”。</p>
+<p>是啊，这个世界上有许许多多的英雄，但是却不是“我们”的英雄……如果仅仅只靠个人的心灵自己承担，那也许最低限度的苟活就够了；可到头来却可以随意增添、删除构成现在作为主体的人的记忆，明明自己随世界的沉沦一起坠落却认为自己在反抗，因为这个满溢着原罪的世界，因为幸福虑妄的梦无非是带着希望死去，所以才无法那么简单地被拯救。</p>
+<blockquote>
+<p>“我希望千寻君可以精神起来。”</p>
+</blockquote>
+<p>仅仅是这么简单的愿望，要说出口、被他接受却又是如此艰难：这个看似美好的世界，一定一点也不正确。想要拯救一个人，究竟需要多大的能力？又必须任性到什么地步才行？面对无法负责的事，要是不慎犯了错又该怎么办？如果被拯救者其实根本不愿意被拯救，又如何是好？问题多到数不胜数，可是我相信没有一个人能够将这些问题悉数解答——所谓英雄，就是在找到确切的答案之前，就早已迈开脚步的人——哪怕仅仅只是为了他们自己，哪怕他们可能是全世界最无法拯救他人的人。</p>
+<p>这虽然并不符合逻辑，但仍然是毋庸置疑的事实。英雄就是这样的一群笨蛋：他们也会欺骗，会撒谎，也会流泪，止步不前，甚至伤害他人，以至于到最后也没有意识到自己成为了“英雄”——但是他们却微笑着说道：“对不起，我知道我伤害了你。但是我想拯救你，我希望你能够幸福……”</p>
+<p>有这样的话语，已经足够了，因为没有比此等忏悔的祈祷更加纯粹的希望了，尽管在这句话的后面还有那仍未说出口的话语被悄然隐去了：<em>“……我也希望自己能够幸福。”</em>将自身之情移至他人，表面上看起来是利他主义的；然而利他主义往往是利己主义的另一种形式，再把他人当做目的同时也把他人当做手段。他已然成为了某种媒介，借助于他达到自己生命感的升华，通过他进她意欲达到的目的状态所以即使这么做很狡猾，她还要任性地、利己地成为他的英雄，相信这个世界仿佛真的存在着某种救赎……的错觉。</p>
+<p>但如果只是止步于此，却未免太过于陈词滥调。起初看到目录里有“Hero”相关的字眼我是很慌的，毕竟“英雄”这个主题实在太老生常谈了，似乎已经没有什么东西可写。当然如果说能给英雄做出更加新颖的定义的话（类似河野裕的阶梯岛系列第二卷），也未尝不是一种写作方法；可在本作中，“英雄”的定义恰巧又是那么的王道，以至于仅仅停留于此是绝对会让人感到老套的。为了拯救这个可能会归于烂俗的故事，三秋缒必须创造出比“英雄”更加深刻的主题：这不是英雄的故事，他们却成为了彼此的英雄。</p>
+<p>在故事的前半段，她确实用温柔无比的谎言、浸透着爱的陪伴拯救了他；而在故事的后半段，他编织着同样温柔的谎言，带着痛苦而又幸福的心情拯救了她——幸好有这样的美丽对照的故事结构，才让我喜欢上了这部作品。老实说这其实也并算不上什么新鲜玩意，我都能瞬间在脑海里回想起好几个类似套路的故事，可有趣的是每当读到这样的故事，某种美妙的感觉就像火花似的在我心中燃烧起来，仿佛心中的一切立刻都软化了，之前那由于误解与迷茫而产生的私人性的疼痛也于顷刻间消失殆尽：没错，少年少女们的“相互拯救”就如同“英雄”一样在ACG作品中属于再王道不过母题，而在这之后他们向彼此敞开心扉、怀着快乐和幸福的亲吻则更是让人不禁感慨：这TM才是我所喜爱的三秋缒啊！这TM才是二刺螈啊！（？）</p>
+<p>可正当我以为故事在这停止已经很不错了时，三秋缒又狠狠地打了我的脸，倒不如说这也是我觉得他本次最大的突破：在故事的最后，千寻和灯花所历经的一切幸福与不幸不再仅仅是属于他们自己，而是扩散到这个整个世界的人的心中——千寻在灯花死后，顺理成章地“接替”了灯花义忆制造师的工作，尽管他们只做了三个月的青梅竹马，但这个三个月中的每一分每一秒中，说过的话语也好、内心的悸动也好，或者只是彼此脸上微小的表情变动，都已被永远地铭刻在了千寻心中，足以让他知晓该如何“制作世界上最温柔的谎言”，足以让本该只属于两人的命运奇迹浪漫到在世界的任何一个角落无数次地再上演——这不是我们的故事，这将是“你的故事”。</p>
+<p>纵观三秋缒以往作品，不难发现他所描绘的情感大多局限于男女主角内心世界中，他们一般与社会脱离了联系，外人们无法与他们分享共同的喜悦或悲伤，甚至荒诞到无人了解他们曾经存在的痛楚：他们深陷在命运的地洞中，无论怎么挣扎也无法伸出手触碰头顶那片被切割成碎片的蓝天。但幸好这一次，彼此之间因谎言而诞生的爱终于强大到足以撼动了“三秋缒的极限”，而不仅仅是两人之间的报团取暖、互舔伤口，也不再受限于个体的善恶与意志，转而重新回到有那么些“世界系”气息的落脚点：在成为彼此英雄的同时，他们也宛若英雄般为拯救这个泪水满溢的世界增添了那么一丝微乎其微可能性，为每一个在生命的挣扎中成为爱的碎片的生命带来希望。</p>
+<p>虽然这份忠贞不渝的爱非常弱小，即使这份虚伪的爱意也许只是谎言，也许也能拯救这个世界。</p>
+<p>可能这是第一次，三秋缒在他的故事结局中对他所设定的世界做了文章，而不是单单让他的设定完全沦为男女主角间感情发展的催化剂，这也是我之所以称三秋缒突破了他的极限的缘由。而我相信在这个故事设定下，已经没有什么能比本作结局更美好、更可爱、更深刻的的了：<strong>这个充满着悲伤的世界，也存在着些许写满谎言般幸福规则救赎；虽然无法轻而易举地达成，但拯救与救赎，本身就是一个相互抚摸的过程；而英雄在拯救他人、承载了太多太多的同时，也不经意间救赎了那个哭泣的自己——是的，在这片天空之下，一定有祝福我们的地方——我们，一直在寻找那梦中的伊甸园。</strong></p>
+<p>所以怀着希望迈开脚步吧，去追寻着那个能呼唤彼此姓名的“英雄”——哪怕，这只是温柔的谎言。</p>
+<h2 id="【五】最后的谎言-Forget-me-not"><a href="#【五】最后的谎言-Forget-me-not" class="headerlink" title="【五】最后的谎言:Forget me not."></a>【五】最后的谎言:Forget me not.</h2><p>或许，在每个童话故事中，无论经过了多少磨难与挫折，骑着扫把的魔女都会飞到心上人的窗前，轻轻敲打着少年的窗户，于是少年赶紧打开窗户——然后，他们会获得幸福……然而在本作中，作为“魔女”化身的她在最后还是没能逃离那“命运魔鬼”储蓄罐式收益的必死诅咒，而他也没能有朝一日在神社前再度呼唤她美丽的名字；可就算如此，我也愿意称本作是一个美丽“童话”，只因他与她最后获得了只会在童话中出现的近乎完美的幸福——只可惜她还是死去了，出于所谓“命运”的缘由。</p>
+<p>可以说本作的故事从头至尾都是出于一系列交错的命运，一个个体的生命也是由一连串的偶然聚合而成，个体的存在是破碎的，而在偶然中“爱”成为了碎片。她因为命运而必须死去，但她也在幸运女神的眷顾下才能和他相遇：“命运”这个词的含义，不是“沉重、必然、价值”的交织，而是令人惶然的“幸福”与“不幸”这两个全然相悖的可能性的交织。所以我们只能对这样的命运报以无可奈何的态度，就像一位热爱开玩笑的神明大人用手轻轻玩弄着人类最引以为傲的回记忆，挣扎也没用，怒吼也没用所以她用哀婉的声音说道：“<strong>让我们的相遇，全部都当做谎言来结束吧。</strong>”这甚至谈不上是对命运的反抗，而只是某种在恍如隔世的梦幻中诉说着世界惊恐之中的宁静的妥协。但还好，这都只是谎言而已，而他在一种对尘世极其漫不经心的态度中，用他的全部回忆、全部存在孤注一掷，相信命运一定会让他的赌注胜利，所以又是出于那“该死的命运”，他最后没能忘掉她，因为他早已深爱着她，所以也拒绝忘记她的存在，也拒绝忘却她的死亡。用昆德拉的话来说，这并不是宗教式的对灵魂永生的信仰，也并不是什么大不了的事要去做，这一切都太简单了：“<strong>一个被我爱的死者对于我来说永远不会死。</strong>”他曾经爱过她，不，应该说他爱她。如果拒绝用过去时态说他对她的爱，这就是说死去的她依然存在——超越了任何实际与理性的思索，轻轻地裹挟着无可救药的挚爱与悲恸。</p>
+<p>这也让我不禁想到福克纳的小说《野棕榈》的结尾，它的叙事与本作是如此的相似，以至于我不得不出于私心在这将那感人至深的结尾放出而进行一番对比——女人因流产死去，而监狱中的男人打消了自杀的念头，因为唯一能延长他所爱女人的生命的办法便是把她保存在记忆中：</p>
+<blockquote>
+<p>She was gone,and I lost about half memory of her.If one day I was gone,all the memory of her would gone with me. Yes, he think:if I have to choose one from sorrow and nothing,I will choose sorrow.<br>她不在了，一半的记忆也已不在；如果我不在了，那么所有的记忆也将不在了。是的，他想，在悲伤与虚无之间我选择悲伤。</p>
+</blockquote>
+<p>凉爽夜晚的虫鸣声已经开始混杂着秋虫的鸣叫声，神社前的祭典开始吹起淡淡的微风，吹来那残留的美梦的气味，再继续向寥廓的天空吹去，扬向漆黑夜空中闪烁的星星；而他仿佛再度看见了她的身影，可这一次，他只是微笑着转身而去：现在，他所追索的不再是如此般缥缈的幻影，而是某种更加清澈见底的、再也不会失去的东西；她永别的喃喃细语在黑夜里是那么温柔、纯净，而他已然能带着坚定的笑容承受这一切……</p>
+<p>于是，这个短暂而又漫长的三个月、这些曾经与虚假青梅竹马为伴的悲伤而又幸福的日子，以一个承载了太多、太多的亲吻而理所当然地落下了帷幕：他并非不清楚，这个吻的爱只持续了一天不到，就随着她的离去而永远消散在蔚蓝色的天空碎片中。但尽管如此，就算是只为了这个持续了不到一天的残缺之吻，他也愿意毫无保留地为其献出自己的一生。</p>
+<p>是的，在悲痛的存在与不存在之间，他选择悲痛的存在……</p>
+<p>这已不再是谎言，而是真正属于你的故事——<strong>他，绝对不会忘记。</strong></p>
+<h2 id="【结语】愿世界有爱"><a href="#【结语】愿世界有爱" class="headerlink" title="【结语】愿世界有爱"></a>【结语】愿世界有爱</h2><p>《君の话》的故事结束了，但好像也并没有结束——至今为止，我见过许多被本作感动的人，甚至他们会说这本书影响了他们的人生。</p>
+<p>在读本作之前，我曾怀疑过它真的有这些人口中所吹的那么好吗？而直到拜读之后，我才发现他们这样赞美本作是完全合情合理的。虽然可能不至于撼动人生观，虽然也会有我在文中所列举的一些不足，虽然原本讨厌“三秋缒”特有叙事模式的人会依然讨厌它，但本作的整体素质绝对配得上我们的感动……</p>
+<p>而对于某些黑本作的人呢，我对他只有一句话：<strong>你黑三秋缒就像往天空丢斧头，天空是那么高远，那么辽阔,斧子扔得再高，也触及不到天空的皮毛</strong>……好啦，开玩笑的，基德基德2333</p>
+<p>嗯……其实到最后该讲的都讲完了，咱也不知道该谈啥了，就放上全世界最好的Lain_ever大佬对本作的评价吧：</p>
+<p><img data-src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/7b/c3/7bc393093818b26345d15efdbe18680e.png">可以说我对于本作的期待很一大部分就是就是Lain佬的这个评论嗷233，这是目前我所能见到关于本作最好的短评，大家也可以看出本文的标题就就出于其中（当然原作中也有原话），我觉得这与书中故事的主题非常契合就把它偷过来用了嗷（拷贝忍者AKK前来报道！）。</p>
+<p>最后的最后，就再以我的某位友人对本作的评价收尾吧：</p>
+<blockquote>
+<p>如果只让我选择两本三秋缒的书，我会选择《三日间的幸福》和《你的故事》；<br>但如果只有一本书可选，那我可能会毫不迟疑地选择《你的故事》。</p>
+</blockquote>
+<p>我想，出于对本作的爱，现在的我也是一样的吧……</p>
+<p>感谢各位的阅读！</p>
+<p>OG加油！欧美刀塔Ti9加油！上帝C奥利给！全世界最好的上帝C冲啊！（狗头保命，其实要不是Ti9我早就把这篇文摸出来了嗷）</p>
+<p><strong>By AikeKo</strong></p>
+<p><strong>2019.8.21</strong></p>
+<p><strong>“I wish to believe in LOVE.”</strong></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%8A%A8%E7%94%BB/" rel="tag"># 动画</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019-08-04-%E6%B2%A1%E8%83%BD%E2%80%9C%E7%9C%9F%E5%BF%83%E4%B8%BA%E4%BD%A0%E2%80%9D%E7%9A%84%E6%88%91%E4%BB%AC.html" rel="prev" title="没能“真心为你”的我们 | 关于《EVA》× 卡夫卡的随笔">
+      <i class="fa fa-chevron-left"></i> 没能“真心为你”的我们 | 关于《EVA》× 卡夫卡的随笔
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020-02-10-%E5%9D%A6%E7%8E%87%E7%9A%84%E3%80%81%E6%B2%89%E9%BB%98%E7%9A%84....html" rel="next" title="坦率的、沉默的...|关于《春物14》，或者更多">
+      坦率的、沉默的...|关于《春物14》，或者更多 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%90%E4%B8%80%E3%80%91%E4%B8%89%E7%A7%8B%E7%BC%92%E7%9A%84%E6%9E%81%E9%99%90%E2%80%A6%E2%80%A6%EF%BC%9F"><span class="nav-text">【一】三秋缒的极限……？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%90%E4%BA%8C%E3%80%91It%E2%80%99s-just-a-tale-of-memories"><span class="nav-text">【二】It’s just a tale of memories.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%90%E4%B8%89%E3%80%91%E4%B8%96%E7%95%8C%E5%86%99%E6%BB%A1%E6%B8%A9%E6%9F%94%E7%9A%84%E8%B0%8E%E8%A8%80"><span class="nav-text">【三】世界写满温柔的谎言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%90%E5%9B%9B%E3%80%91%E8%8B%B1%E9%9B%84%E5%8F%98%E5%A5%8F%E6%9B%B2"><span class="nav-text">【四】英雄变奏曲</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%90%E4%BA%94%E3%80%91%E6%9C%80%E5%90%8E%E7%9A%84%E8%B0%8E%E8%A8%80-Forget-me-not"><span class="nav-text">【五】最后的谎言:Forget me not.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%90%E7%BB%93%E8%AF%AD%E3%80%91%E6%84%BF%E4%B8%96%E7%95%8C%E6%9C%89%E7%88%B1"><span class="nav-text">【结语】愿世界有爱</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AikeKo"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">AikeKo</p>
+  <div class="site-description" itemprop="description">你找到祈祷的意义了吗？</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/aikkeko" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;aikkeko" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AikeKo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <style>
+    .archive-background-opening {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: #030405;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: none;
+    }
+    .archive-background-opening.is-revealing {
+      animation: archive-background-reveal 1.35s cubic-bezier(.18,.62,.16,1) forwards;
+    }
+    body > .container {
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes archive-background-reveal {
+      0% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; pointer-events: none; }
+    }
+  </style>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#1e2128">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bitbug_favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bitbug_favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#1e2128">
+
+
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="档案馆">
+<meta name="application-name" content="世界尽头的档案馆">
+<meta name="msapplication-TileColor" content="#1e2128">
+<meta name="msapplication-tap-highlight" content="no">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="preload" as="image" href="/images/Z.A.T.O_02_ca04.jpg" fetchpriority="high">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aikkeko.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+
+<script src="/js/long-text-loader.js" async></script>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(location.hostname) !== -1;
+
+    if (isLocalPreview) {
+      navigator.serviceWorker.getRegistrations()
+        .then(function(registrations) {
+          return Promise.all(registrations.map(function(registration) {
+            return registration.unregister();
+          }));
+        })
+        .then(function() {
+          if (!window.caches) return [];
+          return caches.keys().then(function(keys) {
+            return Promise.all(keys.filter(function(key) {
+              return key.indexOf('blog-') === 0;
+            }).map(function(key) {
+              return caches.delete(key);
+            }));
+          });
+        })
+        .then(function() {
+          console.log('[ServiceWorker] Local preview cleanup complete.');
+        })
+        .catch(function(error) {
+          console.log('[ServiceWorker] Local preview cleanup failed:', error);
+        });
+      return;
+    }
+
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(registration) {
+        console.log('[ServiceWorker] Registered:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('[ServiceWorker] Registration failed:', error);
+      });
+  });
+}
+</script>
+
+  <meta name="description" content="你找到祈祷的意义了吗？">
+<meta property="og:type" content="website">
+<meta property="og:title" content="世界尽头的档案馆">
+<meta property="og:url" content="https://aikkeko.github.io/page/2/index.html">
+<meta property="og:site_name" content="世界尽头的档案馆">
+<meta property="og:description" content="你找到祈祷的意义了吗？">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="AikeKo">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://aikkeko.github.io/page/2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>世界尽头的档案馆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="世界尽头的档案馆" type="application/atom+xml">
+</head>
+
+<body class="" itemscope itemtype="http://schema.org/WebPage">
+    <div class="archive-background-opening" aria-hidden="true"></div>
+    <script>
+      (function() {
+        var opening = document.querySelector('.archive-background-opening');
+        if (!opening) return;
+
+        var reveal = function() {
+          if (opening.classList.contains('is-revealing')) return;
+          requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
+              opening.classList.add('is-revealing');
+            });
+          });
+        };
+
+        if (document.readyState !== 'loading') {
+          reveal();
+        } else {
+          document.addEventListener('DOMContentLoaded', reveal, { once: true });
+        }
+
+        // Start promptly even if parsing or a third-party resource stalls.
+        window.setTimeout(reveal, 800);
+        opening.addEventListener('animationend', function() {
+          opening.remove();
+        }, { once: true });
+      })();
+    </script>
+  <div class="container">
+    <div class="zato-background-quotes" aria-hidden="true">
+      <span class="zato-quote zato-quote-left">ALL STORIES ARE LOST PROPERTY</span>
+      <span class="zato-quote zato-quote-right">THE LAST ARCHIVE REMAINS OPEN</span>
+      <span class="zato-quote zato-quote-top">PLEASE RETURN BORROWED DREAMS</span>
+      <span class="zato-quote zato-quote-mid">MEMORY IS AN INDEX WITHOUT A MAP</span>
+      <span class="zato-quote zato-quote-bottom">NO REFUNDS AFTER THE END OF THE WORLD</span>
+      <span class="zato-quote zato-quote-code">WATER &amp; BISCUIT / AISLE 30</span>
+    </div>
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">世界尽头的档案馆</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">theme of the WATER & BISCUIT</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index">
+            
+
+<div class="hero-section">
+  <div class="hero-mask"></div>
+  <div class="hero-terminal" aria-hidden="true">
+    <span>NO. 30-000</span>
+  </div>
+  <div class="hero-catalogue-labels" aria-hidden="true">
+    <span class="hero-label hero-label-lost">LOST PROPERTY OFFICE</span>
+    <span class="hero-label hero-label-record">RECORD 07 / RETURNED DREAMS</span>
+    <span class="hero-label hero-label-aisle">AISLE OF QUIET WEATHER</span>
+    <span class="hero-label hero-label-water">WATER RATION / BISCUIT TIN</span>
+    <span class="hero-label hero-label-defect">DEFECTIVE MEMORIES</span>
+    <span class="hero-label hero-label-after">AFTER CLOSING HOURS</span>
+    <span class="hero-label hero-label-map">NO MAP FOR THIS AISLE</span>
+    <span class="hero-label hero-label-remember">ITEMS MAY REMEMBER YOU</span>
+    <span class="hero-label hero-label-fragile">FRAGILE / KEEP DRY</span>
+    <span class="hero-label hero-label-static">OPEN UNTIL STATIC ENDS</span>
+  </div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-kicker">Literary Archive / Z.A.T.O</div>
+      <h1 class="site-title-main">世界尽头的档案馆</h1>
+      <p class="site-subtitle-main hero-subtitle-reveal">theme of the WATER & BISCUIT</p>
+    </div>
+    <a href="#posts-section" class="scroll-down" aria-label="向下滚动">
+      <div class="scroll-down-icon">
+        <i class="fa fa-chevron-down"></i>
+      </div>
+    </a>
+  </div>
+</div>
+
+
+<div id="posts-section" class="posts-section">
+  <div class="posts-container">
+    
+    <article class="post-card" itemscope itemtype="http://schema.org/Article">
+      <div class="post-card-image">
+        <a href="/2018-12-18-%E5%9C%A8%E6%B2%A1%E6%9C%89%E7%A5%9E%E7%9A%84%E4%B8%96%E7%95%8C%E4%B8%AD%E8%BF%BD%E5%AF%BB.html">
+          <img class="post-card-cover" src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/29/95/2995dd3aeede075970d19ffce082c092.jpeg" alt="在没有神的世界中追寻 | 《神的记事本①》单卷评析" itemprop="image" loading="lazy" onload="this.closest('.post-card-image').classList.add('is-loaded')" onerror="this.closest('.post-card-image').classList.add('is-loaded'); this.remove()">
+        </a>
+      </div>
+      
+      <div class="post-card-content">
+        <div class="post-card-heading">
+          <h2 class="post-card-title" itemprop="name headline">
+            <a href="/2018-12-18-%E5%9C%A8%E6%B2%A1%E6%9C%89%E7%A5%9E%E7%9A%84%E4%B8%96%E7%95%8C%E4%B8%AD%E8%BF%BD%E5%AF%BB.html" itemprop="url">在没有神的世界中追寻 | 《神的记事本①》单卷评析</a>
+          </h2>
+          <span class="post-card-index" aria-hidden="true"></span>
+        </div>
+        <div class="post-card-excerpt" itemprop="description">
+          我是最后一个走出侦探事务所的人，因为被迫留下来写爱丽丝规定的文件。外面的风刮得好强，比强冷气房间更加寒冷。可以看到不夜城地光亮刺眼地照亮夜晚的底层，天上一颗星星也没有。 我转头凝视事务所的看板。 这是唯一值得一试的方法。 It’s the only NEET thing to do. 真的是这样吗？我也不知道。 可是这是我唯一能做的事情。不是为了彩夏、不是为...
+        </div>
+        
+        <div class="post-card-meta">
+          <span class="post-meta-item post-card-date">
+            <i class="far fa-calendar"></i>
+            <time datetime="2018-12-18T00:00:00+08:00" itemprop="dateCreated datePublished">
+              Dec 18, 2018
+            </time>
+          </span>
+          <span class="post-meta-item post-card-category">
+            <i class="far fa-folder"></i>
+              <a href="/categories/%E5%8A%A8%E7%94%BB/">动画</a>
+          </span>
+          <span class="post-meta-item post-card-tags">
+            <i class="far fa-tags"></i>
+              <a href="/tags/%E5%8A%A8%E7%94%BB/">#动画</a>
+          </span>
+          
+          <span class="post-meta-item post-card-words">
+            <i class="far fa-file-word"></i> 10.6k words
+          </span>
+          
+          <span class="post-meta-item post-card-reading-time">
+            <i class="far fa-clock"></i> 35 min read
+          </span>
+        </div>
+      </div>
+    </article>
+    
+    <article class="post-card" itemscope itemtype="http://schema.org/Article">
+      <div class="post-card-image">
+        <a href="/2018-11-04-%E4%BD%A0%E7%A6%BB%E5%88%AB%E7%9A%84%E6%97%A5%E5%AD%90%EF%BC%8C%E5%AE%9A%E8%83%BD%E5%B0%86%E6%88%91%E6%94%B9%E5%8F%98.html">
+          <img class="post-card-cover" src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/83/22/832298c3db1fc83f5e1fdfff7cb658f9.jpeg" alt="你离别的日子，定能将我改变——评《离别的钢琴奏鸣曲》" itemprop="image" loading="lazy" onload="this.closest('.post-card-image').classList.add('is-loaded')" onerror="this.closest('.post-card-image').classList.add('is-loaded'); this.remove()">
+        </a>
+      </div>
+      
+      <div class="post-card-content">
+        <div class="post-card-heading">
+          <h2 class="post-card-title" itemprop="name headline">
+            <a href="/2018-11-04-%E4%BD%A0%E7%A6%BB%E5%88%AB%E7%9A%84%E6%97%A5%E5%AD%90%EF%BC%8C%E5%AE%9A%E8%83%BD%E5%B0%86%E6%88%91%E6%94%B9%E5%8F%98.html" itemprop="url">你离别的日子，定能将我改变——评《离别的钢琴奏鸣曲》</a>
+          </h2>
+          <span class="post-card-index" aria-hidden="true"></span>
+        </div>
+        <div class="post-card-excerpt" itemprop="description">
+          这时，真冬露出了微笑。那是我第一次看见她发自真心的笑容。 “有啊，我看见过。” 我歪了歪头。 “在哪里？” 真冬眯了眯眼睛，伸出食指戳了戳我的胸口。 “就在这里。” 浓雾渐渐散开，鸟儿的叫声也越来越清晰。清晨的阳光洒在树木之间，也将真冬和呆掉的我影子拉的好长好长，一直延伸到洼地正中央的钢琴上。 ——《离别的钢琴奏鸣曲》第一卷，黑鶇之歌 杉井光“早期作品” “...
+        </div>
+        
+        <div class="post-card-meta">
+          <span class="post-meta-item post-card-date">
+            <i class="far fa-calendar"></i>
+            <time datetime="2018-11-04T00:00:00+08:00" itemprop="dateCreated datePublished">
+              Nov 04, 2018
+            </time>
+          </span>
+          <span class="post-meta-item post-card-category">
+            <i class="far fa-folder"></i>
+              <a href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a>
+          </span>
+          <span class="post-meta-item post-card-tags">
+            <i class="far fa-tags"></i>
+              <a href="/tags/galgame/">#galgame</a>
+          </span>
+          
+          <span class="post-meta-item post-card-words">
+            <i class="far fa-file-word"></i> 6.4k words
+          </span>
+          
+          <span class="post-meta-item post-card-reading-time">
+            <i class="far fa-clock"></i> 21 min read
+          </span>
+        </div>
+      </div>
+    </article>
+    
+    <article class="post-card" itemscope itemtype="http://schema.org/Article">
+      <div class="post-card-image">
+        <a href="/2017-08-28-%E4%B8%96%E7%95%8C%E6%98%AF%E6%88%91%E4%BB%AC%E6%9C%80%E5%88%9D%E5%92%8C%E6%9C%80%E5%90%8E%E7%9A%84%E7%88%B1.html">
+          <img class="post-card-cover" src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/29/bd/29bd5ad12f0c5b770ed3badbe8603e20.png" alt="世界始终是我们最初与最后的爱 ~ 关于《キラ☆キラ》的杂谈" itemprop="image" loading="lazy" onload="this.closest('.post-card-image').classList.add('is-loaded')" onerror="this.closest('.post-card-image').classList.add('is-loaded'); this.remove()">
+        </a>
+      </div>
+      
+      <div class="post-card-content">
+        <div class="post-card-heading">
+          <h2 class="post-card-title" itemprop="name headline">
+            <a href="/2017-08-28-%E4%B8%96%E7%95%8C%E6%98%AF%E6%88%91%E4%BB%AC%E6%9C%80%E5%88%9D%E5%92%8C%E6%9C%80%E5%90%8E%E7%9A%84%E7%88%B1.html" itemprop="url">世界始终是我们最初与最后的爱 ~ 关于《キラ☆キラ》的杂谈</a>
+          </h2>
+          <span class="post-card-index" aria-hidden="true"></span>
+        </div>
+        <div class="post-card-excerpt" itemprop="description">
+          推完《Kira☆Kira 煌煌舞台》这个作品也是过了一年多了，怎么说呢，这部作品算是多多少少影响了我，有让我改变了些什么，所以对我来说呢它也是仅次于素晴的存在（素学家耀武扬威）。而就在前几天在听《Deardrops》的OST时，自己内心不知为何涌起写一篇类似感想文章的冲动…… “那么就着手去写吧！” 怀抱着这样纯粹的心情，我打开了word文档，于是乎也就诞生...
+        </div>
+        
+        <div class="post-card-meta">
+          <span class="post-meta-item post-card-date">
+            <i class="far fa-calendar"></i>
+            <time datetime="2017-08-28T00:00:00+08:00" itemprop="dateCreated datePublished">
+              Aug 28, 2017
+            </time>
+          </span>
+          <span class="post-meta-item post-card-category">
+            <i class="far fa-folder"></i>
+              <a href="/categories/%E6%B8%B8%E6%88%8F/">游戏</a>
+          </span>
+          <span class="post-meta-item post-card-tags">
+            <i class="far fa-tags"></i>
+              <a href="/tags/%E6%B8%B8%E6%88%8F/">#游戏</a><span class="tag-separator">, </span>
+              <a href="/tags/galgame/">#galgame</a>
+          </span>
+          
+          <span class="post-meta-item post-card-words">
+            <i class="far fa-file-word"></i> 7.5k words
+          </span>
+          
+          <span class="post-meta-item post-card-reading-time">
+            <i class="far fa-clock"></i> 25 min read
+          </span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AikeKo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
