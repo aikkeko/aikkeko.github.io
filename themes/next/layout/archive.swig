@@ -2,7 +2,7 @@
 {% import '_macro/post-collapse.swig' as post_template with context %}
 {% import '_macro/sidebar.swig' as sidebar_template with context %}
 
-{% block title %}{{ __('title.archive') }} | {{ title }}{% endblock %}
+{% block title %}Archive Index | {{ title }}{% endblock %}
 
 {% block class %}archive{% endblock %}
 
@@ -14,7 +14,7 @@
   <div class="post-block">
     <section class="archive-hero" aria-label="Archive overview">
       <div class="archive-hero-kicker">Chronological Index</div>
-      <h1 class="archive-hero-title">{{ __('title.archive') }}</h1>
+      <h1 class="archive-hero-title">Archive Index</h1>
       <p class="archive-hero-desc">All dispatches are arranged by the time they entered the archive.</p>
       <div class="archive-hero-stats">
         <span><strong>{{ site.posts.length }}</strong> posts</span>

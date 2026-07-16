@@ -77,15 +77,15 @@
         {%- endif %}
         
         <div class="post-card-meta">
-          <span class="post-meta-item">
+          <span class="post-meta-item post-card-date">
             <i class="far fa-calendar"></i>
             <time datetime="{{ moment(post.date).format() }}" itemprop="dateCreated datePublished">
-              {{ moment(post.date).format('MMM DD, YYYY') }}
+              {{ moment(post.date).locale('en').format('MMM DD, YYYY') }}
             </time>
           </span>
           
           {%- if post.categories and post.categories.length %}
-          <span class="post-meta-item">
+          <span class="post-meta-item post-card-category">
             <i class="far fa-folder"></i>
             {%- for cat in post.categories.toArray() %}
               <a href="{{ url_for(cat.path) }}">{{ cat.name }}</a>
@@ -95,20 +95,24 @@
           {%- endif %}
           
           {%- if post.tags and post.tags.length %}
-          <span class="post-meta-item">
+          {%- set visible_tags = post.tags.toArray().slice(0, 2) %}
+          <span class="post-meta-item post-card-tags">
             <i class="far fa-tags"></i>
-            {%- for tag in post.tags.toArray() %}
+            {%- for tag in visible_tags %}
               <a href="{{ url_for(tag.path) }}">#{{ tag.name }}</a>
               {%- if not loop.last %}<span class="tag-separator">, </span>{%- endif %}
             {%- endfor %}
+            {%- if post.tags.length > visible_tags.length %}
+              <span class="tag-more">+{{ post.tags.length - visible_tags.length }}</span>
+            {%- endif %}
           </span>
           {%- endif %}
           
-          <span class="post-meta-item">
+          <span class="post-meta-item post-card-words">
             <i class="far fa-file-word"></i> {{ wordcount(post.content) }} words
           </span>
           
-          <span class="post-meta-item">
+          <span class="post-meta-item post-card-reading-time">
             <i class="far fa-clock"></i> {{ min2read(post.content) }} min read
           </span>
         </div>

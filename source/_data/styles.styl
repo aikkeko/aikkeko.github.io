@@ -2,13 +2,13 @@
 // NexT 主题美化配置 - Z.A.T.O 后末日风格
 // 基于 Z.A.T.O_02_ca04.png 废墟美学设计
 // 
-// Version: 2026.07.16-01
+// Version: 2026.07.16-09
 // Last Updated: 2026-07-16
 // ============================================
 
 // 版本信息（用于调试）
 :root {
-  --theme-version: "2026.07.16-01";
+  --theme-version: "2026.07.16-09";
   --theme-name: "Z.A.T.O Apocalypse";
   // ===== 全面覆盖 NexT 默认白色系 CSS 变量 =====
   // 背景色
@@ -48,7 +48,7 @@ body {
   
   // 版本号水印（调试用，显示在页面左上角）
   &::before {
-    content: "v2026.07.16-01";
+    content: "v2026.07.16-09";
     position: fixed;
     top: 8px;
     left: 8px;
@@ -3472,8 +3472,7 @@ body {
 
 .header,
 .main,
-.footer,
-.back-to-top {
+.footer {
   position: relative;
   z-index: 2;
 }
@@ -5349,6 +5348,126 @@ body.tag .header-inner .site-brand-container {
 
 .index .post-card-meta {
   margin-top: 2px !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  gap: 8px 11px !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  font-size: clamp(0.72rem, 0.76vw, 0.82rem) !important;
+  letter-spacing: 0.09em !important;
+  line-height: 1.35 !important;
+}
+
+.index .post-card-meta .post-meta-item {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  gap: 5px !important;
+  white-space: nowrap !important;
+}
+
+.index .post-card-meta .post-card-tags {
+  flex: 0 1 auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+}
+
+.index .post-card-meta .post-card-tags a,
+.index .post-card-meta .post-card-tags .tag-more {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  align-items: center !important;
+  max-width: none !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: nowrap !important;
+}
+
+.index .post-card-meta .post-card-tags .tag-separator {
+  flex: 0 0 auto !important;
+  opacity: 0.58 !important;
+}
+
+.index .post-card-meta .post-card-tags .tag-more {
+  max-width: none !important;
+  margin-left: 2px !important;
+  padding: 1px 5px !important;
+  color: rgba(212, 196, 168, 0.88) !important;
+  border: 1px solid rgba(212, 196, 168, 0.18) !important;
+  background: rgba(16, 18, 22, 0.28) !important;
+  letter-spacing: 0.05em !important;
+}
+
+.index .post-card-meta .post-card-date time {
+  color: rgba(232, 228, 220, 0.64) !important;
+}
+
+.index .post-card-meta .post-card-words,
+.index .post-card-meta .post-card-reading-time {
+  flex: 0 0 auto !important;
+  min-width: max-content !important;
+  letter-spacing: 0.06em !important;
+}
+
+@media (max-width: 1180px) {
+  .index .post-card-meta {
+    gap: 8px !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.06em !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .index .post-card-meta {
+    flex-wrap: wrap !important;
+    gap: 8px 12px !important;
+    overflow: visible !important;
+  }
+
+  .index .post-card-meta .post-meta-item,
+  .index .post-card-meta .post-card-tags {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+  }
+
+  .index .post-card-meta .post-card-tags {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .index .post-card-meta .post-card-tags,
+  .index .post-card-meta .post-card-tags a {
+    max-width: 100% !important;
+  }
+}
+
+.index .post-card-meta .post-card-tags a {
+  min-width: 0 !important;
+}
+
+.index .post-card-meta i {
+  flex: 0 0 auto !important;
+}
+
+@media (max-width: 768px) {
+  .index .post-card-meta {
+    flex-wrap: wrap !important;
+    gap: 8px 12px !important;
+    overflow: visible !important;
+  }
+
+  .index .post-card-meta .post-meta-item,
+  .index .post-card-meta .post-card-tags {
+    flex: 0 1 auto !important;
+    min-width: 0 !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -5376,5 +5495,406 @@ body.tag .header-inner .site-brand-container {
   body.category .header-inner .site-brand-container,
   body.tag .header-inner .site-brand-container {
     padding-top: 36px !important;
+  }
+}
+
+// 46. Global top alignment - remove phantom gap before page content
+// The floating back-to-top control must never take space in the document flow.
+.back-to-top {
+  position: fixed !important;
+}
+
+.main {
+  margin-top: 0 !important;
+}
+
+.main-inner,
+.content-wrap,
+.content {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+body:not(.post-detail) .content > .post-block:first-child,
+body:not(.post-detail) .content > .post-block:first-of-type {
+  margin-top: 0 !important;
+}
+
+body.post-detail .post-banner {
+  margin-top: 0 !important;
+}
+
+@media (max-width: 991px) {
+  body:not(.post-detail) .content > .post-block:first-child,
+  body:not(.post-detail) .content > .post-block:first-of-type {
+    margin-top: 0 !important;
+  }
+}
+
+// 47. Unified bilingual typography - one archival voice for CJK and Latin text
+body {
+  font-family:
+    "Inter",
+    "SF Pro Text",
+    "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    sans-serif !important;
+  font-kerning: normal;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+}
+
+.site-title,
+.site-subtitle,
+.menu-item a,
+.page-hero-title,
+.archive-hero-title,
+.post-banner-title,
+.post-card-title,
+.posts-collapse .post-title,
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4,
+.post-body h5,
+.post-body h6 {
+  font-family:
+    "Inter",
+    "SF Pro Display",
+    "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    sans-serif !important;
+}
+
+.page-hero-title,
+.archive-hero-title,
+.post-banner-title,
+.post-card-title,
+.posts-collapse .post-title {
+  font-weight: 650 !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.18 !important;
+}
+
+.site-title,
+.menu-item a {
+  font-weight: 620 !important;
+  letter-spacing: 0.015em !important;
+}
+
+.site-subtitle,
+.page-hero-desc,
+.archive-hero-desc,
+.post-card-excerpt,
+.post-body,
+.post-body p,
+.post-body li {
+  font-family:
+    "Inter",
+    "SF Pro Text",
+    "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    sans-serif !important;
+  letter-spacing: 0.005em;
+}
+
+.page-hero-kicker,
+.archive-hero-kicker,
+.page-identity-hero::before,
+.archive-hero::before,
+.post-banner-kicker,
+.post-meta,
+.post-banner-meta,
+.post-card-meta,
+.page-hero-stats span,
+.archive-hero-stats span,
+.collection-header {
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    "Cascadia Mono",
+    "Courier New",
+    "PingFang SC",
+    "Microsoft YaHei",
+    monospace !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.13em !important;
+}
+
+.page-hero-stats strong,
+.archive-hero-stats strong {
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    "Cascadia Mono",
+    "Courier New",
+    monospace !important;
+  letter-spacing: 0.02em !important;
+}
+
+.post-body blockquote,
+.post-body blockquote p {
+  font-family:
+    "Inter",
+    "SF Pro Text",
+    "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    sans-serif !important;
+  font-style: normal !important;
+  letter-spacing: 0.01em !important;
+}
+
+// 48. Search overlay repair - keep search modal independent from sidebar flow
+.search-pop-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 11000 !important;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(72px, 10vh, 104px) 24px 40px !important;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(212, 196, 168, 0.08), transparent 34%),
+    rgba(8, 10, 14, 0.54) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.search-pop-overlay.search-active {
+  display: flex !important;
+}
+
+.search-pop-overlay .search-popup {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 720px !important;
+  max-width: calc(100vw - 48px) !important;
+  max-height: calc(100vh - 120px) !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background:
+    linear-gradient(145deg, rgba(34, 37, 44, 0.96), rgba(17, 19, 24, 0.96)) !important;
+  border: 1px solid rgba(212, 196, 168, 0.24) !important;
+  border-radius: 6px !important;
+  box-shadow:
+    0 26px 74px rgba(0, 0, 0, 0.58),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+}
+
+.search-popup .search-header {
+  display: grid !important;
+  grid-template-columns: 42px minmax(0, 1fr) 42px !important;
+  align-items: center !important;
+  min-height: 58px !important;
+  padding: 8px 10px !important;
+  background:
+    linear-gradient(90deg, rgba(212, 196, 168, 0.08), rgba(106, 160, 154, 0.04)) !important;
+  border-bottom: 1px solid rgba(212, 196, 168, 0.14) !important;
+}
+
+.search-popup .search-icon,
+.search-popup .popup-btn-close {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 34px !important;
+  height: 34px !important;
+  margin: 0 !important;
+  color: rgba(232, 228, 220, 0.62) !important;
+  line-height: 1 !important;
+}
+
+.search-popup .search-icon .fa,
+.search-popup .popup-btn-close .fa,
+.search-popup #no-result .fa {
+  font-size: 16px !important;
+  line-height: 1 !important;
+}
+
+.search-popup .search-input-container {
+  min-width: 0 !important;
+}
+
+.search-popup input.search-input,
+.search-popup .search-input {
+  width: 100% !important;
+  height: 40px !important;
+  margin: 0 !important;
+  padding: 0 12px !important;
+  color: rgba(232, 228, 220, 0.86) !important;
+  background: rgba(8, 10, 14, 0.38) !important;
+  border: 1px solid rgba(212, 196, 168, 0.18) !important;
+  border-radius: 3px !important;
+  font-size: 0.95rem !important;
+}
+
+.search-popup #search-result {
+  max-height: calc(100vh - 178px) !important;
+  min-height: 180px !important;
+  padding: 18px 22px 24px !important;
+  overflow-y: auto !important;
+}
+
+.search-popup #no-result {
+  min-height: 140px !important;
+  display: grid !important;
+  place-items: center !important;
+  color: rgba(232, 228, 220, 0.34) !important;
+}
+
+.search-popup #no-result .fa {
+  font-size: 44px !important;
+  opacity: 0.42 !important;
+}
+
+.search-popup ul.search-result-list {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.search-popup li {
+  margin: 0 0 16px !important;
+  padding: 0 0 16px !important;
+  border-bottom: 1px solid rgba(212, 196, 168, 0.1) !important;
+}
+
+.search-popup a.search-result-title {
+  display: inline-block !important;
+  margin-bottom: 6px !important;
+  color: #d4c4a8 !important;
+}
+
+.search-popup p.search-result {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: rgba(232, 228, 220, 0.62) !important;
+  line-height: 1.75 !important;
+}
+
+@media (max-width: 768px) {
+  .search-pop-overlay {
+    padding: 56px 14px 28px !important;
+  }
+
+  .search-pop-overlay .search-popup {
+    width: calc(100vw - 28px) !important;
+    max-height: calc(100vh - 84px) !important;
+  }
+}
+
+// 49. Archive chronology refinement - make dates read like records, not buttons
+.archive .posts-collapse {
+  padding-left: 58px !important;
+}
+
+.archive .collection-year {
+  margin: 42px 0 18px !important;
+}
+
+.archive .collection-year .collection-header {
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: rgba(255, 248, 234, 0.92) !important;
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    "Cascadia Mono",
+    "Courier New",
+    monospace !important;
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.22em !important;
+  line-height: 1 !important;
+}
+
+.archive .posts-collapse .post-header {
+  display: grid !important;
+  grid-template-columns: 72px minmax(0, 1fr) !important;
+  align-items: baseline !important;
+  gap: 18px !important;
+  min-height: 0 !important;
+  margin: 10px 0 !important;
+  padding: 13px 18px !important;
+  border-color: rgba(212, 196, 168, 0.12) !important;
+  background:
+    linear-gradient(90deg, rgba(35, 38, 45, 0.56), rgba(20, 23, 29, 0.32)) !important;
+}
+
+.archive .posts-collapse .post-header::after {
+  right: 18px !important;
+  top: 50% !important;
+  color: rgba(212, 196, 168, 0.1) !important;
+  font-size: 1.35em !important;
+}
+
+.archive .posts-collapse .post-meta {
+  display: flex !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  color: rgba(212, 196, 168, 0.72) !important;
+  line-height: 1 !important;
+}
+
+.archive .posts-collapse .post-meta time {
+  display: inline !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: rgba(212, 196, 168, 0.74) !important;
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    "Cascadia Mono",
+    "Courier New",
+    monospace !important;
+  font-size: 0.76rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.12em !important;
+  white-space: nowrap !important;
+}
+
+.archive .posts-collapse .post-title {
+  min-width: 0 !important;
+  padding-right: 42px !important;
+  font-size: clamp(1rem, 1.25vw, 1.16rem) !important;
+  line-height: 1.45 !important;
+}
+
+.archive .posts-collapse .post-title a,
+.archive .posts-collapse .post-title span.exturl {
+  display: inline !important;
+  color: rgba(255, 248, 234, 0.9) !important;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.32) !important;
+}
+
+@media (max-width: 768px) {
+  .archive .posts-collapse {
+    padding-left: 34px !important;
+  }
+
+  .archive .posts-collapse .post-header {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 14px 16px !important;
+  }
+
+  .archive .posts-collapse .post-title {
+    padding-right: 28px !important;
   }
 }

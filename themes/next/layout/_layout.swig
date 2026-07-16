@@ -51,6 +51,8 @@
     </footer>
   </div>
 
+  {{ partial('_partials/search/index.swig', {}, {cache: theme.cache.enable}) }}
+
   {{ partial('_scripts/index.swig', {}, {cache: theme.cache.enable}) }}
   {{ partial('_third-party/index.swig', {}, {cache: theme.cache.enable}) }}
 
