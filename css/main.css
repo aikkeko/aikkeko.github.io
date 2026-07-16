@@ -1433,7 +1433,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #338ee3;
+  background: #e277ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2907,7 +2907,6 @@ ul.breadcrumb li + li:last-child {
   box-sizing: border-box;
   color: var(--text-color);
   width: 240px;
-  opacity: 0;
 }
 .sidebar-inner.affix {
   position: fixed;
@@ -3111,7 +3110,7 @@ ul.breadcrumb li + li:last-child {
   }
 }
 :root {
-  --theme-version: "2026.07.16-09";
+  --theme-version: "2026.07.16-17";
   --theme-name: "Z.A.T.O Apocalypse";
   --content-bg-color: rgba(35,38,45,0.85);
   --body-bg-color: #1e2128;
@@ -3141,7 +3140,7 @@ body {
   color: #333;
 }
 body::before {
-  content: "v2026.07.16-09";
+  content: "v2026.07.16-17";
   position: fixed;
   top: 8px;
   left: 8px;
@@ -7515,6 +7514,122 @@ body {
     padding-right: 28px !important;
   }
 }
+.index .post-card {
+  counter-increment: post-card !important;
+}
+.index .post-card::before {
+  content: none !important;
+  counter-increment: none !important;
+}
+.index .post-card-content {
+  position: relative !important;
+}
+.index .post-card-content::after {
+  content: none !important;
+}
+.index .post-card-heading {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: start !important;
+  gap: 12px !important;
+}
+.index .post-card-index {
+  display: block !important;
+  min-width: 44px !important;
+  color: rgba(212,196,168,0.25) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 2.1em !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1 !important;
+  text-align: right !important;
+  pointer-events: none !important;
+}
+.index .post-card-index::before {
+  content: counter(post-card, decimal-leading-zero) !important;
+}
+.index .post-card-title,
+.index .post-card:first-child .post-card-title {
+  position: relative;
+  z-index: 2;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  padding-right: 0 !important;
+  text-wrap: pretty;
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+.index .post-card-title a {
+  display: block;
+}
+@media (max-width: 768px) {
+  .index .post-card-title,
+  .index .post-card:first-child .post-card-title {
+    max-width: 100% !important;
+  }
+  .index .post-card-heading {
+    gap: 9px !important;
+  }
+  .index .post-card-index {
+    min-width: 38px !important;
+    font-size: 1.8em !important;
+  }
+}
+.index .post-card {
+  padding: 12px !important;
+}
+.index .post-card .post-card-image,
+.index .post-card:first-child .post-card-image {
+  overflow: hidden !important;
+  border: 1px solid rgba(212,196,168,0.16) !important;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.2) !important;
+}
+@media (max-width: 768px) {
+  .index .post-card {
+    padding: 8px !important;
+  }
+}
+.index .post-card-image {
+  position: relative !important;
+  background: linear-gradient(135deg, rgba(255,255,255,0.035) 25%, transparent 25%) 0 0/12px 12px, linear-gradient(315deg, rgba(255,255,255,0.02) 25%, transparent 25%) 0 0/12px 12px, linear-gradient(135deg, #30343a, #20242a) !important;
+}
+.index .post-card-image::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  z-index: 4 !important;
+  width: 26px !important;
+  height: 26px !important;
+  margin: -13px 0 0 -13px !important;
+  border: 1px solid rgba(212,196,168,0.22) !important;
+  border-top-color: rgba(212,196,168,0.86) !important;
+  border-right-color: rgba(106,160,154,0.78) !important;
+  border-radius: 50% !important;
+  opacity: 1 !important;
+  animation: archive-cover-spin 0.9s linear infinite !important;
+  pointer-events: none !important;
+  transition: opacity 0.28s ease !important;
+}
+.index .post-card-image .post-card-cover {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.42s ease;
+}
+.index .post-card-image.is-loaded::before {
+  opacity: 0 !important;
+  animation: none !important;
+}
+.index .post-card-image.is-loaded .post-card-cover {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .index .post-card-image::before {
+    animation: none !important;
+  }
+}
 @-moz-keyframes fadeInUp {
   from {
     opacity: 0;
@@ -7869,5 +7984,25 @@ body {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
+  }
+}
+@-moz-keyframes archive-cover-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes archive-cover-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes archive-cover-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes archive-cover-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
