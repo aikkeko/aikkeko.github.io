@@ -10,6 +10,7 @@ const WordToMarkdownConverter = require('./lib/word-converter');
 const MarkdownProcessor = require('./lib/markdown-processor');
 const R2Uploader = require('./lib/r2-uploader');
 const ImageCacheManager = require('./lib/image-cache');
+const yaml = require('js-yaml');
 
 class ContentPipeline {
   constructor(options = {}) {
@@ -24,6 +25,7 @@ class ContentPipeline {
     this.wordConverter = null;
     this.markdownProcessor = null;
     this.imageCache = null;
+    this.tagRegistry = { articles: {} };
   }
 
   /**
@@ -34,6 +36,7 @@ class ContentPipeline {
     
     // 确保输出目录存在
     await this.ensureDirectory(this.options.outputPath);
+    await this.loadTagRegistry();
     
     // 初始化图片缓存管理器
     this.imageCache = new ImageCacheManager();
@@ -167,12 +170,58 @@ class ContentPipeline {
     
     // 生成文章标识（基于文件名）
     const articleId = this.generateArticleId(filename);
+    const persistentMetadata = this.getPersistentMetadata(filename);
     
     return await this.wordConverter.convert(buffer, filename, {
       articleId,
       cacheManager: this.imageCache,
-      sourceDate: filenameMeta?.date
+      sourceDate: filenameMeta?.date,
+      persistentMetadata
     });
+  }
+
+  /**
+   * Load hand-maintained taxonomy. Keys are source document names without
+   * their extension, so editing a DOCX never changes its category or tags.
+   */
+  async loadTagRegistry() {
+    const registryPath = path.join(__dirname, 'tag-registry.yml');
+
+    try {
+      const raw = await fs.readFile(registryPath, 'utf8');
+      const parsed = yaml.load(raw) || {};
+      this.tagRegistry = {
+        articles: parsed.articles && typeof parsed.articles === 'object'
+          ? parsed.articles
+          : {}
+      };
+    } catch (error) {
+      if (error.code === 'ENOENT') {
+        this.tagRegistry = { articles: {} };
+        return;
+      }
+      throw new Error(`Unable to read tag registry: ${error.message}`);
+    }
+  }
+
+  /**
+   * Match the registry to the DOCX filename, not its title or body. This
+   * deliberately makes repeated imports safe after a document is edited.
+   */
+  getPersistentMetadata(filename) {
+    const documentKey = path.basename(filename, path.extname(filename));
+    const entry = this.tagRegistry.articles[documentKey];
+
+    if (!entry || typeof entry !== 'object') {
+      return null;
+    }
+
+    return {
+      category: typeof entry.category === 'string' ? entry.category.trim() : undefined,
+      tags: Array.isArray(entry.tags)
+        ? entry.tags.filter(tag => typeof tag === 'string' && tag.trim()).map(tag => tag.trim())
+        : undefined
+    };
   }
 
   /**

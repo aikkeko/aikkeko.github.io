@@ -59,7 +59,7 @@ class WordToMarkdownConverter {
   async convert(buffer, filename, options = {}) {
     console.log(`📝 正在转换: ${filename}`);
 
-    const { articleId, cacheManager, sourceDate } = options;
+    const { articleId, cacheManager, sourceDate, persistentMetadata } = options;
 
     const mammothOptions = {
       convertImage: mammoth.images.imgElement((image) => {
@@ -108,7 +108,13 @@ class WordToMarkdownConverter {
     html = $.html();
 
     const markdown = this.htmlToMarkdown(html);
-    const { category, tags } = this.inferCategoryAndTags(markdown);
+    const inferredTaxonomy = this.inferCategoryAndTags(markdown);
+    const category = persistentMetadata && persistentMetadata.category
+      ? persistentMetadata.category
+      : inferredTaxonomy.category;
+    const tags = persistentMetadata && Array.isArray(persistentMetadata.tags)
+      ? persistentMetadata.tags
+      : inferredTaxonomy.tags;
 
     const metadata = {
       title,
