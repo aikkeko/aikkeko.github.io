@@ -11,7 +11,7 @@
  * - Delete old blog caches and unregister itself to avoid stale offline pages.
  */
 
-const CACHE_VERSION = 'blog-v52';
+const CACHE_VERSION = 'blog-v54';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGES_CACHE = `${CACHE_VERSION}-pages`;
 const IMAGES_CACHE = `${CACHE_VERSION}-images`;
@@ -27,8 +27,6 @@ const PRECACHE_URLS = [
   '/js/utils.js',
   '/js/motion.js',
   '/lib/font-awesome/css/all.min.css',
-  '/lib/velocity/velocity.min.js',
-  '/lib/velocity/velocity.ui.min.js',
   '/lib/anime.min.js',
   '/images/Z.A.T.O_02_ca04.jpg',
   '/images/bitbug_favicon.ico'
