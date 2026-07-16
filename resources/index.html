@@ -10,11 +10,12 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/bitbug_favicon.ico">
   <link rel="mask-icon" href="/images/logo.svg" color="#1e2128">
 
+
 <link rel="manifest" href="/manifest.json">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="百货公司">
-<meta name="application-name" content="世界尽头的百货公司">
+<meta name="apple-mobile-web-app-title" content="档案馆">
+<meta name="application-name" content="世界尽头的档案馆">
 <meta name="msapplication-TileColor" content="#1e2128">
 <meta name="msapplication-tap-highlight" content="no">
 
@@ -35,12 +36,40 @@
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
+    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(location.hostname) !== -1;
+
+    if (isLocalPreview) {
+      navigator.serviceWorker.getRegistrations()
+        .then(function(registrations) {
+          return Promise.all(registrations.map(function(registration) {
+            return registration.unregister();
+          }));
+        })
+        .then(function() {
+          if (!window.caches) return [];
+          return caches.keys().then(function(keys) {
+            return Promise.all(keys.filter(function(key) {
+              return key.indexOf('blog-') === 0;
+            }).map(function(key) {
+              return caches.delete(key);
+            }));
+          });
+        })
+        .then(function() {
+          console.log('[ServiceWorker] Local preview cleanup complete.');
+        })
+        .catch(function(error) {
+          console.log('[ServiceWorker] Local preview cleanup failed:', error);
+        });
+      return;
+    }
+
     navigator.serviceWorker.register('/sw.js')
       .then(function(registration) {
-        console.log('[ServiceWorker] 注册成功:', registration.scope);
+        console.log('[ServiceWorker] Registered:', registration.scope);
       })
       .catch(function(error) {
-        console.log('[ServiceWorker] 注册失败:', error);
+        console.log('[ServiceWorker] Registration failed:', error);
       });
   });
 }
@@ -50,7 +79,7 @@ if ('serviceWorker' in navigator) {
 <meta property="og:type" content="website">
 <meta property="og:title" content="资源">
 <meta property="og:url" content="https://aikkeko.github.io/resources/index.html">
-<meta property="og:site_name" content="世界尽头的百货公司">
+<meta property="og:site_name" content="世界尽头的档案馆">
 <meta property="og:description" content="你找到祈祷的意义了吗？">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-11T07:37:57.000Z">
@@ -71,7 +100,7 @@ if ('serviceWorker' in navigator) {
   };
 </script>
 
-  <title>资源 | 世界尽头的百货公司
+  <title>资源 | 世界尽头的档案馆
 </title>
   
 
@@ -103,16 +132,16 @@ if ('serviceWorker' in navigator) {
   </style>
 </noscript>
 
-<link rel="alternate" href="/atom.xml" title="世界尽头的百货公司" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="世界尽头的档案馆" type="application/atom+xml">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
+<body class="" itemscope itemtype="http://schema.org/WebPage">
   <div class="container use-motion">
     <div class="zato-background-quotes" aria-hidden="true">
       <span class="zato-quote zato-quote-left">ALL STORIES ARE LOST PROPERTY</span>
-      <span class="zato-quote zato-quote-right">THE LAST DEPARTMENT STORE REMAINS OPEN</span>
+      <span class="zato-quote zato-quote-right">THE LAST ARCHIVE REMAINS OPEN</span>
       <span class="zato-quote zato-quote-top">PLEASE RETURN BORROWED DREAMS</span>
-      <span class="zato-quote zato-quote-mid">MEMORY IS A SHELF WITHOUT A MAP</span>
+      <span class="zato-quote zato-quote-mid">MEMORY IS AN INDEX WITHOUT A MAP</span>
       <span class="zato-quote zato-quote-bottom">NO REFUNDS AFTER THE END OF THE WORLD</span>
       <span class="zato-quote zato-quote-code">WATER &amp; BISCUIT / AISLE 30</span>
     </div>
@@ -132,7 +161,7 @@ if ('serviceWorker' in navigator) {
 
     <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">世界尽头的百货公司</h1>
+      <h1 class="site-title">世界尽头的档案馆</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
       <p class="site-subtitle" itemprop="description">theme of the WATER & BISCUIT</p>
@@ -177,32 +206,6 @@ if ('serviceWorker' in navigator) {
   </ul>
 </nav>
 
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
 </div>
     </header>
 
@@ -229,23 +232,24 @@ if ('serviceWorker' in navigator) {
     
     
     <div class="post-block" lang="zh-CN">
-        <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">资源
-</h1>
-
-<div class="post-meta">
-  
-
-</div>
-
-</header>
-
+        <section class="resource-hero page-identity-hero" aria-label="Resource index">
+          <div class="page-hero-kicker">Resource Index / Back Archive</div>
+          <h1 class="page-hero-title">Resource Index</h1>
+          <p class="page-hero-desc">Useful links, lists, and tools.</p>
+          <div class="page-hero-stats">
+            <span><strong>Z.A.T.O</strong> index</span>
+            <span><strong>OPEN</strong> soon</span>
+          </div>
+        </section>
       
       
       
       <div class="post-body">
-          
+          <div class="resource-panel">
+            <span class="resource-panel-kicker">ARCHIVE NOTE</span>
+            <p>Reserved for links, reading paths, and external records.</p>
+          </div>
+        
       </div>
       
       
@@ -321,14 +325,14 @@ if ('serviceWorker' in navigator) {
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -404,6 +408,32 @@ if ('serviceWorker' in navigator) {
       </div>
     </footer>
   </div>
+
+  
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
 
   
   <script src="/lib/anime.min.js"></script>

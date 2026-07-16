@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#1e2128">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bitbug_favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bitbug_favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#1e2128">
+
+
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="档案馆">
+<meta name="application-name" content="世界尽头的档案馆">
+<meta name="msapplication-TileColor" content="#1e2128">
+<meta name="msapplication-tap-highlight" content="no">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aikkeko.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+
+<script src="/js/long-text-loader.js" async></script>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(location.hostname) !== -1;
+
+    if (isLocalPreview) {
+      navigator.serviceWorker.getRegistrations()
+        .then(function(registrations) {
+          return Promise.all(registrations.map(function(registration) {
+            return registration.unregister();
+          }));
+        })
+        .then(function() {
+          if (!window.caches) return [];
+          return caches.keys().then(function(keys) {
+            return Promise.all(keys.filter(function(key) {
+              return key.indexOf('blog-') === 0;
+            }).map(function(key) {
+              return caches.delete(key);
+            }));
+          });
+        })
+        .then(function() {
+          console.log('[ServiceWorker] Local preview cleanup complete.');
+        })
+        .catch(function(error) {
+          console.log('[ServiceWorker] Local preview cleanup failed:', error);
+        });
+      return;
+    }
+
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(registration) {
+        console.log('[ServiceWorker] Registered:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('[ServiceWorker] Registration failed:', error);
+      });
+  });
+}
+</script>
+
+  <meta name="description" content="“世界这东西可能残酷且令人恐惧，却又是那样地美丽。想一想，这些东西在我最初便应该知道的。” ——《CARNIVAL》后传小说，序章 序言... 无论从何种意义上来讲，我非常喜欢作为黄油写手的濑户口廉也，还有作为小说作者的唐边叶介——当然，他们是同一个人这也不是什么秘密了，所以本文之后为了统一就亲切地称呼他为“烂户口”这个极具我国特色的称谓吧233（？） 关于...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="没有惩罚，世界也没有被爱 |《CARNIVAL》游戏&#x2F;后传小说杂谈">
+<meta property="og:url" content="https://aikkeko.github.io/2019-01-29-%E6%B2%A1%E6%9C%89%E6%83%A9%E7%BD%9A%EF%BC%8C%E4%B8%96%E7%95%8C%E4%B9%9F%E6%B2%A1%E6%9C%89%E8%A2%AB%E7%88%B1.html">
+<meta property="og:site_name" content="世界尽头的档案馆">
+<meta property="og:description" content="“世界这东西可能残酷且令人恐惧，却又是那样地美丽。想一想，这些东西在我最初便应该知道的。” ——《CARNIVAL》后传小说，序章 序言... 无论从何种意义上来讲，我非常喜欢作为黄油写手的濑户口廉也，还有作为小说作者的唐边叶介——当然，他们是同一个人这也不是什么秘密了，所以本文之后为了统一就亲切地称呼他为“烂户口”这个极具我国特色的称谓吧233（？） 关于...">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/45/79/4579ec6f476ea570198817bd3d134b17.png">
+<meta property="og:image" content="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/ae/6e/ae6edc3b95b9930b696d6982e4ece79f.png">
+<meta property="article:published_time" content="2019-01-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-16T00:21:57.709Z">
+<meta property="article:author" content="AikeKo">
+<meta property="article:tag" content="游戏">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/45/79/4579ec6f476ea570198817bd3d134b17.png">
+
+<link rel="canonical" href="https://aikkeko.github.io/2019-01-29-%E6%B2%A1%E6%9C%89%E6%83%A9%E7%BD%9A%EF%BC%8C%E4%B8%96%E7%95%8C%E4%B9%9F%E6%B2%A1%E6%9C%89%E8%A2%AB%E7%88%B1.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>没有惩罚，世界也没有被爱 |《CARNIVAL》游戏/后传小说杂谈 | 世界尽头的档案馆</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="世界尽头的档案馆" type="application/atom+xml">
+</head>
+
+<body class="post-detail" itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="zato-background-quotes" aria-hidden="true">
+      <span class="zato-quote zato-quote-left">ALL STORIES ARE LOST PROPERTY</span>
+      <span class="zato-quote zato-quote-right">THE LAST ARCHIVE REMAINS OPEN</span>
+      <span class="zato-quote zato-quote-top">PLEASE RETURN BORROWED DREAMS</span>
+      <span class="zato-quote zato-quote-mid">MEMORY IS AN INDEX WITHOUT A MAP</span>
+      <span class="zato-quote zato-quote-bottom">NO REFUNDS AFTER THE END OF THE WORLD</span>
+      <span class="zato-quote zato-quote-code">WATER &amp; BISCUIT / AISLE 30</span>
+    </div>
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">世界尽头的档案馆</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">theme of the WATER & BISCUIT</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+  
+
+  
+  <div class="post-banner" style="background-image: url('https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/c1/22/c1224be315b03288018d9078346acd77.png'), url('/images/Z.A.T.O_02_ca04.jpg');">
+    <div class="post-banner-mask"></div>
+    <div class="post-banner-content">
+      <div class="post-banner-text">
+        <h1 class="post-banner-title" itemprop="name headline">没有惩罚，世界也没有被爱 |《CARNIVAL》游戏/后传小说杂谈</h1>
+        
+        <div class="post-banner-meta">
+          <span class="post-banner-author">
+            <i class="fa fa-user"></i> AikeKo
+          </span>
+          
+          <span class="post-banner-date">
+            <i class="fa fa-calendar"></i> Jan 29, 2019
+          </span>
+          <span class="post-banner-category">
+            <i class="fa fa-folder"></i>
+              游戏
+          </span>
+          <span class="post-banner-words">
+            <i class="fa fa-file-word"></i> 12k words
+          </span>
+          <span class="post-banner-reading-time">
+            <i class="fa fa-clock"></i> 40 min read
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aikkeko.github.io/2019-01-29-%E6%B2%A1%E6%9C%89%E6%83%A9%E7%BD%9A%EF%BC%8C%E4%B8%96%E7%95%8C%E4%B9%9F%E6%B2%A1%E6%9C%89%E8%A2%AB%E7%88%B1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AikeKo">
+      <meta itemprop="description" content="你找到祈祷的意义了吗？">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="世界尽头的档案馆">
+    </span>
+
+    
+      <div class="post-hero">
+          <img class="post-hero-image" src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/c1/22/c1224be315b03288018d9078346acd77.png" alt="没有惩罚，世界也没有被爱 |《CARNIVAL》游戏/后传小说杂谈" itemprop="image">
+      </div>
+      <header class="post-header with-hero banner-hidden">
+        
+        <h1 class="post-title" itemprop="name headline" style="display: none;">没有惩罚，世界也没有被爱 |《CARNIVAL》游戏/后传小说杂谈</h1>
+
+        <div class="post-meta banner-meta-only">
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+          
+            <div class="post-description">“世界这东西可能残酷且令人恐惧，却又是那样地美丽。想一想，这些东西在我最初便应该知道的。” ——《CARNIVAL》后传小说，序章 序言... 无论从何种意义上来讲，我非常喜欢作为黄油写手的濑户口廉也，还有作为小说作者的唐边叶介——当然，他们是同一个人这也不是什么秘密了，所以本文之后为了统一就亲切地称呼他为“烂户口”这个极具我国特色的称谓吧233（？） 关于...</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>“世界这东西可能残酷且令人恐惧，却又是那样地美丽。想一想，这些东西在我最初便应该知道的。”<br>——《CARNIVAL》后传小说，序章</p>
+</blockquote>
+<h2 id="序言…"><a href="#序言…" class="headerlink" title="序言…"></a>序言…</h2><p>无论从何种意义上来讲，我非常喜欢作为黄油写手的濑户口廉也，还有作为小说作者的唐边叶介——当然，他们是同一个人这也不是什么秘密了，所以本文之后为了统一就亲切地称呼他为“烂户口”这个极具我国特色的称谓吧233（？）</p>
+<p>关于烂户口本人的介绍也有很多，在此我也不多赘述了。想来写这篇文的契机大概是在知乎上久违地看到全世界最好的Lain__ever大佬冒泡并翻译的一篇《狂欢节》的感想文，不禁我回想起了几年前还在热情满满推黄油的美好时光2333，心中有感而发想写点东西出来；其次，烂户口在国内黄油圈/轻小说圈虽已有一定知名度，但本作及其后传小说相比起他的其他作品来说属实有几分受冷落，于是乎秉着怜悯与敬畏の心写点东西扩充下关于本作少得可怜的感想/分析文数量（毕竟大多数人都像我一样先写《煌煌舞台》的文章×）。</p>
+<p>当然我知道质量本身不过硬完全可以作为其不火的理由，因为在我推完这部作品之后也有着这样的感觉——嗯……结局氛围不错，可圈可点的地方很多，但是缺点也很多，诡计太老套、逻辑有问题，各种因素综合起来也就那样吧——然后决定把它当做推完就忘的游戏中很不起眼的一作。而过了一段时间我才发现我错了：它是我推过的黄油里少有的后劲非常足的那种类型。读完了后传的小说，实现对游戏主要角色的全面补完后，我才意识到自己其实是非常喜爱这部作品的，我也认为这部某种意义上来说是被低估了。</p>
+<p>我是属于那种阅历不是很多，但对于喜爱的作品会投入更多的时间与爱的人：因此我也认为本作也值得我去写这样一篇文章，来谈谈我心目中的《CARNIVAL》是怎样的一部作品。距离上次写黄油的感想也是过了蛮久的，估计会写的一团糟……哎废话有点多，还是直接进入正题吧。</p>
+<p><strong>（虽然我相信点进来看本文的朋友都是已经推完游戏而且对烂户口有一定了解的233，但还是强调一句吧：本文含有《CARNIVAL》及其后传小说的重度剧透，还有个人超主观感想，请谨慎观看）</strong></p>
+<h2 id="Now…荒诞青春的罪与罚"><a href="#Now…荒诞青春的罪与罚" class="headerlink" title="Now…荒诞青春的罪与罚"></a>Now…荒诞青春的罪与罚</h2><p>如果要用一个词来形容本作，那么“荒诞”就是我心目中的首选词汇。因为比起什么浪漫的爱情故事或者热血的冒险故事，本作发生的故事甚至可以被称为一出闹剧。虽然是少男少女的青春故事，却一点也不青春。谋杀、霸凌、凌辱、暴力、乱伦……等等一系列因素将本作OP所描绘的日常光景划出了一道不可逾越的裂痕（OP欺诈也是烂户口粉丝关于本作喜闻乐见的一点）。</p>
+<p>虽然比起纯鬼畜作品，本作中各种鬼畜场景也就属于小孩子扮家家的程度，可吊打大多数正常人接受度之内的黄油还是没问题的。出于画风以及剧情风格的原因，本作各种HS使用度基本为零，从中倒是很能感受到人物失控以及病态的心理，以及营造的狂躁的氛围。关于人物我们后面也会谈到，现在先来说说最多人关注的故事本身。</p>
+<p>可以说本作的剧情的特征就是故事性的弱化。从讲故事的意义上来叙述本作其实用不了笔墨：主人公木村学在学校被欺凌，某日忽然在自己没有意识到的情况下杀害了正在欺凌他的学长，被逮捕后阴差阳错地逃出了警方的控制来到他的青梅竹马九条理纱的家，在躲避通缉的同时对之前的欺凌者进行复仇。最后揭露出他体内另一个暴力的人格木村武的真相，在开枪暴露后两个人格终于融合，与理纱一同踏上了逃亡的旅程——就这个整体故事我讲出来听上去感觉也并不怎么样，情节脉络较为简单，多重人格的梗对于现在的玩家来说也略显老套；但要彻底讲清这部作品却是很费劲的事，因为抛开叙事本身，烂户口还在本作中夹杂了许多有趣的、可以讨论的东西，我就选些自己比较喜欢的点来谈谈吧。</p>
+<p>比较了解烂户口的朋友肯定有听过这样一种说法：他的每部作品都有致敬一部文学名作，比方说《局外人》与《蝇王》等等，而本作致敬的毫无疑问就是陀思妥耶夫斯基的名作《罪与罚》（后传小说中有直接提到本作）。我是先玩过本作再去看的《罪与罚》的，所以看的时候有留意两者之间微妙的关联。所以接下来闲散的杂谈中会随时穿插一些二者之间的对比与联系。</p>
+<p>可以这么说吧，烂户口显然在写现代版的《罪与罚》。两者的剧情有很多一一对应的地方：最显然的便是故事开头木村学杀害欺凌者与大学生拉斯柯尔尼科夫杀放高利贷的老太婆（和她的妹妹），而后开始展开逃亡、挣扎与救赎的故事。在木村学身上也能看到许多拉斯柯尔尼科夫的影子：他们同样都是博览群书，思想深度比一般人要深得多，同样对自己的生存境况感到迷茫，也同样地疯狂与脆弱，有着彻底无意识的罪的状态，冷眼嘲讽阴沉地看待这个世界。</p>
+<p>让我们看看罪与罚中对于拉斯柯尔尼科夫的一段描写：</p>
+<p><em>拉斯柯尔尼科夫在学校里几乎没有什么朋友，他躲避一切人，不与任何人来往，也厌烦别人来找他。因而，大家也就很快不再理睬他了。无论是同学聚会，无论是闲谈聊天，也无论是娱乐活动，总之他一概什么也不参加。他学习倍加刻苦，从不吝惜身体，因此颇受大家尊敬，不过没有一个人喜欢他。他一贫如洗，却有一点目空一切的自高自大，并且离群索居；仿佛心里隐藏着什么秘密似的。有些同学觉得，他高高在上地把他们、把所有的人都看成小孩，似乎他在修养、学识和信念方面都远远胜过他们所有的人，并且认为他们的信念和兴趣都是低级趣味。</em></p>
+<p>试试将这段话中所有的“拉斯柯尔尼科夫”都替换成“木村学”，是不是感觉毫无违和感233，这完全是对母亲去世后木村学生活的写照。只不过后者有着一直关心着他的青梅竹马理纱，前者的心爱之人索尼娅直到故事进展了一段时间后才登场。这么说虽然很绝对，但应当可以认为烂户口在创造木村学这个人物的时候很大程度参考了拉斯柯尔尼科夫。</p>
+<p>即便人设上相似部分不少，但二者杀人动机却微妙地不同：拉斯柯尔尼科夫有一个经典的“虱子理论”，即人分为两种：“伟大的人”与“虱子”，前者不受法律与道德的束缚，可以在必要的时候有权利杀人，而后者只是再平凡不过的普通人。拉斯柯尔尼科夫杀害老太婆一方面是因为缺钱、或者觉得她是公认的坏人从而惩奸除恶，但更多的其实是为了自己，来检验自己是不是“伟大的人”的料。对比起拉斯柯尔尼科夫复杂的思考与挣扎，本作中的木村（武）杀人的动机却交代得非常草率，心理描写一句“让我来打断这日复一日的无聊吧”就一不做二不休地大开杀戒，杀人手法对比起来也干脆利落地多，没有丝毫犹豫。可这两种动机又不是完全相对，倒不如说这都是两位主人公对于生存现状不满的一种回应：“虱子理论”诞生在当时那个上帝的信仰受到冲击的年代，为了填补虚无主义腐蚀出的巨大空洞而诞生，为自己的生存意义试图找到的一个可笑的答案；而木村武的动机我们甚至可以直接从字面意义上理解，身为副人格的不满与反抗——其本质上都是对存在的追寻。</p>
+<p>假如杀害恶人以暴制暴的行为还有正当性可言，但二者却在此之上对无辜者的加害却无论是法律与道德都不允许的（木村对代表着法律、或者说绝对正义的女刑警的暴力、拉斯柯尔尼科夫杀害了目击杀人现场的老婆婆的妹妹），远远严重于“产生犯罪想法”的更加深重的罪孽。设置这样的情节是为何呢？难道是因为拉斯柯尔尼科夫杀了一个恶人的同时也要杀一个善人？哦我懂了，这就是传说中的<strong>善恶相抵</strong>吧！原来凑斗景明的前身就是拉斯柯尔尼科夫！这真是大发现嗷~！（？）好了不开玩笑了，言归正传，做出这种事后，杀人者即使受到法律的惩罚，罪也不会消失，还会受到内心良心的谴责——基督教的教义便是如此，而能够拯救人的，唯有神的爱。《罪与罚》中深刻地探讨了关于罪恶、惩罚与救赎之间的关系，而在本作中也有涉及到类似的主题，这就将九条理纱这个人物的存在引了出来。</p>
+<p><img data-src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/45/79/4579ec6f476ea570198817bd3d134b17.png"></p>
+<p>如果说木村学就是烂户口的拉斯柯尔尼科夫的话，理纱就是濑户口笔下的索尼娅……虽然我很想这么说，但可惜也并不完全是这样。从很多意义上来说她们很相似，但最后面对所爱之人的堕落所付出的行动，理纱却正好是索尼娅的对立面。《罪与罚》中的索尼娅是一位纯真、善良的基督教信仰者，理纱的性格同样如此，而且与基督信仰有过关系。所以烂户口可能特意安排了泉这个角色，在游戏的第三章通过她带领理纱去教堂弥撒，从而与神父一同讨论了基督教思想里关于“赎罪”的理解。泉是不认同基督的理念的，但理纱却明确在内心底产生了自己所寻找的就是这样“信者得救”的思想——然后她阅读了圣经，最后得出的结论却是“没有助人”的必要。这着实令人感到荒诞，却也是两人思想的分歧点；之后，理纱感到自己就像是轻飘飘的气体，做什么都只是表面装出来的样子。在这她有一段心理描写是这样：</p>
+<blockquote>
+<p>说真的，因为这个原因，平常发生的大多数事情，对我来说都已经算不上什么有意义的东西了。<br>我感到已经习惯了。<br>可能啊，这个“习惯了”的事实，与相应的行为相比，或许是更为深刻的罪孽也说不定呢，</p>
+</blockquote>
+<p>这段话完全可以看做是对《罪与罚》中的名句“<strong>人这种卑鄙的东西，什么都会习惯的</strong>”的直球致敬。意识到“习惯”了一切的自己是多么可怕，沉溺于无尽头的陌生中，在这样的世界里生活只不过意味着对未来的冷漠和耗尽一切的激情。但理纱并没有就此沉沦于“习惯”中，反而一直清醒地牵挂着自己所牵挂的对象，为了反抗这种绝望的世界而要去拯救他。有这样觉悟固然不错，但相比起索尼娅纯粹基督关怀的善良与对拉斯柯尔尼科夫的单方面拯救，理纱则一直在撒谎、隐瞒，总是在做狡猾的事情，与基督教的教义完全相悖。</p>
+<p>这之间理纱和索尼娅的对比还是相当明显的。毕竟索尼娅在得知拉斯柯尔尼科夫杀人的事情后，首先想到的就是劝他去自首、赎罪；而理纱在祭典遇到木村后所做出的行动则是隐瞒他的动向，协助他完成复仇的计划，并试图用自己的、不属于上帝的方式去拯救木村——基督教中唯有神能够拯救人，除此以外的人是无能为力的；但理纱则试图去证明人的爱同样能拯救人。就算是不断的谎言与孤独，但却不像拉斯柯尔尼科夫在故事后期那般远离和抛弃，反倒一次又一次尝试去接近对方，就算是受伤、绝望，也全盘接受了这样的现实，内心底向往着缥缈的幸福。</p>
+<p>以现在的眼光来看，我无法评判这两种拯救的途径孰优孰劣，但可以看出烂户口其实在他的作品里就有明显的反基督、反传统道德倾向，最明显的就是之后的作品《Kira☆Kira》中将主人公的学校设置为教会学校，而主人公们进行的则是与校风完全相悖的朋克摇滚运动；我想这可能是烂户口在《罪与罚》的基础上自己对“惩罚”、“拯救”等命题的一次新的发挥尝试。与百年前的世界已经截然不同，当代小说与故事的重心已经由现实转向存在，而“存在”则是以“人”为主体的，这也是烂户口对于人的存在意义做出的一种与理性、秩序、普遍道德全部权力完全相悖的解答。我知道这个解答可能显得十分青涩、稚嫩，甚至有那么些理想主义，却意外地有力与动人，因为只要将最后的一切内核归结于“爱”，这个词便延展出了一切人类所能拥有的最宝贵的财富，将人的可能性拔高到一个新的高度。关于这一点可以谈的东西实在是太多了，而我能力有限所以只能点到为止。</p>
+<p>除开木村与理纱外，其余的角色在本作中的重要性就显得不是那么明显。可能泉占有的比重比较大，也有通向她的另一个结局；我承认泉是一个相当有魅力的角色，往往这种角色都是以知心友人的形象出现在作品中，但泉比较特别的一点在于她有着某种近乎毁坏的内核。在她的结局中与男主木村一起堕落的场景真是使人印象深刻，而平时她也是仅仅出于好奇心模仿那些自残同学割腕，并轻松地笑脸以待。也许泉的骨子里比起理纱来说更加黑暗、空旷，明明只是轻飘飘地说着普通的话却给人一种冷而不清、无法接近的感觉，而面对种种的不合理、友人的变故与突发离奇事件，又泰然自若而试图以通常的面孔应对……从各种层面来说，这个人实在让人感到恐惧，却又宛若魔女般令人感到着迷。我知道关于她可以挖掘的地方也有很多，但在游戏的主线中她更多是起着推进剧情、刻画人物形象的作用，也有很多地方因为她的出现才能将这个不合理的故事进行下去。现将本作主人公放在现在这一叙事平面，而后慢慢地揭露他们的过去，如果没有泉这个角色很多地方会显得很突兀，而引入泉也算是烂户口选择作为“拉斯柯尔尼科夫的家人”的代替品来填补人物过去的空白。</p>
+<p>归根结底，本作的故事可以概括为木村学与理纱两人关于“追寻”的故事。“追寻”是一个古老的原型母题，无论是关于成长还是启悟主题的故事都与“追寻”的模式相关。本作中的主人公们想要追寻的东西有很多，但一切最终指向的词语便是“幸福”——“马追着头顶的萝卜跑”，这是在本作中反复出现的一个比喻，它很明确的指示着某种不可触碰的美丽事物，这也是最后主角两人关于幸福的定义所达成的共识。我个人非常喜爱这个象征，因为它有着西西弗斯无数次重复地推动巨石的浪漫与美学，有着穷尽一生也可能毫无回报的执着与幸福。都已经有如此近似的象征，所以这里提到加缪的名字肯定是不可能的。我想加缪的思想一定对烂户口本人影响不小，所以才写出了这样一部荒诞的作品，才有在后来的《PSYCHE》中对《局外人》的致敬。本作的世界与加缪眼中的世界一样，确定的本质是模糊的，荒诞和悖论才是世界的本来面目。无论是木村还是理纱，都是属于那类无法融入世界的人，在世界的沉默与裂痕中挣扎着生存。但在最后，他们也并没有放弃追寻“幸福”的答案。福克纳曾经说过：“<strong>我不相信答案能被找到，我相信它只会被寻求，永远地寻求，而且总是被人类某个荒诞的脆弱成员。这样的成员永远不会很多，但总会至少有一个存在某处。</strong>”看啊，他们就在这里，在这沉沦在非理性的、意义分崩离析的世界角落，仰望沉寂星空的少年少女此刻正追寻着答案——即便他们伤痕累累、沐浴在仿佛一碰就碎的虚幻星光之下，但他们一定十分幸福——而烂户口本人，同样也一定在追寻着，我如此坚信。</p>
+<p>要说本作哪段情节最精彩，木村与理纱最后在深邃浩渺的夜空之下的谈话肯定当之无愧。这是只有简短对话而不加任何修饰、补充的对白，却美丽、神圣到令人难以置信。漫天的星光轻轻洒落，对这个被撕扯得四分五裂的世界的无可奈何，对活下去意义的确立，从中得到名为“没有答案”的虚无答案，对彼此的相互拯救……在充满了星光与默示的夜中，两人的迷茫、温柔、激情、妥协，还有最后的释然，仅仅通过简短的对话就被展现地淋漓尽致，深深地铭刻在我的脑海中，以至于过了几年我依旧能回想起对白中的某些语句，还有当时仿佛永恒静止的寂静时间。而原本在前两章还略显奇怪、空洞的人物形象，经过第三章理纱视角娓娓道来地叙述也得到了完美补完，他们离经典追寻模式的主人公形象原来越近，并在最后纯净的对白中得到了升华——这当然是一件好事，因为即便有着内在矛盾，这样的人物无论怎样都是充实的——至少比某些人笔下枯槁的人物形象更加饱满。虽然历经了磕磕绊绊，甚至濒临崩溃毁坏的边缘，好在他们最后达成了和解，理纱喘着气，追赶着木村的身影跑去，然后她哭了，晶莹地泪水止不住地流下，宛若沉溺在眼泪横溢的美丽世界中。</p>
+<p>游戏最后一幕的场景也十分经典，木村与理纱牵着彼此的手，朝着远处那个他们不曾融入的世界走去，配合上ED强有力的电吉他音的引出，那一刻真的很容易让人彻底溺毙在希望与光明的海洋中，将之前近十个小时的游戏时间内产生的各种负面情绪洗刷殆尽，甚至使人可以忽略本作的许许多多的不尽人意的瑕疵；这并不是否认本作的缺陷，而是单单从阅读体验来说，真实到不能再真实的动人情感；可以说，本作最后一幕带给我的震撼完全不输给读到《罪与罚》中拉斯柯尔尼科夫与索尼娅在遥远的西伯利亚平原铅灰色的天空下相拥而泣的场景内心底油然生起刻骨铭心的澎湃、感动与幸福。他们同样确信了彼此的感情与爱，虽然彼此的存在可能会令对方痛苦，但现在这点小事，都无所谓了啊……<strong>现在更重要的难道不是应当用怎样无限深挚的爱来补偿彼此所承受的一切苦痛吗</strong>？拉斯柯尔尼科夫与索尼娅流放的等待还需要持续七年，在那之还会有多少苦难和无限的幸福！七年，只不过是七年！一个崭新的世界就摆在他们的眼前，一个故事的结束同样也是一个新的故事的开始——《罪与罚》最后的结尾是这样的：</p>
+<blockquote>
+<p>可是一个新的故事，一个人逐渐再生的故事，一个他洗心革面、逐渐从一个世界进入另一个世界的故事，一个熟悉新的、直到如今根本还没人知道的现实故事正在开始。这个故事可以作为一部新的小说的题材——可是我们现在的故事到此结束了。</p>
+</blockquote>
+<p>是啊，木村与理纱现在的故事也就到此为止了，而关于游戏的杂谈也暂且告一段落。但一个新的故事也因此而诞生：同样是七年的等待，同样是跨越漫长的时光，同样的苦难与幸福，一部新的小说，烂户口已经将这部小说完成——发生于游戏故事时间线七年后的《CARNIVAL》后传小说。</p>
+<p>所以说烂户口这家伙在本作中属实在不遗余力地致敬啊2333……</p>
+<p><img data-src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/ae/6e/ae6edc3b95b9930b696d6982e4ece79f.png"></p>
+<h2 id="7-years-later…不再被爱的我们"><a href="#7-years-later…不再被爱的我们" class="headerlink" title="7 years later…不再被爱的我们"></a>7 years later…不再被爱的我们</h2><p>如果说《CARNIVAL》的游戏在黄油圈还算不温不火的话，那么它的后传小说可谓非常冷门了。可能是因为受众与体裁的限制，游戏与小说的圈子之间的交叉人数也并不算特别大（即便对于烂户口而言已经是比其他大得多了）；其次这是一个游戏的后传小说，在没有前作的基础上阅读肯定是不可能的，所以就算小说质量很高也无法在轻小说圈引起重视；当然还因为其中有直白的性场面描写所以注定无法与一般轻小说一较高下2333总之我想表达的——就是大家都去看啊！真的超级好看的嗷！（×）</p>
+<p>时光飞逝，转眼间七年已然过去，这个失去了木村与理纱的城市早已忘却当初的事件，安然度过着平静的每一天，就连理纱的弟弟洋一也对七年前消失的姐姐的存在失去了实感。于是乎，在这个本该一如既往度过的暑假，在烈日炙烤的神社古井旁，洋一与佐织相遇了——而原本七年前本该永远静止的时钟指针，也随着一通来自老家的电话，无可奈何地再度开始转动。</p>
+<p>作为一本后传小说，本书可以说完美地完成了赋予它的任务，甚至某种层面上比起原作更进了一步。小说的主要情节依然很简单就可以概括，而且很明显分为两个部分：前一部分以九条洋一为主角，讲述他和佐织这个奇妙少女的相处以及探寻七年前事件的真相，第二部分则是前作男主木村学的回归，讲述他与理纱逃亡后的生活以及最后做出的选择。虽然游戏结局停留在男女主角携手前进也很好，但可以肯定地说没有后传小说的《CARNIVAL》的故事是不完整的。大概只有在这里，我才得以更加了解烂户口真正想要表达的东西。</p>
+<p>先让我们聊聊洋一和佐织的故事吧。我仔细在脑海中回想了一下，烂户口应该没有写过比这对CP更甜、更有趣的故事了……而且比起前作的阴暗风格，这两人的故事搞笑到甚至一度让我怀疑是不是换作者在写了（←真实想法），以至于在看的时候属实笑个不停。</p>
+<p>等等！你可是烂户口啊，怎么能狂放闪光弹写出这种死肥宅才会看东西呢！？我他妈……我他妈的还是挺爱吃这个狗粮的呜呜呜……好了好了，我想只有看过的人才知道这两人的故事到底有多无厘头，甚至可以把我们伟大领袖M.Z.D当做飞机杯恶搞（←是真的），实在是令人笑到不能自已。笑归笑，但是其实里面两个人物也有各自背负的沉重的过去，这是隐藏在明亮阳光下阴影中蠢蠢欲动的黑暗面。洋一在小时候就目睹了父亲与姐姐禁忌的sex，而自己却阴差阳错地患上了恋尸癖；佐织则是从小一直被父亲关在家中，无法接触外面的世界，并且日常生活就是与父亲sex，好不容易从家里逃出来也是靠做廉价yuan交养活自己。</p>
+<p>佐织这个人物有几个比较有趣的地方。首先是在她的身上可以看到后来烂户口创作出的作品中人物的影子：比如说“从小被关在家中”对应的就是《暗之部屋》，而她的活泼、开朗，对一切充满好奇的性格则可以在《Kira☆Kira》的女主椎野绮良里的身上发现……我这么说可能还不算很可信，有个石锤便是在小说中佐织有个“哼唱广告中的曲目”的奇怪爱好，这个特点索性是被绮良里完全继承了；我是先推的KRKR再看这本小说的，而在读洋一&amp;佐织这一对的故事时，也时常让我产生仿佛在看鹿之助与绮良里互动的既视感（洋一与鹿之助带给人的感觉同样非常接近），所以说这两者之间没有联系我是不信的。其次，在佐织的身上有一个ACG中不是常见的属性“妓女”（其实这一点绮良里END1里也有……），而《罪与罚》中的索尼娅的“工作”其实也是妓女。而从各种意义上来看，佐织的人物形象比起理纱更接近索尼娅，她也用自己最纯粹的爱与善良接纳与包容了自己所爱之人，完成了对洋一的拯救。故事的最后面对佐织所提出“与自己尸体sex”的愿望，洋一非常坦诚而有几分害羞地说：“<strong>可是，我还是想尽全力治好自己。想和活着的你做那种事。</strong>”我想原本坏掉的他一定被这个奇妙的少女用温柔的双手拯救了。</p>
+<p>除此之外在洋一的视角中，游戏中其他的主要角色也都有了自己的归宿。泉当上了新闻工作者，志村姐妹原谅了七年前的罪行，而女刑警大概被木村凌辱爽了所以辞职做起成人用品的生意2333（这点在小说中藏得比较隐蔽，连名字和相貌都没出现只用佐织一句话就随意带了过去，我是第二次看才发现了这个槽点www）……</p>
+<p>在这稍微说点题外话，也是我个人的一种猜测。如果佐织继承的是索尼娅，那么理纱这个角色有没有作品来源呢？答案可能是有的，不过不是《罪与罚》，而是出自陀氏的另一部作品《地下室手记》。关于《地下室手记》这部作品，可以把它看做成陀氏包括《罪与罚》在内的最后五部小说巨作的序言，并且与《罪与罚》的相似度是最高的。里面女主角同样也是妓女，名字直接音译刚好是“丽莎（理纱）”，这总不能是巧合对吧？不过这两者除了名字以外其实也没有太大的关联，可以把这看做是小彩蛋之类的东西，烂户口这样安排大概也是出于也是一种巧妙迂回的致敬吧。至于是不是真的这样，建议去推特问本人，但我不会日文所以做不到嗷（溜）。</p>
+<p>如果到此为止就结束了的话，烂户口就不是烂户口了；而以上所有的日常也只是木村与理纱出场的开胃菜。小说用前四分之三的内容的铺垫，终于迎来了木村为主角的第一视角。</p>
+<p>七年前，两人手牵手共同面向仿佛充满希望的未来。</p>
+<p>七年后，他们是否真的追寻到了自己所向往的幸福？</p>
+<p>或许他们当时并不知道，他们不可能无代价地得到新生活，必须为此隐忍与妥协，往后必须依旧过着没有尽头的逃亡，接受自己所犯罪孽的惩罚。这七年的生活对于他们来说，是满溢的幸福裹挟着同等程度的不幸。</p>
+<p>更加无从预料的是，木村不知不觉间被各种恐怖的幻觉缠身，最终被送往精神病院。即便他强颜欢笑，但敏感的理纱不可能没有察觉他脆弱的伪装；但现在对于他们的处境来说，宁可遮住双眼捂住耳朵，欺骗自己不去在意这种事才是最好的选择。于是乎，现实与虚幻的界限被抹除了，此岸世界与彼岸世界的关系越来越不确定，正常的思维模式顷刻间被消解，最后导向了“自杀”这一荒谬的结局。</p>
+<p>没有惩罚，世界也没有被爱。而这就是属于木村学的被惩罚的方式，这个世界对他最初的也是最后的爱。他终于能够从仿佛持续到逝去时间尽头的痛不欲生中逃离、解放，却也只是于短短一瞬间感受到了这个残酷世界美丽动人之处——于遥远的回忆中，如花似锦的男孩女孩面对彼此笑逐颜开，叽叽喳喳说个不停，然后回忆起这样这段场景的人逐渐失去了爱与被爱的权利，犹如那个失去了生存权利的他自己一般。无尽的忧思与缄默后，他决定用这种理所当然的方式来奠定理纱存在的希望——沉重的代价却是，彻底消解彼此间爱的权利。</p>
+<p>虽然第二部分是小说的重头戏，虽说涉及到木村与理纱的篇幅真的很少，可其中每一句话都读得令人喘不过气。过去那曾经深爱着彼此并与企图与全世界为敌的两人小小的憧憬、希望与幸福，却再度被这个的毫不讲理地残酷世界击得粉碎。烂户口先是在游戏的最后营造出仿佛错觉般的希望，再理所当然地将这样的信然一点点地碾碎呈现给我们——即便是在七年后，奔跑的人依旧没有追到头顶的萝卜，并仿佛一脸无辜地说道——这难道不是“理所当然”的吗？或许在他的世界结构的设计便是如此，处处充满危险致命的裂痕，稍不留神就会坠入万丈深渊，而人们无论怎样向前奔跑最后的结局却依然是无所得的失意。</p>
+<p>所以有些时候我真的不能忍受烂户口这家伙……他究竟是怎样一个人才会创造出这样一个充满恶意的世界，他到底是经历了什么才会如此轻而易举地将本该点到为止的美好事物摧毁给你看。当我们还沉溺于游戏美好的开放结局时，他就用他的文字狠狠打了我们脸，无情地告诉你这一切只不过是错觉罢了，世界并不会因为渺小个人的热忱或者憧憬就改变它本来残酷的姿态。拥有满腔反抗的热血又怎么样？想要诚挚地去爱又怎么样？神只会一如既往地爱着每个人，也一如既往地讨厌着每个人，用游戏里的话来说就是——<strong>神对人类根本就不感兴趣</strong>。</p>
+<blockquote>
+<p>“活下去！”<br>一遍又一遍，耳边长久地回应着庄严的大合唱。多亏了这声音，我才注意到自己真正想要做的是什么。是啊，一直以来幻听都是在违背我真实想法存在。</p>
+</blockquote>
+<p>“活下去！”这句话不也正是陀氏在《罪与罚》中遥远的回响吗？只要活着就好，这是多么正确的真理啊……所以木村不受控制地流下了眼泪，为选择死去的自己感到至高无上的充实。他无比坚信自己此刻所作所为的正确性，就像当初坚信着两人能够携手共同迎接美好未来一样……仅仅只是坚信，这个沉沦在绚丽多彩的幻觉中的自己最后所做的就只是这样而已。</p>
+<p>在第一遍读小说的时候，我实在为木村学的结局感到痛心，也为理纱的未来感到无比担忧，她终于失去了自己挚爱之人，不仅要接受法律的制裁而且很可能永远与无尽孤独相伴……不再被爱的她究竟该如何再度与这个世界相处呢？我依稀记得当时看完这个结局的时候，配合上游戏ED那满溢出希望的光景，我真的很想哭……我将因这个结局产生的各种复杂的感情小心翼翼地埋藏在内心底最隐蔽的小角落，放在那谁也找不到、谁也无法察觉的场所，唯有回想起这个故事心头的隐隐阵痛在让我意识到这个终于落下帷幕的残酷物语。</p>
+<p>但是时至今日，在再度阅读本作时，我才发现我的情感已经完全不一样了。过去我更多是为木村学的结局感到伤感，而这次我却对此感到坦然，宛若这便是属于他最好的归宿；除此之外，我更多地看到了理纱勇敢面对这个世界的坚强与释然：</p>
+<blockquote>
+<p>“我将承受这一切，尽我所能地去跨越它。这样的话，我也一定可以……即便如此我还是很讨厌，但是，学君他……”</p>
+</blockquote>
+<p>可以说在这里我感觉自己终于理解了他，理解他为何要将自己苦心创造出的美好事物毁坏，为何一定要建立起这番理想主义的苦难：在他笔下的人物最终无论如何，就算遍体鳞伤，就算一次又一次地倒下，最后也会有人跨越这些苦难，为了属于这个泪水横溢的世界某处不可见的美好事物而活下去。</p>
+<p>纵使法律的惩罚无法逃脱，纵使要背负上沉重的罪名，纵使未来的日子依然不可知，理纱依然抬起头坚定地面对了这个世界。她已经不是那个小时候单纯好奇的娇小女孩，也不是那个十七岁充满着激情与爱的稚气少女，而是现在这个历经时间与苦难打磨后，于阳光的阴影中依旧坚信、饱含微笑反抗着这个该死世界的神圣的追寻者。<strong>“我打心里觉得能够与学君相遇真是太好了”</strong>——现在的理纱，也一定能以没有半点后悔心境说出七年前在自己最幸福的时刻所说出的话语。</p>
+<p>而烂户口仿佛伟大的预言者般早已料想到，沉溺于眼前一时的希望与憧憬的人们终究会在时间的流逝下对这个冷峻世界的现实世界感到木然与习惯，而陷入一种沉沦与自我厌恶之中，失去了当初最纯真的热情——无论是作品中的人物，还是现实中的我们都无法逃脱这种宿命论般名为“成长”的预言的束缚。但正如同理纱的故事在小说的结尾又是一个新的开始，对于我们来说所谓成长，除了要舍弃某些自己曾经珍视无比的事物、承受仿佛冒犯心灵的疼痛之外，还是要擦干泪水，建立起不堪一击的理论指引方向然后伤痕累累地前进才对啊……当自己意识到自己终究要做出妥协却依然前进沉淀出无法用语言划分的混合情感，从一颗满溢的心脏中倾倒出来，让人无法不感动，无法不震撼。不管是在七年后、十七年后、二十七年后……甚至更加遥不可期无法想象的未来，这样的幻灭与重构的轮回一定会再度上演，但我相信就算只有沉默与孤独，就算失去了所爱与被爱的珍视之物，这也不是真正的绝望，因为我已经从他那得到了答案——</p>
+<p><strong>即使是不再被爱的我们，也有无拘无束地去爱这个世界的权利。</strong></p>
+<p>广义上，作品中人物都有着创作者的影子，作品中人物的话语就是作者的话语。从小说的后记中，我们似乎能看出点烂户口本人非常不正常的一面，为此我感到有些敬畏，可也有几分恐惧。我害怕他作品中阴暗的一面会侵蚀掉我，就像几年前看到木村学的结局那样在我心中生起锈迹斑斑的伤痕。</p>
+<p>但是……但是啊——</p>
+<p>幸好在这里，不是所有的话语都充斥着虚伪恶意的谎言。</p>
+<p>幸好在这里，不是所有的沉沦都象征着永劫不复的堕落。</p>
+<p>幸好在这里，不是所有的泪水都洋溢着无可救药的悲伤。</p>
+<p>幸好在这里，在这部起始的出道作中，他纯粹的情感与真挚的信仰是那样地令人浑身颤抖，以至于我现在才意识到自己是多么陶醉于他所创造的世界之中，自己受他的影响是多么之大。这是不同于一时头脑发热的冲动，而是经过长时间酝酿之后发酵出的更深层次的爱。</p>
+<p>我们一直都在说他的作品多么深残黑，他本人的心理是多么阴暗，但实际上凡是接触过他的作品的人都知道：他在创造了一个冰冷而燃烧的世界的同时是多么努力地冲破这个矛盾世界的黑暗，洞察不合理的疯狂的同时也拼尽全力诉说着宛若手枪星般脆弱光芒的希望，这样温柔美丽的光芒总是会不动声色地照进人们内心深处最柔软的地方——就像不去读陀氏，永远也不会知道他“热爱生活到了羞耻的地步”——两部我深爱的作品，以及两位我所喜爱的作家本身的影子竟如此奇迹般地重合到一起，这是多么令人振奋、甚至想要放声呐喊的事啊！当然将这两者进行比较是完全是可笑的、毫无道理的这种事我也有自知之明；但我深深地爱着烂户口，同样也深深地爱着老陀，仅仅只是发现他们身上本来毫无联系的共同点就激动不已。</p>
+<p>所以就请原谅我如此任性一回吧，也请原谅我胡言乱语般的宣泄，只因我能从那脆弱的光芒中获得一点点的、微乎其微的力量。也愿我能同他们一起，去深爱着这个世界。</p>
+<p><strong>或许正是因为他们的存在，我才稍微喜欢上这个残酷而美丽的世界了。</strong></p>
+<p><strong>感谢你们曾经进入了我的世界，并且温柔地为我拭去了泪水。</strong></p>
+<p><strong>这就是一无所有、脆弱不堪的我，对这个世界毫无保留的单相思——</strong></p>
+<h2 id="结语…"><a href="#结语…" class="headerlink" title="结语…"></a>结语…</h2><p>写到这里，不知为何我感到十分幸福。</p>
+<p>甚至第一次产生了能与烂户口相遇真是太好了的想法。</p>
+<p>老实说在写这篇文章的过程中我真的极为痛苦，而写到最后将要结束的时候却发现这样的痛苦我已经感受不到了，到底是痛苦消失了，还是我已经习惯了这种痛苦呢……或许只有到了最后，我才真正意义上认识到自己是多么爱这部作品，多么爱烂户口吧。因为爱得太过于深，所以才在表达自己的爱意时显得如此“害羞”，才会如此痛苦……但，这就像诉说着恋人之间的絮语般温柔的话语，真是一种美妙的疼痛呢，我或许是真的在享受这种疼痛也说不定（苦笑）……</p>
+<p><strong>“这个瞬间要是能再长久一点就好了。”——</strong>我也是打心底这么觉得的，无论是幸福还是苦痛，都是如此地使人迷恋啊。</p>
+<p>不过总算是长舒一口气。其实在写这篇文之前我就想过过程会异常坎坷，也有因缺乏动力而产生半途而废的想法，不过好在自己最后坚持了下来，虽然很不要脸但还是要为如此奥利给的自己鼓个掌嗷（×）！</p>
+<p>这次的写法比较特别的地方在于对《罪与罚》的考证部分。游戏与小说很早之前看完了，最近又都重温了一遍，所以各种地方记的还算清楚。但《罪与罚》其实读完已经有一段时间了，由于其内容量实在是过于庞大，能翻书去确认的地方我都尽可能地有去找，可还有很多部分实在是一时半会翻不到就只能凭记忆在说了。另外关于陀氏小说中刻画的人物以及传递的思想大部分是我自己的理解，可能也会有一定的误读，个人水平有限请见谅。也欢迎各位补充其他致敬的细节，说真的我个人对这个真的很感兴趣23333</p>
+<p>同时，这篇文的完成也要感谢许多人。</p>
+<p>在码字中途遇到困难之时，与后方君的谈话给了我动力，让我重新甚至写下这篇文字的意义，以至于本文的后半段我几乎是不加思考爆种般一气呵成www虽然写出来的东西变得更加奇怪就是了233</p>
+<p>还要感谢汉化组无私的奉献，为我们呈现出烂户口如此精彩的作品，中文翻译的质量属实高的不行。</p>
+<p>最后还要再度感谢全世界最好的Lain__ever菊苣，如果不是菊苣知乎翻译的那篇感想，我这篇文连诞生的可能性都不存在呢w此外感谢菊苣用爱发电翻译的后传小说，现在再度回首发现当初在贴吧追更这篇小说的翻译就是我们的首次见面吧，这算是烂户口之缘吧（？）；还有就是如果不是菊苣的文章以及我们之间的讨论，《CARNIVAL》在我心底也可能永远占据不了那么大的席位吧……总之就是各种方面，各种意义上，真的特别特别感谢！❤我永远喜欢Lain__ever嗷！！</p>
+<p>哎，还是想感叹一句：身为烂户口粉丝真是一件幸福的事呢……</p>
+<p>我不认为这篇文章的诞生会对这个世界产生什么影响，但如果本文能够稍微改变你对《CARNIVAL》的看法，或者能让你从中稍微获得一点点的力量与勇气，或者哪怕产生一丝丝的共鸣，那便是我至高无上的荣幸。</p>
+<p>那么就到此为止了……</p>
+<p>也由衷地感谢阅读到最后的你！非常感谢！</p>
+<p>如果有机会的话，我们还是下次再见吧！</p>
+<p>By AikeKo</p>
+<p>2019.1.29</p>
+<p>“So this is my unrequited LOVE to the shitting world…”</p>
+<p>============分割线============</p>
+<p>PS：在写于17年的《KRKR》的文的最后我说：“请期待烂户口2018年的新作”，现在他喵了个咪的都9102年了，烂户口NMSL吧？说好的新作呢快给爷吐出来嗷！！！臭弟弟你可别被我逮到咯，否则没你滴好果汁吃嗷！！！（气 急 败 坏）</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag"># 游戏</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018-12-18-%E5%9C%A8%E6%B2%A1%E6%9C%89%E7%A5%9E%E7%9A%84%E4%B8%96%E7%95%8C%E4%B8%AD%E8%BF%BD%E5%AF%BB.html" rel="prev" title="在没有神的世界中追寻 | 《神的记事本①》单卷评析">
+      <i class="fa fa-chevron-left"></i> 在没有神的世界中追寻 | 《神的记事本①》单卷评析
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019-02-23-%E6%9C%9D%E5%90%91%E6%9C%80%E5%90%8E%E7%9A%84%E8%88%9E%E5%8F%B0.html" rel="next" title="朝向那最后的舞台—— |《我的青春恋爱物语果然有问题》第十三卷吐槽">
+      朝向那最后的舞台—— |《我的青春恋爱物语果然有问题》第十三卷吐槽 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%8F%E8%A8%80%E2%80%A6"><span class="nav-text">序言…</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Now%E2%80%A6%E8%8D%92%E8%AF%9E%E9%9D%92%E6%98%A5%E7%9A%84%E7%BD%AA%E4%B8%8E%E7%BD%9A"><span class="nav-text">Now…荒诞青春的罪与罚</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-years-later%E2%80%A6%E4%B8%8D%E5%86%8D%E8%A2%AB%E7%88%B1%E7%9A%84%E6%88%91%E4%BB%AC"><span class="nav-text">7 years later…不再被爱的我们</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E8%AF%AD%E2%80%A6"><span class="nav-text">结语…</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AikeKo"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">AikeKo</p>
+  <div class="site-description" itemprop="description">你找到祈祷的意义了吗？</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/aikkeko" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;aikkeko" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AikeKo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
