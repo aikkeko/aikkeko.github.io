@@ -2,13 +2,13 @@
 // NexT 主题美化配置 - Z.A.T.O 后末日风格
 // 基于 Z.A.T.O_02_ca04.png 废墟美学设计
 // 
-// Version: 2026.07.16-10
+// Version: 2026.07.16-11
 // Last Updated: 2026-07-16
 // ============================================
 
 // 版本信息（用于调试）
 :root {
-  --theme-version: "2026.07.16-10";
+  --theme-version: "2026.07.16-11";
   --theme-name: "Z.A.T.O Apocalypse";
   // ===== 全面覆盖 NexT 默认白色系 CSS 变量 =====
   // 背景色
@@ -48,7 +48,7 @@ body {
   
   // 版本号水印（调试用，显示在页面左上角）
   &::before {
-    content: "v2026.07.16-10";
+    content: "v2026.07.16-11";
     position: fixed;
     top: 8px;
     left: 8px;
@@ -5918,31 +5918,32 @@ body {
 .index .post-card-content::after {
   content: counter(post-card, decimal-leading-zero) !important;
   position: absolute !important;
-  top: 18px !important;
-  right: 20px !important;
-  z-index: 2 !important;
-  display: grid !important;
-  width: 42px !important;
-  height: 32px !important;
-  place-items: center !important;
+  top: 12px !important;
+  right: 18px !important;
+  z-index: 1 !important;
+  display: block !important;
+  width: auto !important;
+  height: auto !important;
   padding: 0 !important;
-  border: 1px solid rgba(212, 196, 168, 0.24) !important;
-  background: rgba(18, 21, 27, 0.62) !important;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
-  color: rgba(212, 196, 168, 0.72) !important;
-  font-family: "IBM Plex Mono", "SFMono-Regular", "Cascadia Mono", monospace !important;
-  font-size: 0.78rem !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.08em !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: rgba(212, 196, 168, 0.25) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 2.1em !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
   line-height: 1 !important;
   pointer-events: none !important;
 }
 
 .index .post-card-title,
 .index .post-card:first-child .post-card-title {
-  max-width: calc(100% - 72px) !important;
+  position: relative;
+  z-index: 2;
+  max-width: 100% !important;
   padding-right: 0 !important;
-  text-wrap: balance;
+  text-wrap: pretty;
   line-break: strict;
   word-break: normal;
   overflow-wrap: break-word;
@@ -5954,12 +5955,30 @@ body {
 
 @media (max-width: 768px) {
   .index .post-card-content::after {
-    top: 16px !important;
+    top: 12px !important;
     right: 16px !important;
   }
 
   .index .post-card-title,
   .index .post-card:first-child .post-card-title {
-    max-width: calc(100% - 62px) !important;
+    max-width: 100% !important;
+  }
+}
+
+// 51. Homepage cover framing - give every image breathing room inside its record
+.index .post-card {
+  padding: 12px !important;
+}
+
+.index .post-card .post-card-image,
+.index .post-card:first-child .post-card-image {
+  overflow: hidden !important;
+  border: 1px solid rgba(212, 196, 168, 0.16) !important;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2) !important;
+}
+
+@media (max-width: 768px) {
+  .index .post-card {
+    padding: 8px !important;
   }
 }
