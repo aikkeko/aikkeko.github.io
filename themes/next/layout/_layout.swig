@@ -10,6 +10,9 @@
 </head>
 
 <body class="{% if is_post() %}post-detail{% endif %}" itemscope itemtype="http://schema.org/WebPage">
+  {%- if is_home() %}
+    <div class="archive-opening" aria-hidden="true"></div>
+  {%- endif %}
   <div class="container{%- if theme.motion.enable %} use-motion{%- endif %}">
     <div class="zato-background-quotes" aria-hidden="true">
       <span class="zato-quote zato-quote-left">ALL STORIES ARE LOST PROPERTY</span>
