@@ -9,7 +9,6 @@
 <div class="hero-section">
   <div class="hero-mask"></div>
   <div class="hero-terminal" aria-hidden="true">
-    <span>Z.A.T.O ARCHIVE</span>
     <span>NO. 30-000</span>
   </div>
   <div class="hero-catalogue-labels" aria-hidden="true">
