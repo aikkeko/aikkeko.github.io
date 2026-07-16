@@ -65,9 +65,12 @@
       {%- endif %}
       
       <div class="post-card-content">
-        <h2 class="post-card-title" itemprop="name headline">
-          <a href="{{ url_for(post.path) }}" itemprop="url">{{ post.title or __('post.untitled') }}</a>
-        </h2>
+        <div class="post-card-heading">
+          <h2 class="post-card-title" itemprop="name headline">
+            <a href="{{ url_for(post.path) }}" itemprop="url">{{ post.title or __('post.untitled') }}</a>
+          </h2>
+          <span class="post-card-index" aria-hidden="true"></span>
+        </div>
         
         {%- set card_description = post.description or post.excerpt %}
         {%- if card_description %}
