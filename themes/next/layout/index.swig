@@ -59,7 +59,7 @@
       {%- if hero_image %}
       <div class="post-card-image">
         <a href="{{ url_for(post.path) }}">
-          <img src="{{ hero_image }}" alt="{{ post.title }}" itemprop="image" loading="lazy" onerror="this.remove()">
+          <img class="post-card-cover" src="{{ hero_image }}" alt="{{ post.title }}" itemprop="image" loading="lazy" onload="this.closest('.post-card-image').classList.add('is-loaded')" onerror="this.closest('.post-card-image').classList.add('is-loaded'); this.remove()">
         </a>
       </div>
       {%- endif %}
