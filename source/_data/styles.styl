@@ -2,13 +2,13 @@
 // NexT 主题美化配置 - Z.A.T.O 后末日风格
 // 基于 Z.A.T.O_02_ca04.png 废墟美学设计
 // 
-// Version: 2026.07.16-17
+// Version: 2026.07.16-18
 // Last Updated: 2026-07-16
 // ============================================
 
 // 版本信息（用于调试）
 :root {
-  --theme-version: "2026.07.16-17";
+  --theme-version: "2026.07.16-18";
   --theme-name: "Z.A.T.O Apocalypse";
   // ===== 全面覆盖 NexT 默认白色系 CSS 变量 =====
   // 背景色
@@ -48,7 +48,7 @@ body {
   
   // 版本号水印（调试用，显示在页面左上角）
   &::before {
-    content: "v2026.07.16-17";
+    content: "v2026.07.16-18";
     position: fixed;
     top: 8px;
     left: 8px;
@@ -6047,5 +6047,39 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .index .post-card-image::before {
     animation: none !important;
+  }
+}
+
+// 53. Homepage opening - let the archive emerge from a quiet black field
+.archive-opening {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: #050608;
+  animation: archive-opening-reveal 1.45s cubic-bezier(0.22, 0.7, 0.18, 1) forwards;
+  pointer-events: auto;
+}
+
+@keyframes archive-opening-reveal {
+  0% {
+    opacity: 1;
+  }
+
+  32% {
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .archive-opening {
+    visibility: hidden;
+    animation: none;
+    pointer-events: none;
   }
 }
