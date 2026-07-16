@@ -1433,7 +1433,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #e277ff;
+  background: #85ff6b;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -3110,7 +3110,7 @@ ul.breadcrumb li + li:last-child {
   }
 }
 :root {
-  --theme-version: "2026.07.16-17";
+  --theme-version: "2026.07.16-18";
   --theme-name: "Z.A.T.O Apocalypse";
   --content-bg-color: rgba(35,38,45,0.85);
   --body-bg-color: #1e2128;
@@ -3140,7 +3140,7 @@ body {
   color: #333;
 }
 body::before {
-  content: "v2026.07.16-17";
+  content: "v2026.07.16-18";
   position: fixed;
   top: 8px;
   left: 8px;
@@ -7630,6 +7630,21 @@ body {
     animation: none !important;
   }
 }
+.archive-opening {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: #050608;
+  animation: archive-opening-reveal 1.45s cubic-bezier(0.22, 0.7, 0.18, 1) forwards;
+  pointer-events: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .archive-opening {
+    visibility: hidden;
+    animation: none;
+    pointer-events: none;
+  }
+}
 @-moz-keyframes fadeInUp {
   from {
     opacity: 0;
@@ -8004,5 +8019,57 @@ body {
 @keyframes archive-cover-spin {
   to {
     transform: rotate(360deg);
+  }
+}
+@-moz-keyframes archive-opening-reveal {
+  0% {
+    opacity: 1;
+  }
+  32% {
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+@-webkit-keyframes archive-opening-reveal {
+  0% {
+    opacity: 1;
+  }
+  32% {
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+@-o-keyframes archive-opening-reveal {
+  0% {
+    opacity: 1;
+  }
+  32% {
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+@keyframes archive-opening-reveal {
+  0% {
+    opacity: 1;
+  }
+  32% {
+    opacity: 1;
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
   }
 }
