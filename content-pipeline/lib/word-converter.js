@@ -246,6 +246,52 @@ class WordToMarkdownConverter {
   }
 
   normalizeQuoteBlocks($) {
+    const isQuoteParagraph = element => {
+      const $p = $(element);
+
+      if ($p.find('img').length) {
+        return false;
+      }
+
+      const text = this.normalizeText($p.text());
+      if (!text || text.length > 220) {
+        return false;
+      }
+
+      return this.isItalicOnlyParagraph($p);
+    };
+
+    const paragraphs = $('p').toArray();
+    const handled = new Set();
+
+    paragraphs.forEach(element => {
+      if (handled.has(element) || !isQuoteParagraph(element)) {
+        return;
+      }
+
+      const group = [element];
+      handled.add(element);
+
+      let next = $(element).next();
+      while (next.length && next[0].tagName && next[0].tagName.toLowerCase() === 'p' && isQuoteParagraph(next[0])) {
+        group.push(next[0]);
+        handled.add(next[0]);
+        next = next.next();
+      }
+
+      const quoteHtml = group
+        .map(node => {
+          const $node = $(node);
+          return `<p>${$node.html() || this.normalizeText($node.text())}</p>`;
+        })
+        .join('');
+
+      $(element).replaceWith(`<blockquote>${quoteHtml}</blockquote>`);
+      group.slice(1).forEach(node => $(node).remove());
+    });
+
+    return;
+
     $('p').each((_, element) => {
       const $p = $(element);
 
@@ -258,6 +304,13 @@ class WordToMarkdownConverter {
         return;
       }
 
+      if (!this.isItalicOnlyParagraph($p)) {
+        return;
+      }
+
+      $p.replaceWith(`<blockquote><p>${$p.html() || text}</p></blockquote>`);
+      return;
+
       const hasOnlyInlineEmphasis = $p.children().length > 0 && $p.children().toArray().every(child => {
         const name = (child.tagName || child.name || '').toLowerCase();
         return ['em', 'i', 'strong', 'b', 'span', 'br'].includes(name);
@@ -268,6 +321,66 @@ class WordToMarkdownConverter {
         $p.replaceWith(`<blockquote><p>${$p.html() || text}</p></blockquote>`);
       }
     });
+  }
+
+  isItalicOnlyParagraph($p) {
+    const meaningfulNodes = $p.contents().toArray().filter(node => {
+      if (node.type === 'text') {
+        return this.normalizeText(node.data || '').length > 0;
+      }
+
+      if (node.type === 'tag') {
+        const name = (node.tagName || node.name || '').toLowerCase();
+        return name !== 'br' && this.normalizeText(this.getNodeText(node)).length > 0;
+      }
+
+      return false;
+    });
+
+    return meaningfulNodes.length > 0 && meaningfulNodes.every(node => this.isItalicNode($p, node));
+  }
+
+  isItalicNode($p, node) {
+    if (node.type !== 'tag') {
+      return false;
+    }
+
+    const name = (node.tagName || node.name || '').toLowerCase();
+
+    if (name === 'em' || name === 'i') {
+      return true;
+    }
+
+    if (!['span', 'strong', 'b'].includes(name)) {
+      return false;
+    }
+
+    const children = (node.children || []).filter(child => {
+      if (child.type === 'text') {
+        return this.normalizeText(child.data || '').length > 0;
+      }
+
+      if (child.type === 'tag') {
+        const childName = (child.tagName || child.name || '').toLowerCase();
+        return childName !== 'br' && this.normalizeText(this.getNodeText(child)).length > 0;
+      }
+
+      return false;
+    });
+
+    return children.length > 0 && children.every(child => this.isItalicNode($p, child));
+  }
+
+  getNodeText(node) {
+    if (!node) {
+      return '';
+    }
+
+    if (node.type === 'text') {
+      return node.data || '';
+    }
+
+    return (node.children || []).map(child => this.getNodeText(child)).join('');
   }
 
   removeLeadingEmptyBlocks($) {
