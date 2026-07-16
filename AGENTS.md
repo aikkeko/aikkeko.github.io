@@ -298,7 +298,7 @@ git push origin main
 
 ### 📊 当前版本状态
 
-- **版本号**：2026.07.16-14
+- **版本号**：2026.07.16-15
 - **主题**：NexT Gemini + Z.A.T.O 废土风格
 - **布局**：双栏（左侧边栏 + 右侧内容）
 - **背景**：Z.A.T.O_02_ca04.jpg (361KB)
@@ -312,7 +312,7 @@ git push origin main
 2. **版本号**：每次修改后必须更新 `source/_data/styles.styl` 三处版本号
 3. **敏感信息**：`.env` 文件永不提交，使用 `.env.example` 作为模板
 4. **子模块**：修改 `themes/next` 后需要单独提交子模块，再提交主仓库引用
-5. **Service Worker 缓存**：重大更新后需递增 `sw.js` 中的 `CACHE_VERSION`（当前为 `blog-v51`）
+5. **Service Worker 缓存**：重大更新后需递增 `sw.js` 中的 `CACHE_VERSION`（当前为 `blog-v52`）
 6. **Pipeline 路径**：`skip_render` 已修正为 `content-pipeline/**`（非 `scripts/`）
 7. **minify**：当前设为 `false`，待后续优化开启
 8. **Bookmark 冲突**：`long-text-loader.js` 已加检测，仅在主题 bookmark 未启用时激活增强书签
