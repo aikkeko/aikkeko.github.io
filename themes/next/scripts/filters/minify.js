@@ -21,6 +21,14 @@ hexo.extend.filter.register('after_generate', () => {
     });
   }
 
+  // Three.js is disabled in the site configuration, but NexT still copies the
+  // complete vendor directory into every generated deployment by default.
+  if (!theme.three.enable) {
+    lists.filter(list => list.startsWith('lib/three/')).forEach(path => {
+      hexo.route.remove(path);
+    });
+  }
+
   if (theme.motion.enable && theme.vendors.velocity && theme.vendors.velocity_ui) {
     velocity.forEach(path => {
       hexo.route.remove(path);

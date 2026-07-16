@@ -48,6 +48,10 @@
 
 <link rel="stylesheet" href="{{ url_for(theme.css) }}/main.css">
 
+{# The archive background is used by every page. Discover it before CSS
+   parsing so the homepage hero can paint as soon as the connection is ready. #}
+<link rel="preload" as="image" href="{{ url_for('/images/Z.A.T.O_02_ca04.jpg') }}" fetchpriority="high">
+
 {{ next_font() }}
 
 {%- set font_awesome_uri = theme.vendors.fontawesome or next_vendors('font-awesome/css/all.min.css') %}
