@@ -7,7 +7,7 @@
 - 📄 **文档监听**: 自动监视 `example` 文件夹下的新文档
 - 🖼️ **图片处理**: 提取文档中的图片并上传到 Cloudflare R2
 - 📝 **格式转换**: Word 文档转 Markdown，保留格式和样式
-- 🏷️ **智能标签**: 自动推断文章分类和标签
+- ⚙️ **持久元数据**: 用一个 YAML 文件维护全部文章的标题、简介、作者、分类和标签
 - 📤 **自动发布**: 将处理后的文章保存到 `content` 文件夹
 
 ## 安装依赖
@@ -50,12 +50,57 @@ R2_PUBLIC_URL=https://cdn.yoursite.com
 
 ## 使用方法
 
+### 文章元数据配置
+
+统一编辑 `content-pipeline/article-metadata.yml`。文章通过源文档文件名关联，键名必须等于
+`example` 中的文件名（不含 `.docx` / `.md` 扩展名）：
+
+```yaml
+defaults:
+  author: AikeKo
+
+homepage:
+  # 填写下方 articles 中的键；留空时默认使用最新文章
+  featured_article: 20260128_你可以回到Vorkuta，但那已经没有人了
+
+articles:
+  20260128_你可以回到Vorkuta，但那已经没有人了:
+    title: 你可以回到Vorkuta-5，但那里已经没有人了
+    author: AikeKo
+    description: 一段显示在首页文章卡片中的简短介绍。
+    categories: [游戏]
+    tags: [游戏, vorkuta, z.a.t.o]
+```
+
+`homepage.featured_article` 控制首页第一张 `FEATURED DISPATCH` 卡片。它与文章一样使用源文档文件名（不含扩展名）关联；留空、键名错误或文章尚未生成时，首页自动回退到最新文章。
+
+可配置字段：
+
+- `title`：博客显示标题，优先级高于 DOCX 第一行
+- `description`：首页文章简介
+- `author`：作者
+- `categories`：分类列表，也兼容单个 `category`
+- `tags`：标签列表
+- `date`：可选，覆盖文件名中的日期
+- `header_image`：可选，覆盖 DOCX 第一张封面图
+- `frontmatter`：可选，放置任意额外 Hexo Frontmatter
+
+未填写的字段仍由 DOCX 和转换程序自动生成。运行监听模式时，保存该配置文件会自动重新生成全部文章。
+
+为新增文档补齐配置条目：
+
+```bash
+npm run pipeline:metadata
+```
+
+该命令只填补缺失字段，不覆盖已经手工修改的值。
+
 ### 1. 启动监听模式（推荐）
 
 自动监视 `example` 文件夹，有新文件时自动处理：
 
 ```bash
-node scripts/content-pipeline/cli.js
+npm run pipeline
 ```
 
 ### 2. 一次性处理现有文件
@@ -63,7 +108,7 @@ node scripts/content-pipeline/cli.js
 处理 `example` 文件夹中所有现有文件：
 
 ```bash
-node scripts/content-pipeline/cli.js --once
+npm run pipeline:once
 ```
 
 ### 3. 查看帮助

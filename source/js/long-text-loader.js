@@ -103,23 +103,8 @@
         saveTimer = window.setTimeout(savePosition, 500);
       }, { passive: true });
 
-      window.addEventListener('load', () => {
-        try {
-          const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
-          if (!saved) return;
-
-          const section = saved.section && document.getElementById(saved.section);
-          window.setTimeout(() => {
-            if (section) {
-              section.scrollIntoView({ block: 'start' });
-            } else if (Number.isFinite(saved.scrollTop)) {
-              window.scrollTo(0, saved.scrollTop);
-            }
-          }, 150);
-        } catch (error) {
-          console.warn('[LongTextManager] 阅读位置恢复失败:', error);
-        }
-      }, { once: true });
+      // Progress is intentionally stored without automatic restoration.
+      // Opening and pagination remain at the top; resuming is user initiated.
     }
   }
 

@@ -24,21 +24,7 @@
     </section>
     <div class="posts-collapse">
       <div class="collection-title">
-        {%- set posts_length = site.posts.length %}
-        {%- if posts_length > 210 %}
-          {%- set cheers = 'excellent' %}
-        {% elif posts_length > 130 %}
-          {%- set cheers = 'great' %}
-        {% elif posts_length > 80 %}
-          {%- set cheers = 'good' %}
-        {% elif posts_length > 50 %}
-          {%- set cheers = 'nice' %}
-        {% elif posts_length > 30 %}
-          {%- set cheers = 'ok' %}
-        {% else %}
-          {%- set cheers = 'um' %}
-        {%- endif %}
-        <span class="collection-header">{{ __('cheers.' + cheers) }}! {{ _p('counter.archive_posts', site.posts.length) }} {{ __('keep_on') }}</span>
+        <span class="collection-header">馆藏清点完毕：当前共收录 {{ site.posts.length }} 份档案，新的记录仍在等待入馆。</span>
       </div>
 
       {{ post_template.render(page.posts) }}

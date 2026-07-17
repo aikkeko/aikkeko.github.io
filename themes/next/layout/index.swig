@@ -5,12 +5,11 @@
 {% block class %}index{% endblock %}
 
 {% block content %}
+{%- set is_first_index_page = not page.current or page.current == 1 %}
+{%- if is_first_index_page %}
 {# Hero Section - Full screen immersive landing page #}
 <div class="hero-section">
   <div class="hero-mask"></div>
-  <div class="hero-terminal" aria-hidden="true">
-    <span>NO. 30-000</span>
-  </div>
   <div class="hero-catalogue-labels" aria-hidden="true">
     <span class="hero-label hero-label-lost">LOST PROPERTY OFFICE</span>
     <span class="hero-label hero-label-record">RECORD 07 / RETURNED DREAMS</span>
@@ -38,6 +37,7 @@
     </a>
   </div>
 </div>
+{%- endif %}
 
 {# Posts Section #}
 <div id="posts-section" class="posts-section">
@@ -54,7 +54,7 @@
       {%- endif %}
     {%- endif %}
     
-    <article class="post-card" itemscope itemtype="http://schema.org/Article">
+    <article class="post-card{% if is_first_index_page and loop.first %} post-card-featured{% endif %}" itemscope itemtype="http://schema.org/Article">
       {%- if hero_image %}
       <div class="post-card-image">
         <a href="{{ url_for(post.path) }}">
@@ -125,6 +125,55 @@
 
   {% include '_partials/pagination.swig' %}
 </div>
+
+<script>
+  // A short, deliberate descent from the cover to the archive list.
+  (function() {
+    var trigger = document.querySelector('.scroll-down[href="#posts-section"]');
+    var target = document.getElementById('posts-section');
+    if (!trigger || !target) return;
+
+    trigger.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        target.scrollIntoView();
+        return;
+      }
+
+      var startY = window.scrollY || window.pageYOffset;
+      var targetY = target.getBoundingClientRect().top + startY;
+      var distance = targetY - startY;
+      var duration = 480;
+      var startedAt = performance.now();
+
+      function easeInOutCubic(progress) {
+        return progress < 0.5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+      }
+
+      function step(now) {
+        var progress = Math.min((now - startedAt) / duration, 1);
+        window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          history.replaceState(null, '', '#posts-section');
+        }
+      }
+
+      requestAnimationFrame(step);
+    });
+  })();
+
+  // Pagination is a continuation of the archive list, not a replay of the cover.
+  document.querySelectorAll('#posts-section .pagination a').forEach(function(link) {
+    var target = new URL(link.href, window.location.href);
+    target.hash = 'posts-section';
+    link.href = target.href;
+  });
+</script>
 
 {% endblock %}
 
