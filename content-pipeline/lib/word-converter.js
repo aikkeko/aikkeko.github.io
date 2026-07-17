@@ -102,34 +102,44 @@ class WordToMarkdownConverter {
     }
 
     const coverImage = this.extractCoverImage($);
-    const title = this.extractTitleFromDocument($, filename);
+    const documentTitle = this.extractTitleFromDocument($, filename);
     this.normalizeQuoteBlocks($);
     this.removeLeadingEmptyBlocks($);
     html = $.html();
 
     const markdown = this.htmlToMarkdown(html);
     const inferredTaxonomy = this.inferCategoryAndTags(markdown);
-    const category = persistentMetadata && persistentMetadata.category
-      ? persistentMetadata.category
-      : inferredTaxonomy.category;
+    const configuredCategories = persistentMetadata && Array.isArray(persistentMetadata.categories)
+      ? persistentMetadata.categories
+      : persistentMetadata && persistentMetadata.category
+        ? [persistentMetadata.category]
+        : null;
+    const categories = configuredCategories && configuredCategories.length
+      ? configuredCategories
+      : [inferredTaxonomy.category];
     const tags = persistentMetadata && Array.isArray(persistentMetadata.tags)
       ? persistentMetadata.tags
       : inferredTaxonomy.tags;
+    const hasConfiguredDescription = persistentMetadata
+      && Object.prototype.hasOwnProperty.call(persistentMetadata, 'description');
 
     const metadata = {
-      title,
-      date: sourceDate ? `${sourceDate} 00:00:00` : new Date().toISOString(),
-      author: this.options.defaultAuthor,
-      categories: [category],
+      title: persistentMetadata?.title || documentTitle,
+      date: persistentMetadata?.date || (sourceDate ? `${sourceDate} 00:00:00` : new Date().toISOString()),
+      author: persistentMetadata?.author || this.options.defaultAuthor,
+      categories,
       tags,
-      description: this.generateDescription(markdown),
-      header_image: coverImage
+      description: hasConfiguredDescription
+        ? persistentMetadata.description
+        : this.generateDescription(markdown),
+      header_image: persistentMetadata?.header_image || coverImage,
+      extra: persistentMetadata?.frontmatter || {}
     };
 
     const frontmatter = this.generateFrontmatter(metadata);
     const finalMarkdown = `${frontmatter}\n\n${markdown}`;
 
-    console.log(`✅ 转换完成: ${title}`);
+    console.log(`✅ 转换完成: ${metadata.title}`);
 
     return {
       markdown: finalMarkdown,
@@ -475,6 +485,23 @@ class WordToMarkdownConverter {
 
     if (metadata.description) {
       yaml.push(`description: ${this.toYamlString(metadata.description)}`);
+    }
+
+    if (metadata.extra && typeof metadata.extra === 'object') {
+      Object.entries(metadata.extra).forEach(([key, value]) => {
+        if (!/^[a-zA-Z_][\w-]*$/.test(key) || value === undefined || value === null) {
+          return;
+        }
+
+        if (Array.isArray(value)) {
+          yaml.push(`${key}:`);
+          value.forEach(item => yaml.push(`  - ${this.toYamlString(item)}`));
+        } else if (typeof value === 'boolean' || typeof value === 'number') {
+          yaml.push(`${key}: ${value}`);
+        } else {
+          yaml.push(`${key}: ${this.toYamlString(value)}`);
+        }
+      });
     }
 
     yaml.push('---');

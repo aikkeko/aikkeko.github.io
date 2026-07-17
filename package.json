@@ -8,7 +8,8 @@
     "deploy": "hexo deploy",
     "server": "hexo server",
     "pipeline": "node content-pipeline/cli.js",
-    "pipeline:once": "node content-pipeline/cli.js --once"
+    "pipeline:once": "node content-pipeline/cli.js --once",
+    "pipeline:metadata": "node content-pipeline/sync-metadata.js"
   },
   "hexo": {
     "version": "5.4.0"

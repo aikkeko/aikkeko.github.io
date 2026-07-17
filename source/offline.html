@@ -220,7 +220,7 @@
     })();
 
     if ('caches' in window) {
-      caches.open('blog-v56-pages').then(function(cache) {
+      caches.open('blog-v72-pages').then(function(cache) {
         cache.keys().then(function(requests) {
           var list = document.getElementById('cachedList');
           var articles = requests

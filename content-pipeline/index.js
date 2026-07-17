@@ -11,6 +11,7 @@ const MarkdownProcessor = require('./lib/markdown-processor');
 const R2Uploader = require('./lib/r2-uploader');
 const ImageCacheManager = require('./lib/image-cache');
 const yaml = require('js-yaml');
+const chokidar = require('chokidar');
 
 class ContentPipeline {
   constructor(options = {}) {
@@ -25,7 +26,8 @@ class ContentPipeline {
     this.wordConverter = null;
     this.markdownProcessor = null;
     this.imageCache = null;
-    this.tagRegistry = { articles: {} };
+    this.articleMetadata = { defaults: {}, articles: {} };
+    this.metadataWatcher = null;
   }
 
   /**
@@ -36,7 +38,7 @@ class ContentPipeline {
     
     // 确保输出目录存在
     await this.ensureDirectory(this.options.outputPath);
-    await this.loadTagRegistry();
+    await this.loadArticleMetadata();
     
     // 初始化图片缓存管理器
     this.imageCache = new ImageCacheManager();
@@ -83,6 +85,7 @@ class ContentPipeline {
   async start() {
     await this.initialize();
     this.watcher.start();
+    this.startMetadataWatcher();
     
     console.log('🎯 Pipeline 正在运行，等待新文档...');
     console.log(`   监视目录: ${path.resolve(this.options.watchPath)}`);
@@ -96,6 +99,10 @@ class ContentPipeline {
   stop() {
     if (this.watcher) {
       this.watcher.stop();
+    }
+    if (this.metadataWatcher) {
+      this.metadataWatcher.close();
+      this.metadataWatcher = null;
     }
   }
 
@@ -170,7 +177,7 @@ class ContentPipeline {
     
     // 生成文章标识（基于文件名）
     const articleId = this.generateArticleId(filename);
-    const persistentMetadata = this.getPersistentMetadata(filename);
+    const persistentMetadata = this.getArticleMetadata(filename);
     
     return await this.wordConverter.convert(buffer, filename, {
       articleId,
@@ -181,47 +188,75 @@ class ContentPipeline {
   }
 
   /**
-   * Load hand-maintained taxonomy. Keys are source document names without
-   * their extension, so editing a DOCX never changes its category or tags.
+   * Load hand-maintained article metadata. Keys are source document names
+   * without their extension, so editing a DOCX never loses manual settings.
    */
-  async loadTagRegistry() {
-    const registryPath = path.join(__dirname, 'tag-registry.yml');
+  async loadArticleMetadata() {
+    const metadataPath = path.join(__dirname, 'article-metadata.yml');
 
     try {
-      const raw = await fs.readFile(registryPath, 'utf8');
+      const raw = await fs.readFile(metadataPath, 'utf8');
       const parsed = yaml.load(raw) || {};
-      this.tagRegistry = {
+      this.articleMetadata = {
+        defaults: parsed.defaults && typeof parsed.defaults === 'object'
+          ? parsed.defaults
+          : {},
         articles: parsed.articles && typeof parsed.articles === 'object'
           ? parsed.articles
           : {}
       };
     } catch (error) {
       if (error.code === 'ENOENT') {
-        this.tagRegistry = { articles: {} };
+        this.articleMetadata = { defaults: {}, articles: {} };
         return;
       }
-      throw new Error(`Unable to read tag registry: ${error.message}`);
+      throw new Error(`Unable to read article metadata: ${error.message}`);
     }
   }
 
   /**
-   * Match the registry to the DOCX filename, not its title or body. This
-   * deliberately makes repeated imports safe after a document is edited.
+   * Match metadata to the source filename, not its title or body.
    */
-  getPersistentMetadata(filename) {
+  getArticleMetadata(filename) {
     const documentKey = path.basename(filename, path.extname(filename));
-    const entry = this.tagRegistry.articles[documentKey];
+    const defaults = this.articleMetadata.defaults || {};
+    const entry = this.articleMetadata.articles[documentKey];
 
     if (!entry || typeof entry !== 'object') {
-      return null;
+      return { ...defaults };
     }
 
-    return {
-      category: typeof entry.category === 'string' ? entry.category.trim() : undefined,
-      tags: Array.isArray(entry.tags)
-        ? entry.tags.filter(tag => typeof tag === 'string' && tag.trim()).map(tag => tag.trim())
-        : undefined
-    };
+    return { ...defaults, ...entry };
+  }
+
+  /**
+   * Rebuild articles when the metadata file changes while watch mode is active.
+   */
+  startMetadataWatcher() {
+    const metadataPath = path.join(__dirname, 'article-metadata.yml');
+
+    this.metadataWatcher = chokidar.watch(metadataPath, {
+      persistent: true,
+      ignoreInitial: true,
+      awaitWriteFinish: {
+        stabilityThreshold: 500,
+        pollInterval: 100
+      }
+    });
+
+    this.metadataWatcher.on('change', async () => {
+      try {
+        console.log('\n⚙️  文章元数据已修改，正在重新生成文章...');
+        await this.loadArticleMetadata();
+        await this.processAllDocuments();
+      } catch (error) {
+        console.error('❌ 文章元数据更新失败:', error.message);
+      }
+    });
+
+    this.metadataWatcher.on('error', error => {
+      console.error('❌ 元数据监听错误:', error);
+    });
   }
 
   /**
@@ -234,7 +269,12 @@ class ContentPipeline {
     const filename = path.basename(filePath);
     const basePath = path.dirname(filePath);
     
-    return await this.markdownProcessor.process(content, filename, basePath);
+    return await this.markdownProcessor.process(
+      content,
+      filename,
+      basePath,
+      this.getArticleMetadata(filename)
+    );
   }
 
   /**
@@ -342,6 +382,13 @@ class ContentPipeline {
    */
   async processExisting() {
     await this.initialize();
+    await this.processAllDocuments();
+  }
+
+  /**
+   * Process every publishable source document without reinitializing services.
+   */
+  async processAllDocuments() {
     
     console.log('🔍 扫描现有文件...\n');
     

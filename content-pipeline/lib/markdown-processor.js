@@ -22,11 +22,12 @@ class MarkdownProcessor {
    * @param {string} basePath - 基础路径（用于查找本地图片）
    * @returns {Promise<{content: string, images: Array, metadata: Object}>}
    */
-  async process(content, filename, basePath = '') {
+  async process(content, filename, basePath = '', configuredMetadata = {}) {
     console.log(`📝 正在处理 Markdown: ${filename}`);
     
     // 提取元数据
-    const { metadata, body } = this.extractFrontmatter(content);
+    const { metadata: sourceMetadata, body } = this.extractFrontmatter(content);
+    const metadata = this.mergeConfiguredMetadata(sourceMetadata, configuredMetadata);
     
     // 提取图片
     const images = await this.extractImages(body, basePath);
@@ -51,6 +52,27 @@ class MarkdownProcessor {
       images,
       metadata
     };
+  }
+
+  mergeConfiguredMetadata(sourceMetadata, configuredMetadata) {
+    if (!configuredMetadata || typeof configuredMetadata !== 'object') {
+      return sourceMetadata;
+    }
+
+    const merged = { ...sourceMetadata, ...configuredMetadata };
+
+    if (configuredMetadata.category && !configuredMetadata.categories) {
+      merged.categories = [configuredMetadata.category];
+    }
+
+    delete merged.category;
+    delete merged.frontmatter;
+
+    if (configuredMetadata.frontmatter && typeof configuredMetadata.frontmatter === 'object') {
+      Object.assign(merged, configuredMetadata.frontmatter);
+    }
+
+    return merged;
   }
 
   /**

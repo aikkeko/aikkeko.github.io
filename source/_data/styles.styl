@@ -2,13 +2,13 @@
 // NexT 主题美化配置 - Z.A.T.O 后末日风格
 // 基于 Z.A.T.O_02_ca04.png 废墟美学设计
 // 
-// Version: 2026.07.16-19
-// Last Updated: 2026-07-16
+// Version: 2026.07.17-11
+// Last Updated: 2026-07-17
 // ============================================
 
 // 版本信息（用于调试）
 :root {
-  --theme-version: "2026.07.16-19";
+  --theme-version: "2026.07.17-11";
   --theme-name: "Z.A.T.O Apocalypse";
   // ===== 全面覆盖 NexT 默认白色系 CSS 变量 =====
   // 背景色
@@ -48,7 +48,7 @@ body {
   
   // 版本号水印（调试用，显示在页面左上角）
   &::before {
-    content: "v2026.07.16-19";
+    content: "v2026.07.17-11";
     position: fixed;
     top: 8px;
     left: 8px;
@@ -2163,25 +2163,6 @@ body {
     }
   }
 
-  .hero-terminal {
-    position: absolute;
-    left: unquote('max(34px, 5vw)');
-    right: unquote('max(34px, 5vw)');
-    top: unquote('max(98px, 12vh)');
-    z-index: 3;
-    display: flex;
-    justify-content: space-between;
-    color: rgba(232, 228, 220, 0.58);
-    font-size: 0.72em;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    pointer-events: none;
-
-    span:last-child {
-      color: rgba(106, 160, 154, 0.7);
-    }
-  }
-
   .hero-content {
     z-index: 4;
 
@@ -2248,7 +2229,7 @@ body {
       }
     }
 
-    &:first-child {
+    &.post-card-featured {
       display: grid;
       grid-template-columns: 1.02fr 0.98fr;
       min-height: 420px;
@@ -2441,21 +2422,13 @@ body {
       bottom: 44px;
     }
 
-    .hero-terminal {
-      left: 28px;
-      right: 28px;
-      top: 104px;
-      font-size: 0.58em;
-      letter-spacing: 0.1em;
-    }
-
     .hero-content::before,
     .hero-content::after {
       display: none;
     }
 
     .post-card,
-    .post-card:first-child {
+    .post-card-featured {
       display: flex;
       min-height: 0;
       transform: none !important;
@@ -2465,7 +2438,7 @@ body {
       order: 0;
     }
 
-    .post-card:first-child {
+    .post-card-featured {
       .post-card-image {
         min-height: 220px;
       }
@@ -3758,7 +3731,19 @@ body {
   }
 
   .scroll-down {
-    bottom: 74px;
+    bottom: 124px;
+    border: 0 !important;
+    border-bottom: 0 !important;
+    background: none !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+
+    &::before,
+    &::after {
+      content: none !important;
+      display: none !important;
+    }
   }
 
   .scroll-down-icon {
@@ -3786,7 +3771,7 @@ body {
     }
 
     .scroll-down {
-      bottom: 52px;
+      bottom: 76px;
     }
   }
 }
@@ -5155,7 +5140,7 @@ body.post-detail .sidebar-inner::before {
   flex: none !important;
 }
 
-.index .post-card:first-child .post-card-image {
+.index .post-card-featured .post-card-image {
   min-height: 420px;
   aspect-ratio: auto;
 }
@@ -5177,7 +5162,7 @@ body.post-detail .sidebar-inner::before {
   -webkit-line-clamp: 3;
 }
 
-.index .post-card:first-child .post-card-excerpt {
+.index .post-card-featured .post-card-excerpt {
   -webkit-line-clamp: 4;
 }
 
@@ -5221,7 +5206,7 @@ body.post-detail .sidebar-inner::before {
 
 @media (max-width: 768px) {
   .index .post-card,
-  .index .post-card:first-child,
+  .index .post-card-featured,
   .index .post-card:nth-child(even) {
     display: flex !important;
     grid-template-columns: none;
@@ -5234,7 +5219,7 @@ body.post-detail .sidebar-inner::before {
   }
 
   .index .post-card-image,
-  .index .post-card:first-child .post-card-image {
+  .index .post-card-featured .post-card-image {
     min-height: 220px;
     aspect-ratio: 16 / 9;
   }
@@ -5249,19 +5234,19 @@ body.post-detail .sidebar-inner::before {
 
 // 44. Homepage cover ratio guard - keep every archive card cinematic
 .index .post-card .post-card-image,
-.index .post-card:first-child .post-card-image {
+.index .post-card-featured .post-card-image {
   align-self: center !important;
   min-height: 0 !important;
   height: 270px !important;
   aspect-ratio: 16 / 9 !important;
 }
 
-.index .post-card:first-child .post-card-image {
+.index .post-card-featured .post-card-image {
   height: 300px !important;
 }
 
 .index .post-card .post-card-image img,
-.index .post-card:first-child .post-card-image img {
+.index .post-card-featured .post-card-image img {
   height: 100% !important;
   object-fit: cover !important;
   object-position: center center !important;
@@ -5269,7 +5254,7 @@ body.post-detail .sidebar-inner::before {
 
 @media (max-width: 768px) {
   .index .post-card .post-card-image,
-  .index .post-card:first-child .post-card-image {
+  .index .post-card-featured .post-card-image {
     height: 220px !important;
   }
 }
@@ -5304,11 +5289,11 @@ body.tag .header-inner .site-brand-container {
 }
 
 .post-banner-title {
-  max-width: min(980px, 100%) !important;
-  margin: 0 0 24px !important;
-  font-size: clamp(2rem, 3.15vw, 3.15rem) !important;
-  line-height: 1.16 !important;
-  letter-spacing: -0.045em !important;
+  max-width: min(900px, 100%) !important;
+  margin: 0 0 20px !important;
+  font-size: clamp(1.75rem, 2.45vw, 2.45rem) !important;
+  line-height: 1.24 !important;
+  letter-spacing: -0.035em !important;
   text-wrap: balance;
 }
 
@@ -5324,18 +5309,18 @@ body.tag .header-inner .site-brand-container {
 
 .index .post-card-title {
   margin-bottom: 0 !important;
-  font-size: clamp(1.2rem, 1.65vw, 1.55rem) !important;
-  line-height: 1.3 !important;
+  font-size: clamp(1.12rem, 1.4vw, 1.38rem) !important;
+  line-height: 1.34 !important;
   letter-spacing: -0.02em !important;
 }
 
-.index .post-card:first-child .post-card-title {
-  font-size: clamp(1.45rem, 2.1vw, 1.95rem) !important;
-  line-height: 1.24 !important;
+.index .post-card-featured .post-card-title {
+  font-size: clamp(1.28rem, 1.7vw, 1.6rem) !important;
+  line-height: 1.3 !important;
 }
 
 .index .post-card-excerpt,
-.index .post-card:first-child .post-card-excerpt {
+.index .post-card-featured .post-card-excerpt {
   display: block !important;
   min-height: 0 !important;
   max-height: none !important;
@@ -5480,12 +5465,13 @@ body.tag .header-inner .site-brand-container {
   }
 
   .post-banner-title {
-    font-size: clamp(1.65rem, 8vw, 2.25rem) !important;
+    font-size: clamp(1.45rem, 6vw, 1.8rem) !important;
+    line-height: 1.3 !important;
   }
 
   .index .post-card-title,
-  .index .post-card:first-child .post-card-title {
-    font-size: 1.35rem !important;
+  .index .post-card-featured .post-card-title {
+    font-size: 1.2rem !important;
   }
 
   .header-inner .site-brand-container,
@@ -5944,7 +5930,7 @@ body {
 }
 
 .index .post-card-title,
-.index .post-card:first-child .post-card-title {
+.index .post-card-featured .post-card-title {
   position: relative;
   z-index: 2;
   min-width: 0 !important;
@@ -5962,7 +5948,7 @@ body {
 
 @media (max-width: 768px) {
   .index .post-card-title,
-  .index .post-card:first-child .post-card-title {
+  .index .post-card-featured .post-card-title {
     max-width: 100% !important;
   }
 
@@ -5978,11 +5964,18 @@ body {
 
 // 51. Homepage cover framing - give every image breathing room inside its record
 .index .post-card {
-  padding: 12px !important;
+  box-sizing: border-box !important;
+  gap: clamp(18px, 2vw, 28px) !important;
+  padding: clamp(14px, 1.5vw, 18px) !important;
+}
+
+.index .post-card .post-card-content,
+.index .post-card-featured .post-card-content {
+  padding: clamp(18px, 2.2vw, 30px) 0 !important;
 }
 
 .index .post-card .post-card-image,
-.index .post-card:first-child .post-card-image {
+.index .post-card-featured .post-card-image {
   overflow: hidden !important;
   border: 1px solid rgba(212, 196, 168, 0.16) !important;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2) !important;
@@ -5990,7 +5983,13 @@ body {
 
 @media (max-width: 768px) {
   .index .post-card {
-    padding: 8px !important;
+    gap: 12px !important;
+    padding: 10px !important;
+  }
+
+  .index .post-card .post-card-content,
+  .index .post-card-featured .post-card-content {
+    padding: 8px 0 10px !important;
   }
 }
 
@@ -6050,22 +6049,23 @@ body {
   }
 }
 
-// 53. Homepage opening - let the archive emerge from a quiet black field
-.archive-opening {
+// 53. Homepage background reveal - UI remains visible while the wasteland emerges
+.archive-background-opening {
   position: fixed;
   inset: 0;
-  z-index: 100000;
-  background: #050608;
-  animation: archive-opening-reveal 2.35s cubic-bezier(0.22, 0.7, 0.18, 1) forwards;
-  pointer-events: auto;
+  z-index: 0;
+  background: rgba(3, 4, 5, 0.92);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
 }
 
-@keyframes archive-opening-reveal {
-  0% {
-    opacity: 1;
-  }
+.archive-background-opening.is-revealing {
+  animation: archive-background-reveal 1.35s cubic-bezier(0.18, 0.72, 0.22, 1) 0.72s forwards;
+}
 
-  36% {
+@keyframes archive-background-reveal {
+  0% {
     opacity: 1;
   }
 
@@ -6073,5 +6073,105 @@ body {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
+  }
+}
+
+// 62. Optional reading resume - preserve progress without forced navigation
+.reading-resume-prompt {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  z-index: 1100;
+  display: flex;
+  align-items: stretch;
+  width: calc(100vw - 32px);
+  max-width: 330px;
+  border: 1px solid rgba(212, 196, 168, 0.28);
+  background:
+    linear-gradient(135deg, rgba(37, 40, 47, 0.96), rgba(18, 20, 25, 0.96));
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: reading-resume-enter 0.36s ease both;
+}
+
+.reading-resume-action {
+  flex: 1;
+  min-width: 0;
+  padding: 15px 17px;
+  color: rgba(232, 228, 220, 0.92);
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+
+  strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.96rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+}
+
+.reading-resume-kicker {
+  display: block;
+  color: rgba(106, 160, 154, 0.9);
+  font-family: $font-family-monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.13em;
+}
+
+.reading-resume-dismiss {
+  width: 44px;
+  color: rgba(200, 200, 204, 0.62);
+  border: 0;
+  border-left: 1px solid rgba(212, 196, 168, 0.14);
+  background: rgba(255, 255, 255, 0.015);
+  font-size: 1.22rem;
+  cursor: pointer;
+}
+
+.reading-resume-action:hover,
+.reading-resume-dismiss:hover {
+  color: #f0e8d8;
+  background: rgba(212, 196, 168, 0.07);
+}
+
+@keyframes reading-resume-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .reading-resume-prompt {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reading-resume-prompt {
+    animation: none;
+  }
+}
+
+// 63. Homepage archive rail - remain available while browsing the dispatches
+@media (min-width: 992px) {
+  body.home-page .header {
+    position: sticky !important;
+    top: 16px;
+    z-index: 30;
+    height: 0;
+  }
+
+  body.home-page .header-inner {
+    top: 0 !important;
   }
 }

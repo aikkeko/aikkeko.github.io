@@ -35,6 +35,10 @@ if (isHelp) {
   R2_PUBLIC_URL         R2 公开访问 URL
   R2_UPLOAD_PREFIX      上传路径前缀 (默认: blog)
 
+文章元数据:
+  content-pipeline/article-metadata.yml
+  可持久配置标题、简介、作者、分类、标签等信息
+
 示例:
   # 启动监听模式（推荐）
   node scripts/content-pipeline/cli.js
