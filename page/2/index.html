@@ -1,28 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <style>
-    .archive-background-opening {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background: #030405;
-      opacity: 1;
-      visibility: visible;
-      pointer-events: none;
-    }
-    .archive-background-opening.is-revealing {
-      animation: archive-background-reveal 1.35s cubic-bezier(.18,.62,.16,1) forwards;
-    }
-    body > .container {
-      position: relative;
-      z-index: 1;
-    }
-    @keyframes archive-background-reveal {
-      0% { opacity: 1; }
-      100% { opacity: 0; visibility: hidden; pointer-events: none; }
-    }
-  </style>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#1e2128">
@@ -157,35 +135,7 @@ if ('serviceWorker' in navigator) {
 <link rel="alternate" href="/atom.xml" title="世界尽头的档案馆" type="application/atom+xml">
 </head>
 
-<body class="" itemscope itemtype="http://schema.org/WebPage">
-    <div class="archive-background-opening" aria-hidden="true"></div>
-    <script>
-      (function() {
-        var opening = document.querySelector('.archive-background-opening');
-        if (!opening) return;
-
-        var reveal = function() {
-          if (opening.classList.contains('is-revealing')) return;
-          requestAnimationFrame(function() {
-            requestAnimationFrame(function() {
-              opening.classList.add('is-revealing');
-            });
-          });
-        };
-
-        if (document.readyState !== 'loading') {
-          reveal();
-        } else {
-          document.addEventListener('DOMContentLoaded', reveal, { once: true });
-        }
-
-        // Start promptly even if parsing or a third-party resource stalls.
-        window.setTimeout(reveal, 800);
-        opening.addEventListener('animationend', function() {
-          opening.remove();
-        }, { once: true });
-      })();
-    </script>
+<body class=" home-page" itemscope itemtype="http://schema.org/WebPage">
   <div class="container">
     <div class="zato-background-quotes" aria-hidden="true">
       <span class="zato-quote zato-quote-left">ALL STORIES ARE LOST PROPERTY</span>
@@ -275,37 +225,6 @@ if ('serviceWorker' in navigator) {
 
           <div class="content index">
             
-
-<div class="hero-section">
-  <div class="hero-mask"></div>
-  <div class="hero-terminal" aria-hidden="true">
-    <span>NO. 30-000</span>
-  </div>
-  <div class="hero-catalogue-labels" aria-hidden="true">
-    <span class="hero-label hero-label-lost">LOST PROPERTY OFFICE</span>
-    <span class="hero-label hero-label-record">RECORD 07 / RETURNED DREAMS</span>
-    <span class="hero-label hero-label-aisle">AISLE OF QUIET WEATHER</span>
-    <span class="hero-label hero-label-water">WATER RATION / BISCUIT TIN</span>
-    <span class="hero-label hero-label-defect">DEFECTIVE MEMORIES</span>
-    <span class="hero-label hero-label-after">AFTER CLOSING HOURS</span>
-    <span class="hero-label hero-label-map">NO MAP FOR THIS AISLE</span>
-    <span class="hero-label hero-label-remember">ITEMS MAY REMEMBER YOU</span>
-    <span class="hero-label hero-label-fragile">FRAGILE / KEEP DRY</span>
-    <span class="hero-label hero-label-static">OPEN UNTIL STATIC ENDS</span>
-  </div>
-  <div class="hero-content">
-    <div class="hero-text">
-      <div class="hero-kicker">Literary Archive / Z.A.T.O</div>
-      <h1 class="site-title-main">世界尽头的档案馆</h1>
-      <p class="site-subtitle-main hero-subtitle-reveal">theme of the WATER & BISCUIT</p>
-    </div>
-    <a href="#posts-section" class="scroll-down" aria-label="向下滚动">
-      <div class="scroll-down-icon">
-        <i class="fa fa-chevron-down"></i>
-      </div>
-    </a>
-  </div>
-</div>
 
 
 <div id="posts-section" class="posts-section">
@@ -454,6 +373,55 @@ if ('serviceWorker' in navigator) {
   </nav>
 
 </div>
+
+<script>
+  // A short, deliberate descent from the cover to the archive list.
+  (function() {
+    var trigger = document.querySelector('.scroll-down[href="#posts-section"]');
+    var target = document.getElementById('posts-section');
+    if (!trigger || !target) return;
+
+    trigger.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        target.scrollIntoView();
+        return;
+      }
+
+      var startY = window.scrollY || window.pageYOffset;
+      var targetY = target.getBoundingClientRect().top + startY;
+      var distance = targetY - startY;
+      var duration = 480;
+      var startedAt = performance.now();
+
+      function easeInOutCubic(progress) {
+        return progress < 0.5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+      }
+
+      function step(now) {
+        var progress = Math.min((now - startedAt) / duration, 1);
+        window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          history.replaceState(null, '', '#posts-section');
+        }
+      }
+
+      requestAnimationFrame(step);
+    });
+  })();
+
+  // Pagination is a continuation of the archive list, not a replay of the cover.
+  document.querySelectorAll('#posts-section .pagination a').forEach(function(link) {
+    var target = new URL(link.href, window.location.href);
+    target.hash = 'posts-section';
+    link.href = target.href;
+  });
+</script>
 
 
           </div>

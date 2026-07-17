@@ -6,13 +6,13 @@
       position: fixed;
       inset: 0;
       z-index: 0;
-      background: #030405;
+      background: rgba(3, 4, 5, .92);
       opacity: 1;
       visibility: visible;
       pointer-events: none;
     }
     .archive-background-opening.is-revealing {
-      animation: archive-background-reveal 1.35s cubic-bezier(.18,.62,.16,1) forwards;
+      animation: archive-background-reveal 1.35s cubic-bezier(.18,.72,.22,1) .72s forwards;
     }
     body > .container {
       position: relative;
@@ -157,7 +157,7 @@ if ('serviceWorker' in navigator) {
 <link rel="alternate" href="/atom.xml" title="世界尽头的档案馆" type="application/atom+xml">
 </head>
 
-<body class="" itemscope itemtype="http://schema.org/WebPage">
+<body class=" home-page" itemscope itemtype="http://schema.org/WebPage">
     <div class="archive-background-opening" aria-hidden="true"></div>
     <script>
       (function() {
@@ -278,9 +278,6 @@ if ('serviceWorker' in navigator) {
 
 <div class="hero-section">
   <div class="hero-mask"></div>
-  <div class="hero-terminal" aria-hidden="true">
-    <span>NO. 30-000</span>
-  </div>
   <div class="hero-catalogue-labels" aria-hidden="true">
     <span class="hero-label hero-label-lost">LOST PROPERTY OFFICE</span>
     <span class="hero-label hero-label-record">RECORD 07 / RETURNED DREAMS</span>
@@ -772,6 +769,55 @@ if ('serviceWorker' in navigator) {
   </nav>
 
 </div>
+
+<script>
+  // A short, deliberate descent from the cover to the archive list.
+  (function() {
+    var trigger = document.querySelector('.scroll-down[href="#posts-section"]');
+    var target = document.getElementById('posts-section');
+    if (!trigger || !target) return;
+
+    trigger.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        target.scrollIntoView();
+        return;
+      }
+
+      var startY = window.scrollY || window.pageYOffset;
+      var targetY = target.getBoundingClientRect().top + startY;
+      var distance = targetY - startY;
+      var duration = 480;
+      var startedAt = performance.now();
+
+      function easeInOutCubic(progress) {
+        return progress < 0.5
+          ? 4 * progress * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+      }
+
+      function step(now) {
+        var progress = Math.min((now - startedAt) / duration, 1);
+        window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          history.replaceState(null, '', '#posts-section');
+        }
+      }
+
+      requestAnimationFrame(step);
+    });
+  })();
+
+  // Pagination is a continuation of the archive list, not a replay of the cover.
+  document.querySelectorAll('#posts-section .pagination a').forEach(function(link) {
+    var target = new URL(link.href, window.location.href);
+    target.hash = 'posts-section';
+    link.href = target.href;
+  });
+</script>
 
 
           </div>
