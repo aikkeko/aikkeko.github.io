@@ -2,7 +2,8 @@
 
 /**
  * Fill missing article-metadata.yml fields from the currently generated posts.
- * Existing hand-maintained values always win.
+ * Existing hand-maintained values always win. Descriptions intentionally start
+ * empty so the homepage can derive them from the beginning of each article.
  */
 
 const fs = require('fs');
@@ -62,7 +63,7 @@ for (const sourceFile of sourceFiles) {
     author: current.author || generated.author || registry.defaults.author || 'AikeKo',
     description: Object.prototype.hasOwnProperty.call(current, 'description')
       ? current.description
-      : generated.description || '',
+      : '',
     categories: current.categories || (current.category ? [current.category] : normalizeList(generated.categories)),
     tags: current.tags || normalizeList(generated.tags),
   };
@@ -75,6 +76,8 @@ const header = `# Article metadata registry
 # Saving this file while \`npm run pipeline\` is active regenerates all posts.
 #
 # Set homepage.featured_article to an article key, or leave it empty to use the newest post.
+# Leave description empty to show the beginning of the article automatically.
+# Add a description only when you want to override that automatic excerpt.
 # Optional article fields: date, header_image, frontmatter
 
 `;

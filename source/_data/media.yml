@@ -1,0 +1,40 @@
+# Signal Archive
+#
+# `featured` accepts an item id. Leave it empty to feature the first record.
+# `type` supports `radio` and `video`.
+# Keep optional values empty when the information is not available yet.
+
+page:
+  title: 声像档案
+  kicker: Signal Archive / Broadcast & Moving Image
+  description: Radio conversations, video essays, and signals preserved beyond the feed.
+
+featured: ""
+
+items:
+  - id: chuncai-radio-s03e08
+    type: radio
+    title: 蠢材呓事 · S3E08
+    episode: S03E08
+    platform: Radio
+    date: ""
+    duration: ""
+    url: ""
+    cover: ""
+    description: 围绕《Z.A.T.O. // I Love the World and Everything In It》的谈话与补充记录。
+    tags:
+      - Z.A.T.O
+      - 游戏
+
+# Video example:
+#  - id: video-record-id
+#    type: video
+#    title: 视频标题
+#    episode: VOL.01
+#    platform: Bilibili
+#    date: 2026-07-17
+#    duration: 18:30
+#    url: https://...
+#    cover: https://...
+#    description: 一段简短说明。
+#    tags: [动画, 随笔]

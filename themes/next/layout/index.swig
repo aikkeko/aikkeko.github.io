@@ -71,7 +71,8 @@
           <span class="post-card-index" aria-hidden="true"></span>
         </div>
         
-        {%- set card_description = post.description or post.excerpt %}
+        {# A configured description wins; otherwise derive the card copy from the article body. #}
+        {%- set card_description = post.description or post.excerpt or post.content %}
         {%- if card_description %}
         <div class="post-card-excerpt" itemprop="description">
           {{ card_description | replace(r/<[^>]+>/g, '') | truncate(280, '...') }}

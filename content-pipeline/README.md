@@ -67,7 +67,7 @@ articles:
   20260128_你可以回到Vorkuta，但那已经没有人了:
     title: 你可以回到Vorkuta-5，但那里已经没有人了
     author: AikeKo
-    description: 一段显示在首页文章卡片中的简短介绍。
+    description: "" # 留空时自动显示正文开头；填写后使用这里的内容
     categories: [游戏]
     tags: [游戏, vorkuta, z.a.t.o]
 ```
@@ -77,7 +77,7 @@ articles:
 可配置字段：
 
 - `title`：博客显示标题，优先级高于 DOCX 第一行
-- `description`：首页文章简介
+- `description`：首页文章简介；默认为空并自动显示正文开头，填写后覆盖自动简介
 - `author`：作者
 - `categories`：分类列表，也兼容单个 `category`
 - `tags`：标签列表
@@ -138,7 +138,7 @@ node scripts/content-pipeline/cli.js --help
    tags:
      - galgame
      - review
-   description: 文章摘要...
+   description: "" # 默认由正文开头自动生成，也可以手动填写覆盖
    ---
    ```
 
