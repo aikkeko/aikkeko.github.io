@@ -10,8 +10,11 @@
 # Set homepage.featured_article to an article key, or leave it empty to use the newest post.
 # Leave description empty to show the beginning of the article automatically.
 # Add a description only when you want to override that automatic excerpt.
-# Add radio/video records under media.items; media.featured accepts an item id.
-# For playable video cards, set embed to the trusted iframe player URL.
+# Add signal records under media.items; media.featured accepts an item id.
+# Every playable video must define url, embed, and cover.
+# cover must use the video's official source thumbnail over HTTPS; for Bilibili,
+# use the pic URL returned by its public video metadata API and change http to https.
+# The iframe is loaded only after the visitor presses Play, never on page entry.
 # R2 credentials remain in the private root .env file and are never written here.
 # Optional article fields: date, header_image, frontmatter
 
@@ -132,8 +135,8 @@ articles:
 media:
   page:
     title: 声像档案
-    kicker: Signal Archive / Broadcast & Moving Image
-    description: Radio conversations, video essays, and signals preserved beyond the feed.
+    kicker: Signal Archive / Recorded Transmissions
+    description: Conversations, essays, and signals preserved beyond the feed.
   featured: duping-diantai-ep05
   items:
     - id: duping-diantai-ep05
@@ -145,7 +148,7 @@ media:
       duration: ""
       url: https://www.bilibili.com/video/BV1ykP4zVEno/
       embed: https://player.bilibili.com/player.html?isOutside=true&aid=116182271204728&bvid=BV1ykP4zVEno&cid=36501062071&p=1
-      cover: ""
+      cover: https://i1.hdslb.com/bfs/archive/cd96e5a1fd70320afcd5c64d8a45e5c51df49fa6.jpg
       description: 从老二次元的经验出发，聊聊 AI 浪潮、内容创作与我们正在登上的新时代破船。
       tags:
         - 电台
@@ -160,7 +163,7 @@ media:
       duration: 3h 10m
       url: https://www.bilibili.com/video/BV11jmaBmE5j/
       embed: https://player.bilibili.com/player.html?isOutside=true&aid=115697107603751&bvid=BV11jmaBmE5j&cid=34647837162&p=1
-      cover: ""
+      cover: https://i0.hdslb.com/bfs/archive/b69dde96d9510ed8bb0dcb9e0111380c237cd7c2.jpg
       description: 「蠢材呓事电台」关于各自观点、纸房子、魔裁与百合灵的讨论记录。
       tags:
         - 电台
@@ -175,7 +178,7 @@ media:
       duration: 1h 15m
       url: https://www.bilibili.com/video/BV1uV4y127Yz/
       embed: https://player.bilibili.com/player.html?isOutside=true&aid=870018873&bvid=BV1uV4y127Yz&cid=1172130503&p=1
-      cover: ""
+      cover: https://i0.hdslb.com/bfs/archive/35be978e46e8e1bea5334e7956e4d7da71424871.jpg
       description: 跨越六年重新谈论《Just Because!》：关于毕业季、话语的缺席，以及那些仍希望被听见的沉默。
       tags:
         - 电台

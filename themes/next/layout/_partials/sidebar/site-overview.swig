@@ -39,6 +39,22 @@
         {%- if hasTagsPage %}</a>{%- endif %}
       </div>
     {%- endif %}
+
+    {%- set archiveConfig = site.data.archive or {} %}
+    {%- set mediaArchive = archiveConfig.media or {} %}
+    {%- set mediaItems = mediaArchive.items or [] %}
+    {%- if mediaItems.length > 0 %}
+      <div class="site-state-item site-state-media">
+        {%- if theme.menu.media %}
+          <a href="{{ url_for(theme.menu.media.split('||')[0] | trim) }}">
+        {% else %}
+          <a href="{{ url_for('/media/') }}">
+        {%- endif %}
+          <span class="site-state-item-count">{{ mediaItems.length }}</span>
+          <span class="site-state-item-name">{{ __('menu.media') }}</span>
+        </a>
+      </div>
+    {%- endif %}
   </nav>
 </div>
 {%- endif %}

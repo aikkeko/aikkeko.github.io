@@ -2,13 +2,13 @@
 // NexT 主题美化配置 - Z.A.T.O 后末日风格
 // 基于 Z.A.T.O_02_ca04.png 废墟美学设计
 // 
-// Version: 2026.07.20-05
-// Last Updated: 2026-07-20
+// Version: 2026.07.21-02
+// Last Updated: 2026-07-21
 // ============================================
 
 // 版本信息（用于调试）
 :root {
-  --theme-version: "2026.07.20-05";
+  --theme-version: "2026.07.21-02";
   --theme-name: "Z.A.T.O Apocalypse";
   // ===== 全面覆盖 NexT 默认白色系 CSS 变量 =====
   // 背景色
@@ -48,7 +48,7 @@ body {
   
   // 版本号水印（调试用，显示在页面左上角）
   &::before {
-    content: "v2026.07.20-05";
+    content: "v2026.07.21-02";
     position: fixed;
     top: 8px;
     left: 8px;
@@ -6189,7 +6189,7 @@ body {
 
 .media-toolbar {
   display: grid;
-  grid-template-columns: auto minmax(220px, 1fr) auto;
+  grid-template-columns: minmax(220px, 1fr) auto;
   gap: 14px;
   align-items: center;
   margin-bottom: 24px;
@@ -6567,8 +6567,8 @@ body {
   }
 
   .media-search {
-    grid-column: 1 / -1;
-    grid-row: 2;
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .media-grid {
@@ -6587,15 +6587,6 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .media-filter-group {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .media-filter {
-    padding-inline: 7px;
-  }
-
   .media-search,
   .media-result-counter {
     grid-column: auto;
@@ -6609,6 +6600,134 @@ body {
 
   .media-card-content {
     padding: 21px 20px 23px;
+  }
+}
+
+// ============================================
+// 60. Sidebar archive counters - posts, tags, and signal records
+// ============================================
+.site-state {
+  width: 100%;
+}
+
+.site-state-item {
+  flex: 1 1 0;
+  min-width: 0;
+  padding-right: 8px !important;
+  padding-left: 8px !important;
+}
+
+.site-state-media a {
+  display: block;
+}
+
+// ============================================
+// 61. Aike · Echo masthead - primary Latin identity and balanced proportions
+// ============================================
+.index .hero-content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.index .hero-text {
+  width: unquote('min(760px, calc(100% - 48px))');
+  margin-bottom: 72px !important;
+  padding: 34px 42px 38px;
+  box-sizing: border-box;
+}
+
+.index .hero-kicker {
+  margin-bottom: 24px !important;
+  color: rgba(216, 224, 218, 0.78) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.2em !important;
+  white-space: nowrap;
+}
+
+.index .site-title-main {
+  max-width: none !important;
+  margin: 0 !important;
+  color: #f4ead8 !important;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    "Noto Serif SC",
+    serif !important;
+  font-size: clamp(3.7rem, 6vw, 5.5rem) !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.055em !important;
+  white-space: nowrap;
+}
+
+.index .site-subtitle-main.hero-subtitle-reveal {
+  margin: 23px 0 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  color: rgba(232, 220, 198, 0.9) !important;
+  font-size: clamp(0.86rem, 1.1vw, 1.02rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.1em !important;
+  white-space: nowrap;
+}
+
+.site-brand-container .site-title {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    "Noto Serif SC",
+    serif !important;
+  font-size: 1.24rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.045em !important;
+  white-space: nowrap !important;
+}
+
+.site-brand-container .site-subtitle {
+  margin-top: 8px !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.035em !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 768px) {
+  .index .hero-text {
+    width: calc(100% - 34px);
+    margin-bottom: 54px !important;
+    padding: 28px 18px 30px;
+  }
+
+  .index .hero-kicker {
+    margin-bottom: 18px !important;
+    font-size: 0.61rem !important;
+    letter-spacing: 0.13em !important;
+
+    &::before,
+    &::after {
+      width: 14px;
+    }
+  }
+
+  .index .site-title-main {
+    font-size: clamp(2.65rem, 13vw, 3.7rem) !important;
+    letter-spacing: 0.025em !important;
+  }
+
+  .index .site-subtitle-main.hero-subtitle-reveal {
+    margin-top: 18px !important;
+    font-size: clamp(0.68rem, 3.35vw, 0.84rem) !important;
+    letter-spacing: 0.045em !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-brand-container .site-title {
+    font-size: 0.96rem !important;
+  }
+
+  .site-brand-container .site-subtitle {
+    font-size: 0.58rem !important;
   }
 }
 
@@ -6803,25 +6922,35 @@ body {
 // 59. Signal archive embedded player
 // ============================================
 .media-card-cover.has-embed {
-  align-self: center;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
   width: 100%;
-  height: auto !important;
+  height: 100% !important;
   min-height: 0;
-  aspect-ratio: 16 / 9;
-  background: #101218;
+  aspect-ratio: auto;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(106, 160, 154, 0.1), transparent 36%),
+    #101218;
 
   &::after {
     display: none;
   }
 }
 
-.media-card.has-player,
-.media-card.is-featured.has-player {
+.media-card.has-player:not(.is-featured) {
   grid-template-rows: auto 1fr;
+}
+
+.media-card.is-featured.has-player {
+  grid-template-rows: minmax(0, 1fr);
+  align-items: stretch;
 }
 
 .media-card-player {
   position: relative;
+  flex: 0 0 auto;
+  overflow: hidden;
   width: 100%;
   height: auto;
   min-height: 0;
@@ -6829,16 +6958,129 @@ body {
   background:
     radial-gradient(circle at 50% 50%, rgba(106, 160, 154, 0.1), transparent 34%),
     #101218;
+}
 
-  iframe {
+.media-player-frame,
+.media-player-frame iframe {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.media-player-frame[hidden],
+.media-player-launch[hidden] {
+  display: none !important;
+}
+
+.media-player-frame iframe {
+  border: 0;
+  background: #101218;
+}
+
+.media-player-launch {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background:
+    linear-gradient(180deg, rgba(12, 14, 18, 0.08), rgba(8, 10, 14, 0.72)),
+    repeating-linear-gradient(90deg, transparent 0, transparent 39px, rgba(212, 196, 168, 0.035) 39px, rgba(212, 196, 168, 0.035) 40px),
+    linear-gradient(145deg, #262a31, #111319);
+  color: #e8e4dc;
+  cursor: pointer;
+
+  > img {
     position: absolute;
     inset: 0;
     display: block;
     width: 100%;
     height: 100%;
-    border: 0;
-    background: #101218;
+    object-fit: cover;
+    opacity: 0.62;
   }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(212, 196, 168, 0.1);
+    pointer-events: none;
+  }
+
+  &:hover .media-player-play,
+  &:focus-visible .media-player-play {
+    border-color: rgba(212, 196, 168, 0.72);
+    background: rgba(106, 160, 154, 0.2);
+    transform: scale(1.06);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(212, 196, 168, 0.74);
+    outline-offset: -4px;
+  }
+}
+
+.media-player-signal {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  z-index: 1;
+  display: grid;
+  gap: 4px;
+  color: rgba(232, 228, 220, 0.54);
+  font-family: $font-family-monospace;
+  text-align: left;
+  text-transform: uppercase;
+
+  small {
+    font-size: 0.58rem;
+    letter-spacing: 0.17em;
+  }
+
+  strong {
+    color: rgba(212, 196, 168, 0.78);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+  }
+}
+
+.media-player-play {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border: 1px solid rgba(212, 196, 168, 0.42);
+  border-radius: 50%;
+  background: rgba(17, 19, 24, 0.62);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.34);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+
+  i {
+    margin-left: 3px;
+    font-size: 1rem;
+  }
+}
+
+.media-player-label {
+  position: absolute;
+  right: 18px;
+  bottom: 16px;
+  z-index: 1;
+  color: rgba(232, 228, 220, 0.58);
+  font-family: $font-family-monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .media-card.is-featured .media-card-player {
@@ -6851,6 +7093,10 @@ body {
     grid-template-rows: auto 1fr;
   }
 
+  .media-card-cover.has-embed {
+    height: auto !important;
+  }
+
   .media-card.is-featured .media-card-player {
     min-height: 0;
   }
@@ -6860,5 +7106,10 @@ body {
   .media-card-player,
   .media-card.is-featured .media-card-player {
     min-height: 0;
+  }
+
+  .media-player-play {
+    width: 54px;
+    height: 54px;
   }
 }

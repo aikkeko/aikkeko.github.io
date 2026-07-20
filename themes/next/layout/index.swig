@@ -24,7 +24,7 @@
   </div>
   <div class="hero-content">
     <div class="hero-text">
-      <div class="hero-kicker">Literary Archive / Z.A.T.O</div>
+      <div class="hero-kicker">Personal Archive / Private Frequency</div>
       <h1 class="site-title-main">{{ title }}</h1>
       {%- if subtitle %}
       <p class="site-subtitle-main hero-subtitle-reveal">{{ subtitle }}</p>

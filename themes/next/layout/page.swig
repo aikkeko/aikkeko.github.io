@@ -27,16 +27,6 @@
     {%- if not media_featured_id and media_items.length %}
       {%- set media_featured_id = media_items[0].id %}
     {%- endif %}
-    {%- set media_radio_count = 0 %}
-    {%- set media_video_count = 0 %}
-    {%- for media_item in media_items %}
-      {%- if media_item.type === 'radio' %}
-        {%- set media_radio_count = media_radio_count + 1 %}
-      {%- elif media_item.type === 'video' %}
-        {%- set media_video_count = media_video_count + 1 %}
-      {%- endif %}
-    {%- endfor %}
-
     {##################}
     {### PAGE BLOCK ###}
     {##################}
@@ -86,13 +76,11 @@
         </section>
       {%- elif page.type === 'media' %}
         <section class="media-hero page-identity-hero" aria-label="Signal archive">
-          <div class="page-hero-kicker">{{ media_page.kicker or 'Signal Archive / Broadcast & Moving Image' }}</div>
+          <div class="page-hero-kicker">{{ media_page.kicker or 'Signal Archive / Recorded Transmissions' }}</div>
           <h1 class="page-hero-title">{{ media_page.title or '声像档案' }}</h1>
-          <p class="page-hero-desc">{{ media_page.description or 'Radio conversations, video essays, and signals preserved beyond the feed.' }}</p>
+          <p class="page-hero-desc">{{ media_page.description or 'Conversations, essays, and signals preserved beyond the feed.' }}</p>
           <div class="page-hero-stats">
             <span><strong>{{ media_items.length }}</strong> records</span>
-            <span><strong>{{ media_radio_count }}</strong> radio</span>
-            <span><strong>{{ media_video_count }}</strong> video</span>
           </div>
         </section>
       {%- else %}
@@ -147,11 +135,6 @@
           <section class="media-archive" data-media-archive>
             {% if media_items.length %}
               <div class="media-toolbar" aria-label="Filter signal archive">
-                <div class="media-filter-group" role="group" aria-label="Media type">
-                  <button class="media-filter is-active" type="button" data-media-filter="all" aria-pressed="true">All Signals</button>
-                  <button class="media-filter" type="button" data-media-filter="radio" aria-pressed="false">Radio</button>
-                  <button class="media-filter" type="button" data-media-filter="video" aria-pressed="false">Video</button>
-                </div>
                 <label class="media-search">
                   <i class="fa fa-search" aria-hidden="true"></i>
                   <span class="media-visually-hidden">Search signal archive</span>
@@ -162,18 +145,29 @@
 
               <div class="media-grid">
                 {% for item in media_items %}
-                  <article class="media-card{% if item.id === media_featured_id %} is-featured{% endif %}{% if item.embed %} has-player{% endif %}" data-media-card data-media-type="{{ item.type or 'radio' }}">
+                  <article class="media-card{% if item.id === media_featured_id %} is-featured{% endif %}{% if item.embed %} has-player{% endif %}" data-media-card>
                     <div class="media-card-cover{% if item.embed %} has-embed{% elif not item.cover %} is-placeholder{% endif %}">
                       {% if item.embed %}
-                        <div class="media-card-player">
-                          <iframe src="{{ item.embed }}" title="{{ item.title }}" scrolling="no" frameborder="0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                        <div class="media-card-player" data-media-player data-media-embed="{{ item.embed }}">
+                          <button class="media-player-launch" type="button" data-media-play aria-label="播放：{{ item.title }}">
+                            {% if item.cover %}
+                              <img src="{{ item.cover }}" alt="" loading="lazy" referrerpolicy="no-referrer">
+                            {% endif %}
+                            <span class="media-player-signal" aria-hidden="true">
+                              <small>{{ item.platform or 'Archived Signal' }}</small>
+                              <strong>{{ item.episode or 'PLAY' }}</strong>
+                            </span>
+                            <span class="media-player-play" aria-hidden="true"><i class="fa fa-play"></i></span>
+                            <span class="media-player-label">Play transmission</span>
+                          </button>
+                          <div class="media-player-frame" data-media-frame hidden></div>
                         </div>
                       {% elif item.cover %}
-                        <img src="{{ item.cover }}" alt="" loading="lazy">
+                        <img src="{{ item.cover }}" alt="" loading="lazy" referrerpolicy="no-referrer">
                       {% else %}
-                        <i class="fa {% if item.type === 'video' %}fa-play{% else %}fa-headphones{% endif %}" aria-hidden="true"></i>
+                        <i class="fa fa-wave-square" aria-hidden="true"></i>
                       {% endif %}
-                      {% if not item.embed %}<span class="media-card-kind">{{ 'Moving Image' if item.type === 'video' else 'Broadcast' }}</span>{% endif %}
+                      {% if not item.embed %}<span class="media-card-kind">Archived Signal</span>{% endif %}
                     </div>
                     <div class="media-card-content">
                       <div class="media-card-serial">

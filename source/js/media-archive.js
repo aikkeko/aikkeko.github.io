@@ -8,15 +8,13 @@
     archive.dataset.ready = 'true';
 
     const cards = Array.from(archive.querySelectorAll('[data-media-card]'));
-    const filters = Array.from(archive.querySelectorAll('[data-media-filter]'));
     const search = archive.querySelector('[data-media-search]');
     const resultCount = archive.querySelector('[data-media-result-count]');
     const noResults = archive.querySelector('[data-media-no-results]');
     const reset = archive.querySelector('[data-media-reset]');
     const recordLinks = Array.from(archive.querySelectorAll('[data-media-open]'));
+    const players = Array.from(archive.querySelectorAll('[data-media-player]'));
     const params = new URLSearchParams(window.location.search);
-    const validTypes = new Set(['all', 'radio', 'video']);
-    let activeType = validTypes.has(params.get('type')) ? params.get('type') : 'all';
 
     if (search && params.get('q')) search.value = params.get('q');
 
@@ -25,41 +23,26 @@
       let visible = 0;
 
       cards.forEach(card => {
-        const matchesType = activeType === 'all' || card.dataset.mediaType === activeType;
         const matchesQuery = !query || card.textContent.toLocaleLowerCase().includes(query);
-        const matches = matchesType && matchesQuery;
-        card.hidden = !matches;
-        if (matches) visible += 1;
-      });
-
-      filters.forEach(button => {
-        const selected = button.dataset.mediaFilter === activeType;
-        button.classList.toggle('is-active', selected);
-        button.setAttribute('aria-pressed', String(selected));
+        card.hidden = !matchesQuery;
+        if (!matchesQuery) stopPlayer(card.querySelector('[data-media-player]'));
+        if (matchesQuery) visible += 1;
       });
 
       if (resultCount) resultCount.textContent = String(visible).padStart(2, '0');
       if (noResults) noResults.hidden = visible !== 0;
 
       const nextParams = new URLSearchParams(window.location.search);
-      activeType === 'all' ? nextParams.delete('type') : nextParams.set('type', activeType);
+      nextParams.delete('type');
       query ? nextParams.set('q', search.value.trim()) : nextParams.delete('q');
       const nextQuery = nextParams.toString();
       window.history.replaceState(null, '', `${window.location.pathname}${nextQuery ? `?${nextQuery}` : ''}${window.location.hash}`);
     }
 
-    filters.forEach(button => {
-      button.addEventListener('click', () => {
-        activeType = button.dataset.mediaFilter;
-        applyFilters();
-      });
-    });
-
     if (search) search.addEventListener('input', applyFilters);
 
     if (reset) {
       reset.addEventListener('click', () => {
-        activeType = 'all';
         if (search) search.value = '';
         applyFilters();
         if (search) search.focus();
@@ -71,6 +54,53 @@
         const url = button.dataset.mediaOpen;
         if (url) window.location.assign(url);
       });
+    });
+
+    function stopPlayer(player) {
+      if (!player) return;
+
+      const launch = player.querySelector('[data-media-play]');
+      const frame = player.querySelector('[data-media-frame]');
+      if (frame) {
+        frame.replaceChildren();
+        frame.hidden = true;
+      }
+      if (launch) launch.hidden = false;
+      player.classList.remove('is-active');
+    }
+
+    function startPlayer(player) {
+      const source = player && player.dataset.mediaEmbed;
+      const launch = player && player.querySelector('[data-media-play]');
+      const frame = player && player.querySelector('[data-media-frame]');
+      if (!source || !launch || !frame) return;
+
+      players.forEach(candidate => {
+        if (candidate !== player) stopPlayer(candidate);
+      });
+
+      const playerUrl = new URL(source, window.location.href);
+      playerUrl.searchParams.set('autoplay', '1');
+
+      const iframe = document.createElement('iframe');
+      iframe.src = playerUrl.toString();
+      iframe.title = launch.getAttribute('aria-label') || 'Embedded media player';
+      iframe.loading = 'eager';
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.setAttribute('scrolling', 'no');
+      iframe.setAttribute('frameborder', '0');
+
+      frame.replaceChildren(iframe);
+      frame.hidden = false;
+      launch.hidden = true;
+      player.classList.add('is-active');
+    }
+
+    players.forEach(player => {
+      const launch = player.querySelector('[data-media-play]');
+      if (launch) launch.addEventListener('click', () => startPlayer(player));
     });
 
     applyFilters();

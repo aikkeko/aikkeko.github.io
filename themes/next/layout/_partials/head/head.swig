@@ -21,7 +21,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="档案馆">
-<meta name="application-name" content="世界尽头的档案馆">
+<meta name="application-name" content="Aike · Echo">
 <meta name="msapplication-TileColor" content="#1e2128">
 <meta name="msapplication-tap-highlight" content="no">
 
