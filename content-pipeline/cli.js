@@ -36,8 +36,8 @@ if (isHelp) {
   R2_UPLOAD_PREFIX      上传路径前缀 (默认: blog)
 
 文章元数据:
-  content-pipeline/article-metadata.yml
-  可持久配置标题、简介、作者、分类、标签等信息
+  source/_data/archive.yml
+  统一配置文章、首页置顶以及声像档案
 
 示例:
   # 启动监听模式（推荐）

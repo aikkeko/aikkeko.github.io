@@ -52,7 +52,8 @@ R2_PUBLIC_URL=https://cdn.yoursite.com
 
 ### 文章元数据配置
 
-统一编辑 `content-pipeline/article-metadata.yml`。文章通过源文档文件名关联，键名必须等于
+统一编辑 `source/_data/archive.yml`。这个文件集中管理文章、首页置顶和声像档案。
+文章通过源文档文件名关联，键名必须等于
 `example` 中的文件名（不含 `.docx` / `.md` 扩展名）：
 
 ```yaml
@@ -70,6 +71,14 @@ articles:
     description: "" # 留空时自动显示正文开头；填写后使用这里的内容
     categories: [游戏]
     tags: [游戏, vorkuta, z.a.t.o]
+
+media:
+  featured: chuncai-radio-s03e08
+  items:
+    - id: chuncai-radio-s03e08
+      type: radio
+      title: 蠢材呓事 · S3E08
+      url: ""
 ```
 
 `homepage.featured_article` 控制首页第一张 `FEATURED DISPATCH` 卡片。它与文章一样使用源文档文件名（不含扩展名）关联；留空、键名错误或文章尚未生成时，首页自动回退到最新文章。
@@ -86,6 +95,7 @@ articles:
 - `frontmatter`：可选，放置任意额外 Hexo Frontmatter
 
 未填写的字段仍由 DOCX 和转换程序自动生成。运行监听模式时，保存该配置文件会自动重新生成全部文章。
+`media.items` 用于维护声像档案，`type` 支持 `radio` 与 `video`。
 
 为新增文档补齐配置条目：
 

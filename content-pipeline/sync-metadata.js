@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Fill missing article-metadata.yml fields from the currently generated posts.
+ * Fill missing source/_data/archive.yml article fields from generated posts.
  * Existing hand-maintained values always win. Descriptions intentionally start
  * empty so the homepage can derive them from the beginning of each article.
  */
@@ -13,7 +13,7 @@ const yaml = require('js-yaml');
 const projectRoot = path.resolve(__dirname, '..');
 const exampleDir = path.join(projectRoot, 'example');
 const postsDir = path.join(projectRoot, 'source', '_posts');
-const metadataPath = path.join(__dirname, 'article-metadata.yml');
+const metadataPath = path.join(projectRoot, 'source', '_data', 'archive.yml');
 
 function readFrontmatter(filePath) {
   const source = fs.readFileSync(filePath, 'utf8');
@@ -69,7 +69,10 @@ for (const sourceFile of sourceFiles) {
   };
 }
 
-const header = `# Article metadata registry
+const header = `# Archive content configuration
+#
+# This is the only file you normally need to edit.
+# It controls articles, the homepage feature, and the signal archive.
 #
 # The article key must equal the DOCX/MD filename without its extension.
 # Existing values are never overwritten by \`npm run pipeline:metadata\`.
@@ -78,6 +81,8 @@ const header = `# Article metadata registry
 # Set homepage.featured_article to an article key, or leave it empty to use the newest post.
 # Leave description empty to show the beginning of the article automatically.
 # Add a description only when you want to override that automatic excerpt.
+# Add radio/video records under media.items; media.featured accepts an item id.
+# R2 credentials remain in the private root .env file and are never written here.
 # Optional article fields: date, header_image, frontmatter
 
 `;

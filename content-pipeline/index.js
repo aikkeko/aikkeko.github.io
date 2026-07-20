@@ -192,7 +192,7 @@ class ContentPipeline {
    * without their extension, so editing a DOCX never loses manual settings.
    */
   async loadArticleMetadata() {
-    const metadataPath = path.join(__dirname, 'article-metadata.yml');
+    const metadataPath = path.join(__dirname, '..', 'source', '_data', 'archive.yml');
 
     try {
       const raw = await fs.readFile(metadataPath, 'utf8');
@@ -233,7 +233,7 @@ class ContentPipeline {
    * Rebuild articles when the metadata file changes while watch mode is active.
    */
   startMetadataWatcher() {
-    const metadataPath = path.join(__dirname, 'article-metadata.yml');
+    const metadataPath = path.join(__dirname, '..', 'source', '_data', 'archive.yml');
 
     this.metadataWatcher = chokidar.watch(metadataPath, {
       persistent: true,

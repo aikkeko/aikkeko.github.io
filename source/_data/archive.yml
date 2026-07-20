@@ -1,21 +1,24 @@
-# Article metadata registry
+# Archive content configuration
+#
+# This is the only file you normally need to edit.
+# It controls articles, the homepage feature, and the signal archive.
 #
 # The article key must equal the DOCX/MD filename without its extension.
 # Existing values are never overwritten by `npm run pipeline:metadata`.
 # Saving this file while `npm run pipeline` is active regenerates all posts.
 #
+# Set homepage.featured_article to an article key, or leave it empty to use the newest post.
 # Leave description empty to show the beginning of the article automatically.
 # Add a description only when you want to override that automatic excerpt.
-# Optional fields: date, header_image, frontmatter
+# Add radio/video records under media.items; media.featured accepts an item id.
+# For playable video cards, set embed to the trusted iframe player URL.
+# R2 credentials remain in the private root .env file and are never written here.
+# Optional article fields: date, header_image, frontmatter
 
 defaults:
   author: AikeKo
-
-# Homepage featured article. Use an article key below (the DOCX/MD filename
-# without its extension). Leave empty to feature the newest article.
 homepage:
   featured_article: ""
-
 articles:
   20170828_世界是我们最初和最后的爱:
     title: 世界始终是我们最初与最后的爱 ~ 关于《キラ☆キラ》的杂谈
@@ -126,3 +129,68 @@ articles:
       - 动画
     tags:
       - 动画
+media:
+  page:
+    title: 声像档案
+    kicker: Signal Archive / Broadcast & Moving Image
+    description: Radio conversations, video essays, and signals preserved beyond the feed.
+  featured: duping-diantai-ep05
+  items:
+    - id: duping-diantai-ep05
+      type: video
+      title: "【毒评电台】EP.05 堂堂复活！老二次元也能再用 AI 登上新时代的破船吗？"
+      episode: EP.05
+      platform: Bilibili
+      date: ""
+      duration: ""
+      url: https://www.bilibili.com/video/BV1ykP4zVEno/
+      embed: https://player.bilibili.com/player.html?isOutside=true&aid=116182271204728&bvid=BV1ykP4zVEno&cid=36501062071&p=1
+      cover: ""
+      description: 从老二次元的经验出发，聊聊 AI 浪潮、内容创作与我们正在登上的新时代破船。
+      tags:
+        - 电台
+        - AI
+        - 二次元
+    - id: chuncai-radio-geyougede
+      type: video
+      title: "「蠢材呓事电台」各有各的拉法，各有各的说法，纸房子魔裁百合灵"
+      episode: SPECIAL
+      platform: Bilibili
+      date: 2025-12-11
+      duration: 3h 10m
+      url: https://www.bilibili.com/video/BV11jmaBmE5j/
+      embed: https://player.bilibili.com/player.html?isOutside=true&aid=115697107603751&bvid=BV11jmaBmE5j&cid=34647837162&p=1
+      cover: ""
+      description: 「蠢材呓事电台」关于各自观点、纸房子、魔裁与百合灵的讨论记录。
+      tags:
+        - 电台
+        - 蠢材呓事
+        - 百合
+    - id: duping-diantai-ep04
+      type: video
+      title: "【毒评电台】EP.04 毕业季必看的2017遗珠！6年后再谈《Just Because!》"
+      episode: EP.04
+      platform: Bilibili
+      date: 2023-06-23
+      duration: 1h 15m
+      url: https://www.bilibili.com/video/BV1uV4y127Yz/
+      embed: https://player.bilibili.com/player.html?isOutside=true&aid=870018873&bvid=BV1uV4y127Yz&cid=1172130503&p=1
+      cover: ""
+      description: 跨越六年重新谈论《Just Because!》：关于毕业季、话语的缺席，以及那些仍希望被听见的沉默。
+      tags:
+        - 电台
+        - 动画
+        - Just Because!
+    - id: chuncai-radio-s03e08
+      type: radio
+      title: 蠢材呓事 · S3E08
+      episode: S03E08
+      platform: Radio
+      date: ""
+      duration: ""
+      url: ""
+      cover: ""
+      description: 围绕《Z.A.T.O. // I Love the World and Everything In It》的谈话与补充记录。
+      tags:
+        - Z.A.T.O
+        - 游戏

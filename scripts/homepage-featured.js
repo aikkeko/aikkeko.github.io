@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Promote the article selected in content-pipeline/article-metadata.yml to the
+ * Promote the article selected in source/_data/archive.yml to the
  * first index position. The existing index generator already understands the
  * `sticky` property, so pagination remains correct and the article is not
  * duplicated on later pages.
@@ -11,7 +11,7 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-const metadataPath = path.join(hexo.base_dir, 'content-pipeline', 'article-metadata.yml');
+const metadataPath = path.join(hexo.base_dir, 'source', '_data', 'archive.yml');
 let promotedPost = null;
 let originalSticky;
 

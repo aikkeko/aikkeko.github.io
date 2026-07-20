@@ -13,6 +13,7 @@
     const resultCount = archive.querySelector('[data-media-result-count]');
     const noResults = archive.querySelector('[data-media-no-results]');
     const reset = archive.querySelector('[data-media-reset]');
+    const recordLinks = Array.from(archive.querySelectorAll('[data-media-open]'));
     const params = new URLSearchParams(window.location.search);
     const validTypes = new Set(['all', 'radio', 'video']);
     let activeType = validTypes.has(params.get('type')) ? params.get('type') : 'all';
@@ -64,6 +65,13 @@
         if (search) search.focus();
       });
     }
+
+    recordLinks.forEach(button => {
+      button.addEventListener('click', () => {
+        const url = button.dataset.mediaOpen;
+        if (url) window.location.assign(url);
+      });
+    });
 
     applyFilters();
   }

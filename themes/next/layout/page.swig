@@ -19,7 +19,8 @@
 
 {% block content %}
 
-    {%- set media_archive = site.data.media or {} %}
+    {%- set archive_config = site.data.archive or {} %}
+    {%- set media_archive = archive_config.media or {} %}
     {%- set media_page = media_archive.page or {} %}
     {%- set media_items = media_archive.items or [] %}
     {%- set media_featured_id = media_archive.featured %}
@@ -161,14 +162,18 @@
 
               <div class="media-grid">
                 {% for item in media_items %}
-                  <article class="media-card{% if item.id === media_featured_id %} is-featured{% endif %}" data-media-card data-media-type="{{ item.type or 'radio' }}">
-                    <div class="media-card-cover{% if not item.cover %} is-placeholder{% endif %}">
-                      {% if item.cover %}
+                  <article class="media-card{% if item.id === media_featured_id %} is-featured{% endif %}{% if item.embed %} has-player{% endif %}" data-media-card data-media-type="{{ item.type or 'radio' }}">
+                    <div class="media-card-cover{% if item.embed %} has-embed{% elif not item.cover %} is-placeholder{% endif %}">
+                      {% if item.embed %}
+                        <div class="media-card-player">
+                          <iframe src="{{ item.embed }}" title="{{ item.title }}" scrolling="no" frameborder="0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                      {% elif item.cover %}
                         <img src="{{ item.cover }}" alt="" loading="lazy">
                       {% else %}
                         <i class="fa {% if item.type === 'video' %}fa-play{% else %}fa-headphones{% endif %}" aria-hidden="true"></i>
                       {% endif %}
-                      <span class="media-card-kind">{{ 'Moving Image' if item.type === 'video' else 'Broadcast' }}</span>
+                      {% if not item.embed %}<span class="media-card-kind">{{ 'Moving Image' if item.type === 'video' else 'Broadcast' }}</span>{% endif %}
                     </div>
                     <div class="media-card-content">
                       <div class="media-card-serial">
@@ -188,9 +193,9 @@
                         </div>
                       {% endif %}
                       {% if item.url %}
-                        <a class="media-card-action" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+                        <button class="media-card-action" type="button" data-media-open="{{ item.url }}">
                           Open Record <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        </a>
+                        </button>
                       {% else %}
                         <span class="media-card-action is-disabled">Link Pending</span>
                       {% endif %}
@@ -208,7 +213,7 @@
               <div class="media-empty-state">
                 <i class="fa fa-wave-square" aria-hidden="true"></i>
                 <span>NO SIGNALS CATALOGUED</span>
-                <p>The cabinet is ready. Add the first record in <code>source/_data/media.yml</code>.</p>
+                <p>The cabinet is ready. Add the first record in <code>source/_data/archive.yml</code>.</p>
               </div>
             {% endif %}
           </section>
