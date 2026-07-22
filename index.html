@@ -56,12 +56,18 @@
 
 
 <script src="/js/long-text-loader.js" async></script>
+<script src="/js/mobile-background.js" defer></script>
 
 
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(location.hostname) !== -1;
+    var hostname = location.hostname;
+    var isPrivateNetwork = /^10\./.test(hostname) ||
+      /^192\.168\./.test(hostname) ||
+      /^172\.(1[6-9]|2\d|3[01])\./.test(hostname) ||
+      /\.local$/i.test(hostname);
+    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(hostname) !== -1 || isPrivateNetwork;
 
     if (isLocalPreview) {
       navigator.serviceWorker.getRegistrations()
@@ -122,6 +128,12 @@ if ('serviceWorker' in navigator) {
     lang   : 'zh-CN'
   };
 </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@500&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@500&amp;display=swap"></noscript>
 
   <title>Aike · Echo</title>
   
@@ -297,7 +309,7 @@ if ('serviceWorker' in navigator) {
   </div>
   <div class="hero-content">
     <div class="hero-text">
-      <div class="hero-kicker">Personal Archive / Private Frequency</div>
+      <div class="hero-kicker">艾声回响</div>
       <h1 class="site-title-main">Aike · Echo</h1>
       <p class="site-subtitle-main hero-subtitle-reveal">theme of the WATER & BISCUIT</p>
     </div>
@@ -879,6 +891,25 @@ if ('serviceWorker' in navigator) {
 
           </div>
           
+    
+  <section class="comments giscus-comments" aria-labelledby="echo-comments-title">
+    <header class="giscus-comments-header">
+      <div>
+        <span class="giscus-comments-kicker">ECHO TERMINAL / GITHUB DISCUSSIONS</span>
+        <h2 id="echo-comments-title">公共回声</h2>
+        <p>在这里留下关于站点、文章或任何事情的话。每一条留言都会成为档案的一部分。</p>
+      </div>
+      <span class="giscus-comments-status">PUBLIC CHANNEL</span>
+    </header>
+      <div class="giscus-pending" role="status">
+        <span class="giscus-pending-mark" aria-hidden="true"><i class="far fa-comment-dots"></i></span>
+        <div>
+          <strong>回声频道尚未开放</strong>
+          <p>GitHub Discussions is waiting to be connected.</p>
+        </div>
+      </div>
+  </section>
+
 
 <script>
   window.addEventListener('tabs:register', () => {

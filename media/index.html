@@ -34,12 +34,18 @@
 
 
 <script src="/js/long-text-loader.js" async></script>
+<script src="/js/mobile-background.js" defer></script>
 
 
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(location.hostname) !== -1;
+    var hostname = location.hostname;
+    var isPrivateNetwork = /^10\./.test(hostname) ||
+      /^192\.168\./.test(hostname) ||
+      /^172\.(1[6-9]|2\d|3[01])\./.test(hostname) ||
+      /\.local$/i.test(hostname);
+    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(hostname) !== -1 || isPrivateNetwork;
 
     if (isLocalPreview) {
       navigator.serviceWorker.getRegistrations()
@@ -86,7 +92,7 @@ if ('serviceWorker' in navigator) {
 <meta property="og:description" content="你找到祈祷的意义了吗？">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-16T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-17T06:01:05.631Z">
+<meta property="article:modified_time" content="2026-07-21T10:56:12.975Z">
 <meta property="article:author" content="AikeKo">
 <meta name="twitter:card" content="summary">
 
@@ -102,6 +108,12 @@ if ('serviceWorker' in navigator) {
     lang   : 'zh-CN'
   };
 </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@500&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@500&amp;display=swap"></noscript>
 
   <title>声像档案 | Aike · Echo
 </title>
@@ -272,12 +284,7 @@ if ('serviceWorker' in navigator) {
                             
                               <img src="https://i1.hdslb.com/bfs/archive/cd96e5a1fd70320afcd5c64d8a45e5c51df49fa6.jpg" alt="" loading="lazy" referrerpolicy="no-referrer">
                             
-                            <span class="media-player-signal" aria-hidden="true">
-                              <small>Bilibili</small>
-                              <strong>EP.05</strong>
-                            </span>
                             <span class="media-player-play" aria-hidden="true"><i class="fa fa-play"></i></span>
-                            <span class="media-player-label">Play transmission</span>
                           </button>
                           <div class="media-player-frame" data-media-frame hidden></div>
                         </div>
@@ -285,10 +292,6 @@ if ('serviceWorker' in navigator) {
                       
                     </div>
                     <div class="media-card-content">
-                      <div class="media-card-serial">
-                        <span>EP.05</span>
-                        <em>Featured Signal</em>
-                      </div>
                       <h2 class="media-card-title">【毒评电台】EP.05 堂堂复活！老二次元也能再用 AI 登上新时代的破船吗？</h2>
                       <p class="media-card-description">从老二次元的经验出发，聊聊 AI 浪潮、内容创作与我们正在登上的新时代破船。</p>
                       <div class="media-card-meta">
@@ -317,12 +320,7 @@ if ('serviceWorker' in navigator) {
                             
                               <img src="https://i0.hdslb.com/bfs/archive/b69dde96d9510ed8bb0dcb9e0111380c237cd7c2.jpg" alt="" loading="lazy" referrerpolicy="no-referrer">
                             
-                            <span class="media-player-signal" aria-hidden="true">
-                              <small>Bilibili</small>
-                              <strong>SPECIAL</strong>
-                            </span>
                             <span class="media-player-play" aria-hidden="true"><i class="fa fa-play"></i></span>
-                            <span class="media-player-label">Play transmission</span>
                           </button>
                           <div class="media-player-frame" data-media-frame hidden></div>
                         </div>
@@ -330,15 +328,11 @@ if ('serviceWorker' in navigator) {
                       
                     </div>
                     <div class="media-card-content">
-                      <div class="media-card-serial">
-                        <span>SPECIAL</span>
-                        
-                      </div>
                       <h2 class="media-card-title">「蠢材呓事电台」各有各的拉法，各有各的说法，纸房子魔裁百合灵</h2>
                       <p class="media-card-description">「蠢材呓事电台」关于各自观点、纸房子、魔裁与百合灵的讨论记录。</p>
                       <div class="media-card-meta">
                         <span><i class="fa fa-satellite-dish" aria-hidden="true"></i>Bilibili</span>
-                        <time datetime="Thu Dec 11 2025 08:00:00 GMT+0800 (GMT+08:00)"><i class="far fa-calendar" aria-hidden="true"></i>Thu Dec 11 2025 08:00:00 GMT+0800 (GMT+08:00)</time>
+                        <time datetime="2025-12-11T00:00:00.000Z"><i class="far fa-calendar" aria-hidden="true"></i>2025-12-11T00:00:00.000Z</time>
                         <span><i class="far fa-clock" aria-hidden="true"></i>3h 10m</span>
                       </div>
                       
@@ -362,12 +356,7 @@ if ('serviceWorker' in navigator) {
                             
                               <img src="https://i0.hdslb.com/bfs/archive/35be978e46e8e1bea5334e7956e4d7da71424871.jpg" alt="" loading="lazy" referrerpolicy="no-referrer">
                             
-                            <span class="media-player-signal" aria-hidden="true">
-                              <small>Bilibili</small>
-                              <strong>EP.04</strong>
-                            </span>
                             <span class="media-player-play" aria-hidden="true"><i class="fa fa-play"></i></span>
-                            <span class="media-player-label">Play transmission</span>
                           </button>
                           <div class="media-player-frame" data-media-frame hidden></div>
                         </div>
@@ -375,15 +364,11 @@ if ('serviceWorker' in navigator) {
                       
                     </div>
                     <div class="media-card-content">
-                      <div class="media-card-serial">
-                        <span>EP.04</span>
-                        
-                      </div>
                       <h2 class="media-card-title">【毒评电台】EP.04 毕业季必看的2017遗珠！6年后再谈《Just Because!》</h2>
                       <p class="media-card-description">跨越六年重新谈论《Just Because!》：关于毕业季、话语的缺席，以及那些仍希望被听见的沉默。</p>
                       <div class="media-card-meta">
                         <span><i class="fa fa-satellite-dish" aria-hidden="true"></i>Bilibili</span>
-                        <time datetime="Fri Jun 23 2023 08:00:00 GMT+0800 (GMT+08:00)"><i class="far fa-calendar" aria-hidden="true"></i>Fri Jun 23 2023 08:00:00 GMT+0800 (GMT+08:00)</time>
+                        <time datetime="2023-06-23T00:00:00.000Z"><i class="far fa-calendar" aria-hidden="true"></i>2023-06-23T00:00:00.000Z</time>
                         <span><i class="far fa-clock" aria-hidden="true"></i>1h 15m</span>
                       </div>
                       
@@ -407,10 +392,6 @@ if ('serviceWorker' in navigator) {
                       <span class="media-card-kind">Archived Signal</span>
                     </div>
                     <div class="media-card-content">
-                      <div class="media-card-serial">
-                        <span>S03E08</span>
-                        
-                      </div>
                       <h2 class="media-card-title">蠢材呓事 · S3E08</h2>
                       <p class="media-card-description">围绕《Z.A.T.O. // I Love the World and Everything In It》的谈话与补充记录。</p>
                       <div class="media-card-meta">
@@ -454,6 +435,25 @@ if ('serviceWorker' in navigator) {
 
           </div>
           
+    
+  <section class="comments giscus-comments" aria-labelledby="echo-comments-title">
+    <header class="giscus-comments-header">
+      <div>
+        <span class="giscus-comments-kicker">ECHO TERMINAL / GITHUB DISCUSSIONS</span>
+        <h2 id="echo-comments-title">节目回声</h2>
+        <p>谈谈某期节目、声音与画面，或推荐下一份值得收录的信号。</p>
+      </div>
+      <span class="giscus-comments-status">PUBLIC CHANNEL</span>
+    </header>
+      <div class="giscus-pending" role="status">
+        <span class="giscus-pending-mark" aria-hidden="true"><i class="far fa-comment-dots"></i></span>
+        <div>
+          <strong>回声频道尚未开放</strong>
+          <p>GitHub Discussions is waiting to be connected.</p>
+        </div>
+      </div>
+  </section>
+
 
 <script>
   window.addEventListener('tabs:register', () => {

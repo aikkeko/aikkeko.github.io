@@ -11,12 +11,17 @@
  * - Delete old blog caches and unregister itself to avoid stale offline pages.
  */
 
-const CACHE_VERSION = 'blog-v87';
+const CACHE_VERSION = 'blog-v102';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGES_CACHE = `${CACHE_VERSION}-pages`;
 const IMAGES_CACHE = `${CACHE_VERSION}-images`;
 const LOCAL_PREVIEW_HOSTS = new Set(['localhost', '127.0.0.1', '0.0.0.0', '::1']);
-const IS_LOCAL_PREVIEW = LOCAL_PREVIEW_HOSTS.has(self.location.hostname);
+const HOSTNAME = self.location.hostname;
+const IS_PRIVATE_NETWORK = /^10\./.test(HOSTNAME) ||
+  /^192\.168\./.test(HOSTNAME) ||
+  /^172\.(1[6-9]|2\d|3[01])\./.test(HOSTNAME) ||
+  /\.local$/i.test(HOSTNAME);
+const IS_LOCAL_PREVIEW = LOCAL_PREVIEW_HOSTS.has(HOSTNAME) || IS_PRIVATE_NETWORK;
 
 const PRECACHE_URLS = [
   '/',
@@ -26,6 +31,7 @@ const PRECACHE_URLS = [
   '/js/next-boot.js',
   '/js/utils.js',
   '/js/motion.js',
+  '/js/mobile-background.js',
   '/lib/font-awesome/css/all.min.css',
   '/lib/anime.min.js',
   '/images/Z.A.T.O_02_ca04.jpg',

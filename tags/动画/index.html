@@ -34,12 +34,18 @@
 
 
 <script src="/js/long-text-loader.js" async></script>
+<script src="/js/mobile-background.js" defer></script>
 
 
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(location.hostname) !== -1;
+    var hostname = location.hostname;
+    var isPrivateNetwork = /^10\./.test(hostname) ||
+      /^192\.168\./.test(hostname) ||
+      /^172\.(1[6-9]|2\d|3[01])\./.test(hostname) ||
+      /\.local$/i.test(hostname);
+    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(hostname) !== -1 || isPrivateNetwork;
 
     if (isLocalPreview) {
       navigator.serviceWorker.getRegistrations()
@@ -100,6 +106,12 @@ if ('serviceWorker' in navigator) {
     lang   : 'zh-CN'
   };
 </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@500&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@500&amp;display=swap"></noscript>
 
   <title>Tag: 动画 | Aike · Echo</title>
   
