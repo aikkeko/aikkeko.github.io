@@ -1,0 +1,37 @@
+# GitHub Discussions comment system (Giscus)
+#
+# This file is the only place you need to edit for comments.
+# Before the comment box can go live:
+#   1. Enable Discussions in the repository settings.
+#   2. Install the Giscus GitHub App for this repository:
+#      https://github.com/apps/giscus
+#   3. Open https://giscus.app/zh-CN, enter this repository, select the
+#      Announcements category, then copy its category ID below.
+#
+# The repository ID has already been filled from GitHub's public metadata.
+# `pathname` mapping keeps a discussion attached to the article URL even if
+# the displayed article title changes.
+
+enabled: true
+
+# Pages that expose an independent GitHub discussion.
+surfaces:
+  posts: true
+  home: true
+  about: true
+  media: true
+
+repo: aikkeko/aikkeko.github.io
+repo_id: R_kgDOGg7yvA
+category: Announcements
+category_id: ""
+mapping: pathname
+strict: true
+reactions: true
+input_position: top
+theme: transparent_dark
+language: zh-CN
+lazy: true
+
+# Keep the designed placeholder visible until category_id is configured.
+show_unconfigured: true

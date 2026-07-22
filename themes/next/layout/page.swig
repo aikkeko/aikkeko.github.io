@@ -153,12 +153,7 @@
                             {% if item.cover %}
                               <img src="{{ item.cover }}" alt="" loading="lazy" referrerpolicy="no-referrer">
                             {% endif %}
-                            <span class="media-player-signal" aria-hidden="true">
-                              <small>{{ item.platform or 'Archived Signal' }}</small>
-                              <strong>{{ item.episode or 'PLAY' }}</strong>
-                            </span>
                             <span class="media-player-play" aria-hidden="true"><i class="fa fa-play"></i></span>
-                            <span class="media-player-label">Play transmission</span>
                           </button>
                           <div class="media-player-frame" data-media-frame hidden></div>
                         </div>
@@ -170,10 +165,6 @@
                       {% if not item.embed %}<span class="media-card-kind">Archived Signal</span>{% endif %}
                     </div>
                     <div class="media-card-content">
-                      <div class="media-card-serial">
-                        <span>{{ item.episode or 'UNFILED' }}</span>
-                        {% if item.id === media_featured_id %}<em>Featured Signal</em>{% endif %}
-                      </div>
                       <h2 class="media-card-title">{{ item.title }}</h2>
                       {% if item.description %}<p class="media-card-description">{{ item.description }}</p>{% endif %}
                       <div class="media-card-meta">

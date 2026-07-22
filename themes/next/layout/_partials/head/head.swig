@@ -73,12 +73,18 @@
 
 {# Long Text Optimizer #}
 <script src="{{ url_for('/js/long-text-loader.js') }}" async></script>
+<script src="{{ url_for('/js/mobile-background.js') }}" defer></script>
 
 {# Service Worker Registration: disabled and cleaned on local preview #}
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(location.hostname) !== -1;
+    var hostname = location.hostname;
+    var isPrivateNetwork = /^10\./.test(hostname) ||
+      /^192\.168\./.test(hostname) ||
+      /^172\.(1[6-9]|2\d|3[01])\./.test(hostname) ||
+      /\.local$/i.test(hostname);
+    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(hostname) !== -1 || isPrivateNetwork;
 
     if (isLocalPreview) {
       navigator.serviceWorker.getRegistrations()
