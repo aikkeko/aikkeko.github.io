@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#1e2128">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bitbug_favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bitbug_favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#1e2128">
+
+
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="档案馆">
+<meta name="application-name" content="Aike · Echo">
+<meta name="msapplication-TileColor" content="#1e2128">
+<meta name="msapplication-tap-highlight" content="no">
+
+<link rel="stylesheet" href="/css/main.css?v=2026072503">
+
+
+<link rel="preload" as="image" href="/images/Z.A.T.O_02_ca04.jpg" fetchpriority="high">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aikkeko.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+
+<script src="/js/long-text-loader.js" async></script>
+<script src="/js/mobile-background.js" defer></script>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    var hostname = location.hostname;
+    var isPrivateNetwork = /^10\./.test(hostname) ||
+      /^192\.168\./.test(hostname) ||
+      /^172\.(1[6-9]|2\d|3[01])\./.test(hostname) ||
+      /\.local$/i.test(hostname);
+    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(hostname) !== -1 || isPrivateNetwork;
+
+    if (isLocalPreview) {
+      navigator.serviceWorker.getRegistrations()
+        .then(function(registrations) {
+          return Promise.all(registrations.map(function(registration) {
+            return registration.unregister();
+          }));
+        })
+        .then(function() {
+          if (!window.caches) return [];
+          return caches.keys().then(function(keys) {
+            return Promise.all(keys.filter(function(key) {
+              return key.indexOf('blog-') === 0;
+            }).map(function(key) {
+              return caches.delete(key);
+            }));
+          });
+        })
+        .then(function() {
+          console.log('[ServiceWorker] Local preview cleanup complete.');
+        })
+        .catch(function(error) {
+          console.log('[ServiceWorker] Local preview cleanup failed:', error);
+        });
+      return;
+    }
+
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(registration) {
+        console.log('[ServiceWorker] Registered:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('[ServiceWorker] Registration failed:', error);
+      });
+  });
+}
+</script>
+
+  <meta name="description" content="这是昨天我在读书会上观点的小总结，主要灵感来自于萨特论福克纳的文章与近期对休谟的一些学习了解，希望提供一个可能的视角供参考。 “…一个人是他不幸的总和。有一天你会觉得不幸是会厌倦的，然而时间是你的不幸……”萨特认为这句话是《喧哗与骚动》这部小说真正的主题，但他的着眼点更多在于后半段中“时间”这个关键词，人的不幸在于他被框在时间里；而对我来说，不妨从前面一句话...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="仅有感觉的世界 | 《喧哗与骚动》一个休谟式的解读">
+<meta property="og:url" content="https://aikkeko.github.io/2020-06-22-%E4%BB%85%E6%9C%89%E6%84%9F%E8%A7%89%E7%9A%84%E4%B8%96%E7%95%8C.html">
+<meta property="og:site_name" content="Aike · Echo">
+<meta property="og:description" content="这是昨天我在读书会上观点的小总结，主要灵感来自于萨特论福克纳的文章与近期对休谟的一些学习了解，希望提供一个可能的视角供参考。 “…一个人是他不幸的总和。有一天你会觉得不幸是会厌倦的，然而时间是你的不幸……”萨特认为这句话是《喧哗与骚动》这部小说真正的主题，但他的着眼点更多在于后半段中“时间”这个关键词，人的不幸在于他被框在时间里；而对我来说，不妨从前面一句话...">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/19/89/1989ce87fe83443d856edc736cecd9a3.png">
+<meta property="og:image" content="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/ea/d1/ead1cce1b368862d3d3b07403bf34f58.png">
+<meta property="og:image" content="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/2f/ba/2fba147160c49101260bdd87a17b0ecf.png">
+<meta property="og:image" content="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/33/2c/332c96d7cc545dbac4aa899fb341193b.png">
+<meta property="article:published_time" content="2020-06-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-24T15:08:42.240Z">
+<meta property="article:author" content="AikeKo">
+<meta property="article:tag" content="小说">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/19/89/1989ce87fe83443d856edc736cecd9a3.png">
+
+<link rel="canonical" href="https://aikkeko.github.io/2020-06-22-%E4%BB%85%E6%9C%89%E6%84%9F%E8%A7%89%E7%9A%84%E4%B8%96%E7%95%8C.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap"></noscript>
+
+  <title>仅有感觉的世界 | 《喧哗与骚动》一个休谟式的解读 | Aike · Echo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Aike · Echo" type="application/atom+xml">
+</head>
+
+<body class="post-detail" itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="zato-background-quotes" aria-hidden="true">
+      <span class="zato-quote zato-quote-left">ALL STORIES ARE LOST PROPERTY</span>
+      <span class="zato-quote zato-quote-right">THE LAST ARCHIVE REMAINS OPEN</span>
+      <span class="zato-quote zato-quote-top">PLEASE RETURN BORROWED DREAMS</span>
+      <span class="zato-quote zato-quote-mid">MEMORY IS AN INDEX WITHOUT A MAP</span>
+      <span class="zato-quote zato-quote-bottom">NO REFUNDS AFTER THE END OF THE WORLD</span>
+      <span class="zato-quote zato-quote-code">WATER &amp; BISCUIT / AISLE 30</span>
+    </div>
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Aike · Echo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">theme of the WATER & BISCUIT</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-media">
+
+    <a href="/media/" rel="section"><i class="fa fa-headphones fa-fw"></i>声像</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+  
+
+  
+  <div class="post-banner" style="background-image: url('https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/8c/0a/8c0a552678c49aff42f67761b7705539.png'), url('/images/Z.A.T.O_02_ca04.jpg');">
+    <div class="post-banner-mask"></div>
+    <div class="post-banner-content">
+      <div class="post-banner-text">
+        <h1 class="post-banner-title" itemprop="name headline">仅有感觉的世界 | 《喧哗与骚动》一个休谟式的解读</h1>
+        
+        <div class="post-banner-meta">
+          <span class="post-banner-author">
+            <i class="fa fa-user"></i> AikeKo
+          </span>
+          
+          <span class="post-banner-date">
+            <i class="fa fa-calendar"></i> Jun 22, 2020
+          </span>
+          <span class="post-banner-category">
+            <i class="fa fa-folder"></i>
+              文学
+          </span>
+          <span class="post-banner-words">
+            <i class="fa fa-file-word"></i> 2.5k words
+          </span>
+          <span class="post-banner-reading-time">
+            <i class="fa fa-clock"></i> 8 min read
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aikkeko.github.io/2020-06-22-%E4%BB%85%E6%9C%89%E6%84%9F%E8%A7%89%E7%9A%84%E4%B8%96%E7%95%8C.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AikeKo">
+      <meta itemprop="description" content="你找到祈祷的意义了吗？">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aike · Echo">
+    </span>
+
+    
+      <div class="post-hero">
+          <img class="post-hero-image" src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/8c/0a/8c0a552678c49aff42f67761b7705539.png" alt="仅有感觉的世界 | 《喧哗与骚动》一个休谟式的解读" itemprop="image">
+      </div>
+      <header class="post-header with-hero banner-hidden">
+        
+        <h1 class="post-title" itemprop="name headline" style="display: none;">仅有感觉的世界 | 《喧哗与骚动》一个休谟式的解读</h1>
+
+        <div class="post-meta banner-meta-only">
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+          
+            <div class="post-description">这是昨天我在读书会上观点的小总结，主要灵感来自于萨特论福克纳的文章与近期对休谟的一些学习了解，希望提供一个可能的视角供参考。 “…一个人是他不幸的总和。有一天你会觉得不幸是会厌倦的，然而时间是你的不幸……”萨特认为这句话是《喧哗与骚动》这部小说真正的主题，但他的着眼点更多在于后半段中“时间”这个关键词，人的不幸在于他被框在时间里；而对我来说，不妨从前面一句话...</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这是昨天我在读书会上观点的小总结，主要灵感来自于萨特论福克纳的文章与近期对休谟的一些学习了解，希望提供一个可能的视角供参考。</p>
+<p>“<em><strong>…一个人是他不幸的总和。有一天你会觉得不幸是会厌倦的，然而时间是你的不幸……</strong></em>”萨特认为这句话是《喧哗与骚动》这部小说真正的主题，但他的着眼点更多在于后半段中“时间”这个关键词，人的不幸在于他被框在时间里；而对我来说，不妨从前面一句话，即“<strong>一个人是他不幸的总和</strong>”作为切入点，来尝试解读福克纳所描绘的世界为何会是一个令人绝望的世界——至少单从这句话来看，呈现出的人是一个非常休谟式的内在决定论的个人。</p>
+<p>关于休谟的对于人类理解的认知，简单来说就是外部世界是不可知的，而人的内部世界是通过自然的、可依赖的<strong>印象</strong>与<strong>感觉</strong>来决定的——休谟认为，感觉是被直接给予的，因而具有最根本的确定性，是可以依赖的，而观念、理性等因素都是来自于自然的印象——于是乎，通过将人充分地暴露在快乐与痛苦、幸福与不幸的印象中，就可以就可以促使其自身必然性本能做出行动，从而再导致了现代人的一种消极自由。</p>
+<p>上面说的可能绕了些远路，还是让我们先回归文本，回归“感觉”这个关键词。完整读过《喧哗与骚动》的读者，或多或少都能察觉到，书中以班吉、昆丁、杰森为第一视角的三个章节中，除了那来回跳跃的现在与回忆的交织、没有标点的意识流混乱言辞之外，还有一个地方和其他小说比起来非常奇怪，仿佛缺少了什么重要的东西。在第二遍读本书时，我找到了困惑我的疑问的答案，即<strong>人物的行动仅由过去的印象和现在的感觉所推动，而他们的动机没有任何因素是来自未来的：</strong>或许第一遍读的时候没能意识到，但回过头来仔细翻阅一番，甚至是一句话一句话的审视，都可以发现里面的人物以第一视角说话时，几乎全部都是<em>“谁说”、“谁做了什么”、“闻到什么气味”、“什么发出了声音”</em>等等，这些都是他们的感官的感受，他们看到了、听到了、闻到了、碰到了什么，而除此之外，真的就什么都没有了——没有任何在其他小说中会理所当然出现的<em>“我想”、“我希望”、“可能会”</em>等与不可知的未来相连接的词汇（这也正是休谟的感觉论中所丧失的）。可以很明显地，这部小说的世界中，感觉这个怪物所占的比例实在是过于庞大，以至于将想象原本的无限空间都给蚕食殆尽，我们来到了休谟所构建的只有感觉，人物的一切都由他过去的感觉与印象构成，并围绕着这些重大的感觉与印象引起的幸福与不幸行动：可令人叹惋的是，本书中的主要人物似乎只有不幸。</p>
+<p>全书中核心的印象大概有三个：凯蒂的被诱怀孕，班吉的被阉与昆丁的自杀，它们全部都是不幸的印象，而在故事里几人视角中现实与回忆的切换大多数情况下都是以上述重大印象为契机与根基，于一个嗅到忍冬花芬芳般的不经意间，时间就在意识中被无限拉长的一瞬间中闪烁跳跃几轮——是的，就像休谟对笛卡尔完备性的理性世界的推翻一样，通过将感觉的作用无限放大，倘若幸福与不幸的印象才是唯一自然的、可依赖的，那么理性与完备性自然不会在这样的世界上留有任何余地，毫无逻辑与秩序的意识流的语言就是世界理性丧失的最好证明。在我看来，福克纳的确有在强调“感觉”对于这样一个家庭的重要性，而恰恰在本书中就真的存在一个甚至明面上将只有感觉的世界推至极限的白痴——班吉，这也我认为全书最“纯净”、最能将这番绝望的世界描绘得淋漓尽致的视角。《喧哗与骚动》这个标题来源于莎士比亚的戏剧《麦克白》中的台词，“<em><strong>人生如同一个白痴所讲的故事，充满着喧哗与骚动，却没有任何意义。</strong></em>”或许让我们换个更直接的说法吧：里面有过第一视角的人物，无论是班吉，还是昆丁或杰森，其实都是<strong>仅有感觉的白痴，只不过后两者表面上看起来更像人罢了。</strong></p>
+<p>这种休谟式的世界之所以令人绝望，是因为里面的人物只有着上面我所提到的消极自由，而完全不拥有自由意志。可能说一个虚构人物拥有自由意志听起来比较奇怪，但至少在阅读其他小说时，里面的人物是不会拥有产生如此强大的宿命感的：仅仅依靠那些感觉与印象，来自未来的想象被遮挡住，没有任何可以逃避的决定论世界，他们的未来早已被规划预定好，穿插于故事里、提示在注释中，甚至被定死于福克纳亲自所撰写的附录中——不仅是里面的人物没有想象的空间，连我们读者也没有了想象的自由，这样一个灰暗的、混乱的世界就仿佛理所当然地呈现在你眼前，而在一次次的喧哗与骚动中，最终走向的只有虚无与毁灭。</p>
+<p>当然，我并不认为福克纳是在宣扬这样的世界是正确，或是认为我们的世界就真的完全是一个只有感觉的世界。在我看来，福克纳创造出此等荒谬性世界的原因，肯定也与当今我们的现实的世界有关，所以为了突破这样的世界，他描绘了这样的世界，并试图突破这样的世界，可能对于康普森家族来说最后完全失败了，但这也并不是未来的终结——无论是笛卡尔的理性世界，还是休谟的感觉世界，关于如何克服这两者的世界，本书中的其他人物，亦或是他的其他作品里主人公，那些“无法被征服的个体”，其实都给出了一个与未来相勾连的答案。如果你被本书中的世界压抑地喘不过气，可以尝试去读福克纳的另一本书《野棕榈》，愿你能找回他深深铭刻于美国南方社会的那股力量，那依靠<strong>重要感情</strong>、<strong>真正的爱</strong>所创造出的未来，即便虚无却依然执着与自然。</p>
+<p>我也不会轻而易举地接受《喧哗与骚动》的世界，而如果你不喜欢这样认知世界的方式，不接受这样一个绝望的世界，也请以此为起点努力去克服这样的世界吧。</p>
+<p>2020.618</p>
+<p>【班吉】</p>
+<p>标题来源自麦克白 第五幕第五场</p>
+<p>“明天，明天，再一个明天……”</p>
+<p><img data-src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/19/89/1989ce87fe83443d856edc736cecd9a3.png"></p>
+<p>人生如同一个白痴所讲的故事，充满着喧哗与骚动，却没有任何意义。</p>
+<p><strong>“……一个人是他的不幸的总和。有一天你会觉得不幸是会厌倦的，然而时间是你的不幸……”（太强力的休谟世界）</strong></p>
+<p>“他的高潮的经验的总和”，“他的不幸的总和”，“发生在你身上的切的总和。”</p>
+<p>对于福克纳则相反，过去是不幸地永远也不失去；它永远在那里，几乎象是鬼迷</p>
+<p>在1939年，让—保罗·萨特运用他典雅的法国式鉴赏力对福克纳的小说有一个极为出色的敞篷车的比喻，意思是说，福克纳的小说中，眼光总是往后看，人生就像是坐在疾驰的敞篷车的后窗望出去的道路，可以看得见，但却在飞速后退，难以追及。</p>
+<p>核心印象：凯蒂的被诱怀孕，班吉的被阉，昆丁的自杀</p>
+<p>人物的一切来源是感觉、印象，一个内在决定论的世界。</p>
+<p>小说里没有任何来自未来的东西。在普鲁斯特那里，复得的时间是一种解救，而福克纳的时间的性质正与之相反，过去的时间像鬼影。像梦魔缠住了每个人，它像硫酸一样腐蚀着人，把人同自己割裂开来，使他找不到自己的人的属性。</p>
+<p>在杰森的视角，乃至其他人的视角，几乎所有的话都都是“我说”，除此之外没有其他的“自我”，最多也只是“我（现在）感觉很奇怪”，而没有任何关于未来的想象（我明天可能会死），印象的内部决定论构成了人的一切。</p>
+<p>快乐和痛苦，幸福和不幸成为了构成人本质的一切→一种奖罚分明的社会制度</p>
+<p><img data-src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/ea/d1/ead1cce1b368862d3d3b07403bf34f58.png"><img data-src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/2f/ba/2fba147160c49101260bdd87a17b0ecf.png"><img data-src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/33/2c/332c96d7cc545dbac4aa899fb341193b.png"></p>
+<p>感觉不再重要，所以世界才变得荒谬。</p>
+<p>世界没有了形式因。（一个雕像的形式因就是雕塑家所想象的关于这座雕像的一般计划或概念）</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B0%8F%E8%AF%B4/" rel="tag"># 小说</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020-05-16-%E7%A5%88%E7%A5%B7%E7%9A%84%E6%84%8F%E4%B9%89.html" rel="prev" title="祈祷的意义">
+      <i class="fa fa-chevron-left"></i> 祈祷的意义
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020-07-15-%E8%A2%AB%E6%8B%89%E8%BF%9C%E7%9A%84%E8%B7%9D%E7%A6%BB.html" rel="next" title="被拉远的距离 | 《死屋手记》杂谈">
+      被拉远的距离 | 《死屋手记》杂谈 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <section class="comments giscus-comments" aria-labelledby="echo-comments-title">
+    <header class="giscus-comments-header">
+      <div>
+        <span class="giscus-comments-kicker">ECHO TERMINAL / GITHUB DISCUSSIONS</span>
+        <h2 id="echo-comments-title">留下回声</h2>
+        <p>使用 GitHub 登录后留言或回复。讨论将与这份文章档案保持关联。</p>
+      </div>
+      <span class="giscus-comments-status">PUBLIC CHANNEL</span>
+    </header>
+      <div class="giscus-pending" role="status">
+        <span class="giscus-pending-mark" aria-hidden="true"><i class="far fa-comment-dots"></i></span>
+        <div>
+          <strong>回声频道尚未开放</strong>
+          <p>GitHub Discussions is waiting to be connected.</p>
+        </div>
+      </div>
+  </section>
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AikeKo"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">AikeKo</p>
+  <div class="site-description" itemprop="description">你找到祈祷的意义了吗？</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+      <div class="site-state-item site-state-media">
+          <a href="/media/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">声像</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/aikkeko" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;aikkeko" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AikeKo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

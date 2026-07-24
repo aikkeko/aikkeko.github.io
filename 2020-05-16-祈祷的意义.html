@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#1e2128">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bitbug_favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bitbug_favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#1e2128">
+
+
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="档案馆">
+<meta name="application-name" content="Aike · Echo">
+<meta name="msapplication-TileColor" content="#1e2128">
+<meta name="msapplication-tap-highlight" content="no">
+
+<link rel="stylesheet" href="/css/main.css?v=2026072503">
+
+
+<link rel="preload" as="image" href="/images/Z.A.T.O_02_ca04.jpg" fetchpriority="high">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aikkeko.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+
+<script src="/js/long-text-loader.js" async></script>
+<script src="/js/mobile-background.js" defer></script>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    var hostname = location.hostname;
+    var isPrivateNetwork = /^10\./.test(hostname) ||
+      /^192\.168\./.test(hostname) ||
+      /^172\.(1[6-9]|2\d|3[01])\./.test(hostname) ||
+      /\.local$/i.test(hostname);
+    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(hostname) !== -1 || isPrivateNetwork;
+
+    if (isLocalPreview) {
+      navigator.serviceWorker.getRegistrations()
+        .then(function(registrations) {
+          return Promise.all(registrations.map(function(registration) {
+            return registration.unregister();
+          }));
+        })
+        .then(function() {
+          if (!window.caches) return [];
+          return caches.keys().then(function(keys) {
+            return Promise.all(keys.filter(function(key) {
+              return key.indexOf('blog-') === 0;
+            }).map(function(key) {
+              return caches.delete(key);
+            }));
+          });
+        })
+        .then(function() {
+          console.log('[ServiceWorker] Local preview cleanup complete.');
+        })
+        .catch(function(error) {
+          console.log('[ServiceWorker] Local preview cleanup failed:', error);
+        });
+      return;
+    }
+
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(registration) {
+        console.log('[ServiceWorker] Registered:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('[ServiceWorker] Registration failed:', error);
+      });
+  });
+}
+</script>
+
+  <meta name="description" content="0. 《卡拉马佐夫兄弟》是我最喜爱的小说，从第一次读完到现在，在数不清多少遍反复翻阅与体味中，我对本书的爱与理解也一步步地加深，而这次有机会再从头至尾完整地读一遍，对我来说意义十分重大——现在这本书对我来说已经不是“我们该如何理解”的问题，而是“它与我们有什么关系”的问题。在这个人生的一个阶段结束的日子，在下一段时光的风口浪尖，我或许需要再好好地思考一下这个...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="祈祷的意义">
+<meta property="og:url" content="https://aikkeko.github.io/2020-05-16-%E7%A5%88%E7%A5%B7%E7%9A%84%E6%84%8F%E4%B9%89.html">
+<meta property="og:site_name" content="Aike · Echo">
+<meta property="og:description" content="0. 《卡拉马佐夫兄弟》是我最喜爱的小说，从第一次读完到现在，在数不清多少遍反复翻阅与体味中，我对本书的爱与理解也一步步地加深，而这次有机会再从头至尾完整地读一遍，对我来说意义十分重大——现在这本书对我来说已经不是“我们该如何理解”的问题，而是“它与我们有什么关系”的问题。在这个人生的一个阶段结束的日子，在下一段时光的风口浪尖，我或许需要再好好地思考一下这个...">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-24T15:08:22.049Z">
+<meta property="article:author" content="AikeKo">
+<meta property="article:tag" content="小说">
+<meta property="article:tag" content="文学">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://aikkeko.github.io/2020-05-16-%E7%A5%88%E7%A5%B7%E7%9A%84%E6%84%8F%E4%B9%89.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap"></noscript>
+
+  <title>祈祷的意义 | Aike · Echo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Aike · Echo" type="application/atom+xml">
+</head>
+
+<body class="post-detail" itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="zato-background-quotes" aria-hidden="true">
+      <span class="zato-quote zato-quote-left">ALL STORIES ARE LOST PROPERTY</span>
+      <span class="zato-quote zato-quote-right">THE LAST ARCHIVE REMAINS OPEN</span>
+      <span class="zato-quote zato-quote-top">PLEASE RETURN BORROWED DREAMS</span>
+      <span class="zato-quote zato-quote-mid">MEMORY IS AN INDEX WITHOUT A MAP</span>
+      <span class="zato-quote zato-quote-bottom">NO REFUNDS AFTER THE END OF THE WORLD</span>
+      <span class="zato-quote zato-quote-code">WATER &amp; BISCUIT / AISLE 30</span>
+    </div>
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Aike · Echo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">theme of the WATER & BISCUIT</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-media">
+
+    <a href="/media/" rel="section"><i class="fa fa-headphones fa-fw"></i>声像</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+  
+
+  
+  <div class="post-banner" style="background-image: url('https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/a9/27/a927d8b37cb12c6ea9c3acd80139da93.jpeg'), url('/images/Z.A.T.O_02_ca04.jpg');">
+    <div class="post-banner-mask"></div>
+    <div class="post-banner-content">
+      <div class="post-banner-text">
+        <h1 class="post-banner-title" itemprop="name headline">祈祷的意义</h1>
+        
+        <div class="post-banner-meta">
+          <span class="post-banner-author">
+            <i class="fa fa-user"></i> AikeKo
+          </span>
+          
+          <span class="post-banner-date">
+            <i class="fa fa-calendar"></i> May 16, 2020
+          </span>
+          <span class="post-banner-category">
+            <i class="fa fa-folder"></i>
+              文学
+          </span>
+          <span class="post-banner-words">
+            <i class="fa fa-file-word"></i> 8.6k words
+          </span>
+          <span class="post-banner-reading-time">
+            <i class="fa fa-clock"></i> 28 min read
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aikkeko.github.io/2020-05-16-%E7%A5%88%E7%A5%B7%E7%9A%84%E6%84%8F%E4%B9%89.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AikeKo">
+      <meta itemprop="description" content="你找到祈祷的意义了吗？">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aike · Echo">
+    </span>
+
+    
+      <div class="post-hero">
+          <img class="post-hero-image" src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/a9/27/a927d8b37cb12c6ea9c3acd80139da93.jpeg" alt="祈祷的意义" itemprop="image">
+      </div>
+      <header class="post-header with-hero banner-hidden">
+        
+        <h1 class="post-title" itemprop="name headline" style="display: none;">祈祷的意义</h1>
+
+        <div class="post-meta banner-meta-only">
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+          
+            <div class="post-description">0. 《卡拉马佐夫兄弟》是我最喜爱的小说，从第一次读完到现在，在数不清多少遍反复翻阅与体味中，我对本书的爱与理解也一步步地加深，而这次有机会再从头至尾完整地读一遍，对我来说意义十分重大——现在这本书对我来说已经不是“我们该如何理解”的问题，而是“它与我们有什么关系”的问题。在这个人生的一个阶段结束的日子，在下一段时光的风口浪尖，我或许需要再好好地思考一下这个...</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="0"><a href="#0" class="headerlink" title="0."></a><strong>0.</strong></h2><p><strong>《卡拉马佐夫兄弟》是我最喜爱的小说，从第一次读完到现在，在数不清多少遍反复翻阅与体味中，我对本书的爱与理解也一步步地加深，而这次有机会再从头至尾完整地读一遍，对我来说意义十分重大——现在这本书对我来说已经不是“我们该如何理解”的问题，而是“它与我们有什么关系”的问题。在这个人生的一个阶段结束的日子，在下一段时光的风口浪尖，我或许需要再好好地思考一下这个问题了。</strong></p>
+<p><strong>毕竟距离这本书的写成已有百余年，俄罗斯那片土地距离我们始终还是太遥远，农奴制以及流放制度的历史早已远去，基督教信仰的余音也无法波及到我们所在之处……但《卡拉马佐夫兄弟》的流传的故事却依旧能打动今日的我们，甚至能让如此平庸、世俗的我流下眼泪，谁又能说它与今天的我们没有联系呢？</strong></p>
+<p><strong>“在那一时刻，有人曾到我心中来过。”——在阅读本书的时候，我也真切地有过这样的感受。</strong></p>
+<p><strong>以阿辽沙的这句话为起点，我想试着写下点什么。</strong></p>
+<h2 id="1"><a href="#1" class="headerlink" title="1."></a><strong>1.</strong></h2><p><strong>陀思妥耶夫斯基的写作总是充满了激情、疯狂与矛盾。由于自己嗜赌成性、债主高台，为了生计他需要马不停蹄地写作，才能让这些文字转化为面包供他生存。于是乎为了连载，他在构思引人入胜的剧情的同时，也必须做到在截稿日期之前按时完成要求的章节，以至于他的很多故事都不像托尔斯泰那般经过了精心的打磨的，反而只是脱口而出并由速记员兼自己的第二任妻子安娜记录下，所以我们不难发现陀老后期的这些故事或多或少有着缺陷与遗憾，而就算是这部他预感将是自己最后的作品而格外投入的巨著中，也少不了前后人物、空间错位的矛盾，以及被压缩或拉长到近乎混乱的时间流动，可这些瑕疵却又无可救药地构成了陀老写作的不可分割的部分。</strong></p>
+<p><strong>故事的前一半，也就是直到“德米特里弑父案”发生的夜晚，总共只讲述了几天之内的境况，期间有缓慢推展着的佐西玛长老死亡的相关情节，也有着围绕着几兄弟间大段深入人心论述以及暴风雨般的思想冲突；在阿辽沙虔诚、狂喜地亲吻大地的同时，德米特里也在马车上仰望着那边星光交错的天穹，这种于叙述中不经意间归置的相异拍号深深地打动了我，我在这次阅读中有意让自己去记忆与理解故事中其实并不复杂的时间线，尤其是将本书的前半部分的故事人物梳理清楚后，所展现的那些虽然有着残缺与多余的拼图形成的美妙互文却依然有着魅力，无论是佐西玛长老的回忆，阿辽沙温柔的觉悟还是伊万毫无保留的伟大论述，每一部分都水到渠成、恰到好处地“应该在那”，所有细节仿佛都是完美的、神圣的，游离于故事外无关紧要又深深嵌套在框架内而至关重要，让人的心中充满着某种难以言说的感情——“我”，作为本文的叙述者，他的眼睛好像仅仅在一瞥之间，便能尽收人世间一切的幸福与苦难。而故事的后半部分（也就是凶案发生后）的节奏其实是有放缓的，人物的行动不再以小时或分钟为单位，每次的走访或探监时间都会几天几天地向后推进，但其中也不乏氛围极度紧张并能掀起风暴的时刻，例如审讯德米特里的时候，充满着野性、欲望与混乱的纠缠；伊万在梦中与魔鬼的对话，也是陀氏一如既往地灼热、痛苦与疯狂的梦境描写；还有最后的法庭交锋与对凶案的总结，真是我阅读以来见过最精彩的审判场景之一，细致入微的分析与大胆的猜忌，人们理性与感性的界限的断裂，以及完全意想不到却又啼笑皆非的逆转……</strong></p>
+<p><strong>说实话单论情节展开与人物描绘本身，《卡拉马佐夫兄弟》已经是一部足够优秀的作品了。这跌宕起伏却又顺理成章的故事吊足了读者的胃口，而我们的心早已被几兄弟的遭遇所牵动，迫不及待地想要知晓他们爱情的结果、他们思想的转变，想要知晓弑父案的真相，德米特里是否会遭到审判，还有他们今后将要踏上的道路……但遗憾的是，我们再也不能看到阿辽沙十三年后的模样了。在老陀本来预定要写的第二部中，时间来到老陀当时所在的1880年，阿辽沙成为主角后踏入尘世堕落为罪人，也许还会参加革命，但或许是上帝觉得世人不配见到如此神物，就提前将老陀的灵魂召唤到天堂了。说起来这其中有个美丽的巧合，我最喜欢的作家阿尔贝·加缪的最后一本小说《第一个人》也是未完成的，写作在中途他就因为意外的车祸而去世了，但我仅仅就只看了他所留下的那部分手稿，我就觉得这注定会是一部伟大的作品，尤其是四十岁的雅克在二十多岁就已然离去的父亲墓前的顿悟，给我的震撼与感动不亚于阅读阿辽沙泪洒大地的场景：在毫无根基的、仿佛失去信仰的世界中准寻道德与真理，即便死亡真的降临了，在那光明的一瞬间他们仍然在自我追求与追寻答案。仔细想来，也许“未完成”真的不是遗憾，反而是一种幸福，正如荣如德在后记中所说的“读者也被深深卷入错综复杂的情感与故事迷宫，早就不再隔岸观火，而是变成了卡拉马佐夫世界的一部分”，我们也开始在他们的背影中寻找着答案，这些问题直到百年后的现在依然被悬置，而即便我们可能只是这个荒诞世界中脆弱一员，但我们能够通过他们的作品凝视问题的光芒，哪怕这是西西弗式的徒劳，哪怕甚至不相信答案能被找到，我相信这也至少是一种微乎其微的幸福。</strong></p>
+<p><strong>其实《卡》的文本部分就还有很多东西可以谈，人物情感分析、弑父情节等等，但如果再做展开东西实在是太多了所以本文在这方面只好点到为止，将重点放在后面我谈到的几个自认为比较重要的问题上。</strong></p>
+<h2 id="2"><a href="#2" class="headerlink" title="2."></a><strong>2.</strong></h2><p><strong>伊万在于阿辽沙的对话中，谈到了关于“恶”存在的悖论，从而引申至对上帝存在的怀疑。简单来说，伊万提出了一个绝对合理的问题，即对上帝的信仰是如何与“八岁小孩被撕碎”这一事实共存的？即便整个地球从地壳到地心到地心都浸透了泪水，以便用苦难换取永恒的和谐，但这与孩子有什么关系？每次读到他们之间一长段对话，都被陀老的深刻与洞见震撼到浑身颤抖，明明他自己是那么侍奉基督，却一次又一次地试图粉碎自己的信仰：在天平的一边是一座人类命运的大厦，目的是最终让所有人幸福与和平，但在天平的另一边只是一个可怜的小女孩，仅仅只需要用她受到摧残而得不到补偿的眼泪就能为这座永恒的大厦奠基——这其实是比所谓电车难题的道德困境更极端化了，但还是让我们先抛弃所谓的功利主义原则，毕竟这一类所谓道德困境的问题都包含这样的核心意图：我们如何在做不到完美的事情中得到完美的善——伊万质问阿辽沙让他在二者中选其一，其实也是在一个措手不及间预设了“善”的残缺，也就是“恶”的存在。毕竟基督教的信仰追求的是一种全善，而如果在永恒的和谐中掺杂了零星无法补偿的泪水，那么这样的善也不会是纯粹的善了。</strong></p>
+<p><strong>无论阿辽沙对这个问题的回答是什么，他其实也是默认了恶的存在的，即使是在上述如此极端例子中，两者间有着压倒性的善的差异，善依然有所缺失，更何况实际生活中我们所抛弃的更多的善的无数个选择呢？于是乎矛盾就此诞生：全善的上帝变得不再全善了。而为了达到全善，上帝能强迫我们爱人，而且爱邻人吗？答案是否定的，从爱之为爱的定义来说，爱的定义里是包含自由意志的，当爱是一种强迫的时候就不再是爱了（就像三角形不能是四个角），所以爱必须是自由给予的，所以即便是上帝，也不能创造强迫的爱，这样的话上帝的全能性也消解了。另外，之前伊万描述了世界上种种的爱与苦难，上帝明知道我们会作恶，为何却依然创造我们呢？如果他真的是全知的话，就不一定要创造我们，因为他早已预知了我们的堕落——所以，上帝如果存在的话，就需要弄清楚为什么会存在孩子的泪水？他明明是充满善的、应该带来更大的善才对，可为什么上帝只是无动于衷，坐在天国看着人类在人世间堕落、挣扎，而对人们挚诚的祈祷不闻不问？</strong></p>
+<p><strong>伊万找不到这个问题的答案，所以他宣告“如果上帝不存在，那么一切都是被允许的”，他不接受这个上帝创造的世界。面对自己兄长严峻而神圣的质问，阿辽沙则是如此回答的：“你刚才问，全世界有哪一个人能宽恕和有权利宽恕？但这个人是有的，他能宽恕一切，宽恕所有的人和所有的事，因为他本人久违所有的人和所有的事献出了自己无辜的血。你把他给忘了，而大厦就是在他身上建造起来的，人们就是向他高呼‘主啊，你是正确的，因为你的路开通了。’”是的，只是因为耶稣承担了所有的苦难——在尼采的《查拉图斯特拉》中，有关于这个恶的答案的解释的某种扩展：“归根结底，一个人只能经历自己经历过的。”当我们悲伤时，我们悲痛欲绝；当我们哭泣时，我们留下眼泪；当我们受伤时，血液从我们破裂的血管中涌出……我们人类，所有的人类，都只能经历自己的那份痛苦。不管是亲眼看到那个被撕碎的小男孩，还是抱紧被病痛折磨的伊柳莎，或是面对至亲之人的无法抑制的眼泪，即便我们嘴上说着“我能感受到你的痛苦”，但实际上无论多么大声的叫喊，无论多么亲密的接触，我们的痛苦比思想更加私密。思想可以以语言为媒介分享、传递，但痛苦却属于每个单独的个体，即使两个人在相同的时间用同样的刀刺向身体的同一个的部位，或许也不能说我们共通着集体的痛苦。痛苦的私人化，痛苦的个人化，导致每个人所承担的不多一分一毫，只有我们自己的痛苦。没有一个人能遭受超过一个人所能遭受的痛苦，毕竟一旦超过了这个界限，死亡就降临了。一个人的痛苦是有限的，悲哀也是有限的，但是——但是啊，长久以来只有一个例外，仅仅寄托于这一次痛苦的转移，十字架上的耶稣被世间所有的苦难压垮了，他承担了人类所有的痛苦。</strong></p>
+<p><strong>所以如果上帝存在的话，为何他看起来仿佛对世界上的恶无动于衷？因为十字架上的耶稣承担了世间所有的痛苦，承担了比我们所有人都多的多的痛苦。耶稣受难是阿辽沙提供的主要证据，他借此说明，耶稣通过牺牲自己使一切怜悯之举成为可能，所以上帝能宽恕一切、原谅一切，他没有眼睁睁地看着人类的堕落，而是道成肉身与人类共同分享苦难，这只是拯救人类的一部分罢了。而他为何又不创造一个只向善的世界？因为上帝赋予了人完全的自由意志，而如果创造的框架内不允许恶的存在，这将是非常狭隘的自由，就像是一群人在只能在一个大屋子里随处乱跑，而能说这样的“随意奔跑”是自由吗？</strong></p>
+<p><strong>初读这段对话之时，我只觉得它对伊万的塑造至关重要，但在后来反复翻阅与思考后，发现阿辽沙的形象也在这其中不经意间立了起来，而不是一再如陀老以往的作品中那样，人物始终遵循着一个不可动摇的逻辑行动。对话中伊万就几个情景拷问了阿辽沙的内心底最真诚的想法， 而阿辽沙虽然满怀挚诚的信仰，但面对那些残忍的境况却还是毅然决然地回答“应该枪毙”、“不会担当”等与他应有的行动规范不符合的答案。而这也为后来他梦中与佐西玛长老的相遇，以及亲吻大地时的狂喜埋下了伏笔，他想要被宽恕，也想要宽恕所有人的觉醒，那一瞬间的善与美，另一个世界的光线，从这段对话开始就初露端倪。</strong></p>
+<p><strong>当然，阿辽沙的这个答案也许只能解决悬而未决的生活问题，而并不能完全回答伊万的问题。伊万虽然没有忘记上帝，但还是嘲弄阿辽沙终于把上帝搬了出来，他显然也对这个回答也并不满意——于是，他讲述了宗教大法官的传奇。</strong></p>
+<h2 id="3"><a href="#3" class="headerlink" title="3."></a><strong>3.</strong></h2><p><strong>《宗教大法官》可谓是全书最重要、最震撼灵魂的章节，它被誉为陀思妥耶夫斯基最高的思想和艺术，足以描绘人内心全部深度。传奇发生在十六世纪西班牙的塞尔维亚，上帝重新以人的形象出现在城市，引发了许多的奇迹，治疗了很多病人，甚至让一个死去的女孩复活。可宗教大法官却带人抓住了耶稣，在监狱中两人展开了对话，宗教大法官悄悄而又热烈地对耶稣说：如果他真的是上帝，为什么他虽然给予地上的人们无限的自由，人们在相信自己是自由的同时却又心甘情愿地放弃这样无限的自由呢？而他给予世人平等的自由，最后那自由为何也会逐渐转化为不平等？</strong></p>
+<p><strong>在讲述传奇之前，伊万与阿辽沙就一直在讨论关于人的问题，而传奇的主体部分也是大法官在上帝面前诉说人的问题，其中人类的那放弃自由的、甘于平庸的本性被一针见血地指出：至少对于大多数人来说，他们深切关心的是寻找一个对象，以便把随自己这个可怜的生物与生俱来的自由驯服地奉上在他的脚边。他们放弃选择真理的自由的原因主要有两个：第一，多数人比少数人更看重物质而不是精神，也就是说他们更看重地上的面包，而不是天上的面包；第二，多数人比少数人更相信奇迹而不是理性，他们更愿意崇拜权利与外在的力量，而不愿相信自己的力量与信念。传奇发生在近代的入口，也就是“上帝之死”的开始，而对于传奇中诉说现象的具体描述，哪怕是再过几百年后的今天我们都能随处可见不少的鲜活的例子，可以说陀老不仅仅是在描绘过去，更是在书写当下的同时预言未来的人们的进一步堕落，一次大的“造反”，这次造反的旗帜将主要以面包、食物和富裕的“人间天堂”为号召，对物质的追求将成为最高乃至唯一的目标。</strong></p>
+<p><strong>在传奇中，一个悲惨的对立在于“多数”与“少数”。并不是所有的人都注重地上的面包，自然会有那些向往天上的面包的坚强而有美德的战士，但成千上万的脆弱人却没有力量为了天上的面包而放弃地上的面包，这是不是就意味着上帝只是珍重前者少数人而却抛弃了后者那芸芸众生呢？而宗教大法官作为城市的统治者，对自己的治理的一切还算满意，即便人们将自由交给了他，但大家总体上都能得到幸福，不再发生反叛和自相残杀，就好像上帝给予的自由最后会发生的那样，可这也是他顺从了城市中多数人愿望：这多数人们觉得他们是自由的，因为他们“自由地”让自己不再“自由”，是自愿将自己的自由交给他的——这难道不是他爱多数人，而不是爱那少数更有追求选民的结果吗？现代社会走向的是平等的社会，在预想中价值平等本应带来多元化的结果，可平等的社会中人们往往还是最终选择跟着多数人的道路走，共享着被赋予的相同的知识、情境与感情，于是乎多元便不可避免地走向实际的一元，而如今所谓的多元化也只不过是宛若镜面碎裂后形成的一块块碎片，虽然它们某种意义上可以算上独立的个体，但透过这残破的碎片能看到的也只是相同的东西罢了。所以隐藏在工业化民主国家中的问题依然存在：大多数人最终能否最终上升到这少数的水平？或是这少数人能代表全人类吗？如果多数人没有抛弃自己追寻真理的自由，他们难道不会为了自己选择的真理反而自相残杀，从而带来更多的眼泪吗？（例如大屠杀，在这里公共善缺失的弊端已经暴露无遗）至少现在的人们可能没有精神的创造力，但是他们稳住了这个社会，而不会引发人类毁灭的灾难；而如果所有人都以物质为目标，那人类又和动物有什么区别呢？这些问题现在的我完全无法回答，而传奇里的耶稣也没有做出回应，他在整个过程中他只是默默无语，一直热心地听着，直率地盯着大法官的眼睛——陀老的深邃的思想此刻全部汇聚在耶稣的沉默之中，它没有用语言表述出来，而是集中为一个沉默而又温柔到无可救药的吻——这就是全部的回答，这个吻神圣、庄严而美丽。</strong></p>
+<p><strong>从哲学的角度来说，上帝拒绝参与此次对决有一种特意规避的色彩，可能他并不知道该如何反驳，或是无法用人类所能理解的语言说出回答，所以才保持了沉默，就像他面对世人的呼唤时所一直在做的那样。但也有人认为这是上帝接受了大法官的思想的表现，同意让那些有特别天赋的少数人来辨别善恶，确定对金钱价值的生命价值，让多数人在一种等级制中带着感激接受这决定、服从他们，所以这个吻是一种感谢。对我来说，可能还是更加偏向前者，因为让我们在传奇的讲述之后再回到故事本身，阿辽沙面红耳赤地说：“你的诗剧是在赞颂耶稣，而不是诽谤……虽然你的初衷是诽谤。”这句话他只说对了前半句，伊万的本意并不是要攻击耶稣，而是在控诉上帝作为最高象征所创造的世界。人们在评论本书的时候常说阿辽沙是小说的主角，是陀老心目中理想的化身，但我更倾向于认为伊万才是陀老思想真正的传道者，因为伊万并不是不接受上帝，反而其实在内心深处笃信上帝，全书有多处地方都揭示了这一事实，但问题在于以伊万的超乎常人的智慧、出于他赖以构建自我的理性与逻辑，最终却无法推演出信仰上帝的结论，从而不接受上帝创造的世界，而陀老本人又何尝不是如此矛盾的呢？在上一篇《白痴》的感想中，我就已经指出过这关键性的一点——“我们难以想象，还有谁以更精巧的方式，表达更令人感到痛苦的非基督教言论。”——这也是对陀老研究永恒的母题之一，即对上帝的信仰与奇迹的缺失之间不可调和的矛盾的处理。</strong></p>
+<p><strong>对于宗教大法官传奇的分析能谈的简直太多太多，多少本学术著作至今都无法写尽，对此我也只能浅尝辄止，这个话题的探讨也就此打住。可出于私心我还是想指出在本章的最后，在善良纯洁的阿辽沙在听完传奇的讲述后，他也完全无法反驳自己兄长的言论，可他仍然给了伊万一个吻，就像沉默的耶稣给了大法官的那个吻一样，又是在一种微妙的对照与重合中，让这个吻实在承载了太多太多难以言喻的深意。或许，陀老也一直都在渴求着这个吻，而预感到可能自己离去之前也无法如愿，所以才将这传奇提前写下吧。如果可以话，我是多么想将这个吻留给他啊……</strong></p>
+<h2 id="4"><a href="#4" class="headerlink" title="4."></a><strong>4.</strong></h2><p><strong>帕伊西神父在阿辽沙离开修道院走向尘世之前，对阿辽沙讲述了这番送别的话语：“世间的科学已汇聚成伟大的力量，特别是近一个世纪以来，对圣贤书中传给我的天经地义通通作了解剖。经过残酷的剖析，过去认为神圣的一切，在世上学者心中已经荡然无存……”抑或可以说，《卡拉马佐夫兄弟》整本书都在试图回答这一重大问题，即神圣真的消失了吗？我认为一共有两层含义在这个问题里，其一是启蒙运动以来的理性思潮逐渐让人们生活中原本占有很大比重的宗教、神圣等元素退位于理性与科学等新兴技术；其二则不得不再次提到尼采的名字，还有他彻底开创个人主义时代的“上帝之死”：也就是说“根本善”、“公共善”的道德标准已经不存在了，在毫无参照系的时代中只存在“私有善”了，于是在重估一切价值之后，人不是超人就是末人，而所谓神圣也被彻底抹除。在陀老的思想体系中，“公共善”是可以用“爱”或“怜悯”等词语来直接替换的，当然这也是尼采最排斥的“奴隶道德”中的一环，按道理来说他应该对陀老弱者的宗教情节嗤之以鼻才对，可尼采却在书信中如此评论道——“不论陀思妥耶夫斯基如何跟我的思想底流相反，我都会产生一股不可思议的力量来对他表示感谢。换句话说，我今天敬爱陀思妥耶夫斯基，就如我对帕斯卡尔的敬爱。我所以要这样强调，是因为帕斯卡尔会曾给我无限的启示，而陀思妥耶夫斯基则是唯一给我高深基督信仰理论的人。”——当我第一次在阅读史中将这两者联系起来时，确实惊异于尼采对陀老竟有如此高度评价，但后来在仔细审视对比两人的思想渊源后，发现他们的双眼透过现代理性明晃晃的光芒，在很大程度上凝视的是相同的问题，而陀老在《卡拉马佐夫兄弟》还有其他作品中，也一直致力于挽救那逐渐消逝的神圣，这种伟大的信仰与意志甚至撼动了以狂妄著称的尼采。</strong></p>
+<p><strong>记得在阿辽沙小的时候，在一个夏季寂静的傍晚，沐浴在夕阳的斜晖中，他的母亲为她祈祷。这是阿辽沙心中一段非常私人的回忆，但却又是最重要的回忆，他无比真切地记得母亲那美丽的脸，还有夕阳的斜晖——请特别留意“斜晖”这一意象，在后面的故事中也反复出现多次——母亲的祈祷，在一种爱的关心链里传递给了阿辽沙，而陀老认为这是现代理性的链条所不能传递的；而在佐西玛长老年轻的时候，某天时进黄昏，在斜晖照亮的房间中，临近死亡的兄长忽然深情地对他说：“…代我好好活下去！”这个时候，某种发自内心的祈愿、痛彻心扉的领悟与释然，让非理性的爱的传递在兄长的祝福中再度发生了，这件事也在长老的心中留下了不可磨灭的印象，而他和阿辽沙一样将这种无法形容的神圣情感深深地藏了起来，不曾对任何人讲述；还有上一节提到的兄弟间的那个吻的后续，阿辽沙在渐浓的暮色的中跑向修道院，心中酝酿着那无法解释的关于爱的疑问，或许他知道伊万陷入了无法自拔的困境，可他也能感知到伊万是爱他的，但伊万的悲剧恰好就在于无法表达这种爱……这些故事概括起来，都是关于一个人关心另一个人、爱一个人，并让另一个人发生改变的故事，而这样的故事贯穿了整本书，陀老于一次次地反复、强调、回忆中，想要向我们宣告：虽然理性与科学的力量似乎要将神圣一扫而光，即便还有太多太多的眼泪得不到补偿，但世间仍然充满着拯救人心的力量——看啊，神圣就在我们眼前，就存在于生活中每一个爱传递的时刻。</strong></p>
+<p><strong>在德米特里与德国医生关于榛子的故事里，在对“圣父”、“圣子”、“圣灵”的重复中，也是某种神圣的洗礼方式    ，是一种爱、保护和关心的传递，这种善意使他们流下美好的泪水，从而进入到了这个人与人都相互联系的网络里来，这是理性所无法完成的。对于现代人自我的确立特别重要，在与不同人在不同的时间与不同的方式结成的关系网中，我们的自我认同也是由这些关系网轮流确定的，没有了关系网我们将什么都不是，我们将失去构建自我的一切，而多亏了某种非理性的要素，我们才能得到连接。阿辽沙在结尾伊柳沙的葬礼上说道：“最崇高的精神力量，在今后的生活中对身心最有益的感受，莫过于某种美好的回忆，尤其是童年时代从故乡故居保留下来回忆。”这又何尝不是对上述几人童年回忆和对其后来人生重大影响的精妙总结呢？通过通过善意的关心，真诚的祈祷，还有毫无保留的美好祝愿，我们也许真的能够解决“他人心灵问题”，让堕落世界上的人们在倾听上帝悄悄话的同时，能够相互理解彼此一点点，哪怕这只是一个高贵而美丽的谎言，一个奇幻而理想主义的梦，但至少我也许是愿意任性地沉醉在这甜美的梦中的。</strong></p>
+<p><strong>对于现在的我们，至少是能够阅读到这篇文字的我们来说，我们到底该如何承担现代生活那耀眼到使我们睁不开眼的科学主义与实证主义的阳光呢？或许陀老已经在《卡拉马佐夫兄弟》中将他的答案不动声色地告诉我们了：请让我们不要移开视线，凝视着那夕阳的斜晖，然后满怀希望地祈祷吧！为了那些爱，那些苦难、那些欢笑、那些泪水还有那些不再能流下眼泪的人们：在这里，祈祷不是某种自我欺骗或安慰的仪式，甚至可以不再拥有任何宗教的意义，而只是单纯发自内心地承担世界所给予你的一切，在进行无法全善的抉择时仍然期望着事情向最好的结果发展，并真诚地于夕阳的斜晖中自由而本真地面对他人的存在，将彼此温柔地置于爱与关心的网络中。我们终会发现，即使看在旁人的眼里非常天真与愚蠢，即便这个世界上根本没有上帝，但我们会发现自己一个措手不及间仍然痛切而真挚地爱着，只这份祷告的重量也实在是太过于沉重了，以至于我们小心翼翼地用双手托起才不至于将其摔得粉碎，因为这就是一个葱头、一个小小的葱头的力量——因为本书，因为陀老，还因为许许多多伟大的文学，让我曾经相信，今后也许也会一直坚信着——祈祷的意义。</strong></p>
+<h2 id="5"><a href="#5" class="headerlink" title="5."></a><strong>5.</strong></h2><p><strong>如果在阅读《卡拉马佐夫兄弟》时，你也有过“在那一时刻，有人曾到我心中来过”之类的感觉，那么你是幸福的，虽然我们无法分享彼此的感受，但透过狡猾的类比法，我妄自揣测我们共享的是同样一种幸福——痛苦是私人化的，但幸福也许不是。</strong></p>
+<p><strong>当然，这次的阅读也不是一个结束，反而应该是是又一个开始，因为我其实什么答案也没能给出。可多亏了本书，给了我微乎其微的力量，让我开始阅读圣经，了解相关的知识与思想，以及阅读那些伟大的作品，哪怕现在的我依然是消极或者是悲观主义，但这也不啻是一种成长吧，因为在这一次的阅读中，即便卡拉马佐夫的世界依然满是丑陋与悲伤，可我发现自己更多的看到的是善意，那字里行间宛若要溢出来的陀老的爱……嗯，这一次读完我都忍住没有哭，真是太好了，我或许真的改变了些什么吧？愿今后的道路上，我也能一直被这束光芒引导。</strong></p>
+<p><strong>那么就到此为止了，感谢你阅读到最后，希望我的感想中奇怪的视角以及各种陈词滥调没有冒犯到各位。</strong></p>
+<p><strong>我真挚地为你“祈祷”。</strong></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B0%8F%E8%AF%B4/" rel="tag"># 小说</a>
+              <a href="/tags/%E6%96%87%E5%AD%A6/" rel="tag"># 文学</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020-04-10-%E9%9D%92%E6%98%A5%E3%80%81%E6%AD%BB%E4%BA%A1%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%97%B6%E9%97%B4%E7%9A%84%E9%87%8D%E9%87%8F.html" rel="prev" title="青春、死亡，以及时间的重量 |《Cross Game》、安达充，还有我的ACG">
+      <i class="fa fa-chevron-left"></i> 青春、死亡，以及时间的重量 |《Cross Game》、安达充，还有我的ACG
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020-06-22-%E4%BB%85%E6%9C%89%E6%84%9F%E8%A7%89%E7%9A%84%E4%B8%96%E7%95%8C.html" rel="next" title="仅有感觉的世界 | 《喧哗与骚动》一个休谟式的解读">
+      仅有感觉的世界 | 《喧哗与骚动》一个休谟式的解读 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <section class="comments giscus-comments" aria-labelledby="echo-comments-title">
+    <header class="giscus-comments-header">
+      <div>
+        <span class="giscus-comments-kicker">ECHO TERMINAL / GITHUB DISCUSSIONS</span>
+        <h2 id="echo-comments-title">留下回声</h2>
+        <p>使用 GitHub 登录后留言或回复。讨论将与这份文章档案保持关联。</p>
+      </div>
+      <span class="giscus-comments-status">PUBLIC CHANNEL</span>
+    </header>
+      <div class="giscus-pending" role="status">
+        <span class="giscus-pending-mark" aria-hidden="true"><i class="far fa-comment-dots"></i></span>
+        <div>
+          <strong>回声频道尚未开放</strong>
+          <p>GitHub Discussions is waiting to be connected.</p>
+        </div>
+      </div>
+  </section>
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#0"><span class="nav-text">0.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-text">1.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2"><span class="nav-text">2.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3"><span class="nav-text">3.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4"><span class="nav-text">4.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5"><span class="nav-text">5.</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AikeKo"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">AikeKo</p>
+  <div class="site-description" itemprop="description">你找到祈祷的意义了吗？</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+      <div class="site-state-item site-state-media">
+          <a href="/media/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">声像</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/aikkeko" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;aikkeko" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AikeKo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

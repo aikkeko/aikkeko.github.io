@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#1e2128">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bitbug_favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bitbug_favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#1e2128">
+
+
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="档案馆">
+<meta name="application-name" content="Aike · Echo">
+<meta name="msapplication-TileColor" content="#1e2128">
+<meta name="msapplication-tap-highlight" content="no">
+
+<link rel="stylesheet" href="/css/main.css?v=2026072503">
+
+
+<link rel="preload" as="image" href="/images/Z.A.T.O_02_ca04.jpg" fetchpriority="high">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aikkeko.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+
+<script src="/js/long-text-loader.js" async></script>
+<script src="/js/mobile-background.js" defer></script>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    var hostname = location.hostname;
+    var isPrivateNetwork = /^10\./.test(hostname) ||
+      /^192\.168\./.test(hostname) ||
+      /^172\.(1[6-9]|2\d|3[01])\./.test(hostname) ||
+      /\.local$/i.test(hostname);
+    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(hostname) !== -1 || isPrivateNetwork;
+
+    if (isLocalPreview) {
+      navigator.serviceWorker.getRegistrations()
+        .then(function(registrations) {
+          return Promise.all(registrations.map(function(registration) {
+            return registration.unregister();
+          }));
+        })
+        .then(function() {
+          if (!window.caches) return [];
+          return caches.keys().then(function(keys) {
+            return Promise.all(keys.filter(function(key) {
+              return key.indexOf('blog-') === 0;
+            }).map(function(key) {
+              return caches.delete(key);
+            }));
+          });
+        })
+        .then(function() {
+          console.log('[ServiceWorker] Local preview cleanup complete.');
+        })
+        .catch(function(error) {
+          console.log('[ServiceWorker] Local preview cleanup failed:', error);
+        });
+      return;
+    }
+
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(registration) {
+        console.log('[ServiceWorker] Registered:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('[ServiceWorker] Registration failed:', error);
+      });
+  });
+}
+</script>
+
+  <meta name="description" content="在本书里反复出现了“臭虫”的隐喻，很难不让人联想到那个以人忽然变成昆虫而知名的短篇小说《变形记》。一般我们认为，卡夫卡思想的源泉有一部分是来自陀思妥耶夫斯基的，两者的作品在某种微妙的互文中形成了映射：在卡夫卡的世界里，人被忽然抛入异化的现实中，在故事的开始就不容解释与争辩地变成了昆虫；而在陀思妥耶夫斯基的笔下，他以一个“地下室人”的视角描述的异彩纷呈又已然颓...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我们终于如愿以偿成为臭虫 | 《地下室手记》杂谈">
+<meta property="og:url" content="https://aikkeko.github.io/2020-08-20-%E6%88%91%E4%BB%AC%E7%BB%88%E4%BA%8E%E5%A6%82%E6%84%BF%E4%BB%A5%E5%81%BF%E6%88%90%E4%B8%BA%E8%87%AD%E8%99%AB.html">
+<meta property="og:site_name" content="Aike · Echo">
+<meta property="og:description" content="在本书里反复出现了“臭虫”的隐喻，很难不让人联想到那个以人忽然变成昆虫而知名的短篇小说《变形记》。一般我们认为，卡夫卡思想的源泉有一部分是来自陀思妥耶夫斯基的，两者的作品在某种微妙的互文中形成了映射：在卡夫卡的世界里，人被忽然抛入异化的现实中，在故事的开始就不容解释与争辩地变成了昆虫；而在陀思妥耶夫斯基的笔下，他以一个“地下室人”的视角描述的异彩纷呈又已然颓...">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-08-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-24T15:08:50.135Z">
+<meta property="article:author" content="AikeKo">
+<meta property="article:tag" content="小说">
+<meta property="article:tag" content="卡夫卡">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://aikkeko.github.io/2020-08-20-%E6%88%91%E4%BB%AC%E7%BB%88%E4%BA%8E%E5%A6%82%E6%84%BF%E4%BB%A5%E5%81%BF%E6%88%90%E4%B8%BA%E8%87%AD%E8%99%AB.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap"></noscript>
+
+  <title>我们终于如愿以偿成为臭虫 | 《地下室手记》杂谈 | Aike · Echo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Aike · Echo" type="application/atom+xml">
+</head>
+
+<body class="post-detail" itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="zato-background-quotes" aria-hidden="true">
+      <span class="zato-quote zato-quote-left">ALL STORIES ARE LOST PROPERTY</span>
+      <span class="zato-quote zato-quote-right">THE LAST ARCHIVE REMAINS OPEN</span>
+      <span class="zato-quote zato-quote-top">PLEASE RETURN BORROWED DREAMS</span>
+      <span class="zato-quote zato-quote-mid">MEMORY IS AN INDEX WITHOUT A MAP</span>
+      <span class="zato-quote zato-quote-bottom">NO REFUNDS AFTER THE END OF THE WORLD</span>
+      <span class="zato-quote zato-quote-code">WATER &amp; BISCUIT / AISLE 30</span>
+    </div>
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Aike · Echo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">theme of the WATER & BISCUIT</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-media">
+
+    <a href="/media/" rel="section"><i class="fa fa-headphones fa-fw"></i>声像</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+  
+
+  
+  <div class="post-banner" style="background-image: url('https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/fb/d0/fbd01072c8532e5ab0a76c143802356f.png'), url('/images/Z.A.T.O_02_ca04.jpg');">
+    <div class="post-banner-mask"></div>
+    <div class="post-banner-content">
+      <div class="post-banner-text">
+        <h1 class="post-banner-title" itemprop="name headline">我们终于如愿以偿成为臭虫 | 《地下室手记》杂谈</h1>
+        
+        <div class="post-banner-meta">
+          <span class="post-banner-author">
+            <i class="fa fa-user"></i> AikeKo
+          </span>
+          
+          <span class="post-banner-date">
+            <i class="fa fa-calendar"></i> Aug 20, 2020
+          </span>
+          <span class="post-banner-category">
+            <i class="fa fa-folder"></i>
+              文学
+          </span>
+          <span class="post-banner-words">
+            <i class="fa fa-file-word"></i> 2.7k words
+          </span>
+          <span class="post-banner-reading-time">
+            <i class="fa fa-clock"></i> 8 min read
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aikkeko.github.io/2020-08-20-%E6%88%91%E4%BB%AC%E7%BB%88%E4%BA%8E%E5%A6%82%E6%84%BF%E4%BB%A5%E5%81%BF%E6%88%90%E4%B8%BA%E8%87%AD%E8%99%AB.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AikeKo">
+      <meta itemprop="description" content="你找到祈祷的意义了吗？">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aike · Echo">
+    </span>
+
+    
+      <div class="post-hero">
+          <img class="post-hero-image" src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/fb/d0/fbd01072c8532e5ab0a76c143802356f.png" alt="我们终于如愿以偿成为臭虫 | 《地下室手记》杂谈" itemprop="image">
+      </div>
+      <header class="post-header with-hero banner-hidden">
+        
+        <h1 class="post-title" itemprop="name headline" style="display: none;">我们终于如愿以偿成为臭虫 | 《地下室手记》杂谈</h1>
+
+        <div class="post-meta banner-meta-only">
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+          
+            <div class="post-description">在本书里反复出现了“臭虫”的隐喻，很难不让人联想到那个以人忽然变成昆虫而知名的短篇小说《变形记》。一般我们认为，卡夫卡思想的源泉有一部分是来自陀思妥耶夫斯基的，两者的作品在某种微妙的互文中形成了映射：在卡夫卡的世界里，人被忽然抛入异化的现实中，在故事的开始就不容解释与争辩地变成了昆虫；而在陀思妥耶夫斯基的笔下，他以一个“地下室人”的视角描述的异彩纷呈又已然颓...</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><strong>在本书里反复出现了“臭虫”的隐喻，很难不让人联想到那个以人忽然变成昆虫而知名的短篇小说《变形记》。一般我们认为，卡夫卡思想的源泉有一部分是来自陀思妥耶夫斯基的，两者的作品在某种微妙的互文中形成了映射：在卡夫卡的世界里，人被忽然抛入异化的现实中，在故事的开始就不容解释与争辩地变成了昆虫；而在陀思妥耶夫斯基的笔下，他以一个“地下室人”的视角描述的异彩纷呈又已然颓败的世界，从而审视人内心底是如何如愿以偿地成为一只臭虫的过程，将如此这般思想转变的忏悔录毫无保留地呈现给我们——可以说，这一次，他开始真正以自己的声音在说话。</strong></p>
+<p><strong>虽说《地下室手记》可以被称作陀氏的忏悔录，可这忏悔录不同于卢梭或是托尔斯泰，既没有一种“宛若”真诚的自白、反思，也没有在请求宽恕与原谅，而是全篇充斥着玩笑、讽刺与歇斯底里的疯狂——是的，在阅读本书中你可以感受到那近乎溢出的恶意于字里行间蠢蠢欲动，可当你在内心阴暗的角落悄悄地诅咒主人公的言行时，只需稍微反思一下现代人们的心理境况，又不由得为陀氏深邃的洞察倒吸一口凉气：所谓地下室人，在陀氏写作的十九世纪也许还属于较为罕见的情况，而这种将个体性提高到极致，与城市的真实生活相隔绝的状态，却多多少少覆盖了二十一世纪大部分的我们。先不要着急于把自己与地下室人划清界限，请反思一下自己是否拥有着我认为地下室人最重要的属性：明知丑恶、痛苦与不幸却依然为之。在本书中陀氏用了“牙疼时的呻吟”的比喻，在每一次疼痛的“哼哼”声中，重要的不再是痛苦，而是某种痛苦的表达。其实这很好理解，文中也有用篇幅描述这种状态：明知生气是无用的，却故意摆出一副生气的样子；知晓自己的复仇对复仇对象给予不了任何伤害，却依然构想着自己宏伟的复仇计划；面对丽莎爱的光芒，却用消极的方式回报予最深的恶意。直观上来说，人应该是趋利避害的动物，可却能“享受”类似牙疼这种无意义的痛苦的乐趣——而有意思是，倘若这种痛苦有目的，人则不会将这种痛苦表达。可惜的是，现在我们大多都暴露在这种无目的的痛苦之中，至少我们认为此种的痛苦是有着无可奈何的属性的。</strong></p>
+<p><strong>当代有一种非常泛滥的虚无主义，用一句冻非常中二的话简单概括就是：错的不是我，是世界——你还别笑，这样的的思想可不仅仅属于那些还没长大的青春期少年少女，而是根深蒂固于日常生活包括我在内的近乎每一个人的内心中。抱有这种想法的人持有一种逻辑，我的痛苦来源是这个世界，所以我这样做是无可奈何的，即“一切怪我的东西其实都是我没有自由意志的结果”。其实这句话后面还有一句话被巧妙而精致地隐藏了，人们对其仿佛达成了某种契约般隐而不语，而我现在装作好像很义正言辞地将其说出——“所以我是可怜的、无辜的”。是啊，这是个人人都抢着当受害者的年代，尤其是在主体性树立的方面，个体的所行所言仿佛都受社会运转所支配，自己只是作为齿轮部件“不得不”、“无可奈何”地去这样做罢了——为什么会有这么多人唯独对四五十年前的存在主义理论感兴趣？我寻思其中有一句我们耳熟能详的名言：“世界是荒谬的。”这简直就是一句魔法般的话语，哦，“荒谬”！多么美丽的词汇！简直浓缩了我们对于世界的全部坏的认知，正中我们理解方式的好球区，以至于在任何时候、遇到任何痛苦、挫折，我们都能复述这句话为自己开脱，运用这句话为重新为有意识而无所事事的自己提供某种消极的力量——不得不承认，我们都太喜欢这种论调了，即坏的生活与我无关，虽然存在主义本身想表达的起手并不是这些（这里可以涉及到在加缪的有些作品里从“世界是荒谬的”是可能推不到“西西弗的幸福”的问题，但不展开说了）。于是，最危险的地方来了，当我们在某种破坏式的怀疑下预设了世界是如此丑恶的时候，在理性链条传递的终端，我们很容易达成某种心照不宣的共识：生活真是糟糕——就像那些忍不住要表达出的痛苦般，我们当我们操起现代理性的铁锤时，总能通过敲打主体以外的事物，精准地计算出所有不幸的价值，从而证明自己想要的这个最坏的结论，这就是所谓的“二二得四”——既然生活已然如此糟糕，而我们又对其无可奈何，那除了发挥个人主义的余热去做地下室人，我们个人在面对社会的时候还能做些什么呢？所以当地下室人歇斯底里地发作，而后感到某种痛彻心扉的愧疚，可第二天醒来又宛若什么都没发生般心安理得，这就是陀氏的无比精准的洞察，一种我们为何能心安理得“明知不可为而为之”的情绪，还有人在否定时，在可以轻松不为自己负责时特别强大的力量。即使十九世纪科学仍然处于黄金年代，那个人人都对科技理性抱有希望的年代，有关人的现代性关键问题早已被陀氏敏锐地指出：过去我们作恶可能是出于城邦、共同体的正义，而现在我们即使知道丑恶却依然去做，文明所带来的是一个肆意作恶都可能不用负责的野蛮时代，所谓“罪感”只不过是一种情怀，“羞耻”也不再具备约束的力量，我们愿意自由地相信的只有荒谬，只有理性，只有科技，只有数字，只有统计学，只有看不见的手，只有“美与崇高”，只有“二二得四”——所以现在的我们，还敢于去相信吗？</strong></p>
+<p><strong>值得一提的是，在本书的最后几章中，地下室人仅由和妓女丽莎的一段经历，从而给爱他所认为的“爱”下了定义：“爱就是被爱的人自觉自愿地把虐待他的权利拱手赠予爱他的人”。可我认为地下室人问题，并不是这种简单的名为“爱”的陈词滥调就能回答的。在真实的生活中，在人与人之间复杂的关系网中，“爱”这个词汇其实并不是如此这般定义就能轻松概括的。地下室人认为爱就是“虐待和精神的优势“，他所定义的爱能够给我们带来某种否定的快感，但我们必须认清在这种快感之后某种破坏性的力量，一种仅仅来自想象的泾渭分明的认知。这和希望让世界的坏与自己无关一样，属于粗暴地排除了某些非常重要的东西——仅仅将视线拉回到我们的经验之中，当我们面对真正的“爱”，立即能够感受到真实自我的复杂，与真实的对方的复杂……这似乎已经上升到某种信念层次的问题了，现在的我也许还不能讲明白，但至少停下来好好问一问自己，我们所希望的爱究竟是什么？假如说能稍微感受到这其中的的巨大断裂，就请不要轻而易举地抛弃那些我们为之沉默的重要的东西，不再理所当然地做一个孤独的自爱人。</strong></p>
+<p><strong>最后再让我们回到开头提到的《变形记》吧，与其称格里高尔毋庸置疑地异化为了昆虫，倒不如说卡夫卡的作品里多少都有此等无可奈何的意味，此种现代性基调的源头甚至可以追溯到遥远的唯名论革命所引发的一切关于人、神与自然的思想交锋。现代似乎总是意味着“新”，意味着在时代之流前所未有的新颖，筋疲力尽地试图与过去划清界限。可是以启蒙时代为起点，于世界好不容易被人从那个不可知的、令人恐惧的神那里夺回来的几百年后，我们似乎又逐渐将世界拱手赠予给了不再被称作“神”的神（暂且称其为美与崇高）——等等，拱手赠予？这不恰好正是地下室所提到的爱的特征吗？况且其中似乎正好真的有几分自虐的成分在里面，在我们在网络上肆意宣泄情绪的每一刻，在我们心安理得地享受着他人的痛苦每一刻，在我们不再相信自己意志的而漏出呻吟的每一刻——陀氏所描绘的，就是这样的我们。或许，当一天早上醒来后，我们真的变成了一只臭虫：手脚变成了触角，肚子贴着地面，连翻面爬行都困难——但请先不要着急想着如何应对这个状况，也不要将这当做是专属于自己的不幸，而是首先问自己一个问题：我们是否是如愿以偿变成臭虫的呢？</strong></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B0%8F%E8%AF%B4/" rel="tag"># 小说</a>
+              <a href="/tags/%E5%8D%A1%E5%A4%AB%E5%8D%A1/" rel="tag"># 卡夫卡</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020-07-15-%E8%A2%AB%E6%8B%89%E8%BF%9C%E7%9A%84%E8%B7%9D%E7%A6%BB.html" rel="prev" title="被拉远的距离 | 《死屋手记》杂谈">
+      <i class="fa fa-chevron-left"></i> 被拉远的距离 | 《死屋手记》杂谈
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020-12-28-%E6%9C%9D%E5%90%91%E6%9B%B4%E8%BF%9C%E7%9A%84%E5%9C%B0%E6%96%B9.html" rel="next" title="朝向更远的地方 | 2020年阅读总结">
+      朝向更远的地方 | 2020年阅读总结 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <section class="comments giscus-comments" aria-labelledby="echo-comments-title">
+    <header class="giscus-comments-header">
+      <div>
+        <span class="giscus-comments-kicker">ECHO TERMINAL / GITHUB DISCUSSIONS</span>
+        <h2 id="echo-comments-title">留下回声</h2>
+        <p>使用 GitHub 登录后留言或回复。讨论将与这份文章档案保持关联。</p>
+      </div>
+      <span class="giscus-comments-status">PUBLIC CHANNEL</span>
+    </header>
+      <div class="giscus-pending" role="status">
+        <span class="giscus-pending-mark" aria-hidden="true"><i class="far fa-comment-dots"></i></span>
+        <div>
+          <strong>回声频道尚未开放</strong>
+          <p>GitHub Discussions is waiting to be connected.</p>
+        </div>
+      </div>
+  </section>
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AikeKo"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">AikeKo</p>
+  <div class="site-description" itemprop="description">你找到祈祷的意义了吗？</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+      <div class="site-state-item site-state-media">
+          <a href="/media/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">声像</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/aikkeko" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;aikkeko" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AikeKo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

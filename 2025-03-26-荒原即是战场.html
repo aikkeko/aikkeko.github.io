@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#1e2128">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bitbug_favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bitbug_favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#1e2128">
+
+
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="档案馆">
+<meta name="application-name" content="Aike · Echo">
+<meta name="msapplication-TileColor" content="#1e2128">
+<meta name="msapplication-tap-highlight" content="no">
+
+<link rel="stylesheet" href="/css/main.css?v=2026072503">
+
+
+<link rel="preload" as="image" href="/images/Z.A.T.O_02_ca04.jpg" fetchpriority="high">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"aikkeko.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+
+<script src="/js/long-text-loader.js" async></script>
+<script src="/js/mobile-background.js" defer></script>
+
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    var hostname = location.hostname;
+    var isPrivateNetwork = /^10\./.test(hostname) ||
+      /^192\.168\./.test(hostname) ||
+      /^172\.(1[6-9]|2\d|3[01])\./.test(hostname) ||
+      /\.local$/i.test(hostname);
+    var isLocalPreview = ['localhost', '127.0.0.1', '0.0.0.0', '::1'].indexOf(hostname) !== -1 || isPrivateNetwork;
+
+    if (isLocalPreview) {
+      navigator.serviceWorker.getRegistrations()
+        .then(function(registrations) {
+          return Promise.all(registrations.map(function(registration) {
+            return registration.unregister();
+          }));
+        })
+        .then(function() {
+          if (!window.caches) return [];
+          return caches.keys().then(function(keys) {
+            return Promise.all(keys.filter(function(key) {
+              return key.indexOf('blog-') === 0;
+            }).map(function(key) {
+              return caches.delete(key);
+            }));
+          });
+        })
+        .then(function() {
+          console.log('[ServiceWorker] Local preview cleanup complete.');
+        })
+        .catch(function(error) {
+          console.log('[ServiceWorker] Local preview cleanup failed:', error);
+        });
+      return;
+    }
+
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(registration) {
+        console.log('[ServiceWorker] Registered:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('[ServiceWorker] Registration failed:', error);
+      });
+  });
+}
+</script>
+
+  <meta name="description" content="穿越苔原的荒芜与寂静，绕过米尔人的营地，借助陌生玩家留下的绳索、梯子，在峭壁上攀爬，终于来到山顶的目的地，将药物送达避难所的终端机完成本次派送任务，画面中浮现老爷子的虚拟投影，他告诉我们他已经很久没有和人说话了，而后开罗尔网络又将连接一个节点……这就是《死亡搁浅》最稀松平常、简直毫无波澜与变化的核心游戏流程，或许对我来说就是《死亡搁浅》游戏内容的全部：操控着...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="荒原即是战场 | 简单review下《死亡搁浅》">
+<meta property="og:url" content="https://aikkeko.github.io/2025-03-26-%E8%8D%92%E5%8E%9F%E5%8D%B3%E6%98%AF%E6%88%98%E5%9C%BA.html">
+<meta property="og:site_name" content="Aike · Echo">
+<meta property="og:description" content="穿越苔原的荒芜与寂静，绕过米尔人的营地，借助陌生玩家留下的绳索、梯子，在峭壁上攀爬，终于来到山顶的目的地，将药物送达避难所的终端机完成本次派送任务，画面中浮现老爷子的虚拟投影，他告诉我们他已经很久没有和人说话了，而后开罗尔网络又将连接一个节点……这就是《死亡搁浅》最稀松平常、简直毫无波澜与变化的核心游戏流程，或许对我来说就是《死亡搁浅》游戏内容的全部：操控着...">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-25T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-24T15:08:58.721Z">
+<meta property="article:author" content="AikeKo">
+<meta property="article:tag" content="游戏">
+<meta property="article:tag" content="攻略">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://aikkeko.github.io/2025-03-26-%E8%8D%92%E5%8E%9F%E5%8D%B3%E6%98%AF%E6%88%98%E5%9C%BA.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap"></noscript>
+
+  <title>荒原即是战场 | 简单review下《死亡搁浅》 | Aike · Echo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="Aike · Echo" type="application/atom+xml">
+</head>
+
+<body class="post-detail" itemscope itemtype="http://schema.org/WebPage">
+  <div class="container">
+    <div class="zato-background-quotes" aria-hidden="true">
+      <span class="zato-quote zato-quote-left">ALL STORIES ARE LOST PROPERTY</span>
+      <span class="zato-quote zato-quote-right">THE LAST ARCHIVE REMAINS OPEN</span>
+      <span class="zato-quote zato-quote-top">PLEASE RETURN BORROWED DREAMS</span>
+      <span class="zato-quote zato-quote-mid">MEMORY IS AN INDEX WITHOUT A MAP</span>
+      <span class="zato-quote zato-quote-bottom">NO REFUNDS AFTER THE END OF THE WORLD</span>
+      <span class="zato-quote zato-quote-code">WATER &amp; BISCUIT / AISLE 30</span>
+    </div>
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Aike · Echo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">theme of the WATER & BISCUIT</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-media">
+
+    <a href="/media/" rel="section"><i class="fa fa-headphones fa-fw"></i>声像</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+  
+
+  
+  <div class="post-banner" style="background-image: url('https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/9b/55/9b556315acdada2059b31e6ba3b9573f.jpeg'), url('/images/Z.A.T.O_02_ca04.jpg');">
+    <div class="post-banner-mask"></div>
+    <div class="post-banner-content">
+      <div class="post-banner-text">
+        <h1 class="post-banner-title" itemprop="name headline">荒原即是战场 | 简单review下《死亡搁浅》</h1>
+        
+        <div class="post-banner-meta">
+          <span class="post-banner-author">
+            <i class="fa fa-user"></i> AikeKo
+          </span>
+          
+          <span class="post-banner-date">
+            <i class="fa fa-calendar"></i> Mar 26, 2025
+          </span>
+          <span class="post-banner-category">
+            <i class="fa fa-folder"></i>
+              游戏
+          </span>
+          <span class="post-banner-words">
+            <i class="fa fa-file-word"></i> 5.5k words
+          </span>
+          <span class="post-banner-reading-time">
+            <i class="fa fa-clock"></i> 18 min read
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aikkeko.github.io/2025-03-26-%E8%8D%92%E5%8E%9F%E5%8D%B3%E6%98%AF%E6%88%98%E5%9C%BA.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="AikeKo">
+      <meta itemprop="description" content="你找到祈祷的意义了吗？">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Aike · Echo">
+    </span>
+
+    
+      <div class="post-hero">
+          <img class="post-hero-image" src="https://pub-905ccfede9994fe5b8fc3f49a95678c8.r2.dev/aikkeko/blog/9b/55/9b556315acdada2059b31e6ba3b9573f.jpeg" alt="荒原即是战场 | 简单review下《死亡搁浅》" itemprop="image">
+      </div>
+      <header class="post-header with-hero banner-hidden">
+        
+        <h1 class="post-title" itemprop="name headline" style="display: none;">荒原即是战场 | 简单review下《死亡搁浅》</h1>
+
+        <div class="post-meta banner-meta-only">
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+          
+            <div class="post-description">穿越苔原的荒芜与寂静，绕过米尔人的营地，借助陌生玩家留下的绳索、梯子，在峭壁上攀爬，终于来到山顶的目的地，将药物送达避难所的终端机完成本次派送任务，画面中浮现老爷子的虚拟投影，他告诉我们他已经很久没有和人说话了，而后开罗尔网络又将连接一个节点……这就是《死亡搁浅》最稀松平常、简直毫无波澜与变化的核心游戏流程，或许对我来说就是《死亡搁浅》游戏内容的全部：操控着...</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>穿越苔原的荒芜与寂静，绕过米尔人的营地，借助陌生玩家留下的绳索、梯子，在峭壁上攀爬，终于来到山顶的目的地，将药物送达避难所的终端机完成本次派送任务，画面中浮现老爷子的虚拟投影，他告诉我们他已经很久没有和人说话了，而后开罗尔网络又将连接一个节点……这就是《死亡搁浅》最稀松平常、简直毫无波澜与变化的核心游戏流程，或许对我来说就是《死亡搁浅》游戏内容的全部：操控着主人公Sam，从地点A拿到任务货物，背负着这些物资，穿越这片被时间遗忘的土地，送达到地点B。湍急的河流、无尽的远山、断裂的山谷、腐蚀一切的时间雨、吞噬生命的暴风雪，偏执的米尔人、还有那些游荡在虚空中的BT……这趟旅程残酷而压抑，而你要做的，就是在这片荒原的战场上，将身后的货物送往它们该前往的方向，连接分散在末日废土上的一个个孤立节点。</p>
+<p>印象里，小岛秀夫是我知晓的第一位日本游戏制作人：早在小学的时候，游戏风云频道就在狂推小岛的《合金装备》系列，我也因此对这位游戏制作人格外关注；而作为小岛秀夫离开KONAMI后的首部重量级作品，《死亡搁浅》无疑延续着小岛那一贯的才气：无论是鼓励玩家利用地形、道具规避与敌人发生直接战斗的潜行理念，还是长镜头播片中复杂的世界观与隐喻表达，以及数不清的彩蛋与粉丝文化，都让人无比确信这是小岛才会出品的游戏——岛哥哥伟大，无需多言！</p>
+<p>抛开主线剧情不谈，我得承认自己相当享受《死亡搁浅》的游玩过程，尤其是这个游戏把最荒诞的浪漫藏在最笨拙的行走中的玩法设计：地形阻力、货物重量与平衡系统共同构建了独特的物流美学，是我最为惊喜也最为青睐的点。游戏的主角Sam除了血量外，还有着负重性、平衡性、崎岖地形适应力、抗昏迷能力等在其他游戏设计中近乎不曾出现的奇妙属性，鞋子和近乎每个装备与建筑都有有着耐久度的设定，若玩家长时间不更换已经磨损的鞋子，主角的脚会被磨出血、更容易打滑跌倒，建筑不修缮也会逐渐锈迹斑斑从而不可用；除此之外主角还能通过洗澡获得排泄物手榴弹、在地图的角落上厕所的地方长出小蘑菇、喝地雷妹最喜欢的魔爪提升体力（导剪版因广告合作到期已替换），更改自己的衣着、面容和背包设定，可以在送货途中面对风景停下拍照，可以让他驾驶赛车狂飙，也可以在仅仅是安全屋里睡觉休息……种种精细到令人发指的设定，实在不得不让人觉得其实我们是在游戏中养着一只名为Sam的电子宠物——而在采访中，小岛秀夫的确有承认，他理想中的电子游戏“feels like a person”——这段信息来自Tim Rogers的Review视频——多亏了他，我能够更好地理解为什么自己会对如此这般细致入微的设定感到享受与痴迷，很多时候我都是想随意地走在地图中，然后利用照相系统留下一张张自我满足的相片。</p>
+<p>为了达成导演剪辑版全成就，我总共在这个世界投入了上百小时时间。据统计角色地图上实际移动距离超过1000km，修建的道路以及索道矩阵跨越裂谷、河床、雪山，连接到了近乎地图的每个角落，留下的建筑在两个月内收获了其余陌生玩家数十万次的点赞：如果说我不享受这个过程以及为结果感到满足，那肯定是骗人的。为了送达货物，或者更进一步说为了给后来的派送员（包括我自己）提供更快捷的路径，为了让大家无需再一次冒险顶着风雪或艰难地穿越残垣断壁，我们留下了绳索、梯子、充电桩、索道、雨亭等各式各样的工具与建筑；虽然玩家们从未同时空地处在一个世界内，但通过这些工具的时间上的延绵，我们与其他个体建立联结，即使从未见面却共享着超越时空的资源，这种“异步联机”的设计也是小岛秀夫的游戏理念的核心。可以说《死亡搁浅》提供给我东西远比我预想中要多上不少，它毫无保留地回应了我对一款“好游戏”的期待——即使我是在2023年末购买了这款游戏，在整个24年间不厌其烦地在游戏的前期捡起、放下这款游戏，直到今年趁着新年工作暂时闲下来才近乎痴狂地走完了游戏的全流程。</p>
+<p>我数次半途而废的行为其实也不难理解，毕竟游戏在初期就将大部分操作设定都一股脑地灌输给了玩家，玩家能够使用的快捷键简直数不胜数，系统UI堆叠成山令人眼花缭乱只能哪里亮了点哪里，而我相信大部分玩家都不会有耐心去打开操作界面一条条认真观看，并仅靠阅读理解就掌握那几百条操作介绍，以至于整款游戏的前期流程对于玩家来说成为了不折不扣的折磨。游戏初期会有一张较小型的东部地图，可以将这张地图上的人物看作某种学习游戏机制的过程，一般这张地图中玩家会在无数次的跌倒、电量耗尽、货物损坏中学会派送任务系统的底层机制，掌握如何规划路线、如何利用各式各样的工具，如何抄近路、规避敌人讨巧地完成每一次派送。这一学习的过程无疑是纯粹的痛苦与令人沮丧的（毕竟我们真的很难在一个3A大作中找到会跌倒这么多次的主角吧？就连如何走路都是我们要认真学习的技能，这似乎在名为“步行模拟器”的游戏分类中又显得十分合理？）很长一段时间，玩家会独自迷失在这片荒原中，除了到达任务指定的节点城或避难所之外，甚至很难在派送途中遇到任何非敌对的NPC，一切都是只有靠自己的脚步来前进与开拓——这也许是安排给玩家某种强制学习的过程，而当结束东部地图的流程后，玩家便来到了中部大地图，也就是这部游戏中最核心的场所，我们的大部分冒险时光，以及整款游戏的灵魂，便存在于这片广阔的荒原之上。</p>
+<p>我出于私心觉得，《死亡搁浅》最为核心的魅力，恰恰藏在那些看似非关战斗的环节里。当玩家通过经验与使用工具与陡峭岩壁搏斗、在暴风雪中校准方向、保持身体平衡与维持体温、甚至为跨过一道崎岖的地貌反复调整卡车的方向，在这些漫长而充满险阻的步行中，游戏所打造出的沉浸感是单纯的枪械射击战斗或BOSS战难以企及的。诚然战斗系统和过场影片构成了《死亡搁浅》的叙事骨架，为了达成全成就我也不得不在最高难度下，被迫拿起霰弹枪与手榴弹与BT正面交锋，速通“开罗尔晶体豪劫-气势汹汹”分红关；或使用烟雾道具引开米尔人来一场声东击西的“营地豪劫-兵不厌诈”，但纵使有着这些令人血脉偾张的要素，整个游戏流程中真正令我着迷的，始终是那片充满“恶意”并毫无保留的荒原世界——整款游戏真正的冒险，其实就存在于穿越荒原的旅程本身。就宛若每个开放世界一样，游戏的大地图有着令人惊异与着迷的宽广性——湿滑的岩石、暗涌的河水、雪山斜坡的角度，这些地貌元素以惊人的密度交织成天然障碍场。与其说这是一款关于送快递的游戏，不如说它完成了一场反向设计实验：让自然环境本身成为最具压迫感的战场。玩家需不时启动奥卓德克扫描仪关注周遭地貌的细节，散落的遗失的货物以及其他玩家留下可用的道具或建筑，频发的交互无时无刻不在提醒我们：游戏的战场其实就是地形、地貌本身，它以最原始的方式考验着玩家的耐心、策略与意志，但在此基础之上，行走的冒险也有着细致打磨的难度梯度；如果能忍受初期连走路都不会的那段艰难的时光，在游戏后期我们便能潇洒自如地背着比Sam还高出一倍的货物边跑边跳，驾驶摩托在平坦的战场肆意狂飙，肉身从雪山上翻滚飞跃而下完成炫酷的特技动作，或是通过索道在地图上尽情高速遨游，享受着由你自己搭建成的连接网络的便捷——《死亡搁浅》给每个经历了蹒跚学步这个过程的玩家的操作反馈是有引导的、没有恶意的、充盈着真诚的，你必须逐渐学会如何与这样的地形地貌打交道，而这完全是可以掌控的！而只有在逐渐掌握这些技巧与铺展连接点的过程中，你才能领会到那些交错的时刻是多么的珍贵幸福——在电量即将耗尽的时候，眼前出现了某人留下的充电机；在寻找隐藏要素的时候，一个大大的指示牌准确而直观地指向了物品所在地；一个索道恰好修在了两个索道各间隔350米的位置（如果你是索道工程师，你会明白我说的场景会有多么爽）；或仅仅是下起了时光雨，你躲在了雨亭里休整，而亭子恰好播放了一首你最喜欢的歌——仅仅是为了上述那些难以言喻的神圣时刻，在2025年《死亡搁浅2》即将发售的前夕，如果还未曾体验过这款游戏的话，我觉得你依然应该试着开启这场冒险。</p>
+<p>如果你和我一样，对战斗系统的设计并不执着，也不苛求完美的人物刻画或剧情走向，那么我会毫不犹豫地向你推荐《死亡搁浅》——甚至可以说，如果你和我一样对平台跳跃类游戏情有独钟，那么这款游戏绝对值得你一试——这绝对不是耸人听闻，毕竟我超级喜欢《蔚蓝》，它是我2023年最喜欢的游戏，我用了60小时达成了全成就，冲过了所有看似很难实则的确不简单的关卡，这或许是我这么多年游戏游玩史上最勇敢的一次冒险；我也同时很喜欢《Jump King》，以至于15小时便能将通关时间压缩至8分钟以内，并在不到20小时的总游戏时间里，30多次登上塔顶迎娶公主。而在《死亡搁浅》中，我花了30多个小时才第一次见到被困于美国西部的艾米丽——无论如何，这些游戏的核心挑战惊人地相似：真正的敌人从来不是具象的怪物，而是那些看似平凡却充满恶意的地形与地貌。无论是像素块堆砌的山崖，还是荒原上湿滑的苔藓，它们都在用最原始的方式考验着玩家的耐心与技巧，而你的跌倒的挫败、失望、灰心、不甘与倔强，与翻越山丘时目睹从未见过景色的执着、喜悦与救赎，这些当然都是真的——不用我告诉你，你自己知道这些都无言的、沉默的情感都是真的，而你所渴求的这些，在《死亡搁浅》中都能找到。</p>
+<p>如果你和我一样，不排斥计算规划，或是享受。对100小时以上的游戏感兴趣 探索游戏的每一处角落</p>
+<p>如果你和我一样，对战斗系统的设计并不执着，也不苛求完美的人物刻画或剧情走向，而只是单纯地期待一场“冒险”，那么我会向你推荐《死亡搁浅》。甚至可以说，如果你对平台跳跃类游戏情有独钟，那么这款游戏无疑是值得一试的——这绝非耸人听闻，毕竟我很喜欢《蔚蓝》，它是我2023年最喜欢的游戏，我付出了60小时与16386次死亡，冲过了所有看似很难实则的确不简单的关卡，最终达成了游戏全成就，这或许是自己这么多年游戏游玩史上最勇敢的一次冒险，若谎称不为自己感到自豪，那绝对是骗人的；同样我也很喜欢《Jump King》，最简化的操作，纯粹到没有任何目的，只是单纯地跳跃，以至于15小时内便能将通关本篇的时间压缩至10分钟以内，并在不到20小时的总游戏时间里，30+次登上塔顶迎娶公主（而在沟槽的《死亡搁浅》中，我得花30+个小时才能第一次见到自称被困于美国西部的艾米丽！）——无论如何，这些游戏设计核心惊人地相似：无论是粗糙像素块堆砌的山崖，还是强大的Decima引擎渲染出的荒原上湿滑的苔藓，它们都在用最原始却最真诚的的方式考验着玩家的耐心与技巧磨炼；山就在那里，战场就在你的脚下，与其感慨行路难，不如马上出发，就是这么简单而纯粹的逻辑。</p>
+<p>如果你和我一样，不介意花费上百小时去探索一款游戏的所有角落，不排斥在冒险的旅程之余静下心来进行计算和规划资源的可持续运转策略，那么我会向你推荐《死亡搁浅》。它有着足够的深度与广度去支撑你游玩与设计，无论是从岛哥哥的人形安利机的角度来说，还是从地图的可探索的维度来说。索道网的基建无疑是游戏中后期最富有乐趣的环节。游戏的中部地图很大，索道是在地图上移动最快的派送方式，全连接的索道网也是达成全成就必不可少的。中部地图需要大概100个左右的索道节点才能创造出游2-3条飞跃雪山线路的索道网，那么如何在有限的带宽内合理安排索道的位置，如何充分利用地图上其他玩家随机刷出来的索道，便成为了游戏中与地形地貌、距离高度等要素斗智斗勇的不可不品鉴的一环。自己有幸在工作上遇到一位玩过《死亡搁浅》并同样热衷于索道建设的同事，按照我们从程序猿角度出发交流的说法，索道基建其实可以简化为一个最简单的数学问题，或是一道leetcode算法题，题干会给出地图上所有需要连接点的三维坐标，以及所有其他玩家提供的在线索道坐标，问如何在不超过限定带宽的前提下建设整体货物流通用时最少的索道结构网——我咧个去这个复杂度好像很有点大了，这我面试的时候得用多么牛逼的算法来减少计算量才行啊？但这样做得出一个固定最优解也挺无聊，毕竟这不就省略掉了现场实践的过程么？当然这是存在最优解的，甚至打开视频网站搜下攻略都能找到不需要依赖其他玩家的索道的最优解……但该怎么说才好呢？一点点挪动搭建地点、对准轨道，调整建筑位置，以使中间节点相对于两端的节点的位置正好都满足距离限制，为某个地方某个点有前人留下的索道而感到纯粹的喜悦，让人不禁回想起十年前的测量学实习时使用全站仪绘制教学区地图的时光——连点成线是能带来愉悦感的，如此苍白、琐碎、无聊的串联交互中获得的策略性快乐，从碎片到完整一种切实的推进，作为战场的荒原也逐渐因为网络节点的点缀而焕发生机，我们也能感受到自己对于游戏世界的直接影响，这当然只有你去自己做了才会明白。</p>
+<p>如果你和我一样，喜欢在游戏中停下脚步，任由时间在指尖流逝，只为欣赏周遭风景的每一处细节；或者你热衷于游荡在绝景之地，调整镜头角度，捕捉那些令人屏息的瞬间，那么我会向你推荐《死亡搁浅》。本地的画面表现早已无需赘述——你只需打开游戏，伴随着Low Roar的《Don’t Be So Serious》，沉浸在那堪称史上最美的游戏开场之一中，便能瞬间理解它的魅力。无需我多言，它的风景有多壮丽，它的世界有多真实，打开游戏体验便知。随着全收集进度的推进，你的足迹将遍布这片荒原的每一个角落。你会发现，那些曾经匆匆掠过的风景，竟藏着无数隐秘的惊喜——或许是某个被苔藓覆盖的洞穴，悄然隐匿在峭壁之下；或许是一座孤独的鸟居，静静矗立在山丘之上；如果不抬头望去，也不会知晓雪山顶端的极光竟如此绚烂，闪耀的天空壮丽到令人窒息。甚至前些日子和同学聚会喝酒，我们还聊到要去游戏的取景地冰岛旅行的事情，并以此安利大伙都去玩玩这游戏；我想世界上如果有什么不一样的地方，那一定得是冰岛吧——这是我在通关《死亡搁浅》后首次产生的不成熟的想法。或许因为工作压力太大，自己需要一个地方能短暂地休息或逃避；或许在这样的风景中徜徉，本身就是一种无时间性的停滞；或许理由不是什么人生的意义这种宏大命题，完全没有那么夸张，只是单纯地觉得，能和朋友一起去见证这样美丽的景色，那感觉简直棒极了——而这正是《死亡搁浅》回报给我的期待，一场关于风景、孤独与连接的冒险——岛哥哥想守护的便是这样的冒险，所以我能永远对他保持敬意。</p>
+<p>最后，我想请你回忆一下，那些自己曾经玩过的游戏，那些你最喜欢、最沉浸于其中的游戏——那些在混沌深渊中挣扎上升的时刻，那些在无数次死亡与重生中寻找方向的瞬间，那些第一次目睹未知风景时的震撼，那些面对离别时难以承受的沉默，那些矛盾与和解、执著与倔强、焦虑与激动、畏惧与勇敢交织的情感……这一切，或许你都曾经历过。而难以置信的是，这些复杂而深刻的情感，竟然都能在《死亡搁浅》中有所共鸣——至少，我在这个游戏中找到了这些脆弱而美丽的东西。我不敢保证你去游玩也能找到同样的感受，但我真心希望你能体验到——哪怕只是一丝微乎其微的触动。如果你在我的推荐下去玩了《死亡搁浅》，或是曾有过这样的感觉，那么我们之间或许已经无形建立了一种脆弱而美丽的连接。这种连接，就像游戏中那些跨越时空的点赞，无声却温暖，短暂却永恒，这一定是作为战场的荒原上那名为“生命”的印记。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B8%B8%E6%88%8F/" rel="tag"># 游戏</a>
+              <a href="/tags/%E6%94%BB%E7%95%A5/" rel="tag"># 攻略</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024-10-03-%E8%A5%BF%E5%8E%862236%E5%B9%B4%E7%9A%84%E6%81%8B%E4%BA%BA%E7%B5%AE%E8%AF%AD.html" rel="prev" title="西历2236年的恋人絮语 | With love from 2018 A.D.">
+      <i class="fa fa-chevron-left"></i> 西历2236年的恋人絮语 | With love from 2018 A.D.
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026-01-28-%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%9B%9E%E5%88%B0Vorkuta%EF%BC%8C%E4%BD%86%E9%82%A3%E5%B7%B2%E7%BB%8F%E6%B2%A1%E6%9C%89%E4%BA%BA%E4%BA%86.html" rel="next" title="你可以回到Vorkuta-5，但那里已经没有人了 | 一个理解《Z.A.T.O》的视角">
+      你可以回到Vorkuta-5，但那里已经没有人了 | 一个理解《Z.A.T.O》的视角 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <section class="comments giscus-comments" aria-labelledby="echo-comments-title">
+    <header class="giscus-comments-header">
+      <div>
+        <span class="giscus-comments-kicker">ECHO TERMINAL / GITHUB DISCUSSIONS</span>
+        <h2 id="echo-comments-title">留下回声</h2>
+        <p>使用 GitHub 登录后留言或回复。讨论将与这份文章档案保持关联。</p>
+      </div>
+      <span class="giscus-comments-status">PUBLIC CHANNEL</span>
+    </header>
+      <div class="giscus-pending" role="status">
+        <span class="giscus-pending-mark" aria-hidden="true"><i class="far fa-comment-dots"></i></span>
+        <div>
+          <strong>回声频道尚未开放</strong>
+          <p>GitHub Discussions is waiting to be connected.</p>
+        </div>
+      </div>
+  </section>
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="AikeKo"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">AikeKo</p>
+  <div class="site-description" itemprop="description">你找到祈祷的意义了吗？</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+      <div class="site-state-item site-state-media">
+          <a href="/media/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">声像</span>
+        </a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/aikkeko" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;aikkeko" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AikeKo</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
