@@ -2,13 +2,13 @@
 // NexT 主题美化配置 - Z.A.T.O 后末日风格
 // 基于 Z.A.T.O_02_ca04.png 废墟美学设计
 // 
-// Version: 2026.07.21-17
+// Version: 2026.07.25-03
 // Last Updated: 2026-07-21
 // ============================================
 
 // 版本信息（用于调试）
 :root {
-  --theme-version: "2026.07.21-17";
+  --theme-version: "2026.07.25-03";
   --theme-name: "Z.A.T.O Apocalypse";
   --font-reading:
     "Noto Sans SC",
@@ -22,6 +22,15 @@
     "Segoe UI",
     sans-serif;
   --font-display:
+    "Noto Serif SC",
+    "Source Han Serif SC",
+    "Noto Serif CJK SC",
+    "Songti SC",
+    "STSong",
+    "SimSun",
+    Georgia,
+    serif;
+  --font-prose:
     "Noto Serif SC",
     "Source Han Serif SC",
     "Noto Serif CJK SC",
@@ -80,7 +89,7 @@ body {
   
   // 版本号水印（调试用，显示在页面左上角）
   &::before {
-    content: "v2026.07.21-17";
+    content: "v2026.07.25-03";
     position: fixed;
     top: 8px;
     left: 8px;
@@ -6944,7 +6953,7 @@ body::before {
 
   .index .hero-kicker {
     margin-bottom: 18px !important;
-    font-size: 0.61rem !important;
+    font-size: 0.76rem !important;
     letter-spacing: 0.13em !important;
 
     &::before,
@@ -7817,4 +7826,122 @@ body::before {
 .archive-hero-desc {
   font-family: var(--font-reading) !important;
   font-weight: 400 !important;
+}
+
+// ============================================
+// 73. Long-form prose typography
+// ============================================
+.post-detail .post-body,
+.post-detail .post-body p,
+.post-detail .post-body li,
+.post-detail .post-body blockquote {
+  font-family: var(--font-prose) !important;
+  font-weight: 400 !important;
+  color: rgba(228, 224, 216, 0.86) !important;
+  font-kerning: normal;
+  font-feature-settings: "kern" 1, "palt" 1;
+  letter-spacing: 0.012em !important;
+  line-height: 1.95 !important;
+}
+
+.post-detail .post-body p {
+  margin-bottom: 1.45em !important;
+}
+
+// ============================================
+// 74. Desktop masthead fit
+// ============================================
+@media (min-width: 769px) {
+  .header-inner .site-brand-container,
+  body.post-detail .header-inner .site-brand-container,
+  body.page .header-inner .site-brand-container,
+  body.archive .header-inner .site-brand-container,
+  body.category .header-inner .site-brand-container,
+  body.tag .header-inner .site-brand-container {
+    padding-right: 9px !important;
+    padding-left: 9px !important;
+  }
+
+  .site-brand-container .site-meta {
+    width: 100% !important;
+    min-width: 0;
+  }
+
+  .header-inner .site-brand-container .site-subtitle,
+  body.post-detail .header-inner .site-brand-container .site-subtitle,
+  body.page .header-inner .site-brand-container .site-subtitle,
+  body.archive .header-inner .site-brand-container .site-subtitle,
+  body.category .header-inner .site-brand-container .site-subtitle,
+  body.tag .header-inner .site-brand-container .site-subtitle {
+    width: 100%;
+    font-size: 0.61rem !important;
+    letter-spacing: 0.01em !important;
+    text-align: center;
+  }
+}
+
+// ============================================
+// 75. Unified signature and Chinese nameplate
+// ============================================
+@media (min-width: 769px) {
+  .header-inner .site-brand-container .site-subtitle,
+  body.post-detail .header-inner .site-brand-container .site-subtitle,
+  body.page .header-inner .site-brand-container .site-subtitle,
+  body.archive .header-inner .site-brand-container .site-subtitle,
+  body.category .header-inner .site-brand-container .site-subtitle,
+  body.tag .header-inner .site-brand-container .site-subtitle {
+    font-family: var(--font-latin-display) !important;
+    font-size: 0.7rem !important;
+    font-style: italic !important;
+    font-weight: 400 !important;
+    line-height: 1.4 !important;
+    letter-spacing: 0.045em !important;
+  }
+}
+
+.index .hero-kicker {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 27px !important;
+  padding: 7px 17px 8px;
+  border-top: 1px solid rgba(212, 196, 168, 0.2);
+  border-bottom: 1px solid rgba(106, 160, 154, 0.18);
+  background:
+    linear-gradient(90deg, transparent, rgba(15, 18, 23, 0.32) 24%, rgba(15, 18, 23, 0.32) 76%, transparent);
+  color: rgba(239, 229, 211, 0.94) !important;
+  font-family: var(--font-display) !important;
+  font-size: clamp(1rem, 1.25vw, 1.15rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.25 !important;
+  letter-spacing: 0.24em !important;
+  text-shadow:
+    0 2px 9px rgba(0, 0, 0, 0.82),
+    0 0 18px rgba(212, 196, 168, 0.16);
+
+  &::before,
+  &::after {
+    width: 42px !important;
+    background: linear-gradient(90deg, transparent, rgba(212, 196, 168, 0.62)) !important;
+    opacity: 0.72 !important;
+  }
+
+  &::after {
+    transform: rotate(180deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .index .hero-kicker {
+    gap: 9px;
+    margin-bottom: 21px !important;
+    padding: 6px 11px 7px;
+    font-size: 0.86rem !important;
+    letter-spacing: 0.16em !important;
+
+    &::before,
+    &::after {
+      width: 20px !important;
+    }
+  }
 }

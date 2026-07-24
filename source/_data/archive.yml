@@ -10,11 +10,7 @@
 # Set homepage.featured_article to an article key, or leave it empty to use the newest post.
 # Leave description empty to show the beginning of the article automatically.
 # Add a description only when you want to override that automatic excerpt.
-# Add signal records under media.items; media.featured accepts an item id.
-# Every playable video must define url, embed, and cover.
-# cover must use the video's official source thumbnail over HTTPS; for Bilibili,
-# use the pic URL returned by its public video metadata API and change http to https.
-# The iframe is loaded only after the visitor presses Play, never on page entry.
+# Add radio/video records under media.items; media.featured accepts an item id.
 # R2 credentials remain in the private root .env file and are never written here.
 # Optional article fields: date, header_image, frontmatter
 
@@ -141,7 +137,7 @@ media:
   items:
     - id: duping-diantai-ep05
       type: video
-      title: "【毒评电台】EP.05 堂堂复活！老二次元也能再用 AI 登上新时代的破船吗？"
+      title: 【毒评电台】EP.05 堂堂复活！老二次元也能再用 AI 登上新时代的破船吗？
       episode: EP.05
       platform: Bilibili
       date: ""
@@ -156,10 +152,10 @@ media:
         - 二次元
     - id: chuncai-radio-geyougede
       type: video
-      title: "「蠢材呓事电台」各有各的拉法，各有各的说法，纸房子魔裁百合灵"
+      title: 「蠢材呓事电台」各有各的拉法，各有各的说法，纸房子魔裁百合灵
       episode: SPECIAL
       platform: Bilibili
-      date: 2025-12-11
+      date: 2025-12-11T00:00:00.000Z
       duration: 3h 10m
       url: https://www.bilibili.com/video/BV11jmaBmE5j/
       embed: https://player.bilibili.com/player.html?isOutside=true&aid=115697107603751&bvid=BV11jmaBmE5j&cid=34647837162&p=1
@@ -171,10 +167,10 @@ media:
         - 百合
     - id: duping-diantai-ep04
       type: video
-      title: "【毒评电台】EP.04 毕业季必看的2017遗珠！6年后再谈《Just Because!》"
+      title: 【毒评电台】EP.04 毕业季必看的2017遗珠！6年后再谈《Just Because!》
       episode: EP.04
       platform: Bilibili
-      date: 2023-06-23
+      date: 2023-06-23T00:00:00.000Z
       duration: 1h 15m
       url: https://www.bilibili.com/video/BV1uV4y127Yz/
       embed: https://player.bilibili.com/player.html?isOutside=true&aid=870018873&bvid=BV1uV4y127Yz&cid=1172130503&p=1
@@ -184,16 +180,78 @@ media:
         - 电台
         - 动画
         - Just Because!
-    - id: chuncai-radio-s03e08
-      type: radio
-      title: 蠢材呓事 · S3E08
-      episode: S03E08
-      platform: Radio
-      date: ""
-      duration: ""
-      url: ""
-      cover: ""
-      description: 围绕《Z.A.T.O. // I Love the World and Everything In It》的谈话与补充记录。
+    - id: chuncai-radio-ikoku-nikki
+      type: video
+      title: 「蠢材呓事电台」所有人终于聚在同一国家聊的《异国日记》
+      episode: ""
+      platform: Bilibili
+      date: 2026-06-11
+      duration: 1h 45m
+      url: https://www.bilibili.com/video/BV1GAEZ6wEt7/
+      embed: https://player.bilibili.com/player.html?isOutside=true&aid=116726775683716&bvid=BV1GAEZ6wEt7&cid=39015679411&p=1
+      cover: https://i2.hdslb.com/bfs/archive/3d0ad516bad59f2e60d2138d62d1e1b86847c284.jpg
+      description: 所有人终于聚在同一国家，围绕《异国日记》展开的一次长谈。
       tags:
-        - Z.A.T.O
-        - 游戏
+        - 电台
+        - 动画
+        - 异国日记
+    - id: chuncai-radio-kaguya
+      type: video
+      title: 「蠢材呓事电台」超时空辉夜姬能来拯救苏联高松灯吗？
+      episode: ""
+      platform: Bilibili
+      date: 2026-02-20
+      duration: 2h 39m
+      url: https://www.bilibili.com/video/BV1gvfuB4EoX/
+      embed: https://player.bilibili.com/player.html?isOutside=true&aid=116102529031546&bvid=BV1gvfuB4EoX&cid=36177248993&p=1
+      cover: https://i1.hdslb.com/bfs/archive/9854832ee445f9729d7c5240833fdf113b27318d.jpg
+      description: 从《超时空辉夜姬》谈到高松灯，在不同表达与创作技术之间展开讨论。
+      tags:
+        - 电台
+        - 动画
+        - 超时空辉夜姬
+    - id: chuncai-radio-ave-mujica
+      type: video
+      title: 「蠢材呓事电台」Ave Mujica是世界上最无可救药的作品，但同时武士道也做出了世界上最伟大的《少女歌剧》[S03E05]
+      episode: S03E05
+      platform: Bilibili
+      date: 2025-05-01
+      duration: 2h 03m
+      url: https://www.bilibili.com/video/BV1ZSGhzYEQK/
+      embed: https://player.bilibili.com/player.html?isOutside=true&aid=114429689666337&bvid=BV1ZSGhzYEQK&cid=29726674916&p=1
+      cover: https://i0.hdslb.com/bfs/archive/be3a465b7217f1957d2101432cdc8f1152290240.jpg
+      description: 从《Ave Mujica》的失控谈到武士道与《少女歌剧》的伟大，并延伸至少女乐队动画的创作问题。
+      tags:
+        - 电台
+        - 动画
+        - Ave Mujica
+    - id: duping-diantai-ep01
+      type: video
+      title: 【毒评电台】Ep.01 从孤独摇滚开始的世界系播客！
+      episode: EP.01
+      platform: Bilibili
+      date: 2023-04-16
+      duration: 1h 04m
+      url: https://www.bilibili.com/video/BV1AP411S7P3/
+      embed: https://player.bilibili.com/player.html?isOutside=true&aid=312512964&bvid=BV1AP411S7P3&cid=1097827470&p=1
+      cover: https://i0.hdslb.com/bfs/archive/92ec85b21e34b5ef6ce43a0cf6be67d30f388e08.jpg
+      description: 从《孤独摇滚！》出发，开启一档关于动画、游戏与小说的世界系播客。
+      tags:
+        - 电台
+        - 动画
+        - 孤独摇滚
+    - id: duping-diantai-ep02
+      type: video
+      title: 【毒评电台】Ep.02 A.I. knows LOVE? 人工智能会做二次元的梦吗？
+      episode: EP.02
+      platform: Bilibili
+      date: 2023-05-29
+      duration: 1h 21m
+      url: https://www.bilibili.com/video/BV1Wo4y137Hk/
+      embed: https://player.bilibili.com/player.html?isOutside=true&aid=399198324&bvid=BV1Wo4y137Hk&cid=1144227215&p=1
+      cover: https://i1.hdslb.com/bfs/archive/0debbe833e49330898befd40f3bf8c62324d0b3c.jpg
+      description: 围绕生成式 AI、创作与二次元文化，讨论人工智能是否理解爱与人的表达。
+      tags:
+        - 电台
+        - AI
+        - 二次元

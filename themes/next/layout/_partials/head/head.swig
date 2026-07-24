@@ -46,7 +46,7 @@
   <meta name="baidu-site-verification" content="{{ theme.baidu_site_verification }}">
 {%- endif %}
 
-<link rel="stylesheet" href="{{ url_for(theme.css) }}/main.css">
+<link rel="stylesheet" href="{{ url_for(theme.css) }}/main.css?v={{ theme.asset_version }}">
 
 {# The archive background is used by every page. Discover it before CSS
    parsing so the homepage hero can paint as soon as the connection is ready. #}
