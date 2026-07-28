@@ -17,7 +17,7 @@ enabled: true
 # Pages that expose an independent GitHub discussion.
 surfaces:
   posts: true
-  home: true
+  home: false
   about: true
   media: true
 
@@ -31,7 +31,7 @@ reactions: false
 input_position: bottom
 theme: transparent_dark
 language: zh-CN
-lazy: true
+lazy: false
 
 # Keep the designed placeholder visible if the connection is later removed.
 show_unconfigured: true

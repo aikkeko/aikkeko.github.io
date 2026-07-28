@@ -2,13 +2,13 @@
 // NexT 主题美化配置 - Z.A.T.O 后末日风格
 // 基于 Z.A.T.O_02_ca04.png 废墟美学设计
 // 
-// Version: 2026.07.28-02
+// Version: 2026.07.28-04
 // Last Updated: 2026-07-21
 // ============================================
 
 // 版本信息（用于调试）
 :root {
-  --theme-version: "2026.07.28-02";
+  --theme-version: "2026.07.28-04";
   --theme-name: "Z.A.T.O Apocalypse";
   --font-reading:
     "Noto Sans SC",
@@ -89,7 +89,7 @@ body {
   
   // 版本号水印（调试用，显示在页面左上角）
   &::before {
-    content: "v2026.07.28-02";
+    content: "v2026.07.28-04";
     position: fixed;
     top: 8px;
     left: 8px;
@@ -7384,6 +7384,7 @@ body::before {
     0 24px 60px rgba(0, 0, 0, 0.36),
     inset 0 1px 0 rgba(255, 255, 255, 0.035);
   backdrop-filter: blur(16px);
+  overflow-anchor: none;
 
   &::before {
     content: '';
@@ -7442,11 +7443,15 @@ body::before {
 }
 
 .giscus-comments-body {
+  position: relative;
   padding: 16px 20px 20px;
   background: rgba(10, 12, 16, 0.24);
+  overflow-anchor: none;
 }
 
 .giscus {
+  position: relative;
+  min-height: 370px;
   padding: 8px 10px 4px;
   border: 1px solid rgba(212, 196, 168, 0.09);
   background: rgba(10, 12, 17, 0.34);
@@ -7459,8 +7464,59 @@ body::before {
 
 .giscus-frame {
   display: block;
-  min-height: 220px;
+  min-height: 350px;
   color-scheme: dark;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.giscus-comments-body.is-giscus-ready {
+  .giscus-frame {
+    opacity: 1;
+    transform: none;
+  }
+
+  .giscus-comments-loading {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.giscus-comments-loading {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  color: rgba(200, 200, 204, 0.45);
+  font-family: var(--font-label) !important;
+  letter-spacing: 0.13em;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+
+  span {
+    width: 24px;
+    height: 24px;
+    border: 1px solid rgba(180, 160, 120, 0.2);
+    border-top-color: rgba(106, 178, 168, 0.82);
+    border-radius: 50%;
+    animation: echo-giscus-spin 0.85s linear infinite;
+  }
+
+  small {
+    font-size: 0.56rem;
+  }
+}
+
+@keyframes echo-giscus-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .giscus-github-link {
@@ -7549,7 +7605,12 @@ body::before {
   }
 
   .giscus {
+    min-height: 400px;
     padding: 4px;
+  }
+
+  .giscus-frame {
+    min-height: 382px;
   }
 
   .giscus-pending {

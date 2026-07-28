@@ -39,6 +39,10 @@ const template = `
 
     {%- if giscus_ready %}
       <div class="giscus-comments-body">
+        <div class="giscus-comments-loading" aria-hidden="true">
+          <span></span>
+          <small>CONNECTING TO DISCUSSIONS</small>
+        </div>
         <div class="giscus"></div>
         <script src="https://giscus.app/client.js"
                 data-repo="{{ repo }}"
@@ -55,6 +59,29 @@ const template = `
                 data-loading="{{ loading }}"
                 crossorigin="anonymous"
                 async>
+        </script>
+        <script>
+          (() => {
+            const host = document.querySelector('.giscus-comments-body');
+            const mount = host && host.querySelector('.giscus');
+            if (!host || !mount) return;
+
+            const bindFrame = frame => {
+              if (!frame || frame.dataset.echoBound) return;
+              frame.dataset.echoBound = 'true';
+              const reveal = () => host.classList.add('is-giscus-ready');
+              frame.addEventListener('load', reveal, { once: true });
+              if (frame.contentWindow) window.setTimeout(reveal, 8000);
+            };
+
+            bindFrame(mount.querySelector('.giscus-frame'));
+            new MutationObserver((records, observer) => {
+              const frame = mount.querySelector('.giscus-frame');
+              if (!frame) return;
+              bindFrame(frame);
+              observer.disconnect();
+            }).observe(mount, { childList: true });
+          })();
         </script>
         <a class="giscus-github-link" href="{{ discussions_url }}" target="_blank" rel="noopener noreferrer">
           在 GitHub 中打开讨论 <i class="fa fa-arrow-right" aria-hidden="true"></i>
@@ -92,6 +119,13 @@ hexo.extend.filter.register('theme_inject', injects => {
   const ready = enabled && repo && repoId && category && categoryId;
 
   if (!enabled && !config.show_unconfigured) return;
+
+  if (enabled) {
+    injects.head.raw('giscus-preconnect', `
+      <link rel="preconnect" href="https://giscus.app" crossorigin>
+      <link rel="dns-prefetch" href="//giscus.app">
+    `);
+  }
 
   injects.comment.raw('giscus', template, {
     configKey       : 'giscus',
