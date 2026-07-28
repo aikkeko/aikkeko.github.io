@@ -1433,7 +1433,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff9aff;
+  background: #74ffc2;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -3110,7 +3110,7 @@ ul.breadcrumb li + li:last-child {
   }
 }
 :root {
-  --theme-version: "2026.07.25-03";
+  --theme-version: "2026.07.28-02";
   --theme-name: "Z.A.T.O Apocalypse";
   --font-reading: "Noto Sans SC", "Source Han Sans SC", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: "Noto Serif SC", "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", "SimSun", Georgia, serif;
@@ -3145,7 +3145,7 @@ body {
   color: #333;
 }
 body::before {
-  content: "v2026.07.25-03";
+  content: "v2026.07.28-02";
   position: fixed;
   top: 8px;
   left: 8px;
@@ -8671,12 +8671,13 @@ body::before {
 .giscus-comments {
   position: relative;
   overflow: hidden;
-  margin: 34px 0 0 !important;
+  width: 100%;
+  margin: 42px auto 0 !important;
   padding: 0 !important;
-  border: 1px solid rgba(212,196,168,0.2) !important;
-  background: linear-gradient(90deg, rgba(106,160,154,0.035) 1px, transparent 1px), linear-gradient(rgba(106,160,154,0.025) 1px, transparent 1px), linear-gradient(155deg, rgba(42,45,52,0.94), rgba(22,24,30,0.96));
-  background-size: 42px 42px, 42px 42px, auto;
-  box-shadow: 0 22px 54px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.025);
+  border: 1px solid rgba(212,196,168,0.16) !important;
+  background: linear-gradient(145deg, rgba(38,41,48,0.97), rgba(20,22,27,0.985));
+  box-shadow: 0 24px 60px rgba(0,0,0,0.36), inset 0 1px 0 rgba(255,255,255,0.035);
+  backdrop-filter: blur(16px);
 }
 .giscus-comments::before {
   content: '';
@@ -8689,49 +8690,52 @@ body::before {
 }
 .giscus-comments-header {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 28px 30px 25px;
+  padding: 22px 26px 20px 30px;
   border-bottom: 1px solid rgba(212,196,168,0.13);
-  background: rgba(13,15,20,0.18);
+  background: linear-gradient(90deg, rgba(180,160,120,0.055), transparent 58%);
+}
+.giscus-comments-header::before {
+  content: '';
+  position: absolute;
+  top: 23px;
+  bottom: 22px;
+  left: 18px;
+  width: 2px;
+  background: linear-gradient(#b4a078, rgba(106,178,168,0.44));
 }
 .giscus-comments-header h2 {
-  margin: 9px 0 6px !important;
+  margin: 7px 0 4px !important;
   color: #eee6d8;
   font-family: var(--font-display) !important;
-  font-size: clamp(1.45rem, 2.1vw, 1.82rem) !important;
+  font-size: clamp(1.25rem, 1.7vw, 1.52rem) !important;
   font-weight: 500 !important;
   line-height: 1.25 !important;
-  letter-spacing: 0.035em !important;
+  letter-spacing: 0.025em !important;
   text-shadow: 0 5px 20px rgba(0,0,0,0.38);
 }
 .giscus-comments-header p {
   margin: 0 !important;
   color: rgba(207,205,201,0.64);
-  font-size: 0.84rem;
-  line-height: 1.75;
+  max-width: 680px;
+  font-size: 0.79rem;
+  line-height: 1.65;
 }
-.giscus-comments-kicker,
-.giscus-comments-status {
+.giscus-comments-kicker {
   color: rgba(106,178,168,0.78);
   font-family: var(--font-label) !important;
-  font-size: 0.61rem;
+  font-size: 0.59rem;
   font-weight: 500;
   line-height: 1.5;
-  letter-spacing: 0.16em;
-}
-.giscus-comments-status {
-  flex: 0 0 auto;
-  margin-top: 2px;
-  padding: 5px 8px;
-  border: 1px solid rgba(106,160,154,0.18);
-  color: rgba(212,196,168,0.52);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
 }
 .giscus-comments-body {
-  padding: 24px 28px 26px;
+  padding: 16px 20px 20px;
+  background: rgba(10,12,16,0.24);
+}
+.giscus {
+  padding: 8px 10px 4px;
+  border: 1px solid rgba(212,196,168,0.09);
+  background: rgba(10,12,17,0.34);
 }
 .giscus,
 .giscus-frame {
@@ -8746,7 +8750,7 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-top: 14px;
+  margin: 12px 10px 0;
   padding-bottom: 4px;
   border-bottom: 1px solid rgba(106,160,154,0.32);
   color: rgba(212,196,168,0.7) !important;
@@ -8798,21 +8802,25 @@ body::before {
 }
 @media (max-width: 768px) {
   .giscus-comments {
-    margin-top: 20px !important;
+    width: 100%;
+    margin-top: 24px !important;
   }
   .giscus-comments-header {
-    display: block;
-    padding: 23px 20px 21px;
+    padding: 20px 18px 18px 26px;
   }
   .giscus-comments-header h2 {
-    font-size: 1.4rem !important;
+    font-size: 1.28rem !important;
   }
-  .giscus-comments-status {
-    display: inline-block;
-    margin-top: 16px;
+  .giscus-comments-header::before {
+    top: 21px;
+    bottom: 20px;
+    left: 15px;
   }
   .giscus-comments-body {
-    padding: 18px 14px 21px;
+    padding: 12px 10px 16px;
+  }
+  .giscus {
+    padding: 4px;
   }
   .giscus-pending {
     align-items: flex-start;
@@ -8900,6 +8908,62 @@ body::before {
   .index .hero-kicker {
     font-size: 0.64rem !important;
     letter-spacing: 0.12em !important;
+  }
+}
+.site-nameplate-cn {
+  display: none;
+}
+@media (min-width: 769px) {
+  .header-inner .site-brand-container,
+  body.post-detail .header-inner .site-brand-container,
+  body.page .header-inner .site-brand-container,
+  body.archive .header-inner .site-brand-container,
+  body.category .header-inner .site-brand-container,
+  body.tag .header-inner .site-brand-container {
+    min-height: 112px !important;
+    padding-top: 18px !important;
+    padding-bottom: 17px !important;
+  }
+  .site-brand-container::after {
+    content: none !important;
+  }
+  .site-brand-container .site-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .site-nameplate-cn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 0 11px;
+    color: rgba(148,204,194,0.9);
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.28em;
+    text-indent: 0.28em;
+    text-shadow: 0 2px 9px rgba(0,0,0,0.72), 0 0 14px rgba(106,160,154,0.16);
+    white-space: nowrap;
+  }
+  .site-nameplate-cn::before,
+  .site-nameplate-cn::after {
+    content: '';
+    width: 27px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(126,178,170,0.58));
+  }
+  .site-nameplate-cn::after {
+    transform: rotate(180deg);
+  }
+  .site-brand-container .site-title {
+    margin-top: 0 !important;
+  }
+  .site-brand-container .site-subtitle {
+    margin-top: 10px !important;
   }
 }
 @media (max-width: 767px) {
