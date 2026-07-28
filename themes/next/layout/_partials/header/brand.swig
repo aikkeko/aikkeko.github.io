@@ -8,6 +8,7 @@
   </div>
 
   <div class="site-meta{%- if theme.custom_logo %} custom-logo{%- endif %}">
+    <span class="site-nameplate-cn" lang="zh-CN">艾声回响</span>
     {%- if theme.custom_logo and theme.scheme === 'Muse' %}
       <div class="site-meta-headline">
         <a>

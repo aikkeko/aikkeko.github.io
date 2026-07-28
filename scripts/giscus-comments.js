@@ -31,11 +31,10 @@ const template = `
   <section class="comments giscus-comments" aria-labelledby="echo-comments-title">
     <header class="giscus-comments-header">
       <div>
-        <span class="giscus-comments-kicker">ECHO TERMINAL / GITHUB DISCUSSIONS</span>
+        <span class="giscus-comments-kicker">ECHOES / GITHUB DISCUSSIONS</span>
         <h2 id="echo-comments-title">{{ echo_title }}</h2>
         <p>{{ echo_description }}</p>
       </div>
-      <span class="giscus-comments-status">PUBLIC CHANNEL</span>
     </header>
 
     {%- if giscus_ready %}
