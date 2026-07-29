@@ -31,7 +31,7 @@ reactions: false
 input_position: bottom
 theme: transparent_dark
 language: zh-CN
-lazy: false
+lazy: true
 
 # Keep the designed placeholder visible if the connection is later removed.
 show_unconfigured: true

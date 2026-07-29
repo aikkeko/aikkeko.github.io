@@ -31,7 +31,7 @@ const template = `
   <section class="comments giscus-comments" aria-labelledby="echo-comments-title">
     <header class="giscus-comments-header">
       <div>
-        <span class="giscus-comments-kicker">ECHOES / GITHUB DISCUSSIONS</span>
+        <span class="giscus-comments-kicker">ECHO TERMINAL / GITHUB DISCUSSIONS</span>
         <h2 id="echo-comments-title">{{ echo_title }}</h2>
         <p>{{ echo_description }}</p>
       </div>
@@ -41,25 +41,20 @@ const template = `
       <div class="giscus-comments-body">
         <div class="giscus-comments-loading" aria-hidden="true">
           <span></span>
-          <small>CONNECTING TO DISCUSSIONS</small>
+          <small>正在连接讨论区</small>
         </div>
-        <div class="giscus"></div>
-        <script src="https://giscus.app/client.js"
-                data-repo="{{ repo }}"
-                data-repo-id="{{ repo_id }}"
-                data-category="{{ category }}"
-                data-category-id="{{ category_id }}"
-                data-mapping="{{ mapping }}"
-                data-strict="{{ strict }}"
-                data-reactions-enabled="{{ reactions }}"
-                data-emit-metadata="0"
-                data-input-position="{{ input_position }}"
-                data-theme="{{ theme }}"
-                data-lang="{{ language }}"
-                data-loading="{{ loading }}"
-                crossorigin="anonymous"
-                async>
-        </script>
+        <div class="giscus"
+             data-giscus-repo="{{ repo }}"
+             data-giscus-repo-id="{{ repo_id }}"
+             data-giscus-category="{{ category }}"
+             data-giscus-category-id="{{ category_id }}"
+             data-giscus-mapping="{{ mapping }}"
+             data-giscus-strict="{{ strict }}"
+             data-giscus-reactions="{{ reactions }}"
+             data-giscus-input-position="{{ input_position }}"
+             data-giscus-theme="{{ theme }}"
+             data-giscus-language="{{ language }}"
+             data-giscus-loading="{{ loading }}"></div>
         <script>
           (() => {
             const host = document.querySelector('.giscus-comments-body');
@@ -74,13 +69,47 @@ const template = `
               if (frame.contentWindow) window.setTimeout(reveal, 8000);
             };
 
-            bindFrame(mount.querySelector('.giscus-frame'));
-            new MutationObserver((records, observer) => {
-              const frame = mount.querySelector('.giscus-frame');
-              if (!frame) return;
-              bindFrame(frame);
-              observer.disconnect();
-            }).observe(mount, { childList: true });
+            const loadGiscus = () => {
+              if (mount.dataset.giscusLoaded === 'true') return;
+              mount.dataset.giscusLoaded = 'true';
+
+              const script = document.createElement('script');
+              script.src = 'https://giscus.app/client.js';
+              script.async = true;
+              script.crossOrigin = 'anonymous';
+              script.dataset.repo = mount.dataset.giscusRepo;
+              script.dataset.repoId = mount.dataset.giscusRepoId;
+              script.dataset.category = mount.dataset.giscusCategory;
+              script.dataset.categoryId = mount.dataset.giscusCategoryId;
+              script.dataset.mapping = mount.dataset.giscusMapping;
+              script.dataset.strict = mount.dataset.giscusStrict;
+              script.dataset.reactionsEnabled = mount.dataset.giscusReactions;
+              script.dataset.emitMetadata = '0';
+              script.dataset.inputPosition = mount.dataset.giscusInputPosition;
+              script.dataset.theme = mount.dataset.giscusTheme;
+              script.dataset.lang = mount.dataset.giscusLanguage;
+              script.dataset.loading = mount.dataset.giscusLoading;
+
+              new MutationObserver((records, observer) => {
+                const frame = mount.querySelector('.giscus-frame');
+                if (!frame) return;
+                bindFrame(frame);
+                observer.disconnect();
+              }).observe(mount, { childList: true });
+
+              mount.appendChild(script);
+            };
+
+            if ('IntersectionObserver' in window) {
+              const observer = new IntersectionObserver(entries => {
+                if (!entries.some(entry => entry.isIntersecting)) return;
+                observer.disconnect();
+                loadGiscus();
+              }, { rootMargin: '600px 0px' });
+              observer.observe(host);
+            } else {
+              window.addEventListener('load', loadGiscus, { once: true });
+            }
           })();
         </script>
         <a class="giscus-github-link" href="{{ discussions_url }}" target="_blank" rel="noopener noreferrer">
@@ -92,7 +121,7 @@ const template = `
         <span class="giscus-pending-mark" aria-hidden="true"><i class="far fa-comment-dots"></i></span>
         <div>
           <strong>回声频道尚未开放</strong>
-          <p>GitHub Discussions is waiting to be connected.</p>
+          <p>正在等待连接 GitHub 讨论区。</p>
         </div>
       </div>
     {%- endif %}

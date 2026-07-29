@@ -183,9 +183,9 @@ articles:
       - 游戏
 media:
   page:
-    title: 声像档案
-    kicker: Signal Archive / Recorded Transmissions
-    description: Conversations, essays, and signals preserved beyond the feed.
+    title: Signal Archive
+    kicker: Signal Index / Recorded Transmissions
+    description: 收录电台、视频与那些值得被保留的声音。
   featured: duping-diantai-ep05
   items:
     - id: duping-diantai-ep05
@@ -203,6 +203,21 @@ media:
         - 电台
         - AI
         - 二次元
+    - id: chuncai-radio-yuri-strongest
+      type: video
+      title: 「蠢材呓事电台」史上最强百合vs现代最强百合
+      episode: ""
+      platform: Bilibili
+      date: 2026-07-28T15:47:23.000Z
+      duration: 1h 34m
+      url: https://www.bilibili.com/video/BV1VQ3z6cEVh/
+      embed: https://player.bilibili.com/player.html?isOutside=true&aid=116998365255671&bvid=BV1VQ3z6cEVh&cid=40384530804&p=1
+      cover: https://i2.hdslb.com/bfs/archive/74ccd75c4ead97950eb0b4236ebfe82fe4d84b75.jpg
+      description: 从“史上最强”与“现代最强”的对照出发，围绕百合作品及其时代气质展开的一次长谈。
+      tags:
+        - 电台
+        - 动画
+        - 百合
     - id: chuncai-radio-geyougede
       type: video
       title: 「蠢材呓事电台」各有各的拉法，各有各的说法，纸房子魔裁百合灵

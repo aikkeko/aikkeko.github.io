@@ -112,11 +112,11 @@
           {%- endif %}
           
           <span class="post-meta-item post-card-words">
-            <i class="far fa-file-word"></i> {{ wordcount(post.content) }} words
+            <i class="far fa-file-word"></i> {{ wordcount(post.content) }} 字
           </span>
           
           <span class="post-meta-item post-card-reading-time">
-            <i class="far fa-clock"></i> {{ min2read(post.content) }} min read
+            <i class="far fa-clock"></i> {{ min2read(post.content) }} 分钟阅读
           </span>
         </div>
       </div>

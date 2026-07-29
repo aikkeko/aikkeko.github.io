@@ -2,13 +2,13 @@
 // NexT 主题美化配置 - Z.A.T.O 后末日风格
 // 基于 Z.A.T.O_02_ca04.png 废墟美学设计
 // 
-// Version: 2026.07.28-04
+// Version: 2026.07.29-06
 // Last Updated: 2026-07-21
 // ============================================
 
 // 版本信息（用于调试）
 :root {
-  --theme-version: "2026.07.28-04";
+  --theme-version: "2026.07.29-06";
   --theme-name: "Z.A.T.O Apocalypse";
   --font-reading:
     "Noto Sans SC",
@@ -89,7 +89,7 @@ body {
   
   // 版本号水印（调试用，显示在页面左上角）
   &::before {
-    content: "v2026.07.28-04";
+  content: "v2026.07.29-06";
     position: fixed;
     top: 8px;
     left: 8px;
@@ -2321,7 +2321,7 @@ body {
   isolation: isolate;
 
   &::before {
-    content: 'ARCHIVE RECORD';
+        content: 'ARCHIVE RECORD';
     position: absolute;
     top: 22px;
     left: 28px;
@@ -2550,7 +2550,7 @@ body {
       0 0 0 1px rgba(255, 255, 255, 0.035) inset;
 
     &::before {
-      content: 'ARCHIVE / INDEX';
+  content: 'ARCHIVE / INDEX';
       position: absolute;
       right: 28px;
       top: 22px;
@@ -2943,7 +2943,7 @@ body {
     0 0 0 1px rgba(255, 255, 255, 0.035) inset;
 
   &::before {
-    content: 'Z.A.T.O / CUSTOMER ARCHIVE';
+  content: 'SITE / PERSONAL ARCHIVE';
     position: absolute;
     right: 28px;
     top: 22px;
@@ -2966,11 +2966,11 @@ body {
 }
 
 .tag-index-hero::before {
-  content: 'Z.A.T.O / TAG DIRECTORY';
+  content: 'TAG / CONTENT INDEX';
 }
 
 .tag-detail-hero::before {
-  content: 'Z.A.T.O / FILTERED RECORD';
+  content: 'TAG / FILTERED RECORD';
 }
 
 .page-hero-kicker {
@@ -3034,61 +3034,58 @@ body {
 
 .about-content-panel {
   display: grid;
-  grid-template-columns: minmax(180px, 0.32fr) minmax(0, 1fr);
-  gap: 26px;
+  grid-template-columns: minmax(150px, 0.24fr) minmax(0, 1fr);
+  gap: 34px;
   align-items: start;
 }
 
 .about-profile-card {
   position: sticky;
   top: 88px;
-  padding: 22px 20px;
-  border: 1px solid rgba(212, 196, 168, 0.18);
+  padding: 20px 18px 21px;
+  border: 1px solid rgba(212, 196, 168, 0.16);
+  border-left: 2px solid rgba(212, 196, 168, 0.62);
   background:
-    linear-gradient(145deg, rgba(212, 196, 168, 0.12), rgba(18, 20, 26, 0.34)),
+    linear-gradient(145deg, rgba(212, 196, 168, 0.08), rgba(18, 20, 26, 0.28)),
     repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.028) 0, rgba(255, 255, 255, 0.028) 1px, transparent 1px, transparent 9px);
   box-shadow:
-    0 18px 38px rgba(0, 0, 0, 0.24),
+    0 16px 34px rgba(0, 0, 0, 0.2),
     0 0 0 1px rgba(255, 255, 255, 0.026) inset;
 
   &::before {
     content: '';
     display: block;
-    width: 46px;
-    height: 46px;
-    margin-bottom: 16px;
-    border: 1px solid rgba(212, 196, 168, 0.5);
-    background:
-      radial-gradient(circle at 50% 50%, rgba(212, 196, 168, 0.95) 0 3px, transparent 4px),
-      linear-gradient(135deg, rgba(106, 160, 154, 0.22), rgba(212, 196, 168, 0.12));
-    box-shadow:
-      0 0 0 6px rgba(212, 196, 168, 0.05),
-      0 0 24px rgba(212, 196, 168, 0.18);
+    width: 34px;
+    height: 1px;
+    margin-bottom: 18px;
+    background: linear-gradient(90deg, #d4c4a8, rgba(106, 160, 154, 0.22));
+    box-shadow: 0 0 12px rgba(212, 196, 168, 0.2);
   }
 
   .about-profile-label {
     display: block;
-    margin-bottom: 9px;
+    margin-bottom: 10px;
     color: rgba(106, 160, 154, 0.9);
-    font-size: 0.68em;
-    letter-spacing: 0.2em;
+    font-size: 0.74em;
+    letter-spacing: 0.16em;
   }
 
   strong {
     display: block;
     color: #fff8ea;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.42em;
+    font-family: var(--font-latin-display);
+    font-size: 1.34em;
     font-weight: 500;
     line-height: 1.2;
   }
 
   em {
     display: block;
-    margin-top: 10px;
+    margin-top: 9px;
     color: rgba(232, 228, 220, 0.66);
     font-style: normal;
-    line-height: 1.55;
+    font-size: 0.88em;
+    line-height: 1.5;
   }
 }
 
@@ -4194,15 +4191,15 @@ body {
 }
 
 .category-index-hero::before {
-  content: 'Z.A.T.O / CATEGORY DIRECTORY';
+  content: 'CATEGORY / CONTENT INDEX';
 }
 
 .category-detail-hero::before {
-  content: 'Z.A.T.O / CATEGORY RECORD';
+  content: 'CATEGORY / ARCHIVE RECORD';
 }
 
 .resource-hero::before {
-  content: 'Z.A.T.O / RESOURCE INDEX';
+  content: 'RESOURCE / INDEX';
 }
 
 .category-index-panel,
@@ -4266,7 +4263,7 @@ body {
         color 0.22s ease;
 
       &::before {
-        content: 'INDEX';
+  content: 'INDEX';
         margin-right: 9px;
         color: rgba(106, 160, 154, 0.82);
         font-size: 0.68em;
@@ -4554,7 +4551,7 @@ body.post-detail {
     padding: 16px 14px 18px !important;
 
     &::before {
-      content: 'READING MAP';
+    content: 'READING MAP';
       display: block;
       margin: 0 0 14px;
       padding: 0 0 10px;
@@ -5031,7 +5028,7 @@ body.post-detail {
 }
 
 body.post-detail .sidebar-inner::before {
-  content: 'READING MAP';
+    content: 'READING MAP';
 }
 
 .sidebar-nav {
@@ -5233,7 +5230,7 @@ body.post-detail .sidebar-inner::before {
     }
 
     &::after {
-      content: 'ARCHIVE QUOTE' !important;
+    content: 'ARCHIVE QUOTE' !important;
       color: rgba(106, 160, 154, 0.52) !important;
     }
 
@@ -6219,7 +6216,7 @@ body {
 
 // 64. Signal archive - radio and moving-image collection
 .media-hero::before {
-  content: 'Z.A.T.O / SIGNAL DIRECTORY';
+  content: 'SIGNAL / PROGRAM DIRECTORY';
 }
 
 .media-archive {
@@ -6963,8 +6960,15 @@ body::before {
   }
 
   .index .site-title-main {
-    font-size: clamp(2.65rem, 13vw, 3.7rem) !important;
-    letter-spacing: 0.025em !important;
+    display: block;
+    width: 100%;
+    max-width: 100% !important;
+    padding-inline: 2px;
+    box-sizing: border-box;
+    font-size: clamp(2.4rem, 12vw, 3.35rem) !important;
+    letter-spacing: 0 !important;
+    text-align: center;
+    overflow: visible;
   }
 
   .index .site-subtitle-main.hero-subtitle-reveal {
@@ -6975,6 +6979,10 @@ body::before {
 }
 
 @media (max-width: 380px) {
+  .index .site-title-main {
+    font-size: clamp(2.15rem, 11.5vw, 2.72rem) !important;
+  }
+
   .site-brand-container .site-title {
     font-size: 0.96rem !important;
   }
@@ -7739,6 +7747,83 @@ body::before {
   .index .hero-kicker {
     font-size: 0.64rem !important;
     letter-spacing: 0.12em !important;
+  }
+}
+
+// ============================================
+// 76. Global audit refinements
+// ============================================
+// About already has a persistent author card in the sidebar on desktop.
+// Keep the page body focused on the introduction itself.
+.about-content-panel {
+  display: block;
+}
+
+.about-prose {
+  width: min(100%, 48em);
+  margin: 0 auto;
+  padding-top: 0;
+}
+
+// Reserve a stable discussion canvas before the external iframe arrives.
+.giscus-comments-body {
+  min-height: 422px;
+}
+
+.giscus {
+  min-height: 382px;
+}
+
+@media (max-width: 768px) {
+  .page-identity-hero,
+  .archive-hero {
+    margin-bottom: 22px;
+    padding: 24px 20px 22px;
+  }
+
+  .about-hero .page-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .about-hero .page-hero-stats span {
+    min-width: 0;
+    padding: 9px 4px;
+    font-size: 0.65rem;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .post-detail .post-body,
+  .post-detail .post-body p,
+  .post-detail .post-body li,
+  .post-detail .post-body blockquote {
+    font-size: 1.03rem !important;
+    line-height: 1.82 !important;
+    letter-spacing: 0.006em !important;
+  }
+
+  .post-detail .post-body p {
+    margin-bottom: 1.25em !important;
+  }
+
+  .giscus-comments-body {
+    min-height: 438px;
+  }
+
+  .giscus {
+    min-height: 404px;
+  }
+}
+
+@media (max-width: 380px) {
+  .about-hero .page-hero-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero .page-hero-stats span {
+    text-align: left;
   }
 }
 

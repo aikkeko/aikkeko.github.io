@@ -29,7 +29,7 @@
         if (matchesQuery) visible += 1;
       });
 
-      if (resultCount) resultCount.textContent = String(visible).padStart(2, '0');
+      if (resultCount) resultCount.textContent = String(visible);
       if (noResults) noResults.hidden = visible !== 0;
 
       const nextParams = new URLSearchParams(window.location.search);
@@ -84,7 +84,7 @@
 
       const iframe = document.createElement('iframe');
       iframe.src = playerUrl.toString();
-      iframe.title = launch.getAttribute('aria-label') || 'Embedded media player';
+      iframe.title = launch.getAttribute('aria-label') || '嵌入式媒体播放器';
       iframe.loading = 'eager';
       iframe.referrerPolicy = 'strict-origin-when-cross-origin';
       iframe.allow = 'autoplay; fullscreen; picture-in-picture';

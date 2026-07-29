@@ -33,54 +33,52 @@
     <div class="post-block" lang="{{ page.lang or config.language }}">
       {%- if page.type === 'about' %}
         <section class="about-hero page-identity-hero" aria-label="About this site">
-          <div class="page-hero-kicker">Keeper Profile / Z.A.T.O</div>
-          <h1 class="page-hero-title">About the Archive</h1>
-          <p class="page-hero-desc">Notes on games, fiction, anime, stray days, and ruined echoes.</p>
+          <div class="page-hero-kicker">Site Notes / Keeper Profile</div>
+          <h1 class="page-hero-title">About</h1>
+          <p class="page-hero-desc">记录书籍、动画、游戏、日常，以及未被归类的回声。</p>
           <div class="page-hero-stats">
-            <span><strong>{{ site.posts.length }}</strong> dispatches</span>
-            <span><strong>{{ site.tags.length }}</strong> tags</span>
-            <span><strong>Z.A.T.O</strong> archive</span>
+            <span><strong>{{ site.posts.length }}</strong> 篇文章</span>
+            <span><strong>{{ site.tags.length }}</strong> 个标签</span>
+            <span><strong>{{ media_items.length }}</strong> 份声像</span>
           </div>
         </section>
       {%- elif page.type === 'tags' %}
-        <section class="tag-index-hero page-identity-hero" aria-label="Tag index">
+        <section class="tag-index-hero page-identity-hero" aria-label="标签索引">
           <div class="page-hero-kicker">Tag Index / Quick Filter</div>
           <h1 class="page-hero-title">Tag Index</h1>
-          <p class="page-hero-desc">Find records by theme, mood, or residue.</p>
+          <p class="page-hero-desc">按照主题与内容线索查找文章。</p>
           <div class="page-hero-stats">
-            <span><strong>{{ site.tags.length }}</strong> tags</span>
-            <span><strong>{{ site.posts.length }}</strong> entries</span>
-            <span><strong>NO.</strong> 30-000</span>
+            <span><strong>{{ site.tags.length }}</strong> 个标签</span>
+            <span><strong>{{ site.posts.length }}</strong> 篇文章</span>
           </div>
         </section>
       {%- elif page.type === 'categories' %}
-        <section class="category-index-hero page-identity-hero" aria-label="Category index">
-          <div class="page-hero-kicker">Category Index / Archive Route</div>
+        <section class="category-index-hero page-identity-hero" aria-label="分类索引">
+          <div class="page-hero-kicker">Category Index / Reading Route</div>
           <h1 class="page-hero-title">Category Index</h1>
-          <p class="page-hero-desc">Broad routes through the archive.</p>
+          <p class="page-hero-desc">按照主要内容类别浏览文章。</p>
           <div class="page-hero-stats">
-            <span><strong>{{ site.categories.length }}</strong> categories</span>
-            <span><strong>{{ site.tags.length }}</strong> tags</span>
-            <span><strong>ARCHIVE</strong> map</span>
+            <span><strong>{{ site.categories.length }}</strong> 个分类</span>
+            <span><strong>{{ site.tags.length }}</strong> 个标签</span>
           </div>
         </section>
       {%- elif page.type === 'resources' %}
-        <section class="resource-hero page-identity-hero" aria-label="Resource index">
-          <div class="page-hero-kicker">Resource Index / Back Archive</div>
+        <section class="resource-hero page-identity-hero" aria-label="资源索引">
+          <div class="page-hero-kicker">Resource Index / External Records</div>
           <h1 class="page-hero-title">Resource Index</h1>
-          <p class="page-hero-desc">Useful links, lists, and tools.</p>
+          <p class="page-hero-desc">收录链接、书单与常用工具。</p>
           <div class="page-hero-stats">
-            <span><strong>Z.A.T.O</strong> index</span>
-            <span><strong>OPEN</strong> soon</span>
+            <span><strong>资料</strong> 索引</span>
+            <span><strong>逐步</strong> 补充</span>
           </div>
         </section>
       {%- elif page.type === 'media' %}
-        <section class="media-hero page-identity-hero" aria-label="Signal archive">
-          <div class="page-hero-kicker">{{ media_page.kicker or 'Signal Archive / Recorded Transmissions' }}</div>
-          <h1 class="page-hero-title">{{ media_page.title or '声像档案' }}</h1>
-          <p class="page-hero-desc">{{ media_page.description or 'Conversations, essays, and signals preserved beyond the feed.' }}</p>
+        <section class="media-hero page-identity-hero" aria-label="声像档案">
+          <div class="page-hero-kicker">{{ media_page.kicker or 'Signal Index / Recorded Transmissions' }}</div>
+          <h1 class="page-hero-title">{{ media_page.title or 'Signal Archive' }}</h1>
+          <p class="page-hero-desc">{{ media_page.description or '收录电台、视频与那些值得被保留的声音。' }}</p>
           <div class="page-hero-stats">
-            <span><strong>{{ media_items.length }}</strong> records</span>
+            <span><strong>{{ media_items.length }}</strong> 条声像</span>
           </div>
         </section>
       {%- else %}
@@ -93,7 +91,7 @@
         {%- if page.type === 'tags' %}
           <div class="tag-cloud tag-index-panel">
             <div class="tag-cloud-title">
-              {{ site.tags.length }} TAGS IN FILE
+              共收录 {{ site.tags.length }} 个标签
             </div>
             <div class="tag-cloud-tags">
               {{ tagcloud({
@@ -108,11 +106,6 @@
           </div>
         {% elif page.type === 'about' %}
           <div class="about-content-panel">
-            <div class="about-profile-card" aria-hidden="true">
-              <span class="about-profile-label">CUSTODIAN</span>
-              <strong>Aikeko</strong>
-              <em>Archive at World's End</em>
-            </div>
             <div class="about-prose">
               {{ page.content }}
             </div>
@@ -120,7 +113,7 @@
         {% elif page.type === 'categories' %}
           <div class="category-all-page category-index-panel">
             <div class="category-all-title">
-              {{ site.categories.length }} CATEGORIES IN FILE
+              共收录 {{ site.categories.length }} 个分类
             </div>
             <div class="category-all">
               {{ list_categories() }}
@@ -128,19 +121,19 @@
           </div>
         {% elif page.type === 'resources' %}
           <div class="resource-panel">
-            <span class="resource-panel-kicker">ARCHIVE NOTE</span>
-            <p>Reserved for links, reading paths, and external records.</p>
+            <span class="resource-panel-kicker">资源说明</span>
+            <p>这里将逐步整理链接、阅读路径与站外资料。</p>
           </div>
         {% elif page.type === 'media' %}
           <section class="media-archive" data-media-archive>
             {% if media_items.length %}
-              <div class="media-toolbar" aria-label="Filter signal archive">
+              <div class="media-toolbar" aria-label="筛选声像档案">
                 <label class="media-search">
                   <i class="fa fa-search" aria-hidden="true"></i>
-                  <span class="media-visually-hidden">Search signal archive</span>
-                  <input type="search" autocomplete="off" placeholder="Search title, platform, or tag" data-media-search>
+                  <span class="media-visually-hidden">搜索声像档案</span>
+                  <input type="search" autocomplete="off" placeholder="搜索标题、平台或标签" data-media-search>
                 </label>
-                <span class="media-result-counter"><strong data-media-result-count>{{ media_items.length }}</strong> visible</span>
+                <span class="media-result-counter">共 <strong data-media-result-count>{{ media_items.length }}</strong> 项</span>
               </div>
 
               <div class="media-grid">
@@ -162,7 +155,7 @@
                       {% else %}
                         <i class="fa fa-wave-square" aria-hidden="true"></i>
                       {% endif %}
-                      {% if not item.embed %}<span class="media-card-kind">Archived Signal</span>{% endif %}
+                      {% if not item.embed %}<span class="media-card-kind">已归档</span>{% endif %}
                     </div>
                     <div class="media-card-content">
                       <h2 class="media-card-title">{{ item.title }}</h2>
@@ -173,16 +166,16 @@
                         {% if item.duration %}<span><i class="far fa-clock" aria-hidden="true"></i>{{ item.duration }}</span>{% endif %}
                       </div>
                       {% if item.tags and item.tags.length %}
-                        <div class="media-card-tags" aria-label="Tags">
+                        <div class="media-card-tags" aria-label="标签">
                           {% for tag in item.tags %}<span># {{ tag }}</span>{% endfor %}
                         </div>
                       {% endif %}
                       {% if item.url %}
                         <button class="media-card-action" type="button" data-media-open="{{ item.url }}">
-                          Open Record <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                          打开原页面 <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         </button>
                       {% else %}
-                        <span class="media-card-action is-disabled">Link Pending</span>
+                        <span class="media-card-action is-disabled">链接待补</span>
                       {% endif %}
                     </div>
                   </article>
@@ -190,15 +183,15 @@
               </div>
 
               <div class="media-no-results" data-media-no-results hidden>
-                <span>NO MATCHING SIGNAL</span>
-                <p>No record matches the current filter.</p>
-                <button type="button" data-media-reset>Clear filters</button>
+                <span>没有匹配的声像</span>
+                <p>当前筛选条件下没有找到记录。</p>
+                <button type="button" data-media-reset>清除筛选</button>
               </div>
             {% else %}
               <div class="media-empty-state">
                 <i class="fa fa-wave-square" aria-hidden="true"></i>
-                <span>NO SIGNALS CATALOGUED</span>
-                <p>The cabinet is ready. Add the first record in <code>source/_data/archive.yml</code>.</p>
+                <span>尚未收录声像</span>
+                <p>可在 <code>source/_data/archive.yml</code> 中添加第一条记录。</p>
               </div>
             {% endif %}
           </section>

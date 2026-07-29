@@ -46,9 +46,9 @@
 
     {%- if post.header !== false %}
       <header class="post-header{%- if hero_image %} with-hero{%- endif %}{%- if has_banner %} banner-hidden{%- endif %}">
-        {# 如果有 banner，只显示标题（用于 SEO），通过 CSS 隐藏 #}
+        {# Banner 已提供可见 H1；这里只保留结构化标题，避免重复标题语义。 #}
         {%- if has_banner %}
-        <h1 class="post-title" itemprop="name headline" style="display: none;">{{ post.title }}</h1>
+        <meta itemprop="headline" content="{{ post.title }}">
         {%- else %}
         <{%- if is_index %}h2{% else %}h1{%- endif %} class="post-title{%- if post.direction and post.direction.toLowerCase() === 'rtl' %} rtl{%- endif %}" itemprop="name headline">
           {# Link posts #}
@@ -197,13 +197,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>{{ post_wordcount }} words</span>
+              <span>{{ post_wordcount }} 字</span>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>{{ post_min2read }} min read</span>
+              <span>{{ post_min2read }} 分钟阅读</span>
             </span>
           {%- endif %}
 

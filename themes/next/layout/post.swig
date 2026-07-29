@@ -33,11 +33,11 @@
         
         <div class="post-banner-meta">
           <span class="post-banner-author">
-            <i class="fa fa-user"></i> {{ config.author or 'Anonymous' }}
+            <i class="fa fa-user"></i> {{ config.author or '匿名' }}
           </span>
           
           <span class="post-banner-date">
-            <i class="fa fa-calendar"></i> {{ moment(page.date).format('MMM DD, YYYY') }}
+            <i class="fa fa-calendar"></i> {{ moment(page.date).locale('en').format('MMM DD, YYYY') }}
           </span>
           
           {%- if page.categories and page.categories.length %}
@@ -52,10 +52,10 @@
           {%- set wordcount = wordcount(page.content) %}
           {%- set min2read = min2read(page.content) %}
           <span class="post-banner-words">
-            <i class="fa fa-file-word"></i> {{ wordcount }} words
+            <i class="fa fa-file-word"></i> {{ wordcount }} 字
           </span>
           <span class="post-banner-reading-time">
-            <i class="fa fa-clock"></i> {{ min2read }} min read
+            <i class="fa fa-clock"></i> {{ min2read }} 分钟阅读
           </span>
         </div>
       </div>
