@@ -19,7 +19,7 @@
 <meta name="msapplication-TileColor" content="#1e2128">
 <meta name="msapplication-tap-highlight" content="no">
 
-<link rel="stylesheet" href="/css/main.css?v=2026072802">
+<link rel="stylesheet" href="/css/main.css?v=2026072804">
 
 
 <link rel="preload" as="image" href="/images/Z.A.T.O_02_ca04.jpg" fetchpriority="high">
@@ -110,6 +110,9 @@ if ('serviceWorker' in navigator) {
   };
 </script>
 
+      <link rel="preconnect" href="https://giscus.app" crossorigin>
+      <link rel="dns-prefetch" href="//giscus.app">
+    
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap">
@@ -450,6 +453,10 @@ if ('serviceWorker' in navigator) {
       </div>
     </header>
       <div class="giscus-comments-body">
+        <div class="giscus-comments-loading" aria-hidden="true">
+          <span></span>
+          <small>CONNECTING TO DISCUSSIONS</small>
+        </div>
         <div class="giscus"></div>
         <script src="https://giscus.app/client.js"
                 data-repo="aikkeko/aike-echo-comments"
@@ -463,9 +470,32 @@ if ('serviceWorker' in navigator) {
                 data-input-position="bottom"
                 data-theme="transparent_dark"
                 data-lang="zh-CN"
-                data-loading="lazy"
+                data-loading="eager"
                 crossorigin="anonymous"
                 async>
+        </script>
+        <script>
+          (() => {
+            const host = document.querySelector('.giscus-comments-body');
+            const mount = host && host.querySelector('.giscus');
+            if (!host || !mount) return;
+
+            const bindFrame = frame => {
+              if (!frame || frame.dataset.echoBound) return;
+              frame.dataset.echoBound = 'true';
+              const reveal = () => host.classList.add('is-giscus-ready');
+              frame.addEventListener('load', reveal, { once: true });
+              if (frame.contentWindow) window.setTimeout(reveal, 8000);
+            };
+
+            bindFrame(mount.querySelector('.giscus-frame'));
+            new MutationObserver((records, observer) => {
+              const frame = mount.querySelector('.giscus-frame');
+              if (!frame) return;
+              bindFrame(frame);
+              observer.disconnect();
+            }).observe(mount, { childList: true });
+          })();
         </script>
         <a class="giscus-github-link" href="https://github.com/aikkeko/aike-echo-comments/discussions" target="_blank" rel="noopener noreferrer">
           在 GitHub 中打开讨论 <i class="fa fa-arrow-right" aria-hidden="true"></i>

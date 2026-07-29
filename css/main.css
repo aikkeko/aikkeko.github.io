@@ -1433,7 +1433,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #74ffc2;
+  background: #ff30ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -3110,7 +3110,7 @@ ul.breadcrumb li + li:last-child {
   }
 }
 :root {
-  --theme-version: "2026.07.28-02";
+  --theme-version: "2026.07.28-04";
   --theme-name: "Z.A.T.O Apocalypse";
   --font-reading: "Noto Sans SC", "Source Han Sans SC", "Noto Sans CJK SC", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: "Noto Serif SC", "Source Han Serif SC", "Noto Serif CJK SC", "Songti SC", "STSong", "SimSun", Georgia, serif;
@@ -3145,7 +3145,7 @@ body {
   color: #333;
 }
 body::before {
-  content: "v2026.07.28-02";
+  content: "v2026.07.28-04";
   position: fixed;
   top: 8px;
   left: 8px;
@@ -8678,6 +8678,7 @@ body::before {
   background: linear-gradient(145deg, rgba(38,41,48,0.97), rgba(20,22,27,0.985));
   box-shadow: 0 24px 60px rgba(0,0,0,0.36), inset 0 1px 0 rgba(255,255,255,0.035);
   backdrop-filter: blur(16px);
+  overflow-anchor: none;
 }
 .giscus-comments::before {
   content: '';
@@ -8729,10 +8730,14 @@ body::before {
   letter-spacing: 0.14em;
 }
 .giscus-comments-body {
+  position: relative;
   padding: 16px 20px 20px;
   background: rgba(10,12,16,0.24);
+  overflow-anchor: none;
 }
 .giscus {
+  position: relative;
+  min-height: 370px;
   padding: 8px 10px 4px;
   border: 1px solid rgba(212,196,168,0.09);
   background: rgba(10,12,17,0.34);
@@ -8743,8 +8748,46 @@ body::before {
 }
 .giscus-frame {
   display: block;
-  min-height: 220px;
+  min-height: 350px;
   color-scheme: dark;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.giscus-comments-body.is-giscus-ready .giscus-frame {
+  opacity: 1;
+  transform: none;
+}
+.giscus-comments-body.is-giscus-ready .giscus-comments-loading {
+  opacity: 0;
+  visibility: hidden;
+}
+.giscus-comments-loading {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  color: rgba(200,200,204,0.45);
+  font-family: var(--font-label) !important;
+  letter-spacing: 0.13em;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+.giscus-comments-loading span {
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(180,160,120,0.2);
+  border-top-color: rgba(106,178,168,0.82);
+  border-radius: 50%;
+  animation: echo-giscus-spin 0.85s linear infinite;
+}
+.giscus-comments-loading small {
+  font-size: 0.56rem;
 }
 .giscus-github-link {
   display: inline-flex;
@@ -8820,7 +8863,11 @@ body::before {
     padding: 12px 10px 16px;
   }
   .giscus {
+    min-height: 400px;
     padding: 4px;
+  }
+  .giscus-frame {
+    min-height: 382px;
   }
   .giscus-pending {
     align-items: flex-start;
@@ -9631,5 +9678,25 @@ body::before {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@-moz-keyframes echo-giscus-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes echo-giscus-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes echo-giscus-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes echo-giscus-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
