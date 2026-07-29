@@ -2,13 +2,13 @@
 // NexT 主题美化配置 - Z.A.T.O 后末日风格
 // 基于 Z.A.T.O_02_ca04.png 废墟美学设计
 // 
-// Version: 2026.07.29-06
+// Version: 2026.07.29-07
 // Last Updated: 2026-07-21
 // ============================================
 
 // 版本信息（用于调试）
 :root {
-  --theme-version: "2026.07.29-06";
+  --theme-version: "2026.07.29-07";
   --theme-name: "Z.A.T.O Apocalypse";
   --font-reading:
     "Noto Sans SC",
@@ -89,7 +89,7 @@ body {
   
   // 版本号水印（调试用，显示在页面左上角）
   &::before {
-  content: "v2026.07.29-06";
+  content: "v2026.07.29-07";
     position: fixed;
     top: 8px;
     left: 8px;
@@ -6990,6 +6990,14 @@ body::before {
   .site-brand-container .site-subtitle {
     font-size: 0.58rem !important;
   }
+}
+
+// Page headers already carry a descriptive kicker on the left.
+// Remove the repeated directory stamp from the opposite corner.
+.page-identity-hero::before,
+.archive-hero::before {
+  content: none !important;
+  display: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
