@@ -19,7 +19,7 @@
 <meta name="msapplication-TileColor" content="#1e2128">
 <meta name="msapplication-tap-highlight" content="no">
 
-<link rel="stylesheet" href="/css/main.css?v=2026072804">
+<link rel="stylesheet" href="/css/main.css?v=2026072906">
 
 
 <link rel="preload" as="image" href="/images/Z.A.T.O_02_ca04.jpg" fetchpriority="high">
@@ -115,9 +115,8 @@ if ('serviceWorker' in navigator) {
     
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=swap"></noscript>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=optional" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&amp;family=Noto+Serif+SC:wght@400;500&amp;display=optional"></noscript>
 
   <title>朝向更远的地方 | 2020年阅读总结 | Aike · Echo</title>
   
@@ -272,10 +271,10 @@ if ('serviceWorker' in navigator) {
               书籍
           </span>
           <span class="post-banner-words">
-            <i class="fa fa-file-word"></i> 10.2k words
+            <i class="fa fa-file-word"></i> 10.2k 字
           </span>
           <span class="post-banner-reading-time">
-            <i class="fa fa-clock"></i> 34 min read
+            <i class="fa fa-clock"></i> 34 分钟阅读
           </span>
         </div>
       </div>
@@ -305,7 +304,7 @@ if ('serviceWorker' in navigator) {
       </div>
       <header class="post-header with-hero banner-hidden">
         
-        <h1 class="post-title" itemprop="name headline" style="display: none;">朝向更远的地方 | 2020年阅读总结</h1>
+        <meta itemprop="headline" content="朝向更远的地方 | 2020年阅读总结">
 
         <div class="post-meta banner-meta-only">
 
@@ -423,7 +422,7 @@ if ('serviceWorker' in navigator) {
   <section class="comments giscus-comments" aria-labelledby="echo-comments-title">
     <header class="giscus-comments-header">
       <div>
-        <span class="giscus-comments-kicker">ECHOES / GITHUB DISCUSSIONS</span>
+        <span class="giscus-comments-kicker">ECHO TERMINAL / GITHUB DISCUSSIONS</span>
         <h2 id="echo-comments-title">留下回声</h2>
         <p>使用 GitHub 登录后留言或回复。讨论将与这份文章档案保持关联。</p>
       </div>
@@ -431,25 +430,20 @@ if ('serviceWorker' in navigator) {
       <div class="giscus-comments-body">
         <div class="giscus-comments-loading" aria-hidden="true">
           <span></span>
-          <small>CONNECTING TO DISCUSSIONS</small>
+          <small>正在连接讨论区</small>
         </div>
-        <div class="giscus"></div>
-        <script src="https://giscus.app/client.js"
-                data-repo="aikkeko/aike-echo-comments"
-                data-repo-id="R_kgDOTmKX-g"
-                data-category="Announcements"
-                data-category-id="DIC_kwDOTmKX-s4DCKdI"
-                data-mapping="pathname"
-                data-strict="0"
-                data-reactions-enabled="0"
-                data-emit-metadata="0"
-                data-input-position="bottom"
-                data-theme="transparent_dark"
-                data-lang="zh-CN"
-                data-loading="eager"
-                crossorigin="anonymous"
-                async>
-        </script>
+        <div class="giscus"
+             data-giscus-repo="aikkeko/aike-echo-comments"
+             data-giscus-repo-id="R_kgDOTmKX-g"
+             data-giscus-category="Announcements"
+             data-giscus-category-id="DIC_kwDOTmKX-s4DCKdI"
+             data-giscus-mapping="pathname"
+             data-giscus-strict="0"
+             data-giscus-reactions="0"
+             data-giscus-input-position="bottom"
+             data-giscus-theme="transparent_dark"
+             data-giscus-language="zh-CN"
+             data-giscus-loading="lazy"></div>
         <script>
           (() => {
             const host = document.querySelector('.giscus-comments-body');
@@ -464,13 +458,47 @@ if ('serviceWorker' in navigator) {
               if (frame.contentWindow) window.setTimeout(reveal, 8000);
             };
 
-            bindFrame(mount.querySelector('.giscus-frame'));
-            new MutationObserver((records, observer) => {
-              const frame = mount.querySelector('.giscus-frame');
-              if (!frame) return;
-              bindFrame(frame);
-              observer.disconnect();
-            }).observe(mount, { childList: true });
+            const loadGiscus = () => {
+              if (mount.dataset.giscusLoaded === 'true') return;
+              mount.dataset.giscusLoaded = 'true';
+
+              const script = document.createElement('script');
+              script.src = 'https://giscus.app/client.js';
+              script.async = true;
+              script.crossOrigin = 'anonymous';
+              script.dataset.repo = mount.dataset.giscusRepo;
+              script.dataset.repoId = mount.dataset.giscusRepoId;
+              script.dataset.category = mount.dataset.giscusCategory;
+              script.dataset.categoryId = mount.dataset.giscusCategoryId;
+              script.dataset.mapping = mount.dataset.giscusMapping;
+              script.dataset.strict = mount.dataset.giscusStrict;
+              script.dataset.reactionsEnabled = mount.dataset.giscusReactions;
+              script.dataset.emitMetadata = '0';
+              script.dataset.inputPosition = mount.dataset.giscusInputPosition;
+              script.dataset.theme = mount.dataset.giscusTheme;
+              script.dataset.lang = mount.dataset.giscusLanguage;
+              script.dataset.loading = mount.dataset.giscusLoading;
+
+              new MutationObserver((records, observer) => {
+                const frame = mount.querySelector('.giscus-frame');
+                if (!frame) return;
+                bindFrame(frame);
+                observer.disconnect();
+              }).observe(mount, { childList: true });
+
+              mount.appendChild(script);
+            };
+
+            if ('IntersectionObserver' in window) {
+              const observer = new IntersectionObserver(entries => {
+                if (!entries.some(entry => entry.isIntersecting)) return;
+                observer.disconnect();
+                loadGiscus();
+              }, { rootMargin: '600px 0px' });
+              observer.observe(host);
+            } else {
+              window.addEventListener('load', loadGiscus, { once: true });
+            }
           })();
         </script>
         <a class="giscus-github-link" href="https://github.com/aikkeko/aike-echo-comments/discussions" target="_blank" rel="noopener noreferrer">
@@ -554,7 +582,7 @@ if ('serviceWorker' in navigator) {
       <div class="site-state-item site-state-media">
           <a href="/media/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">声像</span>
         </a>
       </div>

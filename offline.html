@@ -25,7 +25,7 @@
     }
 
     body::before {
-      content: 'OFFLINE ARCHIVE / PLEASE RETURN BORROWED DREAMS';
+      content: 'OFFLINE ARCHIVE / PLEASE RETURN LATER';
       position: fixed;
       top: 28px;
       left: 50%;
@@ -182,7 +182,7 @@
       <a href="/" class="btn">返回首页</a>
     </div>
     <section class="cached-articles" aria-labelledby="cachedTitle">
-      <h2 id="cachedTitle">Cached Articles</h2>
+      <h2 id="cachedTitle">已缓存文章</h2>
       <ul class="cached-list" id="cachedList">
         <li>正在清点已缓存的档案……</li>
       </ul>
@@ -220,7 +220,7 @@
     })();
 
     if ('caches' in window) {
-      caches.open('blog-v72-pages').then(function(cache) {
+      caches.open('blog-v126-pages').then(function(cache) {
         cache.keys().then(function(requests) {
           var list = document.getElementById('cachedList');
           var articles = requests
