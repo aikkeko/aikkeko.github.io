@@ -162,7 +162,7 @@
                       {% if item.description %}<p class="media-card-description">{{ item.description }}</p>{% endif %}
                       <div class="media-card-meta">
                         {% if item.platform %}<span><i class="fa fa-satellite-dish" aria-hidden="true"></i>{{ item.platform }}</span>{% endif %}
-                        {% if item.date %}<time datetime="{{ item.date }}"><i class="far fa-calendar" aria-hidden="true"></i>{{ item.date }}</time>{% endif %}
+                        {% if item.date %}<time datetime="{{ item.date }}"><i class="far fa-calendar" aria-hidden="true"></i>{{ moment(item.date).locale('en').format('MMM DD, YYYY') }}</time>{% endif %}
                         {% if item.duration %}<span><i class="far fa-clock" aria-hidden="true"></i>{{ item.duration }}</span>{% endif %}
                       </div>
                       {% if item.tags and item.tags.length %}
