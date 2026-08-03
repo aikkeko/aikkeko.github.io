@@ -2,13 +2,13 @@
 // NexT 主题美化配置 - Z.A.T.O 后末日风格
 // 基于 Z.A.T.O_02_ca04.png 废墟美学设计
 // 
-// Version: 2026.07.31-01
-// Last Updated: 2026-07-31
+// Version: 2026.08.04-01
+// Last Updated: 2026-08-03
 // ============================================
 
 // 版本信息（用于调试）
 :root {
-  --theme-version: "2026.07.31-01";
+  --theme-version: "2026.08.04-01";
   --theme-name: "Z.A.T.O Apocalypse";
   --font-reading:
     "Noto Sans SC",
@@ -89,7 +89,7 @@ body {
   
   // 版本号水印（调试用，显示在页面左上角）
   &::before {
-  content: "v2026.07.31-01";
+  content: "v2026.08.04-01";
     position: fixed;
     top: 8px;
     left: 8px;
@@ -7415,15 +7415,15 @@ body::before {
 
 .giscus-comments-header {
   position: relative;
-  padding: 22px 26px 20px 30px;
+  padding: 18px 24px 16px 28px;
   border-bottom: 1px solid rgba(212, 196, 168, 0.13);
   background: linear-gradient(90deg, rgba(180, 160, 120, 0.055), transparent 58%);
 
   &::before {
     content: '';
     position: absolute;
-    top: 23px;
-    bottom: 22px;
+    top: 19px;
+    bottom: 18px;
     left: 18px;
     width: 2px;
     background: linear-gradient(#b4a078, rgba(106, 178, 168, 0.44));
@@ -7460,15 +7460,15 @@ body::before {
 
 .giscus-comments-body {
   position: relative;
-  padding: 16px 20px 20px;
+  padding: 12px 16px 14px;
   background: rgba(10, 12, 16, 0.24);
   overflow-anchor: none;
 }
 
 .giscus {
   position: relative;
-  min-height: 370px;
-  padding: 8px 10px 4px;
+  min-height: 292px;
+  padding: 6px 8px 2px;
   border: 1px solid rgba(212, 196, 168, 0.09);
   background: rgba(10, 12, 17, 0.34);
 }
@@ -7480,7 +7480,7 @@ body::before {
 
 .giscus-frame {
   display: block;
-  min-height: 350px;
+  min-height: 280px;
   color-scheme: dark;
   opacity: 0;
   transform: translateY(6px);
@@ -7539,7 +7539,7 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin: 12px 10px 0;
+  margin: 9px 8px 0;
   padding-bottom: 4px;
   border-bottom: 1px solid rgba(106, 160, 154, 0.32);
   color: rgba(212, 196, 168, 0.7) !important;
@@ -7603,30 +7603,30 @@ body::before {
   }
 
   .giscus-comments-header {
-    padding: 20px 18px 18px 26px;
+    padding: 17px 16px 15px 24px;
 
     h2 {
       font-size: 1.28rem !important;
     }
 
     &::before {
-      top: 21px;
-      bottom: 20px;
+      top: 18px;
+      bottom: 17px;
       left: 15px;
     }
   }
 
   .giscus-comments-body {
-    padding: 12px 10px 16px;
+    padding: 9px 7px 12px;
   }
 
   .giscus {
-    min-height: 400px;
+    min-height: 318px;
     padding: 4px;
   }
 
   .giscus-frame {
-    min-height: 382px;
+    min-height: 306px;
   }
 
   .giscus-pending {
@@ -7956,6 +7956,194 @@ body::before {
   }
 }
 
+// Final cascade guard: compact primary masthead.
+.site-nameplate-cn {
+  display: none !important;
+}
+
+@media (min-width: 769px) {
+  .header-inner .site-brand-container,
+  body.post-detail .header-inner .site-brand-container,
+  body.page .header-inner .site-brand-container,
+  body.archive .header-inner .site-brand-container,
+  body.category .header-inner .site-brand-container,
+  body.tag .header-inner .site-brand-container {
+    min-height: 98px !important;
+    padding: 13px 14px !important;
+    border-bottom: 0 !important;
+    box-shadow: 0 11px 28px rgba(0, 0, 0, 0.18) !important;
+  }
+
+  .site-brand-container::before,
+  .site-brand-container::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .site-brand-container .site-meta {
+    display: grid !important;
+    grid-template-columns: 44px minmax(0, 1fr) !important;
+    grid-template-areas: "mark title" "subtitle subtitle" !important;
+    column-gap: 11px !important;
+    row-gap: 5px !important;
+    align-items: center !important;
+  }
+
+  .site-brand-container .site-logo-link {
+    grid-area: mark !important;
+    width: 44px !important;
+  }
+
+  .site-brand-container .brand {
+    grid-area: title !important;
+  }
+
+  .site-brand-container .site-title {
+    margin: 0 !important;
+    font-size: 1.18rem !important;
+    line-height: 1.08 !important;
+    letter-spacing: 0.055em !important;
+  }
+
+  .site-brand-container .site-subtitle {
+    grid-area: subtitle !important;
+    width: auto !important;
+    margin: 0 !important;
+    font-size: 0.56rem !important;
+    line-height: 1.25 !important;
+    letter-spacing: 0.025em !important;
+    text-align: center !important;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-brand-container .site-meta {
+    grid-template-columns: 30px minmax(0, auto) !important;
+    column-gap: 8px !important;
+  }
+
+  .site-brand-container .site-logo-link {
+    width: 30px !important;
+  }
+}
+
+// ============================================
+// 78. Aike Echo primary monogram
+// ============================================
+.site-logo-link {
+  display: block;
+  line-height: 0;
+}
+
+.custom-logo-image {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  margin: 0 !important;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.72)) drop-shadow(0 0 9px rgba(212, 196, 168, 0.12));
+}
+
+@media (min-width: 769px) {
+  .header-inner .site-brand-container,
+  body.post-detail .header-inner .site-brand-container,
+  body.page .header-inner .site-brand-container,
+  body.archive .header-inner .site-brand-container,
+  body.category .header-inner .site-brand-container,
+  body.tag .header-inner .site-brand-container {
+    min-height: 126px !important;
+    padding: 16px 12px !important;
+  }
+
+  .site-brand-container .site-meta {
+    display: grid !important;
+    grid-template-columns: 54px minmax(0, 1fr);
+    grid-template-areas: "mark nameplate" "mark title" "subtitle subtitle";
+    column-gap: 11px;
+    row-gap: 5px;
+    align-items: center;
+    justify-items: stretch;
+  }
+
+  .site-brand-container .site-logo-link {
+    grid-area: mark;
+    width: 54px;
+    justify-self: center;
+  }
+
+  .site-brand-container .site-nameplate-cn {
+    grid-area: nameplate;
+    justify-self: center;
+    margin: 0 0 1px !important;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-indent: 0.2em;
+  }
+
+  .site-brand-container .site-nameplate-cn::before,
+  .site-brand-container .site-nameplate-cn::after {
+    width: 15px !important;
+  }
+
+  .site-brand-container .brand {
+    grid-area: title;
+    min-width: 0;
+  }
+
+  .site-brand-container .site-title {
+    margin: 0 !important;
+    font-size: 1.22rem !important;
+    line-height: 1.05 !important;
+  }
+
+  .site-brand-container .site-subtitle {
+    grid-area: subtitle;
+    width: 100% !important;
+    margin: 3px 0 0 !important;
+    font-size: 0.61rem !important;
+    line-height: 1.25 !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-brand-container .site-meta {
+    display: grid !important;
+    grid-template-columns: 34px minmax(0, auto);
+    grid-template-areas: "mark title" "mark subtitle";
+    column-gap: 9px;
+    row-gap: 3px;
+    align-items: center;
+    justify-content: center;
+    max-width: calc(100vw - 116px);
+    margin: 0 auto;
+  }
+
+  .site-brand-container .site-logo-link {
+    grid-area: mark;
+    width: 34px;
+  }
+
+  .site-brand-container .brand {
+    grid-area: title;
+    min-width: 0;
+  }
+
+  .site-brand-container .site-title {
+    margin: 0 !important;
+    line-height: 1.05 !important;
+  }
+
+  .site-brand-container .site-subtitle {
+    grid-area: subtitle;
+    margin: 0 !important;
+    font-size: 0.58rem !important;
+    line-height: 1.2 !important;
+    white-space: nowrap;
+  }
+}
+
 // ============================================
 // 76. Global audit refinements
 // ============================================
@@ -7971,13 +8159,15 @@ body::before {
   padding-top: 0;
 }
 
-// Reserve a stable discussion canvas before the external iframe arrives.
+// Reserve only the space needed for the editor while the external iframe
+// arrives. Once Giscus reports a larger height, its inline size can grow
+// naturally without leaving a permanent empty panel on quiet discussions.
 .giscus-comments-body {
-  min-height: 422px;
+  min-height: 336px;
 }
 
 .giscus {
-  min-height: 382px;
+  min-height: 292px;
 }
 
 @media (max-width: 768px) {
@@ -8015,11 +8205,11 @@ body::before {
   }
 
   .giscus-comments-body {
-    min-height: 438px;
+    min-height: 356px;
   }
 
   .giscus {
-    min-height: 404px;
+    min-height: 318px;
   }
 }
 
@@ -8373,6 +8563,136 @@ body::before {
       width: 20px !important;
     }
   }
+}
+
+// Final cascade guard: compact primary masthead.
+.site-nameplate-cn {
+  display: none !important;
+}
+
+@media (min-width: 769px) {
+  .header-inner .site-brand-container,
+  body.post-detail .header-inner .site-brand-container,
+  body.page .header-inner .site-brand-container,
+  body.archive .header-inner .site-brand-container,
+  body.category .header-inner .site-brand-container,
+  body.tag .header-inner .site-brand-container {
+    min-height: 98px !important;
+    padding: 13px 14px !important;
+    border-bottom: 0 !important;
+    box-shadow: 0 11px 28px rgba(0, 0, 0, 0.18) !important;
+  }
+
+  .site-brand-container::before,
+  .site-brand-container::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .site-brand-container .site-meta {
+    display: grid !important;
+    grid-template-columns: 44px minmax(0, 1fr) !important;
+    grid-template-areas: "mark title" "subtitle subtitle" !important;
+    column-gap: 11px !important;
+    row-gap: 5px !important;
+    align-items: center !important;
+  }
+
+  .site-brand-container .site-logo-link {
+    grid-area: mark !important;
+    width: 44px !important;
+  }
+
+  .site-brand-container .brand {
+    grid-area: title !important;
+  }
+
+  .site-brand-container .site-title {
+    margin: 0 !important;
+    font-size: 1.18rem !important;
+    line-height: 1.08 !important;
+    letter-spacing: 0.055em !important;
+  }
+
+  .site-brand-container .site-subtitle {
+    grid-area: subtitle !important;
+    width: auto !important;
+    margin: 0 !important;
+    font-size: 0.56rem !important;
+    line-height: 1.25 !important;
+    letter-spacing: 0.025em !important;
+    text-align: center !important;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-brand-container .site-meta {
+    grid-template-columns: 30px minmax(0, auto) !important;
+    column-gap: 8px !important;
+  }
+
+  .site-brand-container .site-logo-link {
+    width: 30px !important;
+  }
+}
+
+// The sidebar lockup intentionally omits the global site subtitle.
+@media (min-width: 769px) {
+  .header-inner .site-brand-container,
+  body.post-detail .header-inner .site-brand-container,
+  body.page .header-inner .site-brand-container,
+  body.archive .header-inner .site-brand-container,
+  body.category .header-inner .site-brand-container,
+  body.tag .header-inner .site-brand-container {
+    min-height: 82px !important;
+    padding: 12px 16px !important;
+  }
+
+  .site-brand-container .site-meta {
+    grid-template-columns: 42px minmax(0, 1fr) !important;
+    grid-template-areas: "mark title" !important;
+    column-gap: 12px !important;
+    row-gap: 0 !important;
+  }
+
+  .site-brand-container .site-logo-link {
+    width: 42px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-brand-container .site-meta {
+    grid-template-areas: "mark title" !important;
+    row-gap: 0 !important;
+  }
+}
+
+// Keep the archive rail on the same top rhythm as the homepage.
+@media (min-width: 769px) {
+  body:not(.home-page) .header-inner {
+    top: 13px !important;
+  }
+
+  // Keep the content card and the sidebar masthead on one horizontal baseline.
+  body:not(.home-page) .main-inner {
+    padding-top: 13px !important;
+  }
+}
+
+// The logo is a self-contained mark; inherited link rules must not underline it.
+.site-brand-container .site-logo-link,
+.site-brand-container .site-logo-link:hover,
+.site-brand-container .site-logo-link:focus,
+.site-brand-container .site-logo-link:active,
+.site-brand-container .site-logo-link:visited {
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+.site-brand-container .site-logo-link img {
+  display: block !important;
 }
 
 // Final cascade guard for long-form typography.

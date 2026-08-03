@@ -8,13 +8,10 @@
   </div>
 
   <div class="site-meta{%- if theme.custom_logo %} custom-logo{%- endif %}">
-    <span class="site-nameplate-cn" lang="zh-CN">艾声回响</span>
-    {%- if theme.custom_logo and theme.scheme === 'Muse' %}
-      <div class="site-meta-headline">
-        <a>
-          <img class="custom-logo-image" src="{{ theme.custom_logo }}" alt="{{ title }}">
-        </a>
-      </div>
+    {%- if theme.custom_logo %}
+      <a href="{{ config.root }}" class="site-logo-link" rel="start" aria-label="{{ title }}">
+        <img class="custom-logo-image" src="{{ theme.custom_logo }}" alt="">
+      </a>
     {%- endif %}
 
     <a href="{{ config.root }}" class="brand" rel="start">
@@ -22,14 +19,6 @@
       <h1 class="site-title">{{ title }}</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-    {%- if subtitle %}
-      <p class="site-subtitle" itemprop="description">{{ subtitle }}</p>
-    {%- endif %}
-    {%- if theme.custom_logo and (theme.scheme === 'Gemini' or theme.scheme === 'Pisces') %}
-      <a>
-        <img class="custom-logo-image" src="{{ theme.custom_logo }}" alt="{{ title }}">
-      </a>
-    {%- endif %}
   </div>
 
   <div class="site-nav-right">

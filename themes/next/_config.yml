@@ -40,9 +40,9 @@ custom_file_path:
 # ---------------------------------------------------------------
 
 favicon:
-  small: /images/bitbug_favicon.ico
-  medium: /images/bitbug_favicon.ico
-  apple_touch_icon: /images/apple-touch-icon-next.png
+  small: /images/branding/aike-echo-logo-16.png
+  medium: /images/branding/aike-echo-logo-32.png
+  apple_touch_icon: /images/branding/aike-echo-logo-180.png
   safari_pinned_tab: /images/logo.svg
   #android_manifest: /images/manifest.json
   #ms_browserconfig: /images/browserconfig.xml
@@ -360,7 +360,7 @@ mobile_layout_economy: false
 android_chrome_color: "#1e2128"
 
 # Custom Logo (Do not support scheme Mist)
-custom_logo: #/uploads/custom-logo.jpg
+custom_logo: /images/branding/aike-echo-logo.png
 
 codeblock:
   # Code Highlight theme
@@ -981,7 +981,7 @@ vendors:
 
 # Assets
 css: css
-asset_version: 2026073101
+asset_version: 2026080401
 js: js
 images: images
 
