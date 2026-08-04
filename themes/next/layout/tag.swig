@@ -13,7 +13,7 @@
   {#################}
   <div class="post-block">
     <section class="tag-detail-hero page-identity-hero" aria-label="标签文章">
-      <div class="page-hero-kicker">筛选索引 / 标签记录</div>
+      <div class="page-hero-kicker">FILTERED RECORD</div>
       <h1 class="page-hero-title">#{{ page.tag }}</h1>
       <p class="page-hero-desc">收录在同一标签下的文章。</p>
       <div class="page-hero-stats">

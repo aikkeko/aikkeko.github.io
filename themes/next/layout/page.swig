@@ -33,13 +33,13 @@
     <div class="post-block" lang="{{ page.lang or config.language }}">
       {%- if page.type === 'about' %}
         <section class="about-hero page-identity-hero" aria-label="关于本站">
-          <div class="page-hero-kicker">站点说明 / 个人档案</div>
+          <div class="page-hero-kicker">KEEPER PROFILE</div>
           <h1 class="page-hero-title">关于</h1>
           <p class="page-hero-desc">记录书籍、动画、游戏、日常，以及未被归类的回声。</p>
         </section>
       {%- elif page.type === 'tags' %}
         <section class="tag-index-hero page-identity-hero" aria-label="标签索引">
-          <div class="page-hero-kicker">标签索引 / 快速筛选</div>
+          <div class="page-hero-kicker">TAG DIRECTORY</div>
           <h1 class="page-hero-title">标签索引</h1>
           <p class="page-hero-desc">按照主题与内容线索查找文章。</p>
           <div class="page-hero-stats">
@@ -49,7 +49,7 @@
         </section>
       {%- elif page.type === 'categories' %}
         <section class="category-index-hero page-identity-hero" aria-label="分类索引">
-          <div class="page-hero-kicker">分类索引 / 阅读路径</div>
+          <div class="page-hero-kicker">CATEGORY DIRECTORY</div>
           <h1 class="page-hero-title">分类索引</h1>
           <p class="page-hero-desc">按照主要内容类别浏览文章。</p>
           <div class="page-hero-stats">
@@ -59,7 +59,7 @@
         </section>
       {%- elif page.type === 'resources' %}
         <section class="resource-hero page-identity-hero" aria-label="资源索引">
-          <div class="page-hero-kicker">资源索引 / 外部记录</div>
+          <div class="page-hero-kicker">RESOURCE DIRECTORY</div>
           <h1 class="page-hero-title">资源索引</h1>
           <p class="page-hero-desc">收录链接、书单与常用工具。</p>
           <div class="page-hero-stats">
@@ -69,7 +69,7 @@
         </section>
       {%- elif page.type === 'media' %}
         <section class="media-hero page-identity-hero" aria-label="声像档案">
-          <div class="page-hero-kicker">{{ media_page.kicker or '声像索引 / 已收录信号' }}</div>
+          <div class="page-hero-kicker">{{ media_page.kicker or 'SIGNAL ARCHIVE' }}</div>
           <h1 class="page-hero-title">{{ media_page.title or '声像档案' }}</h1>
           <p class="page-hero-desc">{{ media_page.description or '收录电台、视频与那些值得被保留的声音。' }}</p>
           <div class="page-hero-stats">

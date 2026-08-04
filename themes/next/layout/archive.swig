@@ -13,7 +13,7 @@
   {#####################}
   <div class="post-block">
     <section class="archive-hero" aria-label="归档概览">
-      <div class="archive-hero-kicker">时间索引</div>
+      <div class="archive-hero-kicker">CHRONOLOGICAL ARCHIVE</div>
       <h1 class="archive-hero-title">归档</h1>
       <p class="archive-hero-desc">所有文章按照进入档案的时间排列。</p>
       <div class="archive-hero-stats">
