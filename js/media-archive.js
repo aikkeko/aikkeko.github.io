@@ -14,6 +14,7 @@
     const reset = archive.querySelector('[data-media-reset]');
     const recordLinks = Array.from(archive.querySelectorAll('[data-media-open]'));
     const players = Array.from(archive.querySelectorAll('[data-media-player]'));
+    const descriptions = Array.from(archive.querySelectorAll('.media-card-description'));
     const params = new URLSearchParams(window.location.search);
 
     if (search && params.get('q')) search.value = params.get('q');
@@ -102,6 +103,34 @@
       const launch = player.querySelector('[data-media-play]');
       if (launch) launch.addEventListener('click', () => startPlayer(player));
     });
+
+    function prepareDescription(description) {
+      if (!description || description.dataset.collapseReady === 'true') return;
+
+      const lineHeight = Number.parseFloat(window.getComputedStyle(description).lineHeight) || 28;
+      const hasOverflow = description.scrollHeight > lineHeight * 5 + 2;
+      if (!hasOverflow) return;
+
+      description.dataset.collapseReady = 'true';
+      description.classList.add('is-collapsible');
+
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'media-description-toggle';
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = '展开介绍';
+      toggle.addEventListener('click', () => {
+        const expanded = description.classList.toggle('is-expanded');
+        toggle.setAttribute('aria-expanded', String(expanded));
+        toggle.textContent = expanded ? '收起介绍' : '展开介绍';
+      });
+      description.insertAdjacentElement('afterend', toggle);
+    }
+
+    descriptions.forEach(prepareDescription);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => descriptions.forEach(prepareDescription));
+    }
 
     applyFilters();
   }
