@@ -2,13 +2,13 @@
 // NexT 主题美化配置 - Z.A.T.O 后末日风格
 // 基于 Z.A.T.O_02_ca04.png 废墟美学设计
 // 
-// Version: 2026.08.04-05
-// Last Updated: 2026-08-04
+// Version: 2026.08.06-05
+// Last Updated: 2026-08-06
 // ============================================
 
 // 版本信息（用于调试）
 :root {
-  --theme-version: "2026.08.04-05";
+  --theme-version: "2026.08.06-05";
   --theme-name: "Z.A.T.O Apocalypse";
   --font-reading:
     "Noto Sans SC",
@@ -93,7 +93,7 @@ body {
   
   // 版本号保留在样式元数据中，默认不在页面上显示。
   &::before {
-    content: "v2026.08.04-05";
+    content: "v2026.08.06-05";
     display: none !important;
   }
   
@@ -5351,14 +5351,18 @@ body.tag .header-inner .site-brand-container {
 
 .index .post-card-excerpt,
 .index .post-card-featured .post-card-excerpt {
-  display: block !important;
+  display: -webkit-box !important;
   min-height: 0 !important;
   max-height: none !important;
-  overflow: visible !important;
+  overflow: hidden !important;
   margin: 0 !important;
   color: rgba(232, 228, 220, 0.72) !important;
-  -webkit-line-clamp: unset !important;
-  -webkit-box-orient: initial !important;
+  -webkit-line-clamp: 5 !important;
+  -webkit-box-orient: vertical !important;
+}
+
+.index .post-card-featured .post-card-excerpt {
+  -webkit-line-clamp: 6 !important;
 }
 
 .index .post-card-meta {
@@ -8004,6 +8008,121 @@ body,
 .post-detail .post-body blockquote {
   font-family: var(--font-prose) !important;
   font-weight: 400 !important;
+}
+
+// Preserve intentional paragraph breaks configured in the local content
+// manager while keeping ordinary long lines naturally wrapped.
+.index .post-card-excerpt,
+.media-card-description {
+  white-space: pre-line !important;
+  overflow-wrap: anywhere;
+}
+
+.media-card-description.is-collapsible {
+  position: relative;
+  display: -webkit-box;
+  overflow: hidden;
+  margin-bottom: 8px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 42%;
+    height: 1.9em;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(31, 34, 41, 0.96) 72%);
+  }
+}
+
+.media-card-description.is-collapsible.is-expanded {
+  display: block;
+  overflow: visible;
+  -webkit-line-clamp: unset;
+
+  &::after {
+    content: none;
+  }
+}
+
+.media-description-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 18px;
+  padding: 3px 0 4px;
+  border: 0;
+  border-bottom: 1px solid rgba(106, 160, 154, 0.34);
+  color: rgba(146, 194, 186, 0.82);
+  background: transparent;
+  font-family: var(--font-label);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+
+  &::after {
+    content: '⌄';
+    color: rgba(212, 196, 168, 0.78);
+    font-size: 1rem;
+    line-height: 0.8;
+    transition: transform 0.2s ease;
+  }
+
+  &[aria-expanded='true']::after {
+    transform: rotate(180deg);
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: #d8e4e1;
+    border-bottom-color: rgba(106, 160, 154, 0.7);
+    outline: none;
+  }
+}
+
+// Keep the media-description control compact and aligned with its label.
+.media-description-toggle {
+  align-self: flex-start;
+  gap: 7px;
+  width: auto !important;
+  padding: 3px 2px 4px 0;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: rgba(202, 194, 179, 0.82);
+  font-size: 0.7rem;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+
+  &::after {
+    content: '';
+    flex: 0 0 auto;
+    width: 6px;
+    height: 6px;
+    margin-left: 1px;
+    border: 0;
+    border-right: 1px solid rgba(180, 160, 120, 0.86);
+    border-bottom: 1px solid rgba(180, 160, 120, 0.86);
+    transform: translateY(-2px) rotate(45deg);
+    transform-origin: center;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  &[aria-expanded='true']::after {
+    transform: translateY(2px) rotate(225deg);
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: #e4d8c2;
+    outline: none;
+
+    &::after {
+      border-color: #c8aa72;
+    }
+  }
 }
 
 // Final cascade guard: compact primary masthead.
