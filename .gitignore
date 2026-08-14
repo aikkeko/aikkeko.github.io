@@ -8,3 +8,5 @@ public/
 .env
 .pipeline-cache/
 .omo/
+artifacts/visual-regression/
+.chrome-visual/

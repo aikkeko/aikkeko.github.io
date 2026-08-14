@@ -12,16 +12,15 @@
   {### ARCHIVE BLOCK ###}
   {#####################}
   <div class="post-block">
-    <section class="archive-hero" aria-label="归档概览">
-      <div class="archive-hero-kicker">CHRONOLOGICAL ARCHIVE</div>
-      <h1 class="archive-hero-title">归档</h1>
-      <p class="archive-hero-desc">所有文章按照进入档案的时间排列。</p>
-      <div class="archive-hero-stats">
-        <span><strong>{{ site.posts.length }}</strong> 篇文章</span>
-        <span><strong>{{ site.tags.length }}</strong> 个标签</span>
-        <span><strong>{{ moment(site.posts.last().date).format('YYYY') if site.posts.length else moment().format('YYYY') }}</strong> 最近年份</span>
-      </div>
-    </section>
+    {{ partial('_partials/page/identity-hero.swig', {
+      hero_class: 'archive-hero', hero_label: '归档概览', hero_kicker: 'CHRONOLOGICAL ARCHIVE',
+      hero_title: '归档', hero_desc: '所有文章按照进入档案的时间排列。',
+      hero_stats: [
+        { value: site.posts.length, label: '篇文章' },
+        { value: site.tags.length, label: '个标签' },
+        { value: moment(site.posts.last().date).format('YYYY') if site.posts.length else moment().format('YYYY'), label: '最近年份' }
+      ]
+    }) }}
     <div class="posts-collapse">
       <div class="collection-title">
         <span class="collection-header">馆藏清点完毕：当前共收录 {{ site.posts.length }} 份档案，新的记录仍在等待入馆。</span>

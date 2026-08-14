@@ -174,6 +174,7 @@
     target.hash = 'posts-section';
     link.href = target.href;
   });
+
 </script>
 
 {% endblock %}

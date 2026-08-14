@@ -1,0 +1,1862 @@
+// 46. Global top alignment - remove phantom gap before page content
+// The floating back-to-top control must never take space in the document flow.
+.back-to-top {
+  position: fixed !important;
+}
+
+.main {
+  margin-top: 0 !important;
+}
+
+.main-inner,
+.content-wrap,
+.content {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+body:not(.post-detail) .content > .post-block:first-child,
+body:not(.post-detail) .content > .post-block:first-of-type {
+  margin-top: 0 !important;
+}
+
+body.post-detail .post-banner {
+  margin-top: 0 !important;
+}
+
+@media (max-width: 991px) {
+  body:not(.post-detail) .content > .post-block:first-child,
+  body:not(.post-detail) .content > .post-block:first-of-type {
+    margin-top: 0 !important;
+  }
+}
+
+// 47. Unified bilingual typography - one archival voice for CJK and Latin text
+body {
+  font-family:
+    "Inter",
+    "SF Pro Text",
+    "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    sans-serif !important;
+  font-kerning: normal;
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+}
+
+.site-title,
+.site-subtitle,
+.menu-item a,
+.page-hero-title,
+.archive-hero-title,
+.post-banner-title,
+.post-card-title,
+.posts-collapse .post-title,
+.post-body h1,
+.post-body h2,
+.post-body h3,
+.post-body h4,
+.post-body h5,
+.post-body h6 {
+  font-family:
+    "Inter",
+    "SF Pro Display",
+    "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    sans-serif !important;
+}
+
+.page-hero-title,
+.archive-hero-title,
+.post-banner-title,
+.post-card-title,
+.posts-collapse .post-title {
+  font-weight: 650 !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.18 !important;
+}
+
+.site-title,
+.menu-item a {
+  font-weight: 620 !important;
+  letter-spacing: 0.015em !important;
+}
+
+.site-subtitle,
+.page-hero-desc,
+.archive-hero-desc,
+.post-card-excerpt,
+.post-body,
+.post-body p,
+.post-body li {
+  font-family:
+    "Inter",
+    "SF Pro Text",
+    "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    sans-serif !important;
+  letter-spacing: 0.005em;
+}
+
+.page-hero-kicker,
+.archive-hero-kicker,
+.page-identity-hero::before,
+.archive-hero::before,
+.post-banner-kicker,
+.post-meta,
+.post-banner-meta,
+.post-card-meta,
+.page-hero-stats span,
+.archive-hero-stats span,
+.collection-header {
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    "Cascadia Mono",
+    "Courier New",
+    "PingFang SC",
+    "Microsoft YaHei",
+    monospace !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.13em !important;
+}
+
+.page-hero-stats strong,
+.archive-hero-stats strong {
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    "Cascadia Mono",
+    "Courier New",
+    monospace !important;
+  letter-spacing: 0.02em !important;
+}
+
+.post-body blockquote,
+.post-body blockquote p {
+  font-family:
+    "Inter",
+    "SF Pro Text",
+    "Segoe UI",
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans CJK SC",
+    sans-serif !important;
+  font-style: normal !important;
+  letter-spacing: 0.01em !important;
+}
+
+// 48. Search overlay repair - keep search modal independent from sidebar flow
+.search-pop-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 11000 !important;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(72px, 10vh, 104px) 24px 40px !important;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(212, 196, 168, 0.08), transparent 34%),
+    rgba(8, 10, 14, 0.54) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.search-pop-overlay.search-active {
+  display: flex !important;
+}
+
+.search-pop-overlay .search-popup {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 720px !important;
+  max-width: calc(100vw - 48px) !important;
+  max-height: calc(100vh - 120px) !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background:
+    linear-gradient(145deg, rgba(34, 37, 44, 0.96), rgba(17, 19, 24, 0.96)) !important;
+  border: 1px solid rgba(212, 196, 168, 0.24) !important;
+  border-radius: 6px !important;
+  box-shadow:
+    0 26px 74px rgba(0, 0, 0, 0.58),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+}
+
+.search-popup .search-header {
+  display: grid !important;
+  grid-template-columns: 42px minmax(0, 1fr) 42px !important;
+  align-items: center !important;
+  min-height: 58px !important;
+  padding: 8px 10px !important;
+  background:
+    linear-gradient(90deg, rgba(212, 196, 168, 0.08), rgba(106, 160, 154, 0.04)) !important;
+  border-bottom: 1px solid rgba(212, 196, 168, 0.14) !important;
+}
+
+.search-popup .search-icon,
+.search-popup .popup-btn-close {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 34px !important;
+  height: 34px !important;
+  margin: 0 !important;
+  color: rgba(232, 228, 220, 0.62) !important;
+  line-height: 1 !important;
+}
+
+.search-popup .search-icon .fa,
+.search-popup .popup-btn-close .fa,
+.search-popup #no-result .fa {
+  font-size: 16px !important;
+  line-height: 1 !important;
+}
+
+.search-popup .search-input-container {
+  min-width: 0 !important;
+}
+
+.search-popup input.search-input,
+.search-popup .search-input {
+  width: 100% !important;
+  height: 40px !important;
+  margin: 0 !important;
+  padding: 0 12px !important;
+  color: rgba(232, 228, 220, 0.86) !important;
+  background: rgba(8, 10, 14, 0.38) !important;
+  border: 1px solid rgba(212, 196, 168, 0.18) !important;
+  border-radius: 3px !important;
+  font-size: 0.95rem !important;
+}
+
+.search-popup #search-result {
+  max-height: calc(100vh - 178px) !important;
+  min-height: 180px !important;
+  padding: 18px 22px 24px !important;
+  overflow-y: auto !important;
+}
+
+.search-popup #no-result {
+  min-height: 140px !important;
+  display: grid !important;
+  place-items: center !important;
+  color: rgba(232, 228, 220, 0.34) !important;
+}
+
+.search-popup #no-result .fa {
+  font-size: 44px !important;
+  opacity: 0.42 !important;
+}
+
+.search-popup ul.search-result-list {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.search-popup li {
+  margin: 0 0 16px !important;
+  padding: 0 0 16px !important;
+  border-bottom: 1px solid rgba(212, 196, 168, 0.1) !important;
+}
+
+.search-popup a.search-result-title {
+  display: inline-block !important;
+  margin-bottom: 6px !important;
+  color: #d4c4a8 !important;
+}
+
+.search-popup p.search-result {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: rgba(232, 228, 220, 0.62) !important;
+  line-height: 1.75 !important;
+}
+
+@media (max-width: 768px) {
+  .search-pop-overlay {
+    padding: 56px 14px 28px !important;
+  }
+
+  .search-pop-overlay .search-popup {
+    width: calc(100vw - 28px) !important;
+    max-height: calc(100vh - 84px) !important;
+  }
+}
+
+// 49. Archive chronology refinement - make dates read like records, not buttons
+.archive .posts-collapse {
+  padding-left: 58px !important;
+}
+
+.archive .collection-year {
+  margin: 42px 0 18px !important;
+}
+
+.archive .collection-year .collection-header {
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: rgba(255, 248, 234, 0.92) !important;
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    "Cascadia Mono",
+    "Courier New",
+    monospace !important;
+  font-size: clamp(1.35rem, 2.2vw, 1.9rem) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.22em !important;
+  line-height: 1 !important;
+}
+
+.archive .posts-collapse .post-header {
+  display: grid !important;
+  grid-template-columns: 72px minmax(0, 1fr) !important;
+  align-items: baseline !important;
+  gap: 18px !important;
+  min-height: 0 !important;
+  margin: 10px 0 !important;
+  padding: 13px 18px !important;
+  border-color: rgba(212, 196, 168, 0.12) !important;
+  background:
+    linear-gradient(90deg, rgba(35, 38, 45, 0.56), rgba(20, 23, 29, 0.32)) !important;
+}
+
+.archive .posts-collapse .post-header::after {
+  right: 18px !important;
+  top: 50% !important;
+  color: rgba(212, 196, 168, 0.1) !important;
+  font-size: 1.35em !important;
+}
+
+.archive .posts-collapse .post-meta {
+  display: flex !important;
+  align-items: center !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  color: rgba(212, 196, 168, 0.72) !important;
+  line-height: 1 !important;
+}
+
+.archive .posts-collapse .post-meta time {
+  display: inline !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: rgba(212, 196, 168, 0.74) !important;
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    "Cascadia Mono",
+    "Courier New",
+    monospace !important;
+  font-size: 0.76rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.12em !important;
+  white-space: nowrap !important;
+}
+
+.archive .posts-collapse .post-title {
+  min-width: 0 !important;
+  padding-right: 42px !important;
+  font-size: clamp(1rem, 1.25vw, 1.16rem) !important;
+  line-height: 1.45 !important;
+}
+
+.archive .posts-collapse .post-title a,
+.archive .posts-collapse .post-title span.exturl {
+  display: inline !important;
+  color: rgba(255, 248, 234, 0.9) !important;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.32) !important;
+}
+
+@media (max-width: 768px) {
+  .archive .posts-collapse {
+    padding-left: 34px !important;
+  }
+
+  .archive .posts-collapse .post-header {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 14px 16px !important;
+  }
+
+  .archive .posts-collapse .post-title {
+    padding-right: 28px !important;
+  }
+}
+
+// 50. Homepage card hierarchy - keep the sequence marker out of artwork
+// The number belongs to the record, not to its cover. Keeping it in the text
+// panel preserves image composition and makes every marker readable.
+.index .post-card {
+  counter-increment: post-card !important;
+}
+
+.index .post-card::before {
+  content: none !important;
+  counter-increment: none !important;
+}
+
+.index .post-card-content {
+  position: relative !important;
+}
+
+.index .post-card-content::after {
+  content: none !important;
+}
+
+.index .post-card-heading {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: start !important;
+  gap: 12px !important;
+}
+
+.index .post-card-index {
+  display: block !important;
+  min-width: 44px !important;
+  color: rgba(212, 196, 168, 0.25) !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-size: 2.1em !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1 !important;
+  text-align: right !important;
+  pointer-events: none !important;
+}
+
+.index .post-card-index::before {
+  content: counter(post-card, decimal-leading-zero) !important;
+}
+
+.index .post-card-title,
+.index .post-card-featured .post-card-title {
+  position: relative;
+  z-index: 2;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  padding-right: 0 !important;
+  text-wrap: pretty;
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.index .post-card-title a {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .index .post-card-title,
+  .index .post-card-featured .post-card-title {
+    max-width: 100% !important;
+  }
+
+  .index .post-card-heading {
+    gap: 9px !important;
+  }
+
+  .index .post-card-index {
+    min-width: 38px !important;
+    font-size: 1.8em !important;
+  }
+}
+
+// 51. Homepage cover framing - give every image breathing room inside its record
+.index .post-card {
+  box-sizing: border-box !important;
+  gap: clamp(18px, 2vw, 28px) !important;
+  padding: clamp(14px, 1.5vw, 18px) !important;
+}
+
+.index .post-card .post-card-content,
+.index .post-card-featured .post-card-content {
+  padding: clamp(18px, 2.2vw, 30px) 0 !important;
+}
+
+.index .post-card .post-card-image,
+.index .post-card-featured .post-card-image {
+  overflow: hidden !important;
+  border: 1px solid rgba(212, 196, 168, 0.16) !important;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2) !important;
+}
+
+@media (max-width: 768px) {
+  .index .post-card {
+    gap: 12px !important;
+    padding: 10px !important;
+  }
+
+  .index .post-card .post-card-content,
+  .index .post-card-featured .post-card-content {
+    padding: 8px 0 10px !important;
+  }
+}
+
+// 52. Cover loading state - reveal artwork only after the complete image arrives
+.index .post-card-image {
+  position: relative !important;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.035) 25%, transparent 25%) 0 0 / 12px 12px,
+    linear-gradient(315deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%) 0 0 / 12px 12px,
+    linear-gradient(135deg, #30343a, #20242a) !important;
+}
+
+.index .post-card-image::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  z-index: 4 !important;
+  width: 26px !important;
+  height: 26px !important;
+  margin: -13px 0 0 -13px !important;
+  border: 1px solid rgba(212, 196, 168, 0.22) !important;
+  border-top-color: rgba(212, 196, 168, 0.86) !important;
+  border-right-color: rgba(106, 160, 154, 0.78) !important;
+  border-radius: 50% !important;
+  opacity: 1 !important;
+  animation: archive-cover-spin 0.9s linear infinite !important;
+  pointer-events: none !important;
+  transition: opacity 0.28s ease !important;
+}
+
+.index .post-card-image .post-card-cover {
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.42s ease;
+}
+
+.index .post-card-image.is-loaded::before {
+  opacity: 0 !important;
+  animation: none !important;
+}
+
+.index .post-card-image.is-loaded .post-card-cover {
+  opacity: 1;
+}
+
+@keyframes archive-cover-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .index .post-card-image::before {
+    animation: none !important;
+  }
+}
+
+// 53. Homepage background reveal - UI remains visible while the wasteland emerges
+.archive-background-opening {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: rgba(3, 4, 5, 0.92);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: none;
+}
+
+.archive-background-opening.is-revealing {
+  animation: archive-background-reveal 1.35s cubic-bezier(0.18, 0.72, 0.22, 1) 0.72s forwards;
+}
+
+@keyframes archive-background-reveal {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+// 62. Optional reading resume - preserve progress without forced navigation
+.reading-resume-prompt {
+  position: fixed;
+  right: 26px;
+  bottom: 26px;
+  z-index: 1100;
+  display: flex;
+  align-items: stretch;
+  width: calc(100vw - 32px);
+  max-width: 330px;
+  border: 1px solid rgba(212, 196, 168, 0.28);
+  background:
+    linear-gradient(135deg, rgba(37, 40, 47, 0.96), rgba(18, 20, 25, 0.96));
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: reading-resume-enter 0.36s ease both;
+}
+
+.reading-resume-action {
+  flex: 1;
+  min-width: 0;
+  padding: 15px 17px;
+  color: rgba(232, 228, 220, 0.92);
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+
+  strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.96rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+}
+
+.reading-resume-kicker {
+  display: block;
+  color: rgba(106, 160, 154, 0.9);
+  font-family: $font-family-monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.13em;
+}
+
+.reading-resume-dismiss {
+  width: 44px;
+  color: rgba(200, 200, 204, 0.62);
+  border: 0;
+  border-left: 1px solid rgba(212, 196, 168, 0.14);
+  background: rgba(255, 255, 255, 0.015);
+  font-size: 1.22rem;
+  cursor: pointer;
+}
+
+.reading-resume-action:hover,
+.reading-resume-dismiss:hover {
+  color: #f0e8d8;
+  background: rgba(212, 196, 168, 0.07);
+}
+
+@keyframes reading-resume-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .reading-resume-prompt {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reading-resume-prompt {
+    animation: none;
+  }
+}
+
+// 63. Homepage archive rail - remain available while browsing the dispatches
+@media (min-width: 992px) {
+  body.home-page .header {
+    position: sticky !important;
+    top: 16px;
+    z-index: 30;
+    height: 0;
+  }
+
+  body.home-page .header-inner {
+    top: 0 !important;
+  }
+}
+
+// 64. Signal archive - radio and moving-image collection
+.media-hero::before {
+  content: 'SIGNAL / PROGRAM DIRECTORY';
+}
+
+.media-archive {
+  --media-accent: #6aa09a;
+  --media-gold: #d4c4a8;
+  position: relative;
+}
+
+.media-toolbar {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 14px;
+  border: 1px solid rgba(212, 196, 168, 0.16);
+  background:
+    linear-gradient(135deg, rgba(30, 33, 40, 0.78), rgba(15, 17, 22, 0.58));
+  box-shadow: 0 15px 38px rgba(0, 0, 0, 0.18);
+}
+
+.media-filter-group {
+  display: flex;
+  gap: 6px;
+}
+
+.media-filter {
+  min-height: 38px;
+  padding: 8px 13px;
+  border: 1px solid rgba(212, 196, 168, 0.13);
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.018);
+  color: rgba(232, 228, 220, 0.6);
+  font-family: $font-family-monospace;
+  font-size: 0.69rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+
+  &:hover,
+  &.is-active {
+    border-color: rgba(106, 160, 154, 0.48);
+    background: linear-gradient(135deg, rgba(106, 160, 154, 0.16), rgba(212, 196, 168, 0.055));
+    color: #f0e8d8;
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(212, 196, 168, 0.68);
+    outline-offset: 2px;
+  }
+}
+
+.media-search {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  border: 1px solid rgba(212, 196, 168, 0.13);
+  background: rgba(8, 10, 14, 0.28);
+
+  i {
+    flex: 0 0 auto;
+    margin-left: 13px;
+    color: rgba(106, 160, 154, 0.72);
+    font-size: 0.78rem;
+  }
+
+  input {
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    padding: 7px 12px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: rgba(240, 232, 216, 0.9);
+    font-size: 0.84rem;
+
+    &::placeholder {
+      color: rgba(200, 200, 204, 0.42);
+    }
+  }
+
+  &:focus-within {
+    border-color: rgba(106, 160, 154, 0.48);
+    box-shadow: 0 0 0 2px rgba(106, 160, 154, 0.08);
+  }
+}
+
+.media-result-counter {
+  color: rgba(200, 200, 204, 0.52);
+  font-family: $font-family-monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  strong {
+    color: var(--media-gold);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.media-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 210px 1fr;
+  min-width: 0;
+  border: 1px solid rgba(212, 196, 168, 0.16);
+  background:
+    linear-gradient(150deg, rgba(43, 46, 53, 0.82), rgba(17, 19, 24, 0.72));
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.25);
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.026);
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: rgba(212, 196, 168, 0.3);
+    box-shadow: 0 26px 58px rgba(0, 0, 0, 0.34);
+  }
+
+  &[hidden] {
+    display: none !important;
+  }
+
+  &.is-featured {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
+    grid-template-rows: minmax(310px, auto);
+  }
+}
+
+.media-card-cover {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+  background: #171a20;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, transparent 46%, rgba(8, 10, 14, 0.66)),
+      repeating-linear-gradient(0deg, transparent 0, transparent 5px, rgba(255, 255, 255, 0.018) 5px, rgba(255, 255, 255, 0.018) 6px);
+    pointer-events: none;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.2, 0.75, 0.2, 1);
+  }
+
+  &.is-placeholder {
+    display: grid;
+    place-items: center;
+    background:
+      radial-gradient(circle at 50% 46%, rgba(106, 160, 154, 0.14), transparent 30%),
+      linear-gradient(145deg, #252830, #15171c);
+
+    > i {
+      color: rgba(212, 196, 168, 0.42);
+      font-size: 3rem;
+      filter: drop-shadow(0 0 22px rgba(106, 160, 154, 0.16));
+    }
+  }
+}
+
+.media-card:hover .media-card-cover img {
+  transform: scale(1.025);
+}
+
+.media-card-kind {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+  z-index: 1;
+  padding: 5px 8px;
+  border: 1px solid rgba(212, 196, 168, 0.22);
+  background: rgba(12, 14, 18, 0.62);
+  color: rgba(232, 228, 220, 0.76);
+  font-family: $font-family-monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.media-card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 25px 26px 26px;
+}
+
+.media-card-title {
+  margin: 13px 0 10px;
+  color: #eee6d8;
+  font-family:
+    "Source Han Serif SC",
+    "Noto Serif CJK SC",
+    "Noto Serif SC",
+    "Songti SC",
+    "STSong",
+    "SimSun",
+    Georgia,
+    serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  font-synthesis: none;
+  font-feature-settings: "kern" 1, "palt" 1;
+  line-height: 1.46;
+  letter-spacing: 0.018em;
+  text-wrap: balance;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04),
+    0 4px 18px rgba(0, 0, 0, 0.42);
+}
+
+.media-card.is-featured .media-card-title {
+  font-size: clamp(1.52rem, 2.05vw, 1.86rem);
+  line-height: 1.42;
+  letter-spacing: 0.012em;
+}
+
+.media-card-description {
+  margin: 0 0 18px;
+  color: rgba(222, 219, 214, 0.68);
+  font-size: 0.91rem;
+  line-height: 1.9;
+  letter-spacing: 0.012em;
+  text-wrap: pretty;
+}
+
+@supports (-webkit-background-clip: text) {
+  .media-card-title {
+    background: linear-gradient(180deg, #fffaf0 0%, #e6ded0 68%, #c2b59b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+.media-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 15px;
+  margin-top: auto;
+  padding-top: 13px;
+  border-top: 1px solid rgba(212, 196, 168, 0.1);
+  color: rgba(200, 200, 204, 0.58);
+  font-family: $font-family-monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+
+  span,
+  time {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  i {
+    color: rgba(106, 160, 154, 0.7);
+  }
+}
+
+.media-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+
+  span {
+    padding: 4px 7px;
+    border: 1px solid rgba(212, 196, 168, 0.11);
+    color: rgba(212, 196, 168, 0.62);
+    font-size: 0.68rem;
+  }
+}
+
+.media-card-action {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 3px;
+  padding-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 1px solid rgba(106, 160, 154, 0.4);
+  border-left: 0;
+  background: transparent;
+  color: rgba(240, 232, 216, 0.82) !important;
+  font-family: $font-family-monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff8ea !important;
+    border-bottom-color: var(--media-gold);
+  }
+
+  &.is-disabled {
+    border-bottom-color: rgba(200, 200, 204, 0.16);
+    color: rgba(200, 200, 204, 0.36) !important;
+  }
+}
+
+.media-empty-state,
+.media-no-results {
+  display: grid;
+  place-items: center;
+  min-height: 280px;
+  padding: 42px 24px;
+  border: 1px solid rgba(212, 196, 168, 0.16);
+  background:
+    radial-gradient(circle at 50% 45%, rgba(106, 160, 154, 0.09), transparent 26%),
+    linear-gradient(145deg, rgba(28, 31, 38, 0.66), rgba(15, 17, 22, 0.46));
+  text-align: center;
+
+  > i {
+    color: rgba(106, 160, 154, 0.4);
+    font-size: 2.8rem;
+  }
+
+  > span {
+    margin-top: 18px;
+    color: rgba(212, 196, 168, 0.72);
+    font-family: $font-family-monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
+  }
+
+  p {
+    margin: 10px 0 0;
+    color: rgba(200, 200, 204, 0.54);
+    font-size: 0.86rem;
+  }
+
+  button {
+    margin-top: 16px;
+    padding: 8px 13px;
+    border: 1px solid rgba(212, 196, 168, 0.2);
+    background: rgba(212, 196, 168, 0.06);
+    color: rgba(240, 232, 216, 0.76);
+    cursor: pointer;
+  }
+}
+
+.media-no-results[hidden] {
+  display: none;
+}
+
+.media-visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .media-toolbar {
+    grid-template-columns: 1fr auto;
+  }
+
+  .media-search {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .media-card.is-featured {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 240px 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .media-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .media-search,
+  .media-result-counter {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .media-card,
+  .media-card.is-featured {
+    grid-template-rows: 205px 1fr;
+  }
+
+  .media-card-content {
+    padding: 21px 20px 23px;
+  }
+}
+
+// ============================================
+// 62. Editorial typography system - reading, display, and archival labels
+// ============================================
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-reading) !important;
+  font-synthesis: none;
+  font-feature-settings: "kern" 1, "palt" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.post-body,
+.post-card-excerpt,
+.media-card-description,
+.page-hero-desc,
+.archive-hero-desc,
+.site-description {
+  font-family: var(--font-reading) !important;
+  font-weight: 400;
+  letter-spacing: 0.008em;
+}
+
+.post-title,
+.post-banner-title,
+.post-card-title,
+.page-hero-title,
+.archive-hero-title,
+.media-card-title,
+.post-body h1,
+.post-body h2,
+.post-body h3 {
+  font-family: var(--font-display) !important;
+  font-synthesis: none;
+  font-feature-settings: "kern" 1, "palt" 1;
+  font-weight: 500 !important;
+  letter-spacing: 0.018em !important;
+  text-wrap: balance;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.035),
+    0 5px 22px rgba(0, 0, 0, 0.38);
+}
+
+.index .site-title-main,
+.site-brand-container .site-title {
+  font-family: var(--font-latin-display) !important;
+  font-synthesis: none;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.index .site-title-main {
+  font-weight: 400 !important;
+  letter-spacing: 0.075em !important;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.1),
+    0 5px 12px rgba(0, 0, 0, 0.84),
+    0 18px 46px rgba(0, 0, 0, 0.5),
+    0 0 24px rgba(212, 196, 168, 0.13) !important;
+}
+
+.site-brand-container .site-title {
+  font-weight: 500 !important;
+  letter-spacing: 0.07em !important;
+}
+
+.index .site-subtitle-main,
+.site-brand-container .site-subtitle {
+  font-family: var(--font-latin-display) !important;
+  font-style: italic;
+  font-weight: 400 !important;
+  letter-spacing: 0.075em !important;
+}
+
+.hero-kicker,
+.page-hero-kicker,
+.archive-hero-kicker,
+.page-hero-stats,
+.archive-hero-stats,
+.post-card-meta,
+.post-banner-meta,
+.media-card-meta,
+.media-card-tags,
+.media-card-action,
+.site-state,
+body::before {
+  font-family: var(--font-label) !important;
+  font-feature-settings: "kern" 1, "zero" 1;
+}
+
+@supports (-webkit-background-clip: text) {
+  .index .site-title-main {
+    background: linear-gradient(180deg, #fffaf0 0%, #eee4d3 48%, #c1ad88 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@media (max-width: 768px) {
+  .index .site-title-main {
+    letter-spacing: 0.045em !important;
+  }
+
+  .post-title,
+  .post-banner-title,
+  .post-card-title,
+  .page-hero-title,
+  .archive-hero-title,
+  .media-card-title {
+    letter-spacing: 0.008em !important;
+  }
+}
+
+// ============================================
+// 63. Sidebar masthead - compact personal imprint
+// ============================================
+@media (min-width: 769px) {
+  .site-brand-container {
+    position: relative;
+    overflow: hidden;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 124px !important;
+    padding: 31px 20px 21px !important;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(212, 196, 168, 0.2);
+    background:
+      radial-gradient(circle at 50% 12%, rgba(232, 228, 220, 0.12), transparent 48%),
+      linear-gradient(180deg, rgba(42, 44, 50, 0.88), rgba(24, 26, 32, 0.74)) !important;
+    box-shadow:
+      0 14px 34px rgba(0, 0, 0, 0.2),
+      inset 0 -18px 34px rgba(0, 0, 0, 0.12);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 9px;
+      border: 1px solid rgba(212, 196, 168, 0.09);
+      pointer-events: none;
+    }
+
+    &::after {
+      content: '艾声回响';
+      position: absolute;
+      top: 15px;
+      left: 18px;
+      z-index: 2;
+      color: rgba(126, 178, 170, 0.76);
+      font-family: var(--font-display);
+      font-size: 0.57rem;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.18em;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      pointer-events: none;
+    }
+
+    .site-meta {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      margin: 0 !important;
+    }
+
+    .site-title {
+      display: inline-block !important;
+      font-size: 1.42rem !important;
+      font-weight: 500 !important;
+      line-height: 1.12 !important;
+      letter-spacing: 0.085em !important;
+      color: #f3eadb !important;
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.08),
+        0 5px 16px rgba(0, 0, 0, 0.48);
+    }
+
+    .site-subtitle {
+      margin-top: 12px !important;
+      color: rgba(216, 210, 199, 0.72) !important;
+      font-family: var(--font-label) !important;
+      font-size: 0.58rem !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      line-height: 1.45 !important;
+      letter-spacing: 0.075em !important;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.46);
+    }
+  }
+
+  @supports (-webkit-background-clip: text) {
+    .site-brand-container .site-title {
+      background: linear-gradient(180deg, #fffaf0 0%, #e7ddcc 62%, #b9a786 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent !important;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
+
+// ============================================
+// 60. Sidebar archive counters - posts, tags, and signal records
+// ============================================
+.site-state {
+  width: 100%;
+}
+
+.site-state-item {
+  flex: 1 1 0;
+  min-width: 0;
+  padding-right: 8px !important;
+  padding-left: 8px !important;
+}
+
+.site-state-media a {
+  display: block;
+}
+
+// ============================================
+// 61. Aike · Echo masthead - primary Latin identity and balanced proportions
+// ============================================
+.index .hero-content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.index .hero-text {
+  width: unquote('min(760px, calc(100% - 48px))');
+  margin-bottom: 72px !important;
+  padding: 34px 42px 38px;
+  box-sizing: border-box;
+}
+
+.index .hero-kicker {
+  margin-bottom: 24px !important;
+  color: rgba(216, 224, 218, 0.78) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.2em !important;
+  white-space: nowrap;
+}
+
+.index .site-title-main {
+  max-width: none !important;
+  margin: 0 !important;
+  color: #f4ead8 !important;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    "Noto Serif SC",
+    serif !important;
+  font-size: clamp(3.7rem, 6vw, 5.5rem) !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.055em !important;
+  white-space: nowrap;
+}
+
+.index .site-subtitle-main.hero-subtitle-reveal {
+  margin: 23px 0 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  color: rgba(232, 220, 198, 0.9) !important;
+  font-size: clamp(0.86rem, 1.1vw, 1.02rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0.1em !important;
+  white-space: nowrap;
+}
+
+.site-brand-container .site-title {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    "Noto Serif SC",
+    serif !important;
+  font-size: 1.24rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.045em !important;
+  white-space: nowrap !important;
+}
+
+.site-brand-container .site-subtitle {
+  margin-top: 8px !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.035em !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 768px) {
+  .index .hero-text {
+    width: calc(100% - 34px);
+    margin-bottom: 54px !important;
+    padding: 28px 18px 30px;
+  }
+
+  .index .hero-kicker {
+    margin-bottom: 18px !important;
+    font-size: 0.76rem !important;
+    letter-spacing: 0.13em !important;
+
+    &::before,
+    &::after {
+      width: 14px;
+    }
+  }
+
+  .index .site-title-main {
+    display: block;
+    width: 100%;
+    max-width: 100% !important;
+    padding-inline: 2px;
+    box-sizing: border-box;
+    font-size: clamp(2.4rem, 12vw, 3.35rem) !important;
+    letter-spacing: 0 !important;
+    text-align: center;
+    overflow: visible;
+  }
+
+  .index .site-subtitle-main.hero-subtitle-reveal {
+    margin-top: 18px !important;
+    font-size: clamp(0.68rem, 3.35vw, 0.84rem) !important;
+    letter-spacing: 0.045em !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .index .site-title-main {
+    font-size: clamp(2.15rem, 11.5vw, 2.72rem) !important;
+  }
+
+  .site-brand-container .site-title {
+    font-size: 0.96rem !important;
+  }
+
+  .site-brand-container .site-subtitle {
+    font-size: 0.58rem !important;
+  }
+}
+
+// Page headers already carry a descriptive kicker on the left.
+// Remove the repeated directory stamp from the opposite corner.
+.page-identity-hero::before,
+.archive-hero::before {
+  content: none !important;
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media-card,
+  .media-card-cover img {
+    transition: none;
+  }
+}
+
+// ============================================
+// 58. Mobile article shell - compact navigation and unclipped record banner
+// ============================================
+@media (max-width: 768px) {
+  .header-inner {
+    padding-bottom: 0 !important;
+    overflow: visible !important;
+  }
+
+  .header-inner .site-brand-container,
+  body.post-detail .header-inner .site-brand-container,
+  body.page .header-inner .site-brand-container,
+  body.archive .header-inner .site-brand-container,
+  body.category .header-inner .site-brand-container,
+  body.tag .header-inner .site-brand-container {
+    position: relative;
+    display: block !important;
+    min-height: 104px !important;
+    padding: 21px 58px 18px !important;
+    overflow: visible !important;
+    box-sizing: border-box;
+  }
+
+  .site-brand-container .site-meta {
+    width: 100% !important;
+    margin: 0 !important;
+    text-align: center;
+  }
+
+  .site-brand-container .site-title {
+    font-size: 1.08rem !important;
+    line-height: 1.3 !important;
+    white-space: nowrap !important;
+  }
+
+  .site-brand-container .site-subtitle {
+    margin-top: 7px !important;
+    font-size: 0.7rem !important;
+    line-height: 1.35 !important;
+    white-space: nowrap !important;
+  }
+
+  .site-brand-container .site-nav-toggle,
+  .site-brand-container .site-nav-right {
+    position: absolute;
+    top: 50%;
+    display: flex !important;
+    width: 42px;
+    margin: 0 !important;
+    transform: translateY(-50%);
+  }
+
+  .site-brand-container .site-nav-toggle {
+    left: 8px;
+  }
+
+  .site-brand-container .site-nav-right {
+    right: 8px;
+    left: auto;
+  }
+
+  .site-nav.site-nav-on {
+    padding: 8px 0 10px;
+  }
+
+  body.post-detail {
+    .content-wrap {
+      padding: 0 8px 8px !important;
+    }
+
+    .post-banner {
+      height: auto !important;
+      min-height: 300px;
+      margin-bottom: 16px !important;
+      box-sizing: border-box;
+    }
+
+    .post-banner::before {
+      top: 15px;
+      left: 16px;
+    }
+
+    .post-banner::after {
+      inset: 8px;
+    }
+
+    .post-banner-content {
+      position: relative !important;
+      inset: auto !important;
+      min-height: 300px;
+      padding: 58px 22px 22px !important;
+      box-sizing: border-box;
+      align-items: flex-end !important;
+    }
+
+    .post-banner-text {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box;
+    }
+
+    .post-banner-title {
+      margin: 0 0 14px !important;
+      font-size: clamp(1.32rem, 6vw, 1.58rem) !important;
+      line-height: 1.28 !important;
+      letter-spacing: -0.025em !important;
+      text-wrap: pretty;
+      overflow-wrap: anywhere;
+    }
+
+    .post-banner-meta {
+      display: flex !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      gap: 0 13px !important;
+      padding: 8px 11px !important;
+      box-sizing: border-box;
+    }
+
+    .post-banner-meta span {
+      flex: 0 1 auto !important;
+      min-width: 0;
+      min-height: 28px;
+      margin: 0 !important;
+      padding: 5px 0 !important;
+      border: 0 !important;
+      background: transparent !important;
+      font-size: 0.68rem !important;
+      line-height: 1.25 !important;
+      letter-spacing: 0.035em !important;
+      white-space: nowrap;
+    }
+
+    .post-block {
+      padding: 22px 18px 28px !important;
+      box-sizing: border-box;
+    }
+
+    .posts-expand.post .post-body {
+      width: 100%;
+      max-width: 100%;
+      font-size: 0.96rem !important;
+      line-height: 1.85 !important;
+      box-sizing: border-box;
+      overflow-wrap: break-word;
+    }
+
+    .posts-expand.post .post-body p,
+    .posts-expand.post .post-body li {
+      font-size: inherit !important;
+      line-height: inherit !important;
+    }
+  }
+}
+
+@media (max-width: 380px) {
+  .header-inner .site-brand-container,
+  body.post-detail .header-inner .site-brand-container,
+  body.page .header-inner .site-brand-container,
+  body.archive .header-inner .site-brand-container,
+  body.category .header-inner .site-brand-container,
+  body.tag .header-inner .site-brand-container {
+    padding-right: 52px !important;
+    padding-left: 52px !important;
+  }
+
+  .site-brand-container .site-title {
+    font-size: 1rem !important;
+  }
+
+  .site-brand-container .site-subtitle {
+    font-size: 0.64rem !important;
+  }
+
+  body.post-detail .post-banner-content {
+    padding-right: 19px !important;
+    padding-left: 19px !important;
+  }
+}
+
+// ============================================
+// 59. Signal archive embedded player
+// ============================================
+.media-card-cover.has-embed {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100% !important;
+  min-height: 0;
+  padding: 14px;
+  box-sizing: border-box;
+  aspect-ratio: auto;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(106, 160, 154, 0.1), transparent 36%),
+    #101218;
+
+  &::after {
+    display: none;
+  }
+}
+
+.media-card.has-player:not(.is-featured) {
+  grid-template-rows: auto 1fr;
+}
+
+.media-card.is-featured.has-player {
+  grid-template-rows: minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.media-card-player {
+  position: relative;
+  flex: 0 0 auto;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(106, 160, 154, 0.1), transparent 34%),
+    #101218;
+}
+
+.media-player-frame,
+.media-player-frame iframe {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.media-player-frame[hidden],
+.media-player-launch[hidden] {
+  display: none !important;
+}
+
+.media-player-frame iframe {
+  border: 0;
+  background: #101218;
+}
+
+.media-player-launch {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background:
+    linear-gradient(180deg, rgba(12, 14, 18, 0.08), rgba(8, 10, 14, 0.72)),
+    repeating-linear-gradient(90deg, transparent 0, transparent 39px, rgba(212, 196, 168, 0.035) 39px, rgba(212, 196, 168, 0.035) 40px),
+    linear-gradient(145deg, #262a31, #111319);
+  color: #e8e4dc;
+  cursor: pointer;
+
+  > img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #0d1015;
+    opacity: 0.76;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(212, 196, 168, 0.1);
+    pointer-events: none;
+  }
+
+  &:hover .media-player-play,
+  &:focus-visible .media-player-play {
+    border-color: rgba(212, 196, 168, 0.72);
+    background: rgba(106, 160, 154, 0.2);
+    transform: scale(1.06);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgba(212, 196, 168, 0.74);
+    outline-offset: -4px;
+  }
+}
+
+.media-player-play {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border: 1px solid rgba(212, 196, 168, 0.42);
+  border-radius: 50%;
+  background: rgba(17, 19, 24, 0.62);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.34);
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+
+  i {
+    margin-left: 3px;
+    font-size: 1rem;
+  }
+}
+
+.media-card.is-featured .media-card-player {
+  min-height: 0;
+}
+
+@media (max-width: 900px) {
+  .media-card.has-player,
+  .media-card.is-featured.has-player {
+    grid-template-rows: auto 1fr;
+  }
+
+  .media-card-cover.has-embed {
+    height: auto !important;
+  }
+
+  .media-card.is-featured .media-card-player {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .media-card-player,
+  .media-card.is-featured .media-card-player {
+    min-height: 0;
+  }
+
+  .media-player-play {
+    width: 54px;
+    height: 54px;
+  }
+
+  .media-card-cover.has-embed {
+    padding: 10px;
+  }
+}
+
+// ============================================
+// 65. Signal titles - compact CJK editorial rhythm
+// ============================================
+.media-archive .media-card-title {
+  max-width: 100%;
+  margin-top: 8px;
+  font-feature-settings: "kern" 1 !important;
+  font-kerning: normal;
+  font-size: 1.22rem;
+  line-height: 1.38;
+  letter-spacing: -0.025em !important;
+  word-spacing: normal !important;
+  text-align: left !important;
+  text-align-last: left !important;
+  text-justify: auto !important;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+.media-archive .media-card.is-featured .media-card-title {
+  font-size: clamp(1.42rem, 1.82vw, 1.72rem);
+  line-height: 1.36;
+  letter-spacing: -0.03em !important;
+}
+
+@media (max-width: 768px) {
+  .media-archive .media-card-title,
+  .media-archive .media-card.is-featured .media-card-title {
+    letter-spacing: -0.02em !important;
+  }
+}

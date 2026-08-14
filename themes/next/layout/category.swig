@@ -12,15 +12,11 @@
   {### CATEGORY BLOCK ###}
   {######################}
   <div class="post-block">
-    <section class="category-detail-hero page-identity-hero" aria-label="分类文章">
-      <div class="page-hero-kicker">CATEGORY RECORD</div>
-      <h1 class="page-hero-title">{{ page.category }}</h1>
-      <p class="page-hero-desc">收录在同一内容分类下的文章。</p>
-      <div class="page-hero-stats">
-        <span><strong>{{ page.posts.length }}</strong> 篇文章</span>
-        <span><strong>分类</strong> 记录</span>
-      </div>
-    </section>
+    {{ partial('_partials/page/identity-hero.swig', {
+      hero_class: 'category-detail-hero', hero_label: '分类文章', hero_kicker: 'CATEGORY RECORD',
+      hero_title: page.category, hero_desc: '收录在同一内容分类下的文章。',
+      hero_stats: [{ value: page.posts.length, label: '篇文章' }, { value: '分类', label: '记录' }]
+    }) }}
 
     <div class="posts-collapse">
       <div class="collection-title">

@@ -417,7 +417,10 @@ class WordToMarkdownConverter {
     markdown = markdown.replace(/<img[^>]*src="([^"]*)"[^>]*alt="([^"]*)"[^>]*\/?>/gi, (match, src, alt) => `![${alt}](${src})`);
     markdown = markdown.replace(/<img[^>]*src="([^"]*)"[^>]*\/?>/gi, '![]($1)');
 
-    markdown = markdown.replace(/<h1[^>]*>([\s\S]*?)<\/h1>/gi, '# $1\n\n');
+    // The document's first heading becomes the post title/frontmatter before this
+    // stage. Remaining Word H1 elements are article sections, so start them at
+    // Markdown H2 to keep each generated page to one semantic H1.
+    markdown = markdown.replace(/<h1[^>]*>([\s\S]*?)<\/h1>/gi, '## $1\n\n');
     markdown = markdown.replace(/<h2[^>]*>([\s\S]*?)<\/h2>/gi, '## $1\n\n');
     markdown = markdown.replace(/<h3[^>]*>([\s\S]*?)<\/h3>/gi, '### $1\n\n');
     markdown = markdown.replace(/<h4[^>]*>([\s\S]*?)<\/h4>/gi, '#### $1\n\n');

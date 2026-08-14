@@ -103,6 +103,14 @@ media:
 npm run pipeline:metadata
 ```
 
+将 `media.items` 中仍指向第三方站点的封面下载并持久化到 R2：
+
+```bash
+npm run pipeline:media-covers
+```
+
+脚本按图片内容哈希增量上传，只改写成功上传的 `cover` 字段；重复执行不会产生重复对象。
+
 该命令只填补缺失字段，不覆盖已经手工修改的值。
 
 ### 1. 启动监听模式（推荐）

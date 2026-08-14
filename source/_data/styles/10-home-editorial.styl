@@ -1,0 +1,1140 @@
+// 23. 首页沉浸式全屏 Hero - 增强版（无遮罩顶部导航）
+// ============================================
+.index {
+  // 内容区域样式
+  .content-wrap {
+    padding: 0;
+    background: transparent !important;
+  }
+
+  .content {
+    padding: 0;
+  }
+
+  // 显示顶部导航并透明化
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: transparent !important;
+    border-bottom: none;
+    box-shadow: none;
+
+    .header-inner {
+      background: transparent !important;
+      backdrop-filter: none;
+      border-bottom: none;
+      box-shadow: none;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 40px;
+    }
+
+    // 站点标题和副标题
+    .site-brand-container {
+      white-space: nowrap;
+
+      .site-title {
+        font-size: 1.4em;
+        font-weight: 600;
+        color: #e8e4dc;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        white-space: nowrap;
+        display: inline-block;
+      }
+
+      .site-subtitle {
+        font-size: 0.85em;
+        color: rgba(255, 255, 255, 0.7);
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+        white-space: nowrap;
+        display: inline-block;
+      }
+    }
+
+    // 导航菜单
+    .menu {
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 8px 20px;
+
+      .menu-item {
+        margin: 0 8px;
+
+        a {
+          color: rgba(255, 255, 255, 0.9);
+          padding: 8px 16px;
+          border-radius: 20px;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: rgba(180, 160, 120, 0.3);
+            color: #d4c4a8;
+          }
+        }
+
+        &.menu-item-active a {
+          background: rgba(180, 160, 120, 0.4);
+          color: #d4c4a8;
+        }
+      }
+    }
+
+    // 搜索按钮
+    .site-nav-toggle,
+    .toggle {
+      color: rgba(255, 255, 255, 0.9);
+
+      &:hover {
+        color: #d4c4a8;
+      }
+    }
+  }
+
+  // 主内容区域样式
+  .content-wrap {
+    padding: 0;
+    background: transparent !important;
+  }
+
+  // Hero 区域全屏
+  .hero-section {
+    position: relative;
+    width: 100%;
+    height: 88vh;
+    min-height: 560px;
+    background: no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      height: 76svh;
+      min-height: 520px;
+      background-attachment: scroll;
+    }
+  }
+
+  // 暗色遮罩
+  .hero-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(25, 28, 35, 0.3) 0%,
+      rgba(25, 28, 35, 0.5) 50%,
+      rgba(25, 28, 35, 0.7) 100%
+    );
+    z-index: 1;
+  }
+
+  // 内容区域
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    padding: 80px 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  // 标题区域
+  .hero-text {
+    margin-bottom: 60px;
+  }
+
+  // 主标题 - 大字震撼效果
+  .site-title-main {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 700;
+    margin: 0 0 20px 0;
+    letter-spacing: 4px;
+    color: #e8e4dc;
+    text-shadow:
+      0 2px 10px rgba(0, 0, 0, 0.8),
+      0 4px 30px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out;
+
+    @media (max-width: 768px) {
+      max-width: 8em;
+      font-size: clamp(2.15rem, 11vw, 2.75rem);
+      line-height: 1.18;
+      letter-spacing: 1px;
+    }
+  }
+
+  // 副标题
+  .site-subtitle-main {
+    font-size: 1.5em;
+    font-weight: 300;
+    margin: 0;
+    color: #b4a078;
+    letter-spacing: 3px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 1s ease-out 0.3s both;
+    min-height: 1.5em;
+
+    @media (max-width: 768px) {
+      max-width: 22em;
+      font-size: 0.95em;
+      letter-spacing: 0.5px;
+    }
+
+    // 打字光标效果
+    &::after {
+      content: '|';
+      animation: blink 1s infinite;
+      margin-left: 2px;
+    }
+  }
+
+  // 向下滚动指示器
+  .scroll-down {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    animation: fadeInUp 1s ease-out 0.6s both;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #d4c4a8;
+
+      .scroll-down-icon {
+        transform: translateY(5px);
+      }
+
+      .scroll-down-line {
+        background: #d4c4a8;
+      }
+    }
+
+    // 图标容器
+    .scroll-down-icon {
+      width: 50px;
+      height: 50px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+      animation: float 2s ease-in-out infinite;
+
+      &:hover {
+        border-color: #d4c4a8;
+        background: rgba(180, 160, 120, 0.1);
+      }
+    }
+
+    // 线条
+    .scroll-down-line {
+      width: 1px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+// 长文本使用浏览器原生渐进绘制，完整 DOM 始终保留给搜索、TOC 与书签。
+.long-text-chunk {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+// 尊重系统的低动效设置，文学阅读时避免持续闪烁和漂浮。
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// 动画定义
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+// ============================================
+// 24. 文章列表区域 - 首页下方
+// ============================================
+.posts-section {
+  background: transparent;
+  padding: 60px 0;
+
+  .posts-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+
+// 文章卡片在首页的样式
+.index .post-card {
+  display: flex;
+  background: rgba(35, 38, 45, 0.8);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(180, 160, 120, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    border-color: rgba(180, 160, 120, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
+  // 文章图片
+  .post-card-image {
+    flex: 0 0 280px;
+    overflow: hidden;
+    background: #1e2128 url('/images/Z.A.T.O_02_ca04.jpg') no-repeat center center;
+    background-size: cover;
+
+    @media (max-width: 768px) {
+      flex: none;
+      height: 200px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  // 文章内容
+  .post-card-content {
+    flex: 1;
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (max-width: 768px) {
+      padding: 20px;
+    }
+  }
+
+  .post-card-title {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+
+    a {
+      color: #e8e4dc;
+      border-bottom: none;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #d4c4a8;
+      }
+    }
+  }
+
+  .post-card-excerpt {
+    color: #9a9a9f;
+    font-size: 0.95em;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+
+  .post-card-meta {
+    font-size: 0.85em;
+    color: #7a7a80;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    .post-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+
+      i {
+        color: rgba(180, 160, 120, 0.6);
+        font-size: 0.9em;
+      }
+
+      a {
+        color: #8a8a90;
+        border-bottom: none;
+
+        &:hover {
+          color: #d4c4a8;
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// 25. Z.A.T.O editorial polish - literary archive identity
+// ============================================
+body {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 18% 12%, rgba(212, 196, 168, 0.11), transparent 26%),
+      radial-gradient(circle at 82% 18%, rgba(126, 91, 66, 0.12), transparent 28%),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+    background-size: auto, auto, 96px 96px, 96px 96px;
+    mix-blend-mode: screen;
+    opacity: 0.45;
+  }
+}
+
+.main,
+.footer,
+.header {
+  position: relative;
+  z-index: 1;
+}
+
+.header,
+.sidebar {
+  position: relative;
+  z-index: 6;
+}
+
+.header .site-title,
+.index .header .site-brand-container .site-title {
+  color: #fff8ea !important;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.18),
+    0 3px 12px rgba(0, 0, 0, 0.92),
+    0 0 22px rgba(212, 196, 168, 0.34) !important;
+}
+
+.header .site-subtitle,
+.index .header .site-brand-container .site-subtitle {
+  color: rgba(232, 228, 220, 0.88) !important;
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.88),
+    0 0 14px rgba(212, 196, 168, 0.22) !important;
+}
+
+.sidebar-inner {
+  position: relative;
+  z-index: 7;
+}
+
+.main {
+  z-index: 2;
+}
+
+.header-inner,
+.sidebar-inner,
+.post-block,
+.index .post-card,
+.post-banner,
+.search-popup {
+  border-color: rgba(212, 196, 168, 0.22) !important;
+  box-shadow:
+    0 18px 52px rgba(0, 0, 0, 0.36),
+    0 0 0 1px rgba(255, 255, 255, 0.025) inset,
+    0 1px 0 rgba(255, 255, 255, 0.05) inset !important;
+}
+
+.post-block,
+.sidebar-inner,
+.index .post-card {
+  background:
+    linear-gradient(145deg, rgba(49, 51, 57, 0.86), rgba(25, 28, 35, 0.82)) !important;
+}
+
+.post-block::after,
+.index .post-card::after,
+.sidebar-inner::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(212, 196, 168, 0.08);
+  pointer-events: none;
+}
+
+.sidebar-inner {
+  position: relative;
+}
+
+.site-author {
+  background:
+    linear-gradient(145deg, rgba(212, 196, 168, 0.14), rgba(25, 28, 35, 0.12)),
+    repeating-linear-gradient(90deg, transparent 0, transparent 8px, rgba(212, 196, 168, 0.03) 8px, rgba(212, 196, 168, 0.03) 9px);
+}
+
+.site-author-name {
+  letter-spacing: 0;
+}
+
+.menu .menu-item a {
+  border-radius: 2px;
+}
+
+.post-title,
+.post-card-title,
+.post-banner-title,
+.site-title-main {
+  letter-spacing: 0 !important;
+  text-wrap: balance;
+}
+
+.post-body {
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.14);
+
+  h2,
+  h3 {
+    position: relative;
+    padding-left: 18px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.38em;
+      width: 6px;
+      height: 1.1em;
+      background: linear-gradient(180deg, #d4c4a8, rgba(180, 160, 120, 0.18));
+      box-shadow: 0 0 18px rgba(180, 160, 120, 0.22);
+    }
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+.index {
+  .hero-section {
+    min-height: 560px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 78%);
+    }
+  }
+
+  .hero-mask {
+    background:
+      linear-gradient(180deg, rgba(12, 14, 18, 0.18) 0%, rgba(22, 24, 30, 0.48) 48%, rgba(17, 19, 25, 0.86) 100%),
+      radial-gradient(circle at 50% 38%, rgba(212, 196, 168, 0.18), transparent 34%);
+  }
+
+  .hero-text {
+    position: relative;
+    max-width: 880px;
+    padding: 0 18px;
+  }
+
+  .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    color: rgba(232, 228, 220, 0.78);
+    font-size: 0.78em;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+
+    &::before,
+    &::after {
+      content: '';
+      width: 34px;
+      height: 1px;
+      background: rgba(212, 196, 168, 0.45);
+    }
+  }
+
+  .site-title-main {
+    font-size: clamp(3rem, 4.6vw, 4.7rem);
+    line-height: 1.08;
+    text-shadow:
+      0 2px 10px rgba(0, 0, 0, 0.82),
+      0 16px 42px rgba(0, 0, 0, 0.5),
+      0 0 34px rgba(212, 196, 168, 0.16);
+  }
+
+  .site-subtitle-main {
+    color: #d4c4a8;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-rule {
+    width: unquote('min(420px, 64vw)');
+    height: 1px;
+    margin: 28px auto 0;
+    background: linear-gradient(90deg, transparent, rgba(212, 196, 168, 0.72), transparent);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: -3px;
+      width: 7px;
+      height: 7px;
+      transform: translateX(-50%) rotate(45deg);
+      background: #d4c4a8;
+      box-shadow: 0 0 20px rgba(212, 196, 168, 0.55);
+    }
+  }
+
+  .posts-section {
+    padding-top: 86px;
+    position: relative;
+
+    &::before {
+      content: 'RECENT DISPATCHES';
+      display: block;
+      width: unquote('min(900px, calc(100% - 40px))');
+      margin: 0 auto 24px;
+      color: rgba(212, 196, 168, 0.62);
+      font-size: 0.78em;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+  }
+
+  .post-card {
+    position: relative;
+    isolation: isolate;
+    border-radius: 3px;
+    overflow: hidden;
+
+    &::before {
+      content: counter(post-card, decimal-leading-zero);
+      counter-increment: post-card;
+      position: absolute;
+      right: 18px;
+      top: 14px;
+      z-index: 3;
+      color: rgba(212, 196, 168, 0.28);
+      font-size: 2.1em;
+      line-height: 1;
+      font-family: Georgia, "Times New Roman", serif;
+      pointer-events: none;
+    }
+
+    &:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212, 196, 168, 0.34) !important;
+    }
+  }
+
+  .posts-container {
+    counter-reset: post-card;
+  }
+
+  .post-card-image {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(20, 22, 28, 0.08), rgba(20, 22, 28, 0.45));
+      pointer-events: none;
+    }
+  }
+
+  .post-card-title a {
+    background-image: linear-gradient(90deg, rgba(212, 196, 168, 0.5), rgba(212, 196, 168, 0.5));
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 1px;
+
+    &:hover {
+      background-size: 100% 1px;
+    }
+  }
+}
+
+.post-banner {
+  border-radius: 3px;
+  box-shadow:
+    0 22px 58px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(212, 196, 168, 0.2) inset !important;
+}
+
+.post-banner-mask {
+  background:
+    linear-gradient(180deg, rgba(10, 12, 16, 0.08) 0%, rgba(10, 12, 16, 0.4) 48%, rgba(10, 12, 16, 0.82) 100%),
+    linear-gradient(90deg, rgba(15, 17, 22, 0.72), transparent 58%);
+}
+
+.post-banner-content {
+  padding-bottom: 42px;
+}
+
+.post-banner-title {
+  max-width: 13em;
+}
+
+@media (max-width: 768px) {
+  body::after {
+    opacity: 0.28;
+    background-size: auto, auto, 64px 64px, 64px 64px;
+  }
+
+  .index {
+    .hero-kicker {
+      font-size: 0.66em;
+      letter-spacing: 0.12em;
+
+      &::before,
+      &::after {
+        width: 20px;
+      }
+    }
+
+    .site-title-main {
+      max-width: 9em;
+    }
+
+    .posts-section {
+      padding-top: 56px;
+    }
+
+    .post-card::before {
+      font-size: 1.65em;
+    }
+  }
+
+  .post-block::after,
+  .index .post-card::after,
+  .sidebar-inner::after {
+    inset: 7px;
+  }
+}
+
+// ============================================
+// 26. Cinematic archive system - stronger site identity
+// ============================================
+.index {
+  .hero-section {
+    isolation: isolate;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: unquote('max(24px, 4vw)');
+      right: unquote('max(24px, 4vw)');
+      top: unquote('max(86px, 11vh)');
+      bottom: 64px;
+      z-index: 2;
+      pointer-events: none;
+      border: 1px solid rgba(212, 196, 168, 0.22);
+      background:
+        linear-gradient(90deg, rgba(212, 196, 168, 0.55) 0 48px, transparent 48px calc(100% - 48px), rgba(212, 196, 168, 0.55) calc(100% - 48px)) top / 100% 1px no-repeat,
+        linear-gradient(90deg, rgba(212, 196, 168, 0.55) 0 48px, transparent 48px calc(100% - 48px), rgba(212, 196, 168, 0.55) calc(100% - 48px)) bottom / 100% 1px no-repeat,
+        linear-gradient(180deg, rgba(212, 196, 168, 0.55) 0 48px, transparent 48px calc(100% - 48px), rgba(212, 196, 168, 0.55) calc(100% - 48px)) left / 1px 100% no-repeat,
+        linear-gradient(180deg, rgba(212, 196, 168, 0.55) 0 48px, transparent 48px calc(100% - 48px), rgba(212, 196, 168, 0.55) calc(100% - 48px)) right / 1px 100% no-repeat;
+      box-shadow:
+        0 0 70px rgba(0, 0, 0, 0.34) inset,
+        0 0 36px rgba(212, 196, 168, 0.08);
+    }
+  }
+
+  .hero-content {
+    z-index: 4;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(212, 196, 168, 0.36);
+      font-size: 0.72em;
+      letter-spacing: 0.16em;
+      writing-mode: vertical-rl;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    &::before {
+      content: 'index of lost stories';
+      left: unquote('max(36px, 5vw)');
+    }
+
+    &::after {
+      content: 'water and biscuit';
+      right: unquote('max(36px, 5vw)');
+    }
+  }
+
+  // Replaced by .hero-catalogue-labels below; avoid duplicate vertical labels.
+  .hero-content::before,
+  .hero-content::after {
+    display: none !important;
+  }
+
+  .site-title-main {
+    background: linear-gradient(180deg, #fffaf0 0%, #e8e4dc 48%, #b4a078 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.48));
+  }
+
+  .site-subtitle-main {
+    text-shadow:
+      0 0 18px rgba(180, 160, 120, 0.22),
+      0 2px 10px rgba(0, 0, 0, 0.8);
+  }
+
+  .scroll-down-icon {
+    background: rgba(30, 33, 40, 0.28);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .posts-container {
+    max-width: 980px;
+  }
+
+  .post-card {
+    min-height: 270px;
+
+    &:nth-child(even) {
+      .post-card-image {
+        order: 2;
+      }
+    }
+
+    &.post-card-featured {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      min-height: 420px;
+      margin-bottom: 46px;
+
+      .post-card-image {
+        flex: none;
+        min-height: 420px;
+      }
+
+      .post-card-content {
+        padding: 42px 46px;
+      }
+
+      .post-card-content::before {
+        content: 'FEATURED DISPATCH';
+        display: inline-flex;
+        width: fit-content;
+        margin-bottom: 20px;
+        padding: 5px 9px;
+        color: rgba(106, 160, 154, 0.92);
+        border: 1px solid rgba(106, 160, 154, 0.35);
+        background: rgba(106, 160, 154, 0.08);
+        font-size: 0.68em;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .post-card-title {
+        font-size: 1.72em;
+        line-height: 1.32;
+      }
+
+      .post-card-excerpt {
+        font-size: 1em;
+        color: #b4b1ac;
+      }
+    }
+  }
+
+  .post-card-content {
+    position: relative;
+  }
+}
+
+.post-banner {
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+        content: 'ARCHIVE RECORD';
+    position: absolute;
+    top: 22px;
+    left: 28px;
+    z-index: 3;
+    padding: 5px 9px;
+    color: rgba(232, 228, 220, 0.72);
+    border: 1px solid rgba(212, 196, 168, 0.28);
+    background: rgba(16, 18, 22, 0.32);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: 0.68em;
+    letter-spacing: 0.15em;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 14px;
+    z-index: 2;
+    border: 1px solid rgba(212, 196, 168, 0.16);
+    pointer-events: none;
+  }
+}
+
+.post-banner-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: fit-content;
+  max-width: min(760px, 100%);
+  gap: 0;
+  margin-top: 18px;
+  padding: 7px;
+  border: 1px solid rgba(212, 196, 168, 0.18);
+  background:
+    linear-gradient(90deg, rgba(11, 13, 18, 0.62), rgba(24, 27, 34, 0.36)),
+    repeating-linear-gradient(90deg, transparent 0, transparent 11px, rgba(255, 255, 255, 0.025) 11px, rgba(255, 255, 255, 0.025) 12px);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.26),
+    0 0 0 1px rgba(255, 255, 255, 0.035) inset;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  span {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-height: 30px;
+    margin-right: 0;
+    padding: 6px 11px;
+    border: 0;
+    border-right: 1px solid rgba(212, 196, 168, 0.13);
+    background: transparent;
+    color: rgba(239, 235, 226, 0.86);
+    font-family:
+      "Courier New",
+      Consolas,
+      "PingFang SC",
+      "Microsoft YaHei",
+      monospace;
+    font-size: 0.86em;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    i {
+      display: inline-grid;
+      place-items: center;
+      width: 18px;
+      height: 18px;
+      color: rgba(106, 160, 154, 0.92);
+      font-size: 0.9em;
+      text-shadow: 0 0 12px rgba(106, 160, 154, 0.18);
+    }
+  }
+}
+
+.posts-expand.post .post-block {
+  border-radius: 3px;
+  background:
+    linear-gradient(180deg, rgba(43, 46, 53, 0.9), rgba(28, 31, 38, 0.88)) !important;
+}
+
+.posts-expand.post .post-body {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post-body blockquote {
+  position: relative;
+  border-left: 0;
+  padding: 22px 26px 22px 32px;
+  background:
+    linear-gradient(90deg, rgba(212, 196, 168, 0.13), rgba(35, 38, 45, 0.28));
+  border-top: 1px solid rgba(212, 196, 168, 0.12);
+  border-bottom: 1px solid rgba(212, 196, 168, 0.1);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 18px;
+    bottom: 18px;
+    width: 3px;
+    background: linear-gradient(180deg, #d4c4a8, rgba(106, 160, 154, 0.45));
+  }
+}
+
+@media (min-width: 992px) {
+  .index .post-card:nth-child(even) {
+    transform: translateX(24px);
+
+    &:hover {
+      transform: translateX(24px) translateY(-6px);
+    }
+  }
+
+  .index .post-card:nth-child(odd):not(:first-child) {
+    transform: translateX(-24px);
+
+    &:hover {
+      transform: translateX(-24px) translateY(-6px);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .index {
+    .hero-section::after {
+      left: 18px;
+      right: 18px;
+      top: 92px;
+      bottom: 44px;
+    }
+
+    .hero-content::before,
+    .hero-content::after {
+      display: none;
+    }
+
+    .post-card,
+    .post-card-featured {
+      display: flex;
+      min-height: 0;
+      transform: none !important;
+    }
+
+    .post-card:nth-child(even) .post-card-image {
+      order: 0;
+    }
+
+    .post-card-featured {
+      .post-card-image {
+        min-height: 220px;
+      }
+
+      .post-card-content {
+        padding: 24px;
+      }
+
+      .post-card-title {
+        font-size: 1.42em;
+      }
+    }
+  }
+
+  .post-banner::before {
+    top: 14px;
+    left: 16px;
+    font-size: 0.58em;
+  }
+
+  .post-banner::after {
+    inset: 9px;
+  }
+
+  .post-banner-meta {
+    width: 100%;
+    max-width: 100%;
+    gap: 6px;
+    padding: 8px;
+    background: rgba(11, 13, 18, 0.58);
+
+    span {
+      flex: 1 1 calc(50% - 6px);
+      justify-content: flex-start;
+      border: 1px solid rgba(212, 196, 168, 0.12);
+      background: rgba(18, 20, 26, 0.22);
+      font-size: 0.78em;
+
+      &:last-child {
+        border-right: 1px solid rgba(212, 196, 168, 0.12);
+      }
+    }
+  }
+
+  .posts-expand.post .post-body {
+    max-width: 100%;
+  }
+}

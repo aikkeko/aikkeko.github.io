@@ -12,15 +12,11 @@
   {### TAG BLOCK ###}
   {#################}
   <div class="post-block">
-    <section class="tag-detail-hero page-identity-hero" aria-label="标签文章">
-      <div class="page-hero-kicker">FILTERED RECORD</div>
-      <h1 class="page-hero-title">#{{ page.tag }}</h1>
-      <p class="page-hero-desc">收录在同一标签下的文章。</p>
-      <div class="page-hero-stats">
-        <span><strong>{{ page.posts.length }}</strong> 篇文章</span>
-        <span><strong>标签</strong> 合集</span>
-      </div>
-    </section>
+    {{ partial('_partials/page/identity-hero.swig', {
+      hero_class: 'tag-detail-hero', hero_label: '标签文章', hero_kicker: 'FILTERED RECORD',
+      hero_title: '#' + page.tag, hero_desc: '收录在同一标签下的文章。',
+      hero_stats: [{ value: page.posts.length, label: '篇文章' }, { value: '标签', label: '合集' }]
+    }) }}
 
     <div class="posts-collapse">
       <div class="collection-title">

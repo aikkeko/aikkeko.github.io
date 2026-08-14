@@ -360,7 +360,7 @@ mobile_layout_economy: false
 android_chrome_color: "#1e2128"
 
 # Custom Logo (Do not support scheme Mist)
-custom_logo: /images/branding/aike-echo-logo.png
+custom_logo: /images/branding/aike-echo-logo-180.png
 
 codeblock:
   # Code Highlight theme
@@ -434,7 +434,7 @@ font:
   # Use system Chinese font stack for optimal performance
   global:
     external: false
-    family: -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif
+    family:
     size: 1.05
 
   # Font settings for site title (.site-title).
@@ -981,7 +981,7 @@ vendors:
 
 # Assets
 css: css
-asset_version: 2026080605
+asset_version: 2026081403
 js: js
 images: images
 

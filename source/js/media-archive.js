@@ -14,10 +14,30 @@
     const reset = archive.querySelector('[data-media-reset]');
     const recordLinks = Array.from(archive.querySelectorAll('[data-media-open]'));
     const players = Array.from(archive.querySelectorAll('[data-media-player]'));
+    const coverImages = Array.from(archive.querySelectorAll('.media-cover-image'));
     const descriptions = Array.from(archive.querySelectorAll('.media-card-description'));
     const params = new URLSearchParams(window.location.search);
 
     if (search && params.get('q')) search.value = params.get('q');
+
+    coverImages.forEach(image => {
+      const reveal = () => {
+        image.classList.remove('is-loading');
+        image.classList.add('is-loaded');
+      };
+      const conceal = () => {
+        image.classList.remove('is-loading');
+        image.classList.add('is-error');
+      };
+
+      if (image.complete) {
+        image.naturalWidth > 0 ? reveal() : conceal();
+        return;
+      }
+
+      image.addEventListener('load', reveal, { once: true });
+      image.addEventListener('error', conceal, { once: true });
+    });
 
     function applyFilters() {
       const query = search ? search.value.trim().toLocaleLowerCase() : '';

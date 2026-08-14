@@ -20,7 +20,7 @@
 <link rel="manifest" href="{{ url_for('/manifest.json') }}">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="档案馆">
+<meta name="apple-mobile-web-app-title" content="Aike · Echo">
 <meta name="application-name" content="Aike · Echo">
 <meta name="msapplication-TileColor" content="#1e2128">
 <meta name="msapplication-tap-highlight" content="no">
@@ -71,8 +71,6 @@
 
 {{ next_config() }}
 
-{# Long Text Optimizer #}
-<script src="{{ url_for('/js/long-text-loader.js') }}" async></script>
 <script src="{{ url_for('/js/mobile-background.js') }}" defer></script>
 
 {# Service Worker Registration: disabled and cleaned on local preview #}

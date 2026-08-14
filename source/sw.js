@@ -11,7 +11,7 @@
  * - Delete old blog caches and unregister itself to avoid stale offline pages.
  */
 
-const CACHE_VERSION = 'blog-v153';
+const CACHE_VERSION = 'blog-v158';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGES_CACHE = `${CACHE_VERSION}-pages`;
 const IMAGES_CACHE = `${CACHE_VERSION}-images`;
@@ -30,7 +30,6 @@ const PRECACHE_URLS = [
   '/css/main.css',
   '/js/next-boot.js',
   '/js/utils.js',
-  '/js/motion.js',
   '/js/mobile-background.js',
   '/lib/font-awesome/css/all.min.css',
   '/lib/anime.min.js',

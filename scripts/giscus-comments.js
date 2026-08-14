@@ -149,10 +149,24 @@ hexo.extend.filter.register('theme_inject', injects => {
 
   if (!enabled && !config.show_unconfigured) return;
 
-  if (enabled) {
+  // Only pages that can actually render a discussion terminal should pay the
+  // connection setup cost. Home, tags and archives stay completely quiet.
+  const hasCommentSurface =
+    surfaces.posts !== false ||
+    surfaces.about !== false ||
+    surfaces.media !== false ||
+    surfaces.home === true;
+
+  if (enabled && hasCommentSurface) {
     injects.head.raw('giscus-preconnect', `
-      <link rel="preconnect" href="https://giscus.app" crossorigin>
-      <link rel="dns-prefetch" href="//giscus.app">
+      {%- set echo_preconnect_post = page.layout == 'post' and ${surfaces.posts !== false} %}
+      {%- set echo_preconnect_home = page.path == 'index.html' and ${surfaces.home === true} %}
+      {%- set echo_preconnect_about = page.type == 'about' and ${surfaces.about !== false} %}
+      {%- set echo_preconnect_media = page.type == 'media' and ${surfaces.media !== false} %}
+      {%- if echo_preconnect_post or echo_preconnect_home or echo_preconnect_about or echo_preconnect_media %}
+        <link rel="preconnect" href="https://giscus.app" crossorigin>
+        <link rel="dns-prefetch" href="//giscus.app">
+      {%- endif %}
     `);
   }
 
