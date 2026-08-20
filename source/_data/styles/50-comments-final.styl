@@ -1544,3 +1544,91 @@ body,
     margin-bottom: 1.2em !important;
   }
 }
+
+// Final mobile homepage guard.
+// Keep this at EOF so legacy masthead rules cannot reintroduce overflow.
+@media (max-width: 768px) {
+  html,
+  body.home-page {
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  body.home-page .main,
+  body.home-page .main-inner,
+  body.home-page .content-wrap,
+  body.home-page .content.index,
+  body.home-page .hero-section {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    box-sizing: border-box;
+  }
+
+  body.home-page .main-inner,
+  body.home-page .content-wrap,
+  body.home-page .content.index,
+  body.home-page .hero-section {
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  body.home-page .hero-content {
+    width: 100% !important;
+    min-width: 0;
+    max-width: 100%;
+    padding-right: 28px !important;
+    padding-left: 28px !important;
+    box-sizing: border-box;
+  }
+
+  body.home-page .hero-text {
+    width: 100% !important;
+    min-width: 0;
+    max-width: 430px !important;
+    padding: 26px 10px 29px !important;
+    box-sizing: border-box;
+  }
+
+  body.home-page .site-title-main {
+    width: auto !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+    padding-inline: 0 !important;
+    font-size: clamp(2.15rem, 10.2vw, 2.9rem) !important;
+    line-height: 1.06 !important;
+    white-space: nowrap;
+  }
+
+  body.home-page .site-subtitle-main.hero-subtitle-reveal {
+    width: auto;
+    max-width: 100%;
+    margin-inline: auto !important;
+    font-size: clamp(0.68rem, 3.1vw, 0.82rem) !important;
+    line-height: 1.45 !important;
+    white-space: normal;
+    text-wrap: balance;
+  }
+
+  body.home-page .posts-section,
+  body.home-page .post-card,
+  body.home-page .post-card-featured {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 360px) {
+  body.home-page .hero-content {
+    padding-right: 22px !important;
+    padding-left: 22px !important;
+  }
+
+  body.home-page .site-title-main {
+    font-size: clamp(1.95rem, 10vw, 2.28rem) !important;
+  }
+}
