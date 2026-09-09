@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aike · Echo 内容管理器</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="rail">
+      <header class="brand">
+        <div class="brand-mark"><span>AE</span></div>
+        <div><strong>Aike · Echo</strong><span>内容管理器</span></div>
+      </header>
+      <nav class="mode-switch" aria-label="内容类型">
+        <button class="mode-button active" data-mode="articles">文章 <b id="article-count">0</b></button>
+        <button class="mode-button" data-mode="media">声像 <b id="media-count">0</b></button>
+      </nav>
+      <label class="search"><span>检索</span><input id="search" type="search" placeholder="标题、标签或编号"></label>
+      <div id="record-list" class="record-list" role="list"></div>
+      <button id="add-media" class="quiet-button hidden" type="button">＋ 新增声像节目</button>
+    </aside>
+
+    <main class="workspace">
+      <header class="toolbar">
+        <div><span class="eyebrow">LOCAL ARCHIVE CONTROL</span><h1 id="editor-title">内容档案</h1></div>
+        <div class="toolbar-actions">
+          <span id="save-state" class="save-state">尚未修改</span>
+          <button id="reload" class="secondary-button" type="button">重新载入</button>
+          <button id="save" class="primary-button" type="button" disabled>保存修改</button>
+        </div>
+      </header>
+
+      <section id="empty-state" class="empty-state">
+        <div class="pulse"></div><h2>选择一份档案</h2><p>从左侧列表选择文章或声像节目。</p>
+      </section>
+
+      <form id="article-form" class="editor-panel hidden" autocomplete="off">
+        <div class="panel-heading">
+          <div><span class="section-label">ARTICLE RECORD</span><h2 id="article-key"></h2></div>
+          <label class="feature-toggle"><input id="article-featured" type="checkbox"><span>设为首页置顶</span></label>
+        </div>
+        <div class="form-grid two-columns">
+          <label class="field span-2"><span>文章标题</span><input id="article-title" type="text" maxlength="400"></label>
+          <label class="field"><span>作者</span><input id="article-author" type="text" maxlength="100"></label>
+          <label class="field"><span>分类</span><input id="article-categories" type="text" placeholder="书籍, 动画"></label>
+          <label class="field span-2"><span>标签</span><input id="article-tags" type="text" placeholder="用逗号分隔，例如：动画, 生活"></label>
+          <label class="field span-2"><span>文章简介</span><textarea id="article-description" rows="7" maxlength="4000" placeholder="支持换行；留空时自动显示正文开头"></textarea><small><em id="article-description-count">0</em> / 4000 · 支持多段换行，留空则自动截取正文</small></label>
+        </div>
+      </form>
+
+      <form id="media-form" class="editor-panel hidden" autocomplete="off">
+        <div class="panel-heading">
+          <div><span class="section-label">SIGNAL RECORD</span><h2 id="media-id"></h2></div>
+          <label class="feature-toggle"><input id="media-featured" type="checkbox"><span>设为声像置顶</span></label>
+        </div>
+        <div class="form-grid two-columns">
+          <label class="field span-2"><span>节目标题</span><input id="media-title" type="text" maxlength="500"></label>
+          <label class="field"><span>节目编号</span><input id="media-episode" type="text" placeholder="EP.05"></label>
+          <label class="field"><span>发布日期</span><input id="media-date" type="datetime-local"></label>
+          <label class="field"><span>平台</span><input id="media-platform" type="text" placeholder="Bilibili"></label>
+          <label class="field"><span>时长</span><input id="media-duration" type="text" placeholder="1h 46m"></label>
+          <label class="field span-2"><span>标签</span><input id="media-tags" type="text" placeholder="电台, 动画, 百合"></label>
+          <label class="field span-2"><span>节目简介</span><textarea id="media-description" rows="5" maxlength="4000" placeholder="支持换行与分段"></textarea><small><em id="media-description-count">0</em> / 4000 · 支持多段换行</small></label>
+          <label class="field span-2"><span>原始链接</span><input id="media-url" type="url"></label>
+          <label class="field span-2"><span>播放器链接</span><input id="media-embed" type="url"></label>
+          <label class="field span-2"><span>封面链接</span><input id="media-cover" type="url"></label>
+        </div>
+        <div class="danger-zone"><button id="delete-media" type="button">删除这条声像档案</button></div>
+      </form>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>

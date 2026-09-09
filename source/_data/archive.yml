@@ -17,7 +17,7 @@
 defaults:
   author: AikeKo
 homepage:
-  featured_article: ""
+  featured_article: ''
 articles:
   20170828_世界是我们最初和最后的爱:
     title: 世界始终是我们最初与最后的爱 | 关于《キラ☆キラ》的杂谈
@@ -27,6 +27,8 @@ articles:
       - 游戏
     tags:
       - キラ☆キラ
+    id: article-388ccdfa4014e44c
+    post_file: 2017-08-28-世界是我们最初和最后的爱.md
   20181104_你离别的日子，定能将我改变:
     title: 你离别的日子，定能将我改变 | 简评《离别的钢琴奏鸣曲》
     author: AikeKo
@@ -35,6 +37,8 @@ articles:
       - 书籍
     tags:
       - 离别的钢琴奏鸣曲
+    id: article-2adc861906192fba
+    post_file: 2018-11-04-你离别的日子，定能将我改变.md
   20181218_在没有神的世界中追寻:
     title: 在没有神的世界中追寻 | 《神的记事本①》单卷评析
     author: AikeKo
@@ -43,22 +47,28 @@ articles:
       - 书籍
     tags:
       - 神的记事本
+    id: article-ac5d4dded855c2c8
+    post_file: 2018-12-18-在没有神的世界中追寻.md
   20190129_没有惩罚，世界也没有被爱:
     title: 没有惩罚，世界也没有被爱 |《CARNIVAL》游戏/后传小说杂谈
     author: AikeKo
-    description: ""
+    description: ''
     categories:
       - 游戏
     tags:
       - CARNIVAL
+    id: article-a36cb78fe9b36426
+    post_file: 2019-01-29-没有惩罚，世界也没有被爱.md
   20190223_朝向最后的舞台:
     title: 朝向那最后的舞台—— |《我的青春恋爱物语果然有问题》第十三卷吐槽
     author: AikeKo
-    description: ""
+    description: ''
     categories:
       - 书籍
     tags:
       - 我的青春恋爱物语果然有问题
+    id: article-46e48e4ad0c72f8c
+    post_file: 2019-02-23-朝向最后的舞台.md
   20190327_如果还有明天……:
     title: 如果还有明天…… | 关于《Narcissu》的一切
     author: AikeKo
@@ -67,6 +77,8 @@ articles:
       - 游戏
     tags:
       - Narcissu
+    id: article-2edd5da3c9fbe4dd
+    post_file: 2019-03-27-如果还有明天…….md
   20190804_没能“真心为你”的我们:
     title: 没能“真心为你”的我们 | 关于《EVA》× 卡夫卡的随笔
     author: AikeKo
@@ -75,30 +87,38 @@ articles:
       - 动画
     tags:
       - EVA
+    id: article-ef65f8a41af6186c
+    post_file: 2019-08-04-没能“真心为你”的我们.md
   20190821_正因是谎言，一切才更加温柔:
     title: 正因是谎言，一切才更加温柔 | 三秋缒《君の话》扫雷+简评
     author: AikeKo
-    description: ""
+    description: ''
     categories:
       - 书籍
     tags:
       - 你的故事
+    id: article-fca4bb3a577e9e04
+    post_file: 2019-08-21-正因是谎言，一切才更加温柔.md
   20200410_青春、死亡，以及时间的重量:
     title: 青春、死亡，以及时间的重量 |《Cross Game》、安达充，还有我的ACG
     author: AikeKo
-    description: ""
+    description: ''
     categories:
       - 动画
     tags:
       - Cross Game
+    id: article-29955319cb1685a4
+    post_file: 2020-04-10-青春、死亡，以及时间的重量.md
   20210514_新加坡的天空:
     title: 新加坡的天空 | 随笔（1）
     author: AikeKo
-    description: ""
+    description: ''
     categories:
       - 生活
     tags:
       - 生活
+    id: article-68a218bbb5bee830
+    post_file: 2021-05-14-新加坡的天空.md
   20241003_西历2236年的恋人絮语:
     title: 西历2236年的恋人絮语 | With love from 2018 A.D.
     author: AikeKo
@@ -107,22 +127,28 @@ articles:
       - 游戏
     tags:
       - 西历2236
+    id: article-101dfa6eb9ddcdcd
+    post_file: 2024-10-03-西历2236年的恋人絮语.md
   20260128_你可以回到Vorkuta，但那已经没有人了:
     title: 你可以回到Vorkuta-5，但那里已经没有人了 | 一个理解《Z.A.T.O》的视角
     author: AikeKo
-    description: ""
+    description: ''
     categories:
       - 游戏
     tags:
       - Z.A.T.O
+    id: article-44ba25fb36e8c3b4
+    post_file: 2026-01-28-你可以回到Vorkuta，但那已经没有人了.md
   20200210_坦率的、沉默的...:
     title: 坦率的、沉默的...|关于《春物14》，或者更多
     author: AikeKo
-    description: ""
+    description: ''
     categories:
       - 书籍
     tags:
       - 我的青春恋爱物语果然有问题
+    id: article-d3c75778bcb8cef4
+    post_file: 2020-02-10-坦率的、沉默的....md
   20200406_命运的果实:
     title: 命运的果实 | 《白痴》杂谈
     author: AikeKo
@@ -131,6 +157,8 @@ articles:
       - 书籍
     tags:
       - 白痴
+    id: article-d67426d2addf2d8d
+    post_file: 2020-04-06-命运的果实.md
   20200516_祈祷的意义:
     title: 祈祷的意义 | 《卡拉马佐夫兄弟》杂谈
     author: AikeKo
@@ -139,6 +167,8 @@ articles:
       - 书籍
     tags:
       - 卡拉马佐夫兄弟
+    id: article-814697f49f64a424
+    post_file: 2020-05-16-祈祷的意义.md
   20200622_仅有感觉的世界:
     title: 仅有感觉的世界 | 《喧哗与骚动》一个休谟式的解读
     author: AikeKo
@@ -147,14 +177,18 @@ articles:
       - 书籍
     tags:
       - 喧哗与骚动
+    id: article-d51b8b5fdbb2498c
+    post_file: 2020-06-22-仅有感觉的世界.md
   20200715_被拉远的距离:
     title: 被拉远的距离 | 《死屋手记》杂谈
     author: AikeKo
-    description: ""
+    description: ''
     categories:
       - 书籍
     tags:
       - 死屋手记
+    id: article-190f0b527cadd30e
+    post_file: 2020-07-15-被拉远的距离.md
   20200820_我们终于如愿以偿成为臭虫:
     title: 我们终于如愿以偿成为臭虫 | 《地下室手记》杂谈
     author: AikeKo
@@ -163,22 +197,28 @@ articles:
       - 书籍
     tags:
       - 地下室手记
+    id: article-6967810d5b84c02d
+    post_file: 2020-08-20-我们终于如愿以偿成为臭虫.md
   20201228_朝向更远的地方:
     title: 朝向更远的地方 | 2020年阅读总结
     author: AikeKo
-    description: ""
+    description: ''
     categories:
       - 书籍
     tags:
       - 总结
+    id: article-5da8de92ba5ff2dc
+    post_file: 2020-12-28-朝向更远的地方.md
   20250326_荒原即是战场:
     title: 荒原即是战场 | 简单review下《死亡搁浅》
     author: AikeKo
-    description: ""
+    description: ''
     categories:
       - 游戏
     tags:
       - 死亡搁浅
+    id: article-7e3f4cd0d36aabc1
+    post_file: 2025-03-26-荒原即是战场.md
 media:
   page:
     title: 声像档案
@@ -208,7 +248,7 @@ media:
     - id: chuncai-radio-yuri-strongest
       type: video
       title: 「蠢材呓事电台」史上最强百合vs现代最强百合
-      episode: ""
+      episode: ''
       platform: Bilibili
       date: 2026-07-28T15:47:23.000Z
       duration: 1h 34m
@@ -265,7 +305,7 @@ media:
     - id: chuncai-radio-ikoku-nikki
       type: video
       title: 「蠢材呓事电台」所有人终于聚在同一国家聊的《异国日记》
-      episode: ""
+      episode: ''
       platform: Bilibili
       date: 2026-06-11T00:00:00.000Z
       duration: 1h 45m
@@ -282,7 +322,7 @@ media:
     - id: chuncai-radio-kaguya
       type: video
       title: 「蠢材呓事电台」超时空辉夜姬能来拯救苏联高松灯吗？
-      episode: ""
+      episode: ''
       platform: Bilibili
       date: 2026-02-20T00:00:00.000Z
       duration: 2h 39m

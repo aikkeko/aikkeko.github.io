@@ -246,7 +246,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .category-index-panel,
   .resource-panel {
     padding: 22px 18px 24px;
@@ -519,41 +519,25 @@ body.post-detail {
   .blockquote-center {
     position: relative;
     overflow: hidden;
-    max-width: unquote('min(680px, 100%)');
     margin: 2em auto;
-    padding: 24px 30px 24px 58px !important;
-    border: 1px solid rgba(212, 196, 168, 0.16) !important;
-    border-left: 0 !important;
     border-radius: 3px;
     background:
       linear-gradient(135deg, rgba(30, 33, 40, 0.82), rgba(12, 14, 19, 0.72)) !important;
     box-shadow:
       0 16px 38px rgba(0, 0, 0, 0.25),
       inset 0 0 0 1px rgba(255, 255, 255, 0.025);
-    color: rgba(232, 228, 220, 0.78) !important;
-    font-style: normal !important;
-    text-align: left;
 
     &::before {
-      content: '“';
       position: absolute;
-      left: 20px;
-      top: 12px;
       width: auto;
       height: auto;
       background: none;
-      color: rgba(212, 196, 168, 0.58);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 3.1em;
-      line-height: 1;
     }
 
     &::after {
-      content: 'EXCERPT';
       position: absolute;
       right: 16px;
       top: 12px;
-      color: rgba(106, 160, 154, 0.48);
       font-family:
         "Courier New",
         Consolas,
@@ -664,7 +648,7 @@ body.post-detail {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   body.post-detail {
     .header-inner,
     .sidebar-inner {
@@ -720,7 +704,6 @@ body.post-detail {
   &::before {
     content: 'ARCHIVE INDEX';
     display: block;
-    padding: 14px 18px 0;
     color: rgba(106, 160, 154, 0.82);
     font-family:
       "Courier New",
@@ -735,7 +718,6 @@ body.post-detail {
 
 .site-brand-container {
   width: 100%;
-  padding: 16px 18px 18px !important;
   border-bottom: 1px solid rgba(212, 196, 168, 0.12);
   background:
     linear-gradient(135deg, rgba(212, 196, 168, 0.055), rgba(106, 160, 154, 0.035)) !important;
@@ -766,9 +748,7 @@ body.post-detail {
     max-width: 100%;
     margin: 0 !important;
     color: #fff8ea !important;
-    font-size: 1.18em !important;
     font-weight: 650 !important;
-    line-height: 1.35 !important;
     letter-spacing: 0.01em !important;
     white-space: normal !important;
     text-wrap: balance;
@@ -782,8 +762,6 @@ body.post-detail {
     max-width: 100%;
     margin: 12px 0 0 !important;
     color: rgba(232, 228, 220, 0.72) !important;
-    font-size: 0.76em !important;
-    line-height: 1.5 !important;
     letter-spacing: 0.025em !important;
     white-space: normal !important;
     overflow: visible !important;
@@ -798,18 +776,14 @@ body.post-detail {
 }
 
 .menu {
-  padding: 11px 10px 0 !important;
   background: transparent !important;
 
   .menu-item {
-    margin: 0 0 5px !important;
 
     a {
       position: relative;
       display: flex !important;
       align-items: center;
-      min-height: 38px;
-      padding: 9px 14px !important;
       border: 1px solid transparent;
       border-radius: 2px;
       color: rgba(232, 228, 220, 0.72) !important;
@@ -923,7 +897,7 @@ body.post-detail .sidebar-inner::before {
   color: rgba(232, 228, 220, 0.68);
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .header-inner,
   .sidebar-inner {
     border-radius: 0 !important;
@@ -989,7 +963,7 @@ body.post-detail .sidebar-inner::before {
   line-height: 1.2 !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .menu .menu-item a {
     height: 38px !important;
   }
@@ -1058,7 +1032,6 @@ body.post-detail .sidebar-inner::before {
 }
 
 .index .post-card-featured .post-card-excerpt {
-  -webkit-line-clamp: 4;
 }
 
 .posts-expand.post .post-body {
@@ -1099,7 +1072,7 @@ body.post-detail .sidebar-inner::before {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index .post-card,
   .index .post-card-featured,
   .index .post-card:nth-child(even) {
@@ -1147,7 +1120,7 @@ body.post-detail .sidebar-inner::before {
   object-position: center center !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index .post-card .post-card-image,
   .index .post-card-featured .post-card-image {
     height: 220px !important;
@@ -1240,8 +1213,6 @@ body.tag .header-inner .site-brand-container {
   gap: 8px 11px !important;
   overflow: visible !important;
   white-space: normal !important;
-  font-size: clamp(0.72rem, 0.76vw, 0.82rem) !important;
-  letter-spacing: 0.09em !important;
   line-height: 1.35 !important;
 }
 
@@ -1325,7 +1296,7 @@ body.tag .header-inner .site-brand-container {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index .post-card-meta .post-card-tags,
   .index .post-card-meta .post-card-tags a {
     max-width: 100% !important;
@@ -1340,7 +1311,7 @@ body.tag .header-inner .site-brand-container {
   flex: 0 0 auto !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index .post-card-meta {
     flex-wrap: wrap !important;
     gap: 8px 12px !important;
@@ -1354,7 +1325,7 @@ body.tag .header-inner .site-brand-container {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .post-banner-content {
     padding: 34px 24px 32px !important;
   }

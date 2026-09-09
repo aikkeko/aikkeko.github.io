@@ -10,6 +10,7 @@
   </div>
 {%- endif %}
 
+<p class="footer-signoff">THE SIGNAL RESTS. THE ECHO REMAINS.</p>
 <div class="copyright">
   {% set copyright_year = date(null, 'YYYY') %}
   &copy; {% if theme.footer.since and theme.footer.since != copyright_year %}{{ theme.footer.since }} – {% endif %}

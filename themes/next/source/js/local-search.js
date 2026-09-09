@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Popup Window
   let isfetched = false;
+  let fetchPending = false;
   let datas;
   let isXml = true;
   // Search DB path
@@ -201,17 +202,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return resultRight.id - resultLeft.id;
       });
-      resultContent.innerHTML = `<ul class="search-result-list">${resultItems.map(result => result.item).join('')}</ul>`;
+      resultContent.innerHTML = `<ul class="search-result-list">${resultItems.slice(0, 30).map(result => result.item).join('')}</ul>${resultItems.length > 30 ? '<p>仅显示前 30 条结果，请增加关键词缩小范围。</p>' : ''}`;
       window.pjax && window.pjax.refresh(resultContent);
     }
   };
 
   const fetchData = () => {
-    fetch(CONFIG.root + searchPath)
-      .then(response => response.text())
+    if (fetchPending || isfetched) return;
+    fetchPending = true;
+    resultContent.textContent = '正在加载搜索索引…';
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 12000);
+    fetch(CONFIG.root + searchPath, { signal: controller.signal })
+      .then(response => {
+        if (!response.ok) throw new Error('Search index unavailable');
+        return response.text();
+      })
       .then(res => {
         // Get the contents from search data
-        isfetched = true;
         datas = isXml ? [...new DOMParser().parseFromString(res, 'text/xml').querySelectorAll('entry')].map(element => {
           return {
             title  : element.querySelector('title').textContent,
@@ -227,9 +235,15 @@ document.addEventListener('DOMContentLoaded', () => {
           return data;
         });
         // Remove loading animation
-        document.getElementById('no-result').innerHTML = '<i class="fa fa-search fa-5x"></i>';
+        isfetched = true;
         inputEventFunction();
-      });
+      }).catch(() => {
+        resultContent.textContent = '搜索索引加载失败。';
+        const retry = document.createElement('button');
+        retry.type = 'button'; retry.textContent = '重新加载';
+        retry.addEventListener('click', fetchData);
+        resultContent.appendChild(retry);
+      }).finally(() => { clearTimeout(timeout); fetchPending = false; });
   };
 
   if (CONFIG.localsearch.preload) {
@@ -237,7 +251,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (CONFIG.localsearch.trigger === 'auto') {
-    input.addEventListener('input', inputEventFunction);
+    let inputTimer;
+    input.addEventListener('input', event => {
+      clearTimeout(inputTimer);
+      if (!event.isComposing) inputTimer = setTimeout(inputEventFunction, 160);
+    });
+    input.addEventListener('compositionend', inputEventFunction);
   } else {
     document.querySelector('.search-icon').addEventListener('click', inputEventFunction);
     input.addEventListener('keypress', event => {

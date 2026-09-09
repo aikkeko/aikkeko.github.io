@@ -67,6 +67,8 @@ class MarkdownProcessor {
 
     delete merged.category;
     delete merged.frontmatter;
+    delete merged.id;
+    delete merged.post_file;
 
     if (configuredMetadata.frontmatter && typeof configuredMetadata.frontmatter === 'object') {
       Object.assign(merged, configuredMetadata.frontmatter);

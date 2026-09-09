@@ -32,7 +32,7 @@
     </div>
     <a href="#posts-section" class="scroll-down" aria-label="向下滚动">
       <div class="scroll-down-icon">
-        <i class="fa fa-chevron-down"></i>
+        <svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path d="M5 10L14 19L23 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
     </a>
   </div>
@@ -74,9 +74,7 @@
         {# A configured description wins; otherwise derive the card copy from the article body. #}
         {%- set card_description = post.description or post.excerpt or post.content %}
         {%- if card_description %}
-        <div class="post-card-excerpt" itemprop="description">
-          {{ card_description | replace(r/<[^>]+>/g, '') | truncate(280, '...') }}
-        </div>
+        <div class="post-card-excerpt" itemprop="description">{{ card_description | replace(r/<[^>]+>/g, '') | replace(r/^\s+|\s+$/g, '') | truncate(280, '...') }}</div>
         {%- endif %}
         
         <div class="post-card-meta">

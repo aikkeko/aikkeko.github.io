@@ -1,0 +1,168 @@
+// Quiet twilight: atmosphere belongs behind the interface, never over the prose.
+:root {
+  --dream-accent: #94b4b0;
+  --dream-border: rgba(185, 200, 202, 0.17);
+  --dream-shadow: 0 16px 48px rgba(9, 13, 23, 0.18);
+  --dream-landscape: radial-gradient(ellipse at 24% 8%, rgba(192, 189, 211, 0.28), transparent 54%), linear-gradient(180deg, rgba(104, 122, 143, 0.24), rgba(43, 51, 65, 0.16) 55%, rgba(29, 37, 49, 0.3)), url('/images/Z.A.T.O_02_ca04.jpg');
+}
+
+@media (min-width: $viewport-desktop) {
+  body {
+    background-image: var(--dream-landscape);
+    background-size: cover;
+    background-position: center;
+  }
+  body::after {
+    background: radial-gradient(ellipse at 72% 12%, rgba(169, 182, 207, 0.09), transparent 62%);
+    mix-blend-mode: normal;
+  }
+}
+
+body .header-inner,
+body .sidebar-inner,
+body .index .post-card,
+body .media-card,
+body .post-block,
+body .post-banner {
+  border-color: var(--dream-border) !important;
+  box-shadow: var(--dream-shadow) !important;
+}
+
+body .sidebar-inner,
+body .index .post-card,
+body .media-card {
+  background: linear-gradient(145deg, rgba(44, 49, 59, 0.9), rgba(27, 32, 41, 0.94)) !important;
+}
+
+body .post-block:not(.reading-surface) {
+  background: linear-gradient(150deg, rgba(40, 46, 56, 0.94), rgba(29, 34, 43, 0.95)) !important;
+}
+
+body .page-identity-hero,
+body .archive-hero {
+  background: radial-gradient(ellipse at 0 0, rgba(153, 179, 186, 0.1), transparent 75%) !important;
+  border-bottom-color: var(--dream-border) !important;
+}
+
+body .page-hero-kicker,
+body .archive-hero-kicker,
+body .post-banner-kicker { color: var(--dream-accent) !important; }
+
+body .menu .menu-item-active a {
+  background: rgba(148, 180, 176, 0.11) !important;
+  border-color: rgba(148, 180, 176, 0.25) !important;
+}
+
+body .index .post-card:hover,
+body .media-card:hover {
+  transform: none !important;
+  border-color: rgba(185, 205, 206, 0.34) !important;
+  box-shadow: 0 18px 52px rgba(9, 13, 23, 0.23) !important;
+}
+
+body .index .hero-mask {
+  background: radial-gradient(ellipse at 36% 14%, rgba(191, 190, 214, 0.18), transparent 60%), linear-gradient(180deg, rgba(51, 64, 82, 0.12), rgba(23, 31, 43, 0.24) 55%, rgba(17, 23, 34, 0.56)) !important;
+  box-shadow: inset 0 -48px 90px rgba(20, 28, 43, 0.13) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body .index .hero-section::before {
+  background: radial-gradient(circle, rgba(232, 229, 221, 0.1) 0.5px, transparent 0.8px);
+  background-size: 5px 7px;
+  opacity: 0.18;
+}
+
+body .index .hero-section::after {
+  border-color: rgba(211, 218, 217, 0.22) !important;
+  background: none !important;
+  box-shadow: inset 0 0 55px rgba(24, 32, 46, 0.1) !important;
+}
+
+body .index .site-title-main {
+  color: #eee9df !important;
+  text-shadow: 0 2px 14px rgba(17, 23, 34, 0.48), 0 0 30px rgba(221, 216, 204, 0.12) !important;
+}
+
+body .index .scroll-down-icon {
+  border-width: 1px;
+  border-color: rgba(222, 229, 225, 0.58);
+  color: #e1e7e1;
+  background: rgba(40, 49, 62, 0.2);
+  animation: none !important;
+}
+
+.scroll-down-icon svg { width: 25px; height: 25px; display: block; }
+body .index .scroll-down:focus-visible { outline: 2px solid var(--dream-accent); outline-offset: 6px; }
+
+// Cover and copy share a top edge; thumbnails remain complete inside one frame.
+body .media-archive .media-card-title,
+body .media-archive .media-card.is-featured .media-card-title {
+  font-size: 21px;
+  line-height: 1.5;
+  margin-top: 0;
+  letter-spacing: 0 !important;
+  text-shadow: none;
+}
+
+body .media-card-cover.has-embed {
+  padding: 0 !important;
+  background: transparent;
+}
+
+body .media-card-cover.has-embed .media-card-player {
+  border: 0;
+  box-shadow: none;
+}
+
+body .media-player-launch > img {
+  inset: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  border: 0 !important;
+}
+
+body .media-player-launch::after { border: 0 !important; }
+
+body .media-card:not(.is-featured) .media-card-cover.has-embed {
+  width: calc(100% - 36px);
+  margin: 18px 18px 0;
+}
+
+@media (min-width: 901px) {
+  body .media-card.is-featured.has-player {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    padding: 24px;
+    gap: 24px;
+    align-items: start;
+  }
+  body .media-card.is-featured.has-player .media-card-cover.has-embed { align-self: start; }
+  body .media-card.is-featured .media-card-content { padding: 0; }
+  body .media-archive .media-card.is-featured .media-card-title { font-size: 24px; }
+}
+
+// Static, low-contrast waiting surface; no checkerboard or spinning decoration.
+body .index .post-card-image,
+body .media-card-player {
+  background: radial-gradient(ellipse at 30% 20%, rgba(148, 180, 176, 0.07), transparent 75%), #262d37 !important;
+}
+body .index .post-card-image::before { content: none !important; }
+
+.media-card-description { --media-description-lines: 5; }
+.media-card.is-featured .media-card-description { --media-description-lines: 4; }
+body .media-card-description.is-collapsible {
+  -webkit-line-clamp: var(--media-description-lines);
+}
+body .media-card-description.is-expanded { -webkit-line-clamp: unset; }
+
+body .media-toolbar { grid-template-columns: minmax(0, 1fr); }
+body .media-toolbar.is-filtering { grid-template-columns: minmax(0, 1fr) auto; }
+body .media-result-counter[hidden] { display: none !important; }
+
+@media (max-width: 900px) {
+  body .media-card.is-featured .media-card-cover.has-embed {
+    width: calc(100% - 36px);
+    margin: 18px 18px 0;
+  }
+}

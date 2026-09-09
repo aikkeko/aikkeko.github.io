@@ -13,10 +13,6 @@
     </span>
   {%- endif %}
 
-  {%- if theme.busuanzi_count.total_visitors and theme.busuanzi_count.total_views %}
-    <span class="post-meta-divider">|</span>
-  {%- endif %}
-
   {%- if theme.busuanzi_count.total_views %}
     <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
       <span class="post-meta-item-icon">

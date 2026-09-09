@@ -12,6 +12,7 @@ const R2Uploader = require('./lib/r2-uploader');
 const ImageCacheManager = require('./lib/image-cache');
 const yaml = require('js-yaml');
 const chokidar = require('chokidar');
+const { stableId } = require('../tools/lib/content-store');
 
 class ContentPipeline {
   constructor(options = {}) {
@@ -223,10 +224,12 @@ class ContentPipeline {
     const entry = this.articleMetadata.articles[documentKey];
 
     if (!entry || typeof entry !== 'object') {
-      return { ...defaults };
+      return { ...defaults, frontmatter: { article_id: stableId(documentKey), source_key: documentKey } };
     }
 
-    return { ...defaults, ...entry };
+    return { ...defaults, ...entry, frontmatter: {
+      ...entry.frontmatter, article_id: entry.id || stableId(documentKey), source_key: documentKey
+    } };
   }
 
   /**
@@ -300,6 +303,8 @@ class ContentPipeline {
    * @returns {string} 输出文件名
    */
   generateOutputFilename(originalFilename) {
+    const registered = this.getArticleMetadata(originalFilename).post_file;
+    if (registered && path.basename(registered) === registered && registered.endsWith('.md')) return registered;
     const ext = path.extname(originalFilename);
     const basename = path.basename(originalFilename, ext);
     const filenameMeta = this.extractFilenameMetadata(originalFilename);

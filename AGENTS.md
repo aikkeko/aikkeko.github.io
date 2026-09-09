@@ -1,5 +1,17 @@
 # AGENTS.md - 博客项目代理配置
 
+## 当前维护约定（2026-09-09，优先于下方历史记录）
+
+- 当前版本为 `2026.09.09-06`，缓存为 `blog-v165`。版本唯一来源是 `site-version.json`；构建自动同步样式入口、基础样式版本标记、主题 asset_version 和 sw.js。保留隐藏版本标记，不恢复左上角的可见版本号。
+- `npm run build` 包含元数据同步、清理构建和生成结果校验；`npm run deploy` 构建校验后普通快进推送到静态 `main` 分支，并验证 Pages 工作流，不使用强制推送。源码分支为 `master`。
+- 运行构建/部署前关闭 Hexo 预览进程，避免共享数据库与 public 目录的并发写入。具体操作参见 `MAINTENANCE.md`。
+- 文章关联使用 archive.yml 的固定 `id` / `post_file` 与文章 frontmatter 的 `article_id` / `source_key`。不得只按日期匹配，不得因改标题改变 URL。
+- 管理工具保存有版本冲突检查、备份与失败回滚；本地备份在 `.content-backups/`，不可发布。
+- 长文在构建时分段，完整 DOM 保留，不在浏览器初始化时重新搬动正文，不使用猜测高度占位。图片原生 `loading="lazy"`，不再依赖 lozad CDN。
+- Giscus 已启用，但首页不显示评论；第三方评论、播放器与 API 不进入 Service Worker 缓存。
+- 手机公共断点在 styles.styl 定义，窄屏几何集中于 `60-responsive.styl`。测试命令为 `npm test` 和 `npm run visual:check`；后者是真实视口模拟，不等同于真机或 Lighthouse 跑分。
+- themes/next 当前文件随主仓库跟踪；提交前以 `git ls-files` 的实际结果为准，不照搬历史子模块流程。
+
 ## Persona (角色)
 
 你是一位**高级内容架构师**，专门负责维护和优化文学类博客。你深刻理解一位拥有 30 万字作品的小说家对以下要素的极致追求：

@@ -1,0 +1,135 @@
+// Shared reading scale: independent of page-specific inherited em sizes.
+:root {
+  --reading-size: 18px;
+  --reading-leading: 1.86;
+  --reading-paragraph-gap: 1.3em;
+  --reading-ink: #d7d4ce;
+  --reading-surface: rgba(31, 34, 40, 0.97);
+  --brand-title-size: 20px;
+}
+
+body .header-inner .site-brand-container .site-title {
+  font-family: var(--font-latin-display) !important;
+  font-size: var(--brand-title-size) !important;
+  font-weight: 500 !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.04em !important;
+}
+
+// Scope the opaque surface to prose, never the homepage or article cover.
+body .content .post-block.reading-surface {
+  background: var(--reading-surface) !important;
+}
+
+body .content .post-block.reading-surface .post-body,
+body .content .post-block.reading-surface .post-body p,
+body .content .post-block.reading-surface .post-body li,
+body .content .post-block.reading-surface .post-body blockquote {
+  font-family: var(--font-reading) !important;
+  font-size: var(--reading-size) !important;
+  font-weight: 400 !important;
+  line-height: var(--reading-leading) !important;
+  letter-spacing: 0.01em !important;
+  color: var(--reading-ink) !important;
+  text-shadow: none !important;
+}
+
+body .content .reading-surface .post-body p {
+  margin-bottom: var(--reading-paragraph-gap) !important;
+}
+
+// Preserve explicit emphasis in the article source; no automatic removal of bold.
+body .content .reading-surface .post-body strong {
+  font-weight: 700;
+  color: inherit;
+}
+
+body .content .reading-surface .post-body h1,
+body .content .reading-surface .post-body h2,
+body .content .reading-surface .post-body h3 {
+  font-family: var(--font-display) !important;
+  font-weight: 500 !important;
+  line-height: 1.45 !important;
+  color: #e8e4dc !important;
+}
+
+.post-banner-meta,
+.post-card-meta,
+.post-meta,
+.page-hero-stats,
+.archive-hero-stats {
+  font-family: var(--font-reading) !important;
+  letter-spacing: 0.025em !important;
+}
+
+.page-hero-kicker,
+.archive-hero-kicker,
+.post-banner-kicker,
+.post-card-date time,
+.post-banner-date {
+  font-family: var(--font-label) !important;
+}
+
+body .content .reading-surface .post-body ul,
+body .content .reading-surface .post-body ol {
+  padding-inline-start: 1.6em !important;
+  margin-inline: 0 !important;
+}
+
+body .content .reading-surface .post-body h2 {
+  font-size: 1.4em !important;
+  margin: 2.3em 0 0.85em !important;
+  padding: 0 0 0.45em !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(185, 200, 202, 0.15) !important;
+  background: none !important;
+}
+body .content .reading-surface .post-body h3 {
+  font-size: 1.16em !important;
+  margin: 1.9em 0 0.7em !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: none !important;
+}
+body .content .reading-surface .post-body h2::before,
+body .content .reading-surface .post-body h2::after,
+body .content .reading-surface .post-body h3::before,
+body .content .reading-surface .post-body h3::after { content: none !important; }
+body .content .reading-surface .post-body h2,
+body .content .reading-surface .post-body h3 { scroll-margin-top: 96px; }
+body .post-toc .nav .active-current > a {
+  color: #e1e8df !important;
+  background: rgba(148, 180, 176, 0.12);
+  border-inline-start: 2px solid #94b4b0;
+  padding-inline-start: 8px;
+  font-weight: 500;
+}
+
+body .content .reading-surface .post-body li + li {
+  margin-top: 0.65em;
+}
+
+body .content .reading-surface .post-body blockquote {
+  margin: 1.4em 0 !important;
+  padding: 0.7em 1em !important;
+  border: 0 !important;
+  border-inline-start: 2px solid rgba(180, 160, 120, 0.65) !important;
+  background: rgba(212, 196, 168, 0.035) !important;
+  box-shadow: none !important;
+}
+
+body .content .reading-surface .post-body blockquote::before,
+body .content .reading-surface .post-body blockquote::after { content: none !important; }
+
+body .content .reading-surface .post-body blockquote > p:last-child {
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: $viewport-mobile) {
+  :root {
+    --reading-size: 17px;
+    --reading-leading: 1.82;
+    --reading-paragraph-gap: 1.2em;
+    --brand-title-size: 18px;
+  }
+}

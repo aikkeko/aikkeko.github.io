@@ -1,0 +1,114 @@
+// One frame per reading/card surface; keep the original exterior archive frame.
+body .post-block::after,
+body .index .post-card::after,
+body .sidebar-inner::after {
+  content: none !important;
+}
+
+body .page-identity-hero,
+body .archive-hero {
+  border: 0 !important;
+  border-bottom: 1px solid rgba(212, 196, 168, 0.18) !important;
+  box-shadow: none !important;
+}
+
+body .media-card::after,
+body .media-card-cover::before,
+body .media-card-cover::after {
+  content: none !important;
+}
+
+// Consistent card rhythm, with space after the summary rather than between lines.
+body .index .post-card {
+  min-height: 0 !important;
+  margin-bottom: 28px !important;
+}
+
+body .index .post-card .post-card-image {
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 3 / 2;
+  align-self: center;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+body .index .post-card .post-card-content {
+  justify-content: flex-start !important;
+  gap: 0 !important;
+}
+
+body .index .post-card .post-card-title {
+  margin: 0 0 16px !important;
+}
+
+body .index .post-card .post-card-excerpt {
+  flex: 0 0 auto !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4 !important;
+  overflow: hidden;
+  max-height: none !important;
+  margin: 0 0 20px !important;
+}
+
+body .index .post-card-excerpt::after { content: none !important; }
+
+body .post-card-meta,
+body .media-card-meta {
+  color: #aaa69e !important;
+  font-size: 12px !important;
+  line-height: 1.7 !important;
+  gap: 8px 14px !important;
+}
+
+body .post-card-meta a,
+body .media-card-meta a {
+  color: inherit !important;
+}
+
+body .post-card-meta a:hover,
+body .media-card-meta a:hover { color: #e8e4dc !important; }
+
+body .index .post-card-index { color: rgba(212, 196, 168, 0.2) !important; }
+
+// The profile remains visible, without a second card inside the sidebar.
+body .sidebar-inner .site-author {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 12px 0 8px !important;
+  margin-bottom: 12px !important;
+}
+
+body .sidebar-inner .site-author::before,
+body .sidebar-inner .site-author-name::after { content: none !important; }
+
+body .sidebar-inner .site-author-image {
+  width: 104px !important;
+  height: 104px !important;
+}
+
+body .sidebar-inner .site-state { margin-top: 12px !important; }
+body .sidebar-inner .site-state-item { padding-block: 2px !important; }
+
+// A consistent ending rhythm: article, navigation, conversation, sign-off.
+body .reading-surface .post-footer { margin-top: 40px; }
+body .reading-surface .post-tags { margin: 0 0 24px !important; }
+body .reading-surface .post-nav {
+  margin-top: 24px !important;
+  padding-top: 22px;
+  border-top: 1px solid rgba(185, 200, 202, 0.17);
+}
+body .post-nav-item a { min-height: 44px; line-height: 1.65; }
+body .giscus-comments { margin: 32px auto 0 !important; }
+body .footer-inner { padding-top: 36px !important; padding-bottom: 28px !important; }
+.footer-signoff {
+  margin: 0 0 14px;
+  color: #b7c1bd;
+  font-family: var(--font-label);
+  font-size: 11px;
+  line-height: 1.8;
+  letter-spacing: 0.14em;
+}
+body .footer .with-love { color: #94b4b0 !important; }
+body .footer .busuanzi-count { display: flex; justify-content: center; gap: 18px; }

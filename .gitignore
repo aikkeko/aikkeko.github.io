@@ -3,10 +3,11 @@ Thumbs.db
 db.json
 *.log
 node_modules/
-public/
+/public/
 .deploy*/
 .env
 .pipeline-cache/
 .omo/
 artifacts/visual-regression/
 .chrome-visual/
+.content-backups/

@@ -6,8 +6,15 @@ hexo.extend.filter.register('after_post_render', data => {
   const { config } = hexo;
   const theme = hexo.theme.config;
   if (!theme.exturl && !theme.lazyload) return;
-  if (theme.lazyload) {
-    data.content = data.content.replace(/(<img[^>]*) src=/img, '$1 data-src=');
+  if (theme.lazyload && /<img\b/i.test(data.content)) {
+    const cheerio = require('cheerio');
+    const $ = cheerio.load(data.content, null, false);
+    $('img').each((_, image) => {
+      const img = $(image);
+      if (!img.attr('loading')) img.attr('loading', 'lazy');
+      img.attr('decoding', 'async');
+    });
+    data.content = $.html();
   }
   if (theme.exturl) {
     const url = require('url');

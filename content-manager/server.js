@@ -5,6 +5,7 @@ const http = require('http');
 const path = require('path');
 const { spawn } = require('child_process');
 const yaml = require('js-yaml');
+const store = require('../tools/lib/content-store');
 
 const projectRoot = path.resolve(__dirname, '..');
 const publicRoot = path.join(__dirname, 'public');
@@ -57,6 +58,8 @@ function cleanTags(value) {
 
 function sanitizeRegistry(input) {
   const current = readRegistry();
+  if (!input || !input.articles || !Array.isArray(input.media?.items)) throw new Error('内容配置不完整，未保存');
+  if (Object.keys(current.articles || {}).some(key => !input.articles[key])) throw new Error('不支持在此删除文章，请保留现有文章记录');
   const result = {
     defaults: { author: cleanText(input?.defaults?.author || current.defaults?.author || 'AikeKo', 100).trim() },
     homepage: { featured_article: cleanText(input?.homepage?.featured_article, 300).trim() },
@@ -83,6 +86,9 @@ function sanitizeRegistry(input) {
       categories,
       tags: cleanTags(article.tags)
     };
+    for (const field of ['id', 'post_file']) {
+      if (current.articles?.[key]?.[field]) result.articles[key][field] = current.articles[key][field];
+    }
     for (const optional of ['date', 'header_image', 'frontmatter']) {
       if (Object.prototype.hasOwnProperty.call(article, optional)) result.articles[key][optional] = article[optional];
     }
@@ -92,7 +98,12 @@ function sanitizeRegistry(input) {
   for (const item of Array.isArray(input?.media?.items) ? input.media.items : []) {
     if (!item || typeof item !== 'object') continue;
     const id = cleanText(item.id, 200).trim();
-    if (!id || ids.has(id)) continue;
+    if (!id || ids.has(id)) throw new Error('节目 ID 为空或重复');
+    if (!item.title?.trim()) throw new Error('节目标题不能为空');
+    for (const field of ['url', 'embed', 'cover']) {
+      const value = String(item[field] || '').trim();
+      if (value && !/^https?:\/\//i.test(value) && !(field === 'cover' && /^\/(?!\/)/.test(value))) throw new Error(`节目 ${id} 的 ${field} 地址无效`);
+    }
     ids.add(id);
     result.media.items.push({
       id,
@@ -115,47 +126,6 @@ function sanitizeRegistry(input) {
   return result;
 }
 
-function atomicWrite(file, content) {
-  const temp = `${file}.${process.pid}.tmp`;
-  fs.writeFileSync(temp, content, 'utf8');
-  fs.renameSync(temp, file);
-}
-
-function findPostFile(articleKey, title) {
-  const match = articleKey.match(/^(\d{4})(\d{2})(\d{2})_/);
-  if (!match) return null;
-  const prefix = `${match[1]}-${match[2]}-${match[3]}-`;
-  const candidates = fs.readdirSync(postsRoot)
-    .filter(name => name.startsWith(prefix) && name.endsWith('.md'));
-  if (candidates.length === 1) return path.join(postsRoot, candidates[0]);
-  for (const name of candidates) {
-    const raw = fs.readFileSync(path.join(postsRoot, name), 'utf8');
-    const front = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-    const parsed = front ? yaml.load(front[1], { schema: yaml.JSON_SCHEMA }) || {} : {};
-    if (String(parsed.title || '').trim() === String(title || '').trim()) return path.join(postsRoot, name);
-  }
-  return null;
-}
-
-function syncPostFrontmatter(articleKey, article, defaultAuthor) {
-  const postFile = findPostFile(articleKey, article.title);
-  if (!postFile) return { key: articleKey, status: 'not-found' };
-  const raw = fs.readFileSync(postFile, 'utf8');
-  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n/);
-  if (!match) return { key: articleKey, status: 'invalid-frontmatter' };
-  const front = yaml.load(match[1], { schema: yaml.JSON_SCHEMA }) || {};
-  front.title = article.title;
-  front.author = article.author || defaultAuthor;
-  front.categories = article.categories || [];
-  front.tags = article.tags || [];
-  if (article.description) front.description = article.description;
-  else delete front.description;
-  const body = raw.slice(match[0].length);
-  const next = `---\n${yaml.dump(front, yamlOptions)}---\n\n${body.replace(/^\r?\n/, '')}`;
-  if (next !== raw) atomicWrite(postFile, next);
-  return { key: articleKey, status: 'updated', file: path.relative(projectRoot, postFile) };
-}
-
 function sendJson(response, status, data) {
   const body = JSON.stringify(data);
   response.writeHead(status, {
@@ -169,7 +139,7 @@ function sendJson(response, status, data) {
 function serveFile(response, pathname) {
   const relative = pathname === '/' ? 'index.html' : pathname.replace(/^\//, '');
   const file = path.resolve(publicRoot, relative);
-  if (!file.startsWith(publicRoot) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
+  if (!file.startsWith(publicRoot + path.sep) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
     response.writeHead(404);
     response.end('Not found');
     return;
@@ -187,7 +157,8 @@ function serveFile(response, pathname) {
 const server = http.createServer((request, response) => {
   const url = new URL(request.url, `http://${host}:${port}`);
   if (request.method === 'GET' && url.pathname === '/api/data') {
-    sendJson(response, 200, readRegistry());
+    try { sendJson(response, 200, { registry: readRegistry(), revision: store.revision(archivePath, postsRoot) }); }
+    catch (error) { sendJson(response, 500, { error: error.message }); }
     return;
   }
 
@@ -205,13 +176,16 @@ const server = http.createServer((request, response) => {
     request.on('end', () => {
       try {
         const payload = JSON.parse(body || '{}');
+        if (payload.revision !== store.revision(archivePath, postsRoot)) {
+          sendJson(response, 409, { error: '文件已被其他窗口或程序修改。当前修改仍保留在表单中，请复制需要保留的内容后重新载入。' });
+          return;
+        }
         const registry = sanitizeRegistry(payload.registry);
-        const changedKeys = Array.isArray(payload.changedArticleKeys) ? payload.changedArticleKeys : [];
-        atomicWrite(archivePath, archiveHeader + yaml.dump(registry, yamlOptions));
-        const synced = changedKeys
-          .filter(key => registry.articles[key])
-          .map(key => syncPostFrontmatter(key, registry.articles[key], registry.defaults.author));
-        sendJson(response, 200, { ok: true, synced, savedAt: new Date().toISOString() });
+        const writes = store.planSync(registry, postsRoot);
+        const synced = writes.map(item => ({ file: path.relative(projectRoot, item.file), status: 'updated' }));
+        writes.push({ file: archivePath, content: archiveHeader + yaml.dump(registry, yamlOptions) });
+        const backup = store.commitWrites(writes, path.join(path.dirname(archivePath), '..', '..', '.content-backups'));
+        sendJson(response, 200, { ok: true, registry, revision: store.revision(archivePath, postsRoot), synced, backup, savedAt: new Date().toISOString() });
       } catch (error) {
         sendJson(response, 400, { error: error.message });
       }

@@ -1,10 +1,10 @@
 <div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="{{ __('accessibility.nav_toggle') }}">
+    <button type="button" class="toggle" aria-expanded="false" aria-label="{{ __('accessibility.nav_toggle') }}">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
-    </div>
+    </button>
   </div>
 
   <div class="site-meta{%- if theme.custom_logo %} custom-logo{%- endif %}">

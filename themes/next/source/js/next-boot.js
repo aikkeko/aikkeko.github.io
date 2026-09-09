@@ -8,10 +8,11 @@ NexT.boot.registerEvents = function() {
   NexT.utils.registerCanIUseTag();
 
   // Mobile top menu bar.
-  document.querySelector('.site-nav-toggle .toggle').addEventListener('click', () => {
+  document.querySelector('.site-nav-toggle .toggle').addEventListener('click', event => {
     event.currentTarget.classList.toggle('toggle-close');
     var siteNav = document.querySelector('.site-nav');
     var animateAction = siteNav.classList.contains('site-nav-on') ? 'slideUp' : 'slideDown';
+    event.currentTarget.setAttribute('aria-expanded', String(!siteNav.classList.contains('site-nav-on')));
 
     if (typeof Velocity === 'function') {
       Velocity(siteNav, animateAction, {
@@ -81,7 +82,7 @@ NexT.boot.refresh = function() {
    */
   CONFIG.fancybox && NexT.utils.wrapImageWithFancyBox();
   CONFIG.mediumzoom && window.mediumZoom('.post-body :not(a) > img, .post-body > img');
-  CONFIG.lazyload && window.lozad('.post-body img').observe();
+  // Native image lazy loading works without a network-loaded JavaScript library.
   CONFIG.pangu && window.pangu.spacingPage();
 
   CONFIG.exturl && NexT.utils.registerExtURL();

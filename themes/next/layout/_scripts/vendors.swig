@@ -14,9 +14,7 @@
   {%- set js_vendors = js_vendors | attr('mediumzoom', '//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js') %}
 {%- endif %}
 
-{%- if theme.lazyload %}
-  {%- set js_vendors = js_vendors | attr('lazyload', '//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js') %}
-{%- endif %}
+{# Article images use native loading="lazy"; no third-party loader is needed. #}
 
 {%- if theme.pangu %}
   {%- set js_vendors = js_vendors | attr('pangu', '//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js') %}

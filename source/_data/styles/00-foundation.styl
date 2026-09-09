@@ -10,7 +10,7 @@ body {
 
   // 版本号保留在样式元数据中，默认不在页面上显示。
   &::before {
-    content: "v2026.08.20-01";
+    content: "v2026.09.09-06";
     display: none !important;
   }
 
@@ -30,7 +30,6 @@ body {
 // 1.5 主内容区透明化 - 显示背景图片
 // ============================================
 .main {
-  background: transparent !important;
 }
 
 .main-inner {
@@ -57,7 +56,6 @@ body {
 
 // 页脚固定在底部
 .footer {
-  margin-top: auto;
   position: relative;
 }
 
@@ -173,7 +171,6 @@ body {
 
 // 页脚透明（显示背景图片）
 .footer {
-  background: transparent !important;
 }
 
 .footer-inner {
@@ -182,14 +179,10 @@ body {
 
 // 页脚文字颜色适配
 .footer {
-  color: #c8c8cc;
 
   a {
-    color: #d4c4a8;
-    border-bottom: none;
 
     &:hover {
-      color: #e4d4b8;
     }
   }
 }
@@ -204,13 +197,11 @@ body {
   white-space: normal !important;
 
   .site-title {
-    white-space: nowrap !important;
     display: block !important;
     margin-bottom: 4px;
   }
 
   .site-subtitle {
-    white-space: nowrap !important;
     display: block !important;
   }
 }
@@ -225,7 +216,6 @@ body {
   border-bottom: 1px solid rgba(180, 160, 120, 0.2);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
   // 解除 Pisces scheme 的 overflow: hidden，否则搜索弹窗被裁切
-  overflow: visible !important;
 }
 
 // ============================================
@@ -246,7 +236,6 @@ body {
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  padding: 24px !important;
   margin-top: 12px;
   border: 1px solid rgba(180, 160, 120, 0.15);
 }
@@ -294,7 +283,6 @@ body {
 .site-author-name {
   font-weight: 600;
   font-size: 1.15em;
-  letter-spacing: 1px;
   color: #d4c4a8;
   margin-top: 12px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
@@ -323,19 +311,15 @@ body {
 .menu {
   .menu-item {
     a {
-      color: #a0a0a8;
       font-weight: 400;
       transition: all 0.3s ease;
-      position: relative;
 
       &:hover {
-        color: #d4c4a8;
         background: rgba(180, 160, 120, 0.1);
       }
     }
 
     &.menu-item-active a {
-      color: #d4c4a8;
       background: rgba(180, 160, 120, 0.15);
       border-left: 3px solid #b4a078;
 
@@ -732,10 +716,8 @@ body {
 // 3.5 侧边栏导航标签 - 废土暗金
 // ============================================
 .sidebar-nav {
-  border-bottom: 1px solid rgba(180, 160, 120, 0.2);
 
   li {
-    color: #8a8a90;
     transition: color 0.3s ease;
 
     &:hover {
@@ -744,9 +726,6 @@ body {
   }
 
   .sidebar-nav-active {
-    color: #d4c4a8;
-    border-bottom-color: transparent;
-    border-left-color: #b4a078;
 
     &:hover {
       color: #e4d4b8;
@@ -847,7 +826,6 @@ blockquote {
 
 // --- 代码块高亮行 ---
 .highlight .gutter {
-  background: rgba(25, 28, 35, 0.8);
 }
 
 .highlight .code pre {

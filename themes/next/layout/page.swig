@@ -30,7 +30,7 @@
     {##################}
     {### PAGE BLOCK ###}
     {##################}
-    <div class="post-block" lang="{{ page.lang or config.language }}">
+    <div class="post-block{% if page.type === 'about' %} reading-surface{% endif %}" lang="{{ page.lang or config.language }}">
       {%- if page.type === 'about' %}
         {{ partial('_partials/page/identity-hero.swig', {
           hero_class: 'about-hero', hero_label: '关于本站', hero_kicker: 'KEEPER PROFILE',
@@ -121,7 +121,7 @@
                   <span class="media-visually-hidden">搜索声像档案</span>
                   <input type="search" autocomplete="off" placeholder="搜索标题、平台或标签" data-media-search>
                 </label>
-                <span class="media-result-counter">共 <strong data-media-result-count>{{ media_items.length }}</strong> 项</span>
+                <span class="media-result-counter" role="status" aria-live="polite" hidden>找到 <strong data-media-result-count>0</strong> 项</span>
               </div>
 
               <div class="media-grid">

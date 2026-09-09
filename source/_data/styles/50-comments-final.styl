@@ -80,7 +80,6 @@
 
 .giscus {
   position: relative;
-  min-height: 292px;
   padding: 6px 8px 2px;
   border: 1px solid rgba(212, 196, 168, 0.09);
   background: rgba(10, 12, 17, 0.34);
@@ -209,7 +208,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .giscus-comments {
     width: 100%;
     margin-top: 24px !important;
@@ -234,7 +233,6 @@
   }
 
   .giscus {
-    min-height: 318px;
     padding: 4px;
   }
 
@@ -259,25 +257,16 @@
 // 67. Video thumbnail safe frame - preserve source artwork and titles
 // ============================================
 .media-card-cover.has-embed {
-  padding: 18px;
 }
 
 .media-card-cover.has-embed .media-card-player {
-  border: 1px solid rgba(212, 196, 168, 0.13);
   box-shadow:
     0 14px 34px rgba(0, 0, 0, 0.28),
     0 0 0 1px rgba(0, 0, 0, 0.22);
 }
 
 .media-player-launch > img {
-  inset: 10px;
-  width: calc(100% - 20px);
-  height: calc(100% - 20px);
   box-sizing: border-box;
-  border: 1px solid rgba(232, 228, 220, 0.08);
-  object-fit: contain !important;
-  object-position: center center;
-  opacity: 0.9;
   transform: none !important;
 }
 
@@ -286,22 +275,16 @@
 }
 
 .media-player-launch::after {
-  inset: 9px;
 }
 
 @media (max-width: 560px) {
   .media-card-cover.has-embed {
-    padding: 12px;
   }
 
   .media-player-launch > img {
-    inset: 7px;
-    width: calc(100% - 14px);
-    height: calc(100% - 14px);
   }
 
   .media-player-launch::after {
-    inset: 6px;
   }
 }
 
@@ -339,7 +322,7 @@
   filter: blur(10px) !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index .hero-mask {
     background:
       radial-gradient(ellipse at 58% 34%, rgba(232, 220, 198, 0.07), transparent 44%),
@@ -357,17 +340,11 @@
 
 // Chinese identity above the primary Aike · Echo masthead.
 .index .hero-kicker {
-  font-family: var(--font-display) !important;
-  font-size: 0.7rem !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.16em !important;
   text-transform: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index .hero-kicker {
-    font-size: 0.64rem !important;
-    letter-spacing: 0.12em !important;
   }
 }
 
@@ -382,7 +359,7 @@
   box-sizing: border-box;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .about-content-panel {
     width: 100% !important;
     overflow: hidden;
@@ -434,7 +411,7 @@
 }
 
 // Compact sparse directory headers after the duplicate corner stamps were removed.
-@media (min-width: 769px) {
+@media (min-width: $viewport-desktop) {
   .page-identity-hero,
   .archive-hero {
     margin-bottom: 26px !important;
@@ -489,7 +466,6 @@
 
 // Preserve the complete source thumbnail within one deliberate 16:9 frame.
 .media-card-cover.has-embed {
-  padding: 16px !important;
 }
 
 .media-player-launch > img {
@@ -498,7 +474,6 @@
   height: calc(100% - 20px) !important;
   border: 1px solid rgba(232, 228, 220, 0.07) !important;
   background: #0d1015 !important;
-  object-fit: contain !important;
 }
 
 .media-player-launch::after {
@@ -507,7 +482,6 @@
 
 @media (max-width: 560px) {
   .media-card-cover.has-embed {
-    padding: 11px !important;
   }
 
   .media-player-launch > img {
@@ -539,33 +513,25 @@
 }
 
 // Long-form reading rhythm: slightly denser on desktop and larger on phones.
-@media (min-width: 769px) {
+@media (min-width: $viewport-desktop) {
   .post-detail .post-body,
   .post-detail .post-body p,
   .post-detail .post-body li,
   .post-detail .post-body blockquote {
-    font-size: 18px !important;
-    line-height: 1.86 !important;
-    letter-spacing: 0.01em !important;
   }
 
   .post-detail .post-body p {
-    margin-bottom: 1.35em !important;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   body.post-detail .posts-expand.post .post-body,
   body.post-detail .posts-expand.post .post-body p,
   body.post-detail .posts-expand.post .post-body li,
   body.post-detail .posts-expand.post .post-body blockquote {
-    font-size: 16px !important;
-    line-height: 1.82 !important;
-    letter-spacing: 0.006em !important;
   }
 
   body.post-detail .posts-expand.post .post-body p {
-    margin-bottom: 1.2em !important;
   }
 }
 
@@ -623,8 +589,6 @@ body,
 .post-detail .post-body p,
 .post-detail .post-body li,
 .post-detail .post-body blockquote {
-  font-family: var(--font-prose) !important;
-  font-weight: 400 !important;
 }
 
 // Preserve intentional paragraph breaks configured in the local content
@@ -668,35 +632,24 @@ body,
 .media-description-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
   margin: 0 0 18px;
-  padding: 3px 0 4px;
-  border: 0;
   border-bottom: 1px solid rgba(106, 160, 154, 0.34);
-  color: rgba(146, 194, 186, 0.82);
   background: transparent;
   font-family: var(--font-label);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
   cursor: pointer;
 
   &::after {
-    content: '⌄';
     color: rgba(212, 196, 168, 0.78);
     font-size: 1rem;
     line-height: 0.8;
-    transition: transform 0.2s ease;
   }
 
   &[aria-expanded='true']::after {
-    transform: rotate(180deg);
   }
 
   &:hover,
   &:focus-visible {
-    color: #d8e4e1;
     border-bottom-color: rgba(106, 160, 154, 0.7);
-    outline: none;
   }
 }
 
@@ -744,73 +697,42 @@ body,
 
 // Final cascade guard: compact primary masthead.
 .site-nameplate-cn {
-  display: none !important;
 }
 
-@media (min-width: 769px) {
+@media (min-width: $viewport-desktop) {
   .header-inner .site-brand-container,
   body.post-detail .header-inner .site-brand-container,
   body.page .header-inner .site-brand-container,
   body.archive .header-inner .site-brand-container,
   body.category .header-inner .site-brand-container,
   body.tag .header-inner .site-brand-container {
-    min-height: 98px !important;
-    padding: 13px 14px !important;
-    border-bottom: 0 !important;
-    box-shadow: 0 11px 28px rgba(0, 0, 0, 0.18) !important;
   }
 
   .site-brand-container::before,
   .site-brand-container::after {
-    content: none !important;
-    display: none !important;
   }
 
   .site-brand-container .site-meta {
-    display: grid !important;
-    grid-template-columns: 44px minmax(0, 1fr) !important;
-    grid-template-areas: "mark title" "subtitle subtitle" !important;
-    column-gap: 11px !important;
-    row-gap: 5px !important;
-    align-items: center !important;
   }
 
   .site-brand-container .site-logo-link {
-    grid-area: mark !important;
-    width: 44px !important;
   }
 
   .site-brand-container .brand {
-    grid-area: title !important;
   }
 
   .site-brand-container .site-title {
-    margin: 0 !important;
-    font-size: 1.18rem !important;
-    line-height: 1.08 !important;
-    letter-spacing: 0.055em !important;
   }
 
   .site-brand-container .site-subtitle {
-    grid-area: subtitle !important;
-    width: auto !important;
-    margin: 0 !important;
-    font-size: 0.56rem !important;
-    line-height: 1.25 !important;
-    letter-spacing: 0.025em !important;
-    text-align: center !important;
-    white-space: nowrap;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .site-brand-container .site-meta {
-    grid-template-columns: 30px minmax(0, auto) !important;
-    column-gap: 8px !important;
   }
 
   .site-brand-container .site-logo-link {
-    width: 30px !important;
   }
 }
 
@@ -831,19 +753,16 @@ body,
   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.72)) drop-shadow(0 0 9px rgba(212, 196, 168, 0.12));
 }
 
-@media (min-width: 769px) {
+@media (min-width: $viewport-desktop) {
   .header-inner .site-brand-container,
   body.post-detail .header-inner .site-brand-container,
   body.page .header-inner .site-brand-container,
   body.archive .header-inner .site-brand-container,
   body.category .header-inner .site-brand-container,
   body.tag .header-inner .site-brand-container {
-    min-height: 126px !important;
-    padding: 16px 12px !important;
   }
 
   .site-brand-container .site-meta {
-    display: grid !important;
     grid-template-columns: 54px minmax(0, 1fr);
     grid-template-areas: "mark nameplate" "mark title" "subtitle subtitle";
     column-gap: 11px;
@@ -878,28 +797,19 @@ body,
   }
 
   .site-brand-container .site-title {
-    margin: 0 !important;
-    font-size: 1.22rem !important;
-    line-height: 1.05 !important;
   }
 
   .site-brand-container .site-subtitle {
     grid-area: subtitle;
-    width: 100% !important;
-    margin: 3px 0 0 !important;
-    font-size: 0.61rem !important;
-    line-height: 1.25 !important;
     text-align: center;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .site-brand-container .site-meta {
     display: grid !important;
     grid-template-columns: 34px minmax(0, auto);
-    grid-template-areas: "mark title" "mark subtitle";
     column-gap: 9px;
-    row-gap: 3px;
     align-items: center;
     justify-content: center;
     max-width: calc(100vw - 116px);
@@ -956,7 +866,7 @@ body,
   min-height: 292px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .page-identity-hero,
   .archive-hero {
     margin-bottom: 22px;
@@ -1016,14 +926,13 @@ body,
   display: none;
 }
 
-@media (min-width: 769px) {
+@media (min-width: $viewport-desktop) {
   .header-inner .site-brand-container,
   body.post-detail .header-inner .site-brand-container,
   body.page .header-inner .site-brand-container,
   body.archive .header-inner .site-brand-container,
   body.category .header-inner .site-brand-container,
   body.tag .header-inner .site-brand-container {
-    min-height: 112px !important;
     padding-top: 18px !important;
     padding-bottom: 17px !important;
   }
@@ -1121,16 +1030,12 @@ body,
 // 70. Identity text legibility - readable, still restrained
 // ============================================
 .index .hero-kicker {
-  color: rgba(226, 231, 224, 0.9) !important;
-  font-size: 0.82rem !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.14em !important;
   text-shadow:
     0 2px 8px rgba(0, 0, 0, 0.78),
     0 0 14px rgba(106, 160, 154, 0.14);
 }
 
-@media (min-width: 769px) {
+@media (min-width: $viewport-desktop) {
   .site-brand-container::after {
     top: 14px;
     color: rgba(133, 192, 182, 0.88);
@@ -1140,15 +1045,11 @@ body,
 
   .site-brand-container .site-subtitle {
     color: rgba(226, 221, 211, 0.82) !important;
-    font-size: 0.69rem !important;
-    letter-spacing: 0.045em !important;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index .hero-kicker {
-    font-size: 0.73rem !important;
-    letter-spacing: 0.1em !important;
   }
 }
 
@@ -1288,7 +1189,7 @@ body,
 // ============================================
 // 74. Desktop masthead fit
 // ============================================
-@media (min-width: 769px) {
+@media (min-width: $viewport-desktop) {
   .header-inner .site-brand-container,
   body.post-detail .header-inner .site-brand-container,
   body.page .header-inner .site-brand-container,
@@ -1311,8 +1212,6 @@ body,
   body.category .header-inner .site-brand-container .site-subtitle,
   body.tag .header-inner .site-brand-container .site-subtitle {
     width: 100%;
-    font-size: 0.61rem !important;
-    letter-spacing: 0.01em !important;
     text-align: center;
   }
 }
@@ -1320,7 +1219,7 @@ body,
 // ============================================
 // 75. Unified signature and Chinese nameplate
 // ============================================
-@media (min-width: 769px) {
+@media (min-width: $viewport-desktop) {
   .header-inner .site-brand-container .site-subtitle,
   body.post-detail .header-inner .site-brand-container .site-subtitle,
   body.page .header-inner .site-brand-container .site-subtitle,
@@ -1368,7 +1267,7 @@ body,
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index .hero-kicker {
     gap: 9px;
     margin-bottom: 21px !important;
@@ -1388,15 +1287,13 @@ body,
   display: none !important;
 }
 
-@media (min-width: 769px) {
+@media (min-width: $viewport-desktop) {
   .header-inner .site-brand-container,
   body.post-detail .header-inner .site-brand-container,
   body.page .header-inner .site-brand-container,
   body.archive .header-inner .site-brand-container,
   body.category .header-inner .site-brand-container,
   body.tag .header-inner .site-brand-container {
-    min-height: 98px !important;
-    padding: 13px 14px !important;
     border-bottom: 0 !important;
     box-shadow: 0 11px 28px rgba(0, 0, 0, 0.18) !important;
   }
@@ -1409,16 +1306,11 @@ body,
 
   .site-brand-container .site-meta {
     display: grid !important;
-    grid-template-columns: 44px minmax(0, 1fr) !important;
-    grid-template-areas: "mark title" "subtitle subtitle" !important;
-    column-gap: 11px !important;
-    row-gap: 5px !important;
     align-items: center !important;
   }
 
   .site-brand-container .site-logo-link {
     grid-area: mark !important;
-    width: 44px !important;
   }
 
   .site-brand-container .brand {
@@ -1444,7 +1336,7 @@ body,
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .site-brand-container .site-meta {
     grid-template-columns: 30px minmax(0, auto) !important;
     column-gap: 8px !important;
@@ -1456,7 +1348,7 @@ body,
 }
 
 // The sidebar lockup intentionally omits the global site subtitle.
-@media (min-width: 769px) {
+@media (min-width: $viewport-desktop) {
   .header-inner .site-brand-container,
   body.post-detail .header-inner .site-brand-container,
   body.page .header-inner .site-brand-container,
@@ -1479,7 +1371,7 @@ body,
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .site-brand-container .site-meta {
     grid-template-areas: "mark title" !important;
     row-gap: 0 !important;
@@ -1487,7 +1379,7 @@ body,
 }
 
 // Keep the archive rail on the same top rhythm as the homepage.
-@media (min-width: 769px) {
+@media (min-width: $viewport-desktop) {
   body:not(.home-page) .header-inner {
     top: 13px !important;
   }
@@ -1511,124 +1403,4 @@ body,
 
 .site-brand-container .site-logo-link img {
   display: block !important;
-}
-
-// Final cascade guard for long-form typography.
-// Keep this after the legacy typography blocks above.
-@media (min-width: 769px) {
-  .post-detail .post-body,
-  .post-detail .post-body p,
-  .post-detail .post-body li,
-  .post-detail .post-body blockquote {
-    font-size: 18px !important;
-    line-height: 1.86 !important;
-    letter-spacing: 0.01em !important;
-  }
-
-  .post-detail .post-body p {
-    margin-bottom: 1.35em !important;
-  }
-}
-
-@media (max-width: 768px) {
-  body.post-detail .posts-expand.post .post-body,
-  body.post-detail .posts-expand.post .post-body p,
-  body.post-detail .posts-expand.post .post-body li,
-  body.post-detail .posts-expand.post .post-body blockquote {
-    font-size: 16px !important;
-    line-height: 1.82 !important;
-    letter-spacing: 0.006em !important;
-  }
-
-  body.post-detail .posts-expand.post .post-body p {
-    margin-bottom: 1.2em !important;
-  }
-}
-
-// Final mobile homepage guard.
-// Keep this at EOF so legacy masthead rules cannot reintroduce overflow.
-@media (max-width: 768px) {
-  html,
-  body.home-page {
-    max-width: 100%;
-    overflow-x: hidden;
-    overflow-x: clip;
-  }
-
-  body.home-page .main,
-  body.home-page .main-inner,
-  body.home-page .content-wrap,
-  body.home-page .content.index,
-  body.home-page .hero-section {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-    margin-right: 0 !important;
-    margin-left: 0 !important;
-    box-sizing: border-box;
-  }
-
-  body.home-page .main-inner,
-  body.home-page .content-wrap,
-  body.home-page .content.index,
-  body.home-page .hero-section {
-    overflow-x: hidden;
-    overflow-x: clip;
-  }
-
-  body.home-page .hero-content {
-    width: 100% !important;
-    min-width: 0;
-    max-width: 100%;
-    padding-right: 28px !important;
-    padding-left: 28px !important;
-    box-sizing: border-box;
-  }
-
-  body.home-page .hero-text {
-    width: 100% !important;
-    min-width: 0;
-    max-width: 430px !important;
-    padding: 26px 10px 29px !important;
-    box-sizing: border-box;
-  }
-
-  body.home-page .site-title-main {
-    width: auto !important;
-    max-width: 100% !important;
-    margin-inline: auto !important;
-    padding-inline: 0 !important;
-    font-size: clamp(2.15rem, 10.2vw, 2.9rem) !important;
-    line-height: 1.06 !important;
-    white-space: nowrap;
-  }
-
-  body.home-page .site-subtitle-main.hero-subtitle-reveal {
-    width: auto;
-    max-width: 100%;
-    margin-inline: auto !important;
-    font-size: clamp(0.68rem, 3.1vw, 0.82rem) !important;
-    line-height: 1.45 !important;
-    white-space: normal;
-    text-wrap: balance;
-  }
-
-  body.home-page .posts-section,
-  body.home-page .post-card,
-  body.home-page .post-card-featured {
-    min-width: 0;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-}
-
-@media (max-width: 360px) {
-  body.home-page .hero-content {
-    padding-right: 22px !important;
-    padding-left: 22px !important;
-  }
-
-  body.home-page .site-title-main {
-    font-size: clamp(1.95rem, 10vw, 2.28rem) !important;
-  }
 }

@@ -3,8 +3,6 @@
 .index {
   // 内容区域样式
   .content-wrap {
-    padding: 0;
-    background: transparent !important;
   }
 
   .content {
@@ -105,16 +103,12 @@
     position: relative;
     width: 100%;
     height: 88vh;
-    min-height: 560px;
-    background: no-repeat center center;
     background-size: cover;
-    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
 
-    @media (max-width: 768px) {
+    @media (max-width: $viewport-mobile) {
       height: 76svh;
       min-height: 520px;
       background-attachment: scroll;
@@ -124,10 +118,6 @@
   // 暗色遮罩
   .hero-mask {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background: linear-gradient(
       180deg,
       rgba(25, 28, 35, 0.3) 0%,
@@ -140,7 +130,6 @@
   // 内容区域
   .hero-content {
     position: relative;
-    z-index: 2;
     text-align: center;
     color: #fff;
     padding: 80px 20px 0;
@@ -148,7 +137,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
   }
 
   // 标题区域
@@ -158,17 +146,13 @@
 
   // 主标题 - 大字震撼效果
   .site-title-main {
-    font-size: clamp(3rem, 5vw, 4.5rem);
-    font-weight: 700;
     margin: 0 0 20px 0;
-    letter-spacing: 4px;
-    color: #e8e4dc;
     text-shadow:
       0 2px 10px rgba(0, 0, 0, 0.8),
       0 4px 30px rgba(0, 0, 0, 0.5);
     animation: fadeInUp 1s ease-out;
 
-    @media (max-width: 768px) {
+    @media (max-width: $viewport-mobile) {
       max-width: 8em;
       font-size: clamp(2.15rem, 11vw, 2.75rem);
       line-height: 1.18;
@@ -178,16 +162,13 @@
 
   // 副标题
   .site-subtitle-main {
-    font-size: 1.5em;
     font-weight: 300;
     margin: 0;
-    color: #b4a078;
-    letter-spacing: 3px;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
     animation: fadeInUp 1s ease-out 0.3s both;
     min-height: 1.5em;
 
-    @media (max-width: 768px) {
+    @media (max-width: $viewport-mobile) {
       max-width: 22em;
       font-size: 0.95em;
       letter-spacing: 0.5px;
@@ -204,14 +185,15 @@
   // 向下滚动指示器
   .scroll-down {
     position: absolute;
-    bottom: 60px;
-    left: 50%;
-    transform: translateX(-50%);
+    // Center with layout, not transform: fadeInUp owns the animated transform.
+    left: 0;
+    right: 0;
+    width: max-content;
+    margin-inline: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
     animation: fadeInUp 1s ease-out 0.6s both;
     transition: all 0.3s ease;
 
@@ -257,11 +239,8 @@
   }
 }
 
-// 长文本使用浏览器原生渐进绘制，完整 DOM 始终保留给搜索、TOC 与书签。
-.long-text-chunk {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
-}
+// Build-time reading sections use natural height: no guessed 900px placeholders,
+// so anchors and progress stay stable when scrolling through long articles.
 
 // 尊重系统的低动效设置，文学阅读时避免持续闪烁和漂浮。
 @media (prefers-reduced-motion: reduce) {
@@ -321,10 +300,8 @@
 
 // 文章卡片在首页的样式
 .index .post-card {
-  display: flex;
   background: rgba(35, 38, 45, 0.8);
   border-radius: 6px;
-  overflow: hidden;
   margin-bottom: 30px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(180, 160, 120, 0.1);
@@ -336,7 +313,7 @@
     border-color: rgba(180, 160, 120, 0.2);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: $viewport-mobile) {
     flex-direction: column;
   }
 
@@ -347,7 +324,7 @@
     background: #1e2128 url('/images/Z.A.T.O_02_ca04.jpg') no-repeat center center;
     background-size: cover;
 
-    @media (max-width: 768px) {
+    @media (max-width: $viewport-mobile) {
       flex: none;
       height: 200px;
     }
@@ -372,7 +349,7 @@
     flex-direction: column;
     justify-content: space-between;
 
-    @media (max-width: 768px) {
+    @media (max-width: $viewport-mobile) {
       padding: 20px;
     }
   }
@@ -457,8 +434,6 @@ body {
 .main,
 .footer,
 .header {
-  position: relative;
-  z-index: 1;
 }
 
 .header,
@@ -485,12 +460,10 @@ body {
 }
 
 .sidebar-inner {
-  position: relative;
   z-index: 7;
 }
 
 .main {
-  z-index: 2;
 }
 
 .header-inner,
@@ -577,7 +550,6 @@ body {
 .index {
   .hero-section {
     min-height: 560px;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
 
     &::before {
       content: '';
@@ -610,7 +582,6 @@ body {
     align-items: center;
     gap: 10px;
     margin-bottom: 18px;
-    color: rgba(232, 228, 220, 0.78);
     font-size: 0.78em;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -618,15 +589,12 @@ body {
     &::before,
     &::after {
       content: '';
-      width: 34px;
       height: 1px;
       background: rgba(212, 196, 168, 0.45);
     }
   }
 
   .site-title-main {
-    font-size: clamp(3rem, 4.6vw, 4.7rem);
-    line-height: 1.08;
     text-shadow:
       0 2px 10px rgba(0, 0, 0, 0.82),
       0 16px 42px rgba(0, 0, 0, 0.5),
@@ -634,8 +602,6 @@ body {
   }
 
   .site-subtitle-main {
-    color: #d4c4a8;
-    letter-spacing: 0.08em;
   }
 
   .hero-rule {
@@ -746,10 +712,9 @@ body {
 }
 
 .post-banner-title {
-  max-width: 13em;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   body::after {
     opacity: 0.28;
     background-size: auto, auto, 64px 64px, 64px 64px;
@@ -848,11 +813,6 @@ body {
   }
 
   .site-title-main {
-    background: linear-gradient(180deg, #fffaf0 0%, #e8e4dc 48%, #b4a078 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.48));
   }
 
   .site-subtitle-main {
@@ -963,7 +923,6 @@ body {
   width: fit-content;
   max-width: min(760px, 100%);
   gap: 0;
-  margin-top: 18px;
   padding: 7px;
   border: 1px solid rgba(212, 196, 168, 0.18);
   background:
@@ -1064,7 +1023,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index {
     .hero-section::after {
       left: 18px;

@@ -283,7 +283,7 @@ body {
   line-height: 1.75 !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .search-pop-overlay {
     padding: 56px 14px 28px !important;
   }
@@ -308,7 +308,6 @@ body {
   border: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
-  color: rgba(255, 248, 234, 0.92) !important;
   font-family:
     "IBM Plex Mono",
     "SFMono-Regular",
@@ -337,7 +336,6 @@ body {
 .archive .posts-collapse .post-header::after {
   right: 18px !important;
   top: 50% !important;
-  color: rgba(212, 196, 168, 0.1) !important;
   font-size: 1.35em !important;
 }
 
@@ -356,7 +354,6 @@ body {
   padding: 0 !important;
   border: 0 !important;
   background: transparent !important;
-  color: rgba(212, 196, 168, 0.74) !important;
   font-family:
     "IBM Plex Mono",
     "SFMono-Regular",
@@ -383,7 +380,7 @@ body {
   text-shadow: 0 8px 24px rgba(0, 0, 0, 0.32) !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .archive .posts-collapse {
     padding-left: 34px !important;
   }
@@ -460,7 +457,7 @@ body {
   display: block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index .post-card-title,
   .index .post-card-featured .post-card-title {
     max-width: 100% !important;
@@ -495,7 +492,7 @@ body {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2) !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index .post-card {
     gap: 12px !important;
     padding: 10px !important;
@@ -663,7 +660,7 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .reading-resume-prompt {
     right: 16px;
     bottom: 16px;
@@ -962,9 +959,7 @@ body {
   margin-top: auto;
   padding-top: 13px;
   border-top: 1px solid rgba(212, 196, 168, 0.1);
-  color: rgba(200, 200, 204, 0.58);
   font-family: $font-family-monospace;
-  font-size: 0.7rem;
   letter-spacing: 0.04em;
 
   span,
@@ -1159,10 +1154,8 @@ select {
 .post-body h1,
 .post-body h2,
 .post-body h3 {
-  font-family: var(--font-display) !important;
   font-synthesis: none;
   font-feature-settings: "kern" 1, "palt" 1;
-  font-weight: 500 !important;
   letter-spacing: 0.018em !important;
   text-wrap: balance;
   text-shadow:
@@ -1178,8 +1171,6 @@ select {
 }
 
 .index .site-title-main {
-  font-weight: 400 !important;
-  letter-spacing: 0.075em !important;
   text-shadow:
     0 1px 0 rgba(255, 255, 255, 0.1),
     0 5px 12px rgba(0, 0, 0, 0.84),
@@ -1188,8 +1179,6 @@ select {
 }
 
 .site-brand-container .site-title {
-  font-weight: 500 !important;
-  letter-spacing: 0.07em !important;
 }
 
 .index .site-subtitle-main,
@@ -1226,9 +1215,8 @@ body::before {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index .site-title-main {
-    letter-spacing: 0.045em !important;
   }
 
   .post-title,
@@ -1244,7 +1232,7 @@ body::before {
 // ============================================
 // 63. Sidebar masthead - compact personal imprint
 // ============================================
-@media (min-width: 769px) {
+@media (min-width: $viewport-desktop) {
   .site-brand-container {
     position: relative;
     overflow: hidden;
@@ -1363,10 +1351,6 @@ body::before {
 }
 
 .index .hero-kicker {
-  margin-bottom: 24px !important;
-  color: rgba(216, 224, 218, 0.78) !important;
-  font-size: 0.72rem !important;
-  letter-spacing: 0.2em !important;
   white-space: nowrap;
 }
 
@@ -1417,7 +1401,7 @@ body::before {
   white-space: nowrap !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index .hero-text {
     width: calc(100% - 34px);
     margin-bottom: 54px !important;
@@ -1425,13 +1409,9 @@ body::before {
   }
 
   .index .hero-kicker {
-    margin-bottom: 18px !important;
-    font-size: 0.76rem !important;
-    letter-spacing: 0.13em !important;
 
     &::before,
     &::after {
-      width: 14px;
     }
   }
 
@@ -1460,11 +1440,9 @@ body::before {
   }
 
   .site-brand-container .site-title {
-    font-size: 0.96rem !important;
   }
 
   .site-brand-container .site-subtitle {
-    font-size: 0.58rem !important;
   }
 }
 
@@ -1486,7 +1464,7 @@ body::before {
 // ============================================
 // 58. Mobile article shell - compact navigation and unclipped record banner
 // ============================================
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .header-inner {
     padding-bottom: 0 !important;
     overflow: visible !important;
@@ -1514,14 +1492,11 @@ body::before {
 
   .site-brand-container .site-title {
     font-size: 1.08rem !important;
-    line-height: 1.3 !important;
     white-space: nowrap !important;
   }
 
   .site-brand-container .site-subtitle {
     margin-top: 7px !important;
-    font-size: 0.7rem !important;
-    line-height: 1.35 !important;
     white-space: nowrap !important;
   }
 
@@ -1667,13 +1642,10 @@ body::before {
 // 59. Signal archive embedded player
 // ============================================
 .media-card-cover.has-embed {
-  align-self: stretch;
   display: flex;
   align-items: center;
   width: 100%;
-  height: 100% !important;
   min-height: 0;
-  padding: 14px;
   box-sizing: border-box;
   aspect-ratio: auto;
   background:
@@ -1724,6 +1696,38 @@ body::before {
 .media-player-frame iframe {
   border: 0;
   background: #101218;
+}
+
+.media-player-status {
+  position: absolute;
+  z-index: 3;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: calc(100% - 16px);
+  padding: 5px 9px;
+  border-radius: 3px;
+  background: rgba(16, 18, 24, 0.92);
+  color: var(--text-color);
+  font-size: 12px;
+  line-height: 1.5;
+  button {
+    padding: 3px;
+    border: 0;
+    background: transparent;
+    color: var(--link-color);
+    cursor: pointer;
+  }
+  &.is-ready {
+    opacity: 0;
+    &:focus-within { opacity: 1; }
+  }
+}
+.media-card-player:hover .media-player-status.is-ready { opacity: 1; }
+@media (hover: none) {
+  .media-player-status.is-ready { opacity: 1; }
 }
 
 .media-player-launch {
@@ -1825,7 +1829,6 @@ body::before {
   }
 
   .media-card-cover.has-embed {
-    padding: 10px;
   }
 }
 
@@ -1854,7 +1857,7 @@ body::before {
   letter-spacing: -0.03em !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .media-archive .media-card-title,
   .media-archive .media-card.is-featured .media-card-title {
     letter-spacing: -0.02em !important;

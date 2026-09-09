@@ -264,7 +264,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .archive {
     .archive-hero {
       margin: -2px 0 32px;
@@ -326,21 +326,12 @@
   }
 
   .site-title-main {
-    background: none !important;
-    -webkit-background-clip: initial !important;
-    background-clip: initial !important;
-    color: #f7efe2 !important;
-    filter: none !important;
     font-family:
       "Noto Serif SC",
       "Source Han Serif SC",
       "Songti SC",
       "SimSun",
       serif;
-    font-size: clamp(3rem, 4.25vw, 4.15rem);
-    font-weight: 600;
-    line-height: 1.14;
-    letter-spacing: 0.02em !important;
     text-shadow:
       0 1px 0 rgba(255, 255, 255, 0.08),
       0 3px 8px rgba(0, 0, 0, 0.88),
@@ -379,12 +370,10 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index {
     .site-title-main {
-      font-size: clamp(2.25rem, 10.5vw, 2.85rem);
       line-height: 1.18;
-      letter-spacing: 0 !important;
     }
 
     .site-subtitle-main {
@@ -502,7 +491,6 @@
 }
 
 .about-content-panel {
-  display: grid;
   grid-template-columns: minmax(150px, 0.24fr) minmax(0, 1fr);
   gap: 34px;
   align-items: start;
@@ -772,7 +760,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .page-identity-hero {
     margin: -2px 0 30px;
     padding: 28px 22px 24px;
@@ -1029,7 +1017,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .zato-background-quotes {
     opacity: 0.58;
   }
@@ -1186,7 +1174,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index {
     .hero-subtitle-reveal {
       padding-inline: 0.2em;
@@ -1270,7 +1258,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index {
     .site-title-main {
       font-size: clamp(2.18rem, 10.4vw, 2.76rem);
@@ -1436,7 +1424,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .index {
     .hero-catalogue-labels {
       opacity: 0.66;
@@ -1546,9 +1534,7 @@
     "SimSun",
     serif !important;
   font-size: clamp(2.3rem, 3.1vw, 2.47rem) !important;
-  font-weight: 600 !important;
   line-height: 1.14;
-  letter-spacing: 0.01em !important;
 }
 
 .page-hero-kicker,
@@ -1602,7 +1588,7 @@
     monospace;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $viewport-mobile) {
   .page-hero-title,
   .archive-hero-title {
     font-size: 1.86rem !important;
