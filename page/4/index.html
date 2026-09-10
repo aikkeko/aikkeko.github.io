@@ -19,7 +19,7 @@
 <meta name="msapplication-TileColor" content="#1e2128">
 <meta name="msapplication-tap-highlight" content="no">
 
-<link rel="stylesheet" href="/css/main.css?v=2026082001">
+<link rel="stylesheet" href="/css/main.css?v=2026091001">
 
 
 <link rel="preload" as="image" href="/images/Z.A.T.O_02_ca04.jpg" fetchpriority="high">
@@ -161,11 +161,11 @@ if ('serviceWorker' in navigator) {
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <button type="button" class="toggle" aria-expanded="false" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
-    </div>
+    </button>
   </div>
 
   <div class="site-meta custom-logo">
@@ -264,9 +264,7 @@ if ('serviceWorker' in navigator) {
         </div>
         
         
-        <div class="post-card-excerpt" itemprop="description">
-          尽管杉慕斯后来挖坑成瘾、无药可救，但《离别的钢琴奏鸣曲》依然值得说尽好话。
-        </div>
+        <div class="post-card-excerpt" itemprop="description">尽管杉慕斯后来挖坑成瘾、无药可救，但《离别的钢琴奏鸣曲》依然值得说尽好话。</div>
         
         <div class="post-card-meta">
           <span class="post-meta-item post-card-date">
@@ -311,9 +309,7 @@ if ('serviceWorker' in navigator) {
         </div>
         
         
-        <div class="post-card-excerpt" itemprop="description">
-          この、くそったれな世界に、精一杯 の爱をこめて。
-        </div>
+        <div class="post-card-excerpt" itemprop="description">この、くそったれな世界に、精一杯 の爱をこめて。</div>
         
         <div class="post-card-meta">
           <span class="post-meta-item post-card-date">
@@ -436,6 +432,7 @@ if ('serviceWorker' in navigator) {
 
         
 
+<p class="footer-signoff">THE SIGNAL RESTS. THE ECHO REMAINS.</p>
 <div class="copyright">
   
   &copy; 
@@ -462,7 +459,6 @@ if ('serviceWorker' in navigator) {
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
-    <span class="post-meta-divider">|</span>
     <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
@@ -511,8 +507,9 @@ if ('serviceWorker' in navigator) {
 
 
   
+
+
   <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
 
 <script src="/js/utils.js"></script>
 

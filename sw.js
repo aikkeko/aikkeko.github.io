@@ -1,218 +1,83 @@
-/**
- * Service Worker - archive reading cache
- *
- * Production:
- * - Static assets: cache first
- * - Images: stale while revalidate
- * - Pages: network first, fallback to cached page/offline page
- *
- * Local preview:
- * - Do not control localhost.
- * - Delete old blog caches and unregister itself to avoid stale offline pages.
- */
-
-const CACHE_VERSION = 'blog-v159';
+/* Site-owned cache. Third-party comments, players and APIs stay online-only. */
+const CACHE_VERSION = 'blog-v166';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGES_CACHE = `${CACHE_VERSION}-pages`;
 const IMAGES_CACHE = `${CACHE_VERSION}-images`;
-const LOCAL_PREVIEW_HOSTS = new Set(['localhost', '127.0.0.1', '0.0.0.0', '::1']);
 const HOSTNAME = self.location.hostname;
-const IS_PRIVATE_NETWORK = /^10\./.test(HOSTNAME) ||
-  /^192\.168\./.test(HOSTNAME) ||
-  /^172\.(1[6-9]|2\d|3[01])\./.test(HOSTNAME) ||
-  /\.local$/i.test(HOSTNAME);
-const IS_LOCAL_PREVIEW = LOCAL_PREVIEW_HOSTS.has(HOSTNAME) || IS_PRIVATE_NETWORK;
+const IS_LOCAL_PREVIEW = /^(localhost|127\.0\.0\.1|0\.0\.0\.0|\[?::1\]?)$/.test(HOSTNAME) ||
+  /^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(HOSTNAME) || /\.local$/i.test(HOSTNAME);
+const LIMITS = { [STATIC_CACHE]: 80, [PAGES_CACHE]: 30, [IMAGES_CACHE]: 60 };
+let cacheWrites = Promise.resolve();
 
-const PRECACHE_URLS = [
-  '/',
-  '/offline.html',
-  '/manifest.json',
-  '/css/main.css',
-  '/js/next-boot.js',
-  '/js/utils.js',
-  '/js/mobile-background.js',
-  '/lib/font-awesome/css/all.min.css',
-  '/lib/anime.min.js',
-  '/images/Z.A.T.O_02_ca04.jpg',
-  '/images/bitbug_favicon.ico'
-];
-
-async function deleteBlogCaches({ keepCurrent = false } = {}) {
-  const cacheNames = await caches.keys();
-  return Promise.all(
-    cacheNames
-      .filter((name) => {
-        if (!name.startsWith('blog-')) return false;
-        return keepCurrent ? !name.startsWith(`${CACHE_VERSION}-`) : true;
-      })
-      .map((name) => caches.delete(name))
-  );
+async function deleteOldCaches(keepCurrent) {
+  const names = await caches.keys();
+  await Promise.all(names.filter(name => name.startsWith('blog-') &&
+    (!keepCurrent || !name.startsWith(`${CACHE_VERSION}-`))).map(name => caches.delete(name)));
 }
-
-self.addEventListener('install', (event) => {
-  if (IS_LOCAL_PREVIEW) {
-    event.waitUntil(self.skipWaiting());
-    return;
-  }
-
-  event.waitUntil(
-    caches.open(STATIC_CACHE)
-      .then((cache) => cache.addAll(PRECACHE_URLS))
-      .then(() => self.skipWaiting())
-      .catch((error) => {
-        console.error('[ServiceWorker] Precache failed:', error);
-      })
-  );
+self.addEventListener('install', event => {
+  event.waitUntil((async () => {
+    // Failed precache must not activate and discard the previous working cache.
+    if (!IS_LOCAL_PREVIEW) {
+      const cache = await caches.open(STATIC_CACHE);
+      await cache.addAll(['/offline.html']);
+    }
+    await self.skipWaiting();
+  })());
 });
-
-self.addEventListener('activate', (event) => {
-  if (IS_LOCAL_PREVIEW) {
-    event.waitUntil(
-      deleteBlogCaches()
-        .then(() => self.registration.unregister())
-        .then(() => self.clients.matchAll({ type: 'window' }))
-        .then((clients) => Promise.all(clients.map((client) => client.navigate(client.url))))
-    );
-    return;
-  }
-
-  event.waitUntil(
-    deleteBlogCaches({ keepCurrent: true })
-      .then(() => self.clients.claim())
-  );
+self.addEventListener('activate', event => {
+  event.waitUntil((async () => {
+    await deleteOldCaches(!IS_LOCAL_PREVIEW);
+    if (IS_LOCAL_PREVIEW) await self.registration.unregister();
+    else await self.clients.claim();
+  })());
 });
-
-self.addEventListener('fetch', (event) => {
-  if (IS_LOCAL_PREVIEW) return;
-
-  const { request } = event;
+function saveResponse(name, request, response) {
+  if (!response.ok || response.type === 'opaque' || response.redirected ||
+      /no-store|private/i.test(response.headers.get('cache-control') || '')) return Promise.resolve();
+  const copy = response.clone();
+  cacheWrites = cacheWrites.catch(() => {}).then(async () => {
+    const cache = await caches.open(name);
+    await cache.put(request, copy);
+    const keys = await cache.keys();
+    let count = keys.length;
+    for (const key of keys) {
+      if (count < LIMITS[name] + 1) break;
+      if (new URL(key.url).pathname === '/offline.html') continue;
+      await cache.delete(key); count--;
+    }
+  });
+  return cacheWrites;
+}
+async function assetResponse(event, cacheName) {
+  const cache = await caches.open(cacheName);
+  const cached = await cache.match(event.request);
+  const refresh = fetch(event.request).then(async response => {
+    await saveResponse(cacheName, event.request, response);
+    return response;
+  });
+  event.waitUntil(refresh.catch(() => {}));
+  return cached || refresh;
+}
+async function pageResponse(event) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 4000);
+  try {
+    const response = await fetch(event.request, { signal: controller.signal });
+    if (response.status >= 500) throw new Error('Temporary server failure');
+    event.waitUntil(saveResponse(PAGES_CACHE, event.request, response).catch(() => {}));
+    return response;
+  } catch {
+    const cache = await caches.open(PAGES_CACHE);
+    return await cache.match(event.request) || await caches.match('/offline.html') ||
+      new Response('暂时离线，请联网后重试。', { status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+  } finally { clearTimeout(timer); }
+}
+self.addEventListener('fetch', event => {
+  const request = event.request;
   const url = new URL(request.url);
-
-  if (request.method !== 'GET') return;
-  if (url.protocol !== 'https:' && url.protocol !== 'http:') return;
-
-  if (isStaticAsset(url.pathname)) {
-    event.respondWith(cacheFirstStrategy(request, STATIC_CACHE, 30 * 24 * 60 * 60 * 1000));
-    return;
-  }
-
-  if (isImage(url.pathname)) {
-    event.respondWith(staleWhileRevalidateStrategy(request, IMAGES_CACHE));
-    return;
-  }
-
-  if (isPage(url.pathname)) {
-    event.respondWith(networkFirstStrategy(request, PAGES_CACHE));
-    return;
-  }
-
-  event.respondWith(networkFirstStrategy(request, PAGES_CACHE));
-});
-
-function isStaticAsset(pathname) {
-  return /\.(js|css|woff2?|ttf|otf)$/.test(pathname);
-}
-
-function isImage(pathname) {
-  return /\.(png|jpg|jpeg|gif|svg|webp|ico)$/.test(pathname);
-}
-
-function isPage(pathname) {
-  return /\.(html?)$/.test(pathname) || (!/\.\w+$/.test(pathname) && pathname !== '/');
-}
-
-async function cacheFirstStrategy(request, cacheName, maxAge) {
-  const cache = await caches.open(cacheName);
-  const cachedResponse = await cache.match(request);
-
-  if (cachedResponse && !isExpired(cachedResponse, maxAge)) {
-    fetchAndCache(request, cacheName).catch(() => {});
-    return cachedResponse;
-  }
-
-  try {
-    const networkResponse = await fetch(request);
-    if (networkResponse.ok) {
-      cache.put(request, networkResponse.clone());
-    }
-    return networkResponse;
-  } catch (error) {
-    if (cachedResponse) return cachedResponse;
-    throw error;
-  }
-}
-
-async function networkFirstStrategy(request, cacheName) {
-  try {
-    const networkResponse = await fetch(request);
-    if (networkResponse.ok) {
-      const cache = await caches.open(cacheName);
-      cache.put(request, networkResponse.clone());
-    }
-    return networkResponse;
-  } catch (error) {
-    const cache = await caches.open(cacheName);
-    const cachedResponse = await cache.match(request);
-    if (cachedResponse) return cachedResponse;
-    return caches.match('/offline.html');
-  }
-}
-
-async function staleWhileRevalidateStrategy(request, cacheName) {
-  const cache = await caches.open(cacheName);
-  const cachedResponse = await cache.match(request);
-
-  const fetchPromise = fetch(request)
-    .then((networkResponse) => {
-      if (networkResponse.ok) {
-        cache.put(request, networkResponse.clone());
-      }
-      return networkResponse;
-    })
-    .catch(() => cachedResponse);
-
-  return cachedResponse || fetchPromise;
-}
-
-async function fetchAndCache(request, cacheName) {
-  try {
-    const response = await fetch(request);
-    if (response && response.ok) {
-      const cache = await caches.open(cacheName);
-      cache.put(request, response);
-    }
-  } catch (error) {
-    // Ignore background refresh failures.
-  }
-}
-
-function isExpired(response, maxAge) {
-  const dateHeader = response.headers.get('date');
-  if (!dateHeader) return false;
-
-  const date = new Date(dateHeader).getTime();
-  return Date.now() - date > maxAge;
-}
-
-self.addEventListener('sync', (event) => {
-  if (event.tag === 'sync-reading-progress') {
-    event.waitUntil(syncReadingProgress());
-  }
-});
-
-async function syncReadingProgress() {
-  console.log('[ServiceWorker] Sync reading progress');
-}
-
-self.addEventListener('push', (event) => {
-  if (!event.data) return;
-
-  const data = event.data.json();
-  event.waitUntil(
-    self.registration.showNotification(data.title, {
-      body: data.body,
-      icon: '/images/bitbug_favicon.ico',
-      badge: '/images/bitbug_favicon.ico'
-    })
-  );
+  if (IS_LOCAL_PREVIEW || request.method !== 'GET' || url.origin !== self.location.origin ||
+      request.headers.has('range') || /^\/(api|content-manager)(\/|$)/.test(url.pathname)) return;
+  if (request.mode === 'navigate') event.respondWith(pageResponse(event));
+  else if (/\.(css|js|woff2?|ttf|otf)$/i.test(url.pathname)) event.respondWith(assetResponse(event, STATIC_CACHE));
+  else if (/\.(png|jpe?g|gif|svg|webp|avif|ico)$/i.test(url.pathname)) event.respondWith(assetResponse(event, IMAGES_CACHE));
 });
