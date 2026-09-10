@@ -82,8 +82,8 @@ class DocumentWatcher {
    */
   stop() {
     if (this.watcher) {
-      this.watcher.close();
       console.log('🛑 文档监听已停止');
+      return this.watcher.close();
     }
   }
 

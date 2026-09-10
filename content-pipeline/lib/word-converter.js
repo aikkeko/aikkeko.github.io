@@ -86,6 +86,7 @@ class WordToMarkdownConverter {
     let html = result.value;
     const $ = cheerio.load(html);
     const images = this.extractEmbeddedImages($);
+    if (images.length && !this.options.imageTransformer) throw new Error('图片上传不可用，保留原文章，请检查 R2 配置');
 
     if (this.options.imageTransformer && images.length > 0) {
       console.log(`🖼️ 发现 ${images.length} 张图片，开始上传...`);
@@ -97,6 +98,9 @@ class WordToMarkdownConverter {
       }
 
       const uploadResults = await this.options.imageTransformer(images, uploadOptions);
+      if (uploadResults.length !== images.length || uploadResults.some(result => !result?.url || result.error)) {
+        throw new Error('图片上传未全部成功，保留原文章，请重试');
+      }
       this.replaceEmbeddedImageSources($, uploadResults);
       html = $.html();
     }
@@ -413,6 +417,16 @@ class WordToMarkdownConverter {
 
   htmlToMarkdown(html) {
     let markdown = html;
+    const tables = [];
+    if (/<table\b/i.test(html)) {
+      const $ = cheerio.load(html, null, false);
+      $('table').filter((_, table) => !$(table).parents('table').length).each((_, table) => {
+        const marker = `\uE000ARCHIVE_TABLE_${tables.length}\uE001`;
+        tables.push({ marker, html: $.html(table) });
+        $(table).replaceWith(`<p>${marker}</p>`);
+      });
+      markdown = $.html();
+    }
 
     markdown = markdown.replace(/<img[^>]*src="([^"]*)"[^>]*alt="([^"]*)"[^>]*\/?>/gi, (match, src, alt) => `![${alt}](${src})`);
     markdown = markdown.replace(/<img[^>]*src="([^"]*)"[^>]*\/?>/gi, '![]($1)');
@@ -466,6 +480,8 @@ class WordToMarkdownConverter {
     markdown = this.decodeHtml(markdown);
     markdown = markdown.replace(/[ \t]+\n/g, '\n');
     markdown = markdown.replace(/\n{3,}/g, '\n\n');
+    // Raw HTML tables preserve merged cells, nested content and image attributes.
+    for (const table of tables) markdown = markdown.split(table.marker).join(`\n\n${table.html}\n\n`);
 
     return markdown.trim();
   }

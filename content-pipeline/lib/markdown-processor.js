@@ -5,7 +5,8 @@
 
 const fs = require('fs').promises;
 const path = require('path');
-const cheerio = require('cheerio');
+const yaml = require('js-yaml');
+const { parsePost, yamlOptions } = require('../../tools/lib/content-store');
 
 class MarkdownProcessor {
   constructor(options = {}) {
@@ -26,17 +27,21 @@ class MarkdownProcessor {
     console.log(`📝 正在处理 Markdown: ${filename}`);
     
     // 提取元数据
-    const { metadata: sourceMetadata, body } = this.extractFrontmatter(content);
+    const { metadata: sourceMetadata, body } = this.extractFrontmatter(content, filename);
     const metadata = this.mergeConfiguredMetadata(sourceMetadata, configuredMetadata);
     
     // 提取图片
     const images = await this.extractImages(body, basePath);
+    if (images.length && !this.options.imageTransformer) throw new Error('图片上传不可用，保留原文章，请检查 R2 配置');
     
     // 如果有图片转换器，上传图片并替换链接
     let processedContent = body;
     if (this.options.imageTransformer && images.length > 0) {
       console.log(`🖼️ 发现 ${images.length} 张本地图片，开始上传...`);
       const uploadResults = await this.options.imageTransformer(images);
+      if (uploadResults.length !== images.length || uploadResults.some(result => !result?.url || result.error)) {
+        throw new Error('图片上传未全部成功，保留原文章，请重试');
+      }
       
       // 替换图片链接
       processedContent = this.replaceImageLinks(body, images, uploadResults);
@@ -82,43 +87,19 @@ class MarkdownProcessor {
    * @param {string} content - 文档内容
    * @returns {Object} { metadata, body }
    */
-  extractFrontmatter(content) {
-    const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
-    const match = content.match(frontmatterRegex);
-    
-    if (match) {
-      const frontmatterText = match[1];
-      const body = match[2];
-      
-      // 解析 YAML
-      const metadata = {};
-      frontmatterText.split('\n').forEach(line => {
-        const colonIndex = line.indexOf(':');
-        if (colonIndex > 0) {
-          const key = line.substring(0, colonIndex).trim();
-          let value = line.substring(colonIndex + 1).trim();
-          
-          // 处理数组
-          if (value.startsWith('[') && value.endsWith(']')) {
-            try {
-              value = JSON.parse(value.replace(/'/g, '"'));
-            } catch {
-              value = value.slice(1, -1).split(',').map(s => s.trim());
-            }
-          }
-          
-          metadata[key] = value;
-        }
-      });
-      
-      return { metadata, body };
+  extractFrontmatter(content, filename = 'untitled.md') {
+    content = content.replace(/^\uFEFF/, '');
+    if (/^---\r?\n/.test(content)) {
+      const { front, body } = parsePost(content);
+      if (!front || typeof front !== 'object' || Array.isArray(front)) throw new Error('frontmatter 必须是 YAML 对象');
+      return { metadata: front, body };
     }
-    
-    // 没有 frontmatter，创建一个
+    const name = path.basename(filename, path.extname(filename));
+    const dated = name.match(/^(\d{4})(\d{2})(\d{2})_(.+)$/);
     return {
       metadata: {
-        title: path.basename(filename, '.md'),
-        date: new Date().toISOString(),
+        title: dated ? dated[4] : name,
+        date: dated ? `${dated[1]}-${dated[2]}-${dated[3]} 00:00:00` : new Date().toISOString(),
         author: this.options.defaultAuthor
       },
       body: content
@@ -157,7 +138,7 @@ class MarkdownProcessor {
             absolutePath
           });
         } catch (error) {
-          console.warn(`⚠️ 无法读取图片: ${imagePath}`, error.message);
+          throw new Error(`无法读取图片 ${imagePath}：${error.message}`);
         }
       }
     }
@@ -186,7 +167,7 @@ class MarkdownProcessor {
             });
           }
         } catch (error) {
-          console.warn(`⚠️ 无法读取图片: ${imagePath}`, error.message);
+          throw new Error(`无法读取图片 ${imagePath}：${error.message}`);
         }
       }
     }
@@ -242,21 +223,7 @@ class MarkdownProcessor {
    * @returns {string} 完整文档
    */
   rebuildDocument(metadata, body) {
-    const yaml = [];
-    yaml.push('---');
-    
-    Object.entries(metadata).forEach(([key, value]) => {
-      if (Array.isArray(value)) {
-        yaml.push(`${key}:`);
-        value.forEach(item => yaml.push(`  - ${item}`));
-      } else {
-        yaml.push(`${key}: ${value}`);
-      }
-    });
-    
-    yaml.push('---');
-    
-    return `${yaml.join('\n')}\n\n${body}`;
+    return `---\n${yaml.dump(metadata, yamlOptions)}---\n${body}`;
   }
 }
 

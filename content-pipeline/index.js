@@ -12,7 +12,8 @@ const R2Uploader = require('./lib/r2-uploader');
 const ImageCacheManager = require('./lib/image-cache');
 const yaml = require('js-yaml');
 const chokidar = require('chokidar');
-const { stableId } = require('../tools/lib/content-store');
+const store = require('../tools/lib/content-store');
+const { stableId } = store;
 
 class ContentPipeline {
   constructor(options = {}) {
@@ -29,6 +30,9 @@ class ContentPipeline {
     this.imageCache = null;
     this.articleMetadata = { defaults: {}, articles: {} };
     this.metadataWatcher = null;
+    this.metadataPath = options.metadataPath || path.join(__dirname, '..', 'source', '_data', 'archive.yml');
+    this.backupPath = options.backupPath || path.join(__dirname, '..', '.content-backups');
+    this.queue = Promise.resolve();
   }
 
   /**
@@ -97,21 +101,32 @@ class ContentPipeline {
   /**
    * 停止监听
    */
-  stop() {
+  async stop() {
     if (this.watcher) {
-      this.watcher.stop();
+      await this.watcher.stop();
     }
     if (this.metadataWatcher) {
-      this.metadataWatcher.close();
+      await this.metadataWatcher.close();
       this.metadataWatcher = null;
     }
+    await this.queue;
   }
 
   /**
    * 处理单个文档
    * @param {string} filePath - 文件路径
    */
-  async processDocument(filePath) {
+  enqueue(operation) {
+    const pending = this.queue.then(operation);
+    this.queue = pending.catch(() => {});
+    return pending;
+  }
+
+  processDocument(filePath) {
+    return this.enqueue(() => this.processDocumentNow(filePath));
+  }
+
+  async processDocumentNow(filePath) {
     const ext = path.extname(filePath).toLowerCase();
     const filename = path.basename(filePath);
 
@@ -124,6 +139,12 @@ class ContentPipeline {
     console.log('─'.repeat(50));
     
     try {
+      await this.loadArticleMetadata();
+      const metadataSnapshot = this.metadataSnapshot;
+      const sourceSnapshot = store.readSnapshot(filePath);
+      const outputFilename = this.generateOutputFilename(filename);
+      const outputPath = path.resolve(this.options.outputPath, outputFilename);
+      const before = store.readSnapshot(outputPath);
       let result;
       
       if (ext === '.docx') {
@@ -136,12 +157,27 @@ class ContentPipeline {
       }
       
       // 保存到输出目录
-      const outputFilename = this.generateOutputFilename(filename);
-      const outputPath = path.join(this.options.outputPath, outputFilename);
-      
       // Word 文档返回 markdown 字段，Markdown 文档返回 content 字段
-      const content = result.markdown || result.content;
-      await fs.writeFile(outputPath, content, 'utf8');
+      let content = result.markdown || result.content;
+      const parsed = store.parsePost(content);
+      if (!parsed.front.title || typeof parsed.front.title !== 'string') throw new Error('文章标题无效');
+      // Re-importing must not change an existing URL, publication date or ID.
+      if (before) {
+        const previous = store.parsePost(before.toString('utf8')).front;
+        if (previous.source_key && previous.source_key !== parsed.front.source_key) {
+          throw new Error('输出文件已关联其他源文档，请检查 post_file');
+        }
+        for (const field of ['date', 'permalink', 'slug', 'article_id', 'source_key']) {
+          if (Object.prototype.hasOwnProperty.call(previous, field)) parsed.front[field] = previous[field];
+        }
+        content = `---\n${yaml.dump(parsed.front, store.yamlOptions)}---\n${parsed.body}`;
+      }
+      store.commitWrites(() => {
+        store.assertUnchanged(this.metadataPath, metadataSnapshot);
+        store.assertUnchanged(filePath, sourceSnapshot);
+        store.assertUnchanged(outputPath, before);
+        return before?.equals(Buffer.from(content)) ? [] : [{ file: outputPath, content }];
+      }, this.backupPath);
       
       // 确保 categories 和 tags 是数组
       const categories = Array.isArray(result.metadata.categories) 
@@ -163,6 +199,7 @@ class ContentPipeline {
       
     } catch (error) {
       console.error(`❌ 处理失败: ${filename}`, error);
+      throw error;
     }
   }
 
@@ -193,10 +230,11 @@ class ContentPipeline {
    * without their extension, so editing a DOCX never loses manual settings.
    */
   async loadArticleMetadata() {
-    const metadataPath = path.join(__dirname, '..', 'source', '_data', 'archive.yml');
+    const metadataPath = this.metadataPath;
 
     try {
       const raw = await fs.readFile(metadataPath, 'utf8');
+      this.metadataSnapshot = Buffer.from(raw);
       const parsed = yaml.load(raw) || {};
       this.articleMetadata = {
         defaults: parsed.defaults && typeof parsed.defaults === 'object'
@@ -208,6 +246,7 @@ class ContentPipeline {
       };
     } catch (error) {
       if (error.code === 'ENOENT') {
+        this.metadataSnapshot = null;
         this.articleMetadata = { defaults: {}, articles: {} };
         return;
       }
@@ -236,7 +275,7 @@ class ContentPipeline {
    * Rebuild articles when the metadata file changes while watch mode is active.
    */
   startMetadataWatcher() {
-    const metadataPath = path.join(__dirname, '..', 'source', '_data', 'archive.yml');
+    const metadataPath = this.metadataPath;
 
     this.metadataWatcher = chokidar.watch(metadataPath, {
       persistent: true,
@@ -250,7 +289,6 @@ class ContentPipeline {
     this.metadataWatcher.on('change', async () => {
       try {
         console.log('\n⚙️  文章元数据已修改，正在重新生成文章...');
-        await this.loadArticleMetadata();
         await this.processAllDocuments();
       } catch (error) {
         console.error('❌ 文章元数据更新失败:', error.message);
@@ -284,17 +322,19 @@ class ContentPipeline {
    * 删除文档
    * @param {string} filePath - 文件路径
    */
-  async removeDocument(filePath) {
-    const filename = path.basename(filePath);
-    const outputFilename = this.generateOutputFilename(filename);
-    const outputPath = path.join(this.options.outputPath, outputFilename);
-    
-    try {
-      await fs.unlink(outputPath);
-      console.log(`🗑️  已删除: ${outputPath}`);
-    } catch (error) {
-      // 文件可能不存在，忽略错误
-    }
+  removeDocument(filePath) {
+    return this.enqueue(async () => {
+      const filename = path.basename(filePath);
+      if (!this.isPublishableFilename(filename)) return;
+      await this.loadArticleMetadata();
+      const outputPath = path.resolve(this.options.outputPath, this.generateOutputFilename(filename));
+      store.commitWrites(() => {
+        store.assertUnchanged(this.metadataPath, this.metadataSnapshot);
+        if (store.readSnapshot(filePath) !== null) throw new Error('源文档已恢复，取消删除');
+        return store.readSnapshot(outputPath) === null ? [] : [{ file: outputPath, content: null }];
+      }, this.backupPath);
+      console.log(`🗑️  已备份并删除: ${outputPath}`);
+    });
   }
 
   /**
@@ -411,15 +451,19 @@ class ContentPipeline {
       
       console.log(`📦 发现 ${supportedFiles.length} 个文件，开始处理...\n`);
       
+      const failures = [];
       for (const file of supportedFiles) {
         const filePath = path.join(this.options.watchPath, file);
-        await this.processDocument(filePath);
+        try { await this.processDocument(filePath); }
+        catch (error) { failures.push(`${file}: ${error.message}`); }
       }
+      if (failures.length) throw new Error(`导入失败 ${failures.length}/${supportedFiles.length}：\n${failures.join('\n')}`);
       
       console.log('\n✅ 批量处理完成');
       
     } catch (error) {
       console.error('❌ 扫描失败:', error);
+      throw error;
     }
   }
 }

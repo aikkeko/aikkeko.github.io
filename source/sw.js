@@ -1,5 +1,5 @@
 /* Site-owned cache. Third-party comments, players and APIs stay online-only. */
-const CACHE_VERSION = 'blog-v165';
+const CACHE_VERSION = 'blog-v166';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const PAGES_CACHE = `${CACHE_VERSION}-pages`;
 const IMAGES_CACHE = `${CACHE_VERSION}-images`;

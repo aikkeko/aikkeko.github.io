@@ -62,3 +62,30 @@ test('revision includes direct article edits, not only registry edits', t => {
   fs.appendFileSync(store.listPosts(posts)[0].file, '外部修改');
   assert.notEqual(store.revision(registryFile, posts), before);
 });
+
+test('transaction planner holds the writer lock and rejects stale snapshots before writes', t => {
+  const { root, posts } = fixture(t);
+  const backups = path.join(root, 'backups'), file = store.listPosts(posts)[0].file;
+  const before = store.readSnapshot(file);
+  fs.appendFileSync(file, '外部修改');
+  assert.throws(() => store.commitWrites(() => {
+    assert.ok(fs.existsSync(path.join(backups, '.lock')));
+    assert.throws(() => store.commitWrites([], backups), /正在同步/);
+    store.assertUnchanged(file, before);
+    return [{ file, content: '不应写入' }];
+  }, backups), /文件已修改/);
+  assert.ok(fs.readFileSync(file, 'utf8').endsWith('外部修改'));
+  assert.equal(fs.existsSync(path.join(backups, '.lock')), false);
+});
+
+test('a failed commit restores an article deleted earlier in the transaction', t => {
+  const { root, posts } = fixture(t), files = store.listPosts(posts);
+  const rename = fs.renameSync;
+  fs.renameSync = () => { throw new Error('disk failure after delete'); };
+  try {
+    assert.throws(() => store.commitWrites([
+      { file: files[0].file, content: null }, { file: files[1].file, content: 'replacement' }
+    ], path.join(root, 'backups')), /disk failure/);
+  } finally { fs.renameSync = rename; }
+  for (const file of files) assert.equal(fs.readFileSync(file.file, 'utf8'), file.raw);
+});

@@ -75,8 +75,21 @@ function revision(archivePath, postsRoot) {
   return hash.digest('hex');
 }
 
-function commitWrites(writes, backupRoot) {
-  if (!writes.length) return null;
+function readSnapshot(file) {
+  try { return fs.readFileSync(file); }
+  catch (error) { if (error.code === 'ENOENT') return null; throw error; }
+}
+
+function assertUnchanged(file, expected) {
+  const current = readSnapshot(file);
+  if (current === null ? expected !== null : expected === null || !current.equals(Buffer.from(expected))) {
+    throw new Error(`文件已修改，未覆盖，请重新处理：${path.basename(file)}`);
+  }
+}
+
+// A planner runs synchronously under the same lock as the commit, so reads,
+// revision checks and writes cannot race another cooperating writer.
+function commitWrites(plan, backupRoot) {
   fs.mkdirSync(backupRoot, { recursive: true });
   const lock = path.join(backupRoot, '.lock');
   let fd;
@@ -85,19 +98,22 @@ function commitWrites(writes, backupRoot) {
   const staged = [];
   const committed = [];
   try {
+    const writes = typeof plan === 'function' ? plan() : plan;
+    if (!writes.length) return null;
     fs.mkdirSync(backup);
     const manifest = [];
     writes.forEach(({ file, content }, index) => {
-      const before = fs.existsSync(file) ? fs.readFileSync(file) : null;
+      const before = readSnapshot(file);
       if (before) fs.writeFileSync(path.join(backup, `${index}.bak`), before);
       manifest.push({ file, backup: before ? `${index}.bak` : null });
       const temp = `${file}.${process.pid}.tmp`;
-      staged.push({ file, temp, before });
-      fs.writeFileSync(temp, content, 'utf8');
+      staged.push({ file, temp, before, remove: content === null });
+      if (content !== null) fs.writeFileSync(temp, content, 'utf8');
     });
     fs.writeFileSync(path.join(backup, 'manifest.json'), JSON.stringify(manifest, null, 2));
     for (const item of staged) {
-      fs.renameSync(item.temp, item.file);
+      if (item.remove) { if (item.before !== null) fs.unlinkSync(item.file); }
+      else fs.renameSync(item.temp, item.file);
       committed.push(item);
     }
     return backup;
@@ -114,4 +130,4 @@ function commitWrites(writes, backupRoot) {
   }
 }
 
-module.exports = { parsePost, stableId, expectedFilename, listPosts, resolvePost, planSync, revision, commitWrites, yamlOptions };
+module.exports = { parsePost, stableId, expectedFilename, listPosts, resolvePost, planSync, revision, commitWrites, readSnapshot, assertUnchanged, yamlOptions };

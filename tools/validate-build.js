@@ -13,6 +13,10 @@ function validate(root = path.resolve(__dirname, '..')) {
     new vm.Script(fs.readFileSync(path.join(publicRoot, 'js', name), 'utf8'), { filename: name });
   }
   new vm.Script(fs.readFileSync(path.join(publicRoot, 'sw.js'), 'utf8'), { filename: 'sw.js' });
+  const offline = cheerio.load(fs.readFileSync(path.join(publicRoot, 'offline.html'), 'utf8'));
+  offline('script:not([src])').each((index, script) => {
+    new vm.Script(offline(script).html(), { filename: `offline.html script ${index + 1}` });
+  });
   const registry = yaml.load(fs.readFileSync(path.join(root, 'source/_data/archive.yml'), 'utf8'));
   for (const article of Object.values(registry.articles)) {
     const route = article.post_file.replace(/\.md$/, '.html');

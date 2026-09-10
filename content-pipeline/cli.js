@@ -71,14 +71,14 @@ if (isOnce) {
   });
   
   // 优雅退出
-  process.on('SIGINT', () => {
+  process.on('SIGINT', async () => {
     console.log('\n\n👋 正在关闭...');
-    pipeline.stop();
+    await pipeline.stop();
     process.exit(0);
   });
   
-  process.on('SIGTERM', () => {
-    pipeline.stop();
+  process.on('SIGTERM', async () => {
+    await pipeline.stop();
     process.exit(0);
   });
 }

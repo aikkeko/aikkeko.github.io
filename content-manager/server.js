@@ -176,18 +176,22 @@ const server = http.createServer((request, response) => {
     request.on('end', () => {
       try {
         const payload = JSON.parse(body || '{}');
-        if (payload.revision !== store.revision(archivePath, postsRoot)) {
-          sendJson(response, 409, { error: '文件已被其他窗口或程序修改。当前修改仍保留在表单中，请复制需要保留的内容后重新载入。' });
-          return;
-        }
-        const registry = sanitizeRegistry(payload.registry);
-        const writes = store.planSync(registry, postsRoot);
-        const synced = writes.map(item => ({ file: path.relative(projectRoot, item.file), status: 'updated' }));
-        writes.push({ file: archivePath, content: archiveHeader + yaml.dump(registry, yamlOptions) });
-        const backup = store.commitWrites(writes, path.join(path.dirname(archivePath), '..', '..', '.content-backups'));
+        let registry, synced;
+        const backup = store.commitWrites(() => {
+          if (payload.revision !== store.revision(archivePath, postsRoot)) {
+            const error = new Error('文件已被其他窗口或程序修改。当前修改仍保留在表单中，请复制需要保留的内容后重新载入。');
+            error.status = 409;
+            throw error;
+          }
+          registry = sanitizeRegistry(payload.registry);
+          const writes = store.planSync(registry, postsRoot);
+          synced = writes.map(item => ({ file: path.relative(projectRoot, item.file), status: 'updated' }));
+          writes.push({ file: archivePath, content: archiveHeader + yaml.dump(registry, yamlOptions) });
+          return writes;
+        }, path.join(path.dirname(archivePath), '..', '..', '.content-backups'));
         sendJson(response, 200, { ok: true, registry, revision: store.revision(archivePath, postsRoot), synced, backup, savedAt: new Date().toISOString() });
       } catch (error) {
-        sendJson(response, 400, { error: error.message });
+        sendJson(response, error.status || 400, { error: error.message });
       }
     });
     return;

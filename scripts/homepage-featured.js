@@ -45,11 +45,14 @@ hexo.extend.filter.register('before_generate', function() {
   }
 
   const posts = hexo.locals.get('posts');
-  const selected = posts && posts.toArray().find(post => post.title === article.title);
-  if (!selected) {
+  const candidates = posts ? posts.toArray().filter(post =>
+    (article.id && post.article_id === article.id) || post.source_key === featuredKey ||
+    (article.post_file && String(post.source).replace(/\\/g, '/') === `_posts/${article.post_file}`)) : [];
+  if (candidates.length !== 1) {
     hexo.log.warn(`Featured article has no generated post: ${featuredKey}; using the newest article.`);
     return;
   }
+  const selected = candidates[0];
 
   promotedPost = selected;
   originalSticky = selected.sticky;

@@ -22,6 +22,8 @@ function normalizeList(value) {
   return [];
 }
 
+let sourceCount = 0;
+store.commitWrites(() => {
 const registry = fs.existsSync(metadataPath)
   ? yaml.load(fs.readFileSync(metadataPath, 'utf8'), { schema: yaml.JSON_SCHEMA }) || {}
   : {};
@@ -37,6 +39,7 @@ const posts = store.listPosts(postsDir);
 const sourceFiles = fs.readdirSync(exampleDir)
   .filter(file => /^\d{8}_.+\.(docx|md)$/i.test(file))
   .sort((a, b) => a.localeCompare(b, 'zh-CN'));
+sourceCount = sourceFiles.length;
 
 for (const sourceFile of sourceFiles) {
   const key = path.basename(sourceFile, path.extname(sourceFile));
@@ -82,5 +85,6 @@ const header = `# Archive content configuration
 const writes = store.planSync(registry, postsDir);
 const finalOutput = header + yaml.dump(registry, store.yamlOptions);
 if (finalOutput !== fs.readFileSync(metadataPath, 'utf8')) writes.push({ file: metadataPath, content: finalOutput });
-store.commitWrites(writes, path.join(projectRoot, '.content-backups'));
-console.log(`Updated ${path.relative(projectRoot, metadataPath)} (${sourceFiles.length} articles).`);
+return writes;
+}, path.join(projectRoot, '.content-backups'));
+console.log(`Updated ${path.relative(projectRoot, metadataPath)} (${sourceCount} articles).`);
